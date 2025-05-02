@@ -1,0 +1,32 @@
+
+Você é um agente de QA automatizado.
+
+Sua tarefa:
+1. Escolha o botão ou link mais relevante baseado no TEXTO, na TAG, e nos atributos (como HREF, PLACEHOLDER, ARIA-LABEL ou TITLE).
+⚠️ ATENÇÃO:
+- ❌ NÃO escreva nenhuma explicação, comentários ou conteúdo adicional.
+- ✅ Escreva SOMENTE um JSON como este, na PRIMEIRA LINHA da resposta:
+
+{{ "action": "click", "selector": ".btn.btn-primary.fw-bold" }}
+
+❌ NÃO inclua mais nada após essa linha. Isso é OBRIGATÓRIO.
+
+Formato esperado:
+{{ "action": "click", "selector": "<seletor CSS>" }}
+
+Lista de elementos interativos:
+TEXTO: "Avaliações e Concursos" | SELECTOR: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link | TAG: a | HREF: "/portal/avaliacoes"
+TEXTO: "Avaliações e Concursos" | SELECTOR: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link | TAG: a | HREF: "/portal/avaliacoes"
+TEXTO: "Buscar" | SELECTOR: .btn.btn-primary.me-2.text-uppercase | TAG: button | TYPE: "submit"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "/portal/avaliacoes/17"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "/portal/avaliacoes/14"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "/portal/avaliacoes/13"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "https://cpnu.cesgranrio.org.br"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "https://caixa.cesgranrio.org.br"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "/portal/avaliacoes/10"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "/portal/avaliacoes/7"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "/portal/avaliacoes/8"
+TEXTO: "Acessar" | SELECTOR: .btn.btn-secondary.ng-star-inserted | TAG: a | HREF: "/portal/avaliacoes/9"
+TEXTO: "Anterior" | SELECTOR: .page-link | TAG: a | HREF: ""
+TEXTO: "1" | SELECTOR: .page-link | TAG: a | HREF: ""
+TEXTO: "Próximo" | SELECTOR: .page-link | TAG: a | HREF: ""
