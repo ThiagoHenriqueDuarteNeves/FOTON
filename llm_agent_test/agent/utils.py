@@ -9,7 +9,7 @@ seletores_clicados = set()
 def extrair_html(pagina):
     return pagina.content()
 
-def gerar_prompt(html):
+def gerar_prompt_em_chat_format(html):
     soup = BeautifulSoup(html, "html.parser")
     elementos = []
 
@@ -32,7 +32,7 @@ def gerar_prompt(html):
 
     lista = "\n".join(elementos) if elementos else "Nenhum elemento interativo encontrado."
 
-    return f"""
+    prompt_usuario = f"""
 Você é um agente de QA automatizado.
 
 Sua tarefa:
@@ -41,17 +41,34 @@ Sua tarefa:
 - ❌ NÃO escreva nenhuma explicação, comentários ou conteúdo adicional.
 - ✅ Escreva SOMENTE um JSON como este, na PRIMEIRA LINHA da resposta:
 
-{{{{ "action": "click", "selector": ".btn.btn-primary.fw-bold" }}}}
+{{ "action": "click", "selector": ".btn.btn-primary.fw-bold" }}
 
 ❌ NÃO inclua mais nada após essa linha. Isso é OBRIGATÓRIO.
 
 Formato esperado:
-{{{{ "action": "click", "selector": "<seletor CSS>" }}}}
+{{ "action": "click", "selector": "<seletor CSS>" }}
 
 Lista de elementos interativos:
 {lista}
 """
 
+    return {
+        "model": "qwen2.5-7b-instruct-uncensored",
+        "messages": [
+            {
+                "role": "system",
+                "content": "Você é um agente de QA automatizado. Retorne apenas o JSON na primeira linha como solicitado."
+            },
+            {
+                "role": "user",
+                "content": prompt_usuario
+            }
+        ],
+        "temperature": 0.7,
+        "max_tokens": 512,
+        "stream": False,
+        "language": "pt-BR"
+    }
 
 def gerar_selector(el):
     if el.has_attr("id"):

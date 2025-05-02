@@ -6,11 +6,12 @@ from agent.browser import iniciar_navegador
 from agent.llm import chamar_llm_lmstudio  # LM Studio como padrão
 from agent.utils import (
     extrair_html,
-    gerar_prompt,
+    gerar_prompt_em_chat_format,
     executar_acao,
     fechar_aviso_de_cookies,
-    extrair_json_da_resposta
+    extrair_json_da_resposta  # Usar a função padrão
 )
+import requests
 
 # Configura log em arquivo
 logging.basicConfig(
@@ -31,14 +32,18 @@ def salvar_lista_de_seletores(html, passo):
     Path("logs").mkdir(exist_ok=True)
     caminho = f"logs/seletores_passo_{passo}.txt"
     with open(caminho, "w", encoding="utf-8") as f:
-        prompt = gerar_prompt(html)
-        f.write(prompt)
+        payload = gerar_prompt_em_chat_format(html)
+        f.write(str(payload))
     print(f"[🧾] Lista de seletores salva em: {caminho}")
     logging.info(f"Lista de seletores salva em: {caminho}")
 
-def agente_explorador(url, max_passos=5):
-    chamar_llm = chamar_llm_lmstudio  # Definido fixo
+def chamar_llm_openai_style(payload):
+    resposta = requests.post("http://localhost:1234/v1/chat/completions", json=payload)
+    resposta.raise_for_status()
+    retorno = resposta.json()
+    return retorno["choices"][0]["message"]["content"]
 
+def agente_explorador(url, max_passos=5):
     navegador, pagina, playwright = iniciar_navegador()
     pagina.goto(url)
 
@@ -58,12 +63,12 @@ def agente_explorador(url, max_passos=5):
             salvar_screenshot(pagina, passo + 1)
             salvar_lista_de_seletores(html, passo + 1)
 
-            prompt = gerar_prompt(html)
+            payload = gerar_prompt_em_chat_format(html)
 
-            print("\n[DEBUG] Prompt enviado ao LLM:")
-            print(prompt[:1000])
+            print("\n[DEBUG] Payload enviado ao LLM:")
+            print(payload)
 
-            resposta_llm = chamar_llm(prompt)
+            resposta_llm = chamar_llm_openai_style(payload)
 
             if not resposta_llm.strip():
                 print("[LLM] <Resposta vazia>")
