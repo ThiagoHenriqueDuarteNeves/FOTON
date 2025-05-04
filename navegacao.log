@@ -2374,3 +2374,615 @@ TEXTO: "Acessar" | SELECTOR
 2025-05-02 04:13:58,670 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.ng-star-inserted" }
 2025-05-02 04:13:59,040 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.ng-star-inserted
 2025-05-02 04:14:01,346 [INFO] Navegação encerrada.
+2025-05-02 04:27:47,565 [INFO] PASSO 1
+2025-05-02 04:27:47,816 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-02 04:27:47,825 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-02 04:27:58,047 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold"}
+2025-05-02 04:28:03,391 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold
+2025-05-02 04:28:05,393 [INFO] PASSO 2
+2025-05-02 04:28:05,527 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-02 04:28:05,532 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-02 04:28:12,205 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.p-2.fw-bold.text-uppercase" }
+2025-05-02 04:28:12,573 [INFO] Clicou normalmente no seletor: .btn.btn-primary.p-2.fw-bold.text-uppercase
+2025-05-02 04:28:14,574 [INFO] PASSO 3
+2025-05-02 04:28:14,685 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-02 04:28:14,691 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-02 04:28:19,207 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-02 04:28:24,537 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.fw-bold
+2025-05-02 04:28:26,538 [INFO] PASSO 4
+2025-05-02 04:28:26,648 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-02 04:28:26,653 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-02 04:28:31,019 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']" }
+2025-05-02 04:28:36,361 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-02 04:28:38,362 [INFO] PASSO 5
+2025-05-02 04:28:38,557 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-02 04:28:38,565 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-02 04:28:51,581 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase" }
+2025-05-02 04:28:51,929 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase
+2025-05-02 04:28:54,184 [INFO] Navegação encerrada.
+2025-05-02 04:29:10,921 [INFO] PASSO 1
+2025-05-02 04:29:11,203 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-02 04:29:11,212 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-02 04:29:21,539 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold" }
+2025-05-02 04:29:26,886 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold
+2025-05-02 04:29:28,887 [INFO] PASSO 2
+2025-05-02 04:29:28,995 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-02 04:29:29,000 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-02 04:29:35,644 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.p-2.fw-bold.text-uppercase" }
+2025-05-02 04:29:36,010 [INFO] Clicou normalmente no seletor: .btn.btn-primary.p-2.fw-bold.text-uppercase
+2025-05-02 04:29:38,011 [INFO] PASSO 3
+2025-05-02 04:29:38,119 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-02 04:29:38,124 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-02 04:29:43,551 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']" }
+2025-05-02 04:29:48,891 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-02 04:29:50,893 [INFO] PASSO 4
+2025-05-02 04:29:51,098 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-02 04:29:51,106 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-02 04:30:04,245 [INFO] Resposta LLM: {
+  "action": "click",
+  "selector": ".btn.btn-primary.me-2.text-uppercase"
+}
+2025-05-02 04:30:04,605 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase
+2025-05-02 04:30:06,606 [INFO] PASSO 5
+2025-05-02 04:30:06,819 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-02 04:30:06,827 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-02 04:30:18,412 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link" }
+2025-05-02 04:30:23,744 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link
+2025-05-02 04:30:26,022 [INFO] Navegação encerrada.
+2025-05-03 19:56:48,127 [INFO] PASSO 1
+2025-05-03 19:56:48,867 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 19:56:48,881 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 19:57:38,991 [INFO] Resposta LLM: { "action": "click", "selector": ".new-buttons.white-purple.outline-hover" }
+2025-05-03 19:57:40,210 [INFO] Clicou normalmente no seletor: .new-buttons.white-purple.outline-hover
+2025-05-03 19:57:42,211 [INFO] PASSO 2
+2025-05-03 19:57:42,610 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 19:57:42,620 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 19:58:32,055 [INFO] Resposta LLM: { "action": "click", "selector": ".button.download-btn.download_link.default_dl" }
+2025-05-03 19:58:37,405 [INFO] Clique forçado por JavaScript no seletor: .button.download-btn.download_link.default_dl
+2025-05-03 19:58:39,406 [INFO] PASSO 3
+2025-05-03 19:58:39,773 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 19:58:39,784 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 19:58:44,013 [INFO] Resposta LLM: { "action": "click", "selector": ".downloads-link" }
+2025-05-03 19:58:49,345 [ERROR] Falha no clique via JavaScript para seletor: .downloads-link
+2025-05-03 19:58:51,346 [INFO] PASSO 4
+2025-05-03 19:58:51,723 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 19:58:51,735 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 19:58:55,518 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.green.active" }
+2025-05-03 19:58:55,920 [INFO] Clicou normalmente no seletor: .nav-link.green.active
+2025-05-03 19:58:57,921 [INFO] PASSO 5
+2025-05-03 19:58:58,318 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 19:58:58,330 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 19:59:44,818 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link[href=\"/features\"]" }
+2025-05-03 19:59:45,360 [INFO] Clicou normalmente no seletor: .nav-link[href="/features"]
+2025-05-03 19:59:47,361 [INFO] PASSO 6
+2025-05-03 19:59:48,163 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 19:59:48,173 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 20:00:04,334 [INFO] Resposta LLM: { "action": "click", "selector": ".new-buttons.green-white.outline-hover.bigger" }
+2025-05-03 20:00:05,087 [INFO] Clicou normalmente no seletor: .new-buttons.green-white.outline-hover.bigger
+2025-05-03 20:00:07,087 [INFO] PASSO 7
+2025-05-03 20:00:07,491 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 20:00:07,503 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 20:00:55,295 [INFO] Resposta LLM: { "action": "click", "selector": ".cc-link" }
+2025-05-03 20:00:55,712 [INFO] Clicou normalmente no seletor: .cc-link
+2025-05-03 20:00:57,713 [INFO] PASSO 8
+2025-05-03 20:00:58,091 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 20:00:58,102 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 20:01:45,814 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link[href='/']" }
+2025-05-03 20:01:46,194 [INFO] Clicou normalmente no seletor: .nav-link[href='/']
+2025-05-03 20:01:48,195 [INFO] PASSO 9
+2025-05-03 20:02:18,209 [ERROR] Erro no passo 9: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  -   - waiting for fonts to load...
+  -   - fonts loaded
+
+2025-05-03 20:02:18,209 [INFO] PASSO 10
+2025-05-03 20:02:48,223 [ERROR] Erro no passo 10: Page.screenshot: Timeout 30000ms exceeded.
+2025-05-03 20:02:48,667 [INFO] Navegação encerrada.
+2025-05-03 20:12:05,968 [INFO] PASSO 1
+2025-05-03 20:12:06,813 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 20:12:06,825 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 20:12:33,455 [INFO] Resposta LLM: { "action": "click", "selector": ".new-buttons.white-purple.outline-hover" }
+2025-05-03 20:12:34,720 [INFO] Clicou normalmente no seletor: .new-buttons.white-purple.outline-hover
+2025-05-03 20:12:36,721 [INFO] PASSO 2
+2025-05-03 20:12:37,108 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 20:12:37,119 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 20:13:26,584 [INFO] Resposta LLM: { "action": "click", "selector": ".button.download-btn.download_link.default_dl" }
+2025-05-03 20:13:31,920 [INFO] Clique forçado por JavaScript no seletor: .button.download-btn.download_link.default_dl
+2025-05-03 20:13:33,921 [INFO] PASSO 3
+2025-05-03 20:13:34,294 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 20:13:34,304 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 20:13:39,718 [INFO] Resposta LLM: { "action": "click", "selector": ".windows-downloads-button.new-buttons.outline-hover.bigger.long-button.download-icon-for-button.green-white" }
+2025-05-03 20:13:40,190 [INFO] Clicou normalmente no seletor: .windows-downloads-button.new-buttons.outline-hover.bigger.long-button.download-icon-for-button.green-white
+2025-05-03 20:13:42,190 [INFO] PASSO 4
+2025-05-03 20:13:42,549 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 20:13:42,560 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 20:14:21,695 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.green.active" }
+2025-05-03 20:14:22,086 [INFO] Clicou normalmente no seletor: .nav-link.green.active
+2025-05-03 20:14:24,087 [INFO] PASSO 5
+2025-05-03 20:14:24,456 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 20:14:24,467 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 20:15:06,702 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link[href=\"/features\"]" }
+2025-05-03 20:15:07,250 [INFO] Clicou normalmente no seletor: .nav-link[href="/features"]
+2025-05-03 20:15:09,251 [INFO] PASSO 6
+2025-05-03 20:15:10,004 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 20:15:10,012 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 20:15:26,194 [INFO] Resposta LLM: { "action": "click", "selector": ".new-buttons.green-white.outline-hover.bigger" }
+2025-05-03 20:15:26,949 [INFO] Clicou normalmente no seletor: .new-buttons.green-white.outline-hover.bigger
+2025-05-03 20:15:28,950 [INFO] PASSO 7
+2025-05-03 20:15:29,343 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 20:15:29,353 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 20:16:12,964 [INFO] Resposta LLM: { "action": "click", "selector": ".cc-link" }
+2025-05-03 20:16:13,354 [INFO] Clicou normalmente no seletor: .cc-link
+2025-05-03 20:16:15,355 [INFO] PASSO 8
+2025-05-03 20:16:17,919 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 20:16:17,929 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 20:17:02,375 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link" }
+2025-05-03 20:17:02,748 [INFO] Clicou normalmente no seletor: .nav-link
+2025-05-03 20:17:04,749 [INFO] PASSO 9
+2025-05-03 20:17:34,772 [ERROR] Erro no passo 9: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  -   - waiting for fonts to load...
+  -   - fonts loaded
+
+2025-05-03 20:17:34,773 [INFO] PASSO 10
+2025-05-03 20:18:04,792 [ERROR] Erro no passo 10: Page.screenshot: Timeout 30000ms exceeded.
+2025-05-03 20:18:05,067 [INFO] Navegação encerrada.
+2025-05-03 20:19:15,875 [INFO] PASSO 1
+2025-05-03 20:19:16,927 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 20:19:16,938 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 20:19:43,575 [INFO] Resposta LLM: { "action": "click", "selector": ".button.download-btn.download_link.default_dl" }
+2025-05-03 20:19:51,061 [ERROR] Erro durante execução da ação final: Page.evaluate: Target page, context or browser has been closed
+2025-05-03 20:20:01,710 [INFO] PASSO 1
+2025-05-03 20:20:02,687 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 20:20:02,701 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 20:20:06,509 [INFO] Resposta LLM: { "action": "click", "selector": ".button.download-btn.download_link.default_dl" }
+2025-05-03 20:20:36,853 [INFO] Clique forçado por JavaScript no seletor: .button.download-btn.download_link.default_dl
+2025-05-03 20:20:38,855 [INFO] PASSO 2
+2025-05-03 20:20:39,830 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 20:20:39,840 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 20:20:43,751 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:20:49,082 [ERROR] Falha no clique via JavaScript para seletor: .btn.btn-primary.fw-bold
+2025-05-03 20:20:51,083 [INFO] PASSO 3
+2025-05-03 20:20:52,047 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 20:20:52,056 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 20:20:55,726 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:20:55,726 [INFO] Seletor repetido ignorado: .btn.btn-primary.fw-bold
+2025-05-03 20:20:55,727 [INFO] PASSO 4
+2025-05-03 20:20:56,705 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 20:20:56,715 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 20:21:00,469 [INFO] Resposta LLM: { "action": "click", "selector": ".new-buttons.white-purple.outline-hover" }
+2025-05-03 20:21:01,307 [INFO] Clicou normalmente no seletor: .new-buttons.white-purple.outline-hover
+2025-05-03 20:21:03,308 [INFO] PASSO 5
+2025-05-03 20:21:03,789 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 20:21:03,799 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 20:21:53,379 [INFO] Resposta LLM: { "action": "click", "selector": ".windows-downloads-button.new-buttons.outline-hover.bigger.long-button.download-icon-for-button.green-white" }
+2025-05-03 20:21:53,891 [INFO] Clicou normalmente no seletor: .windows-downloads-button.new-buttons.outline-hover.bigger.long-button.download-icon-for-button.green-white
+2025-05-03 20:21:55,892 [INFO] PASSO 6
+2025-05-03 20:21:56,376 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 20:21:56,387 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 20:22:35,461 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.green.active" }
+2025-05-03 20:22:35,848 [INFO] Clicou normalmente no seletor: .nav-link.green.active
+2025-05-03 20:22:37,848 [INFO] PASSO 7
+2025-05-03 20:22:38,328 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 20:22:38,339 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 20:23:20,342 [INFO] Resposta LLM: { "action": "click", "selector": ".cc-btn.cc-dismiss" }
+2025-05-03 20:23:25,687 [INFO] Clique forçado por JavaScript no seletor: .cc-btn.cc-dismiss
+2025-05-03 20:23:27,688 [INFO] PASSO 8
+2025-05-03 20:23:28,158 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 20:23:28,169 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 20:24:12,838 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link[href=\"/features\"]" }
+2025-05-03 20:24:13,369 [INFO] Clicou normalmente no seletor: .nav-link[href="/features"]
+2025-05-03 20:24:15,370 [INFO] PASSO 9
+2025-05-03 20:24:16,340 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 20:24:16,348 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 20:24:31,380 [INFO] Resposta LLM: { "action": "click", "selector": ".new-buttons.green-white.outline-hover.bigger" }
+2025-05-03 20:24:32,143 [INFO] Clicou normalmente no seletor: .new-buttons.green-white.outline-hover.bigger
+2025-05-03 20:24:34,144 [INFO] PASSO 10
+2025-05-03 20:24:34,630 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 20:24:34,641 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 20:25:42,658 [INFO] PASSO 1
+2025-05-03 20:25:43,116 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 20:25:43,125 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 20:25:53,370 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold"}
+2025-05-03 20:25:58,716 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold
+2025-05-03 20:26:00,718 [INFO] PASSO 2
+2025-05-03 20:26:00,880 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 20:26:00,886 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 20:26:07,534 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.p-2.fw-bold.text-uppercase" }
+2025-05-03 20:26:07,898 [INFO] Clicou normalmente no seletor: .btn.btn-primary.p-2.fw-bold.text-uppercase
+2025-05-03 20:26:09,900 [INFO] PASSO 3
+2025-05-03 20:26:10,051 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 20:26:10,057 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 20:26:15,417 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']"}
+2025-05-03 20:26:20,766 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-03 20:26:22,767 [INFO] PASSO 4
+2025-05-03 20:26:23,040 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 20:26:23,049 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 20:26:36,024 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase" }
+2025-05-03 20:26:36,361 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase
+2025-05-03 20:26:38,362 [INFO] PASSO 5
+2025-05-03 20:26:38,633 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 20:26:38,642 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 20:26:50,222 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link" }
+2025-05-03 20:26:55,551 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link
+2025-05-03 20:26:57,552 [INFO] PASSO 6
+2025-05-03 20:26:57,827 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 20:26:57,836 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 20:27:09,264 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu" }
+2025-05-03 20:27:14,595 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
+2025-05-03 20:27:16,596 [INFO] PASSO 7
+2025-05-03 20:27:16,874 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 20:27:16,885 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 20:27:27,053 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:27:32,390 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.fw-bold
+2025-05-03 20:27:34,391 [INFO] PASSO 8
+2025-05-03 20:27:34,539 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 20:27:34,545 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 20:27:40,062 [INFO] Resposta LLM: { "action": "click", "selector": ".btn'esqueci-senha.text-primary" }
+2025-05-03 20:27:40,077 [ERROR] Erro durante execução da ação final: Page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Document': '.btn'esqueci-senha.text-primary' is not a valid selector.
+    at eval (eval at evaluate (:234:30), <anonymous>:2:41)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+2025-05-03 20:27:42,077 [INFO] PASSO 9
+2025-05-03 20:27:42,222 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 20:27:42,227 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 20:27:45,973 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.p-2.fw-bold.text-uppercase" }
+2025-05-03 20:27:46,343 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.p-2.fw-bold.text-uppercase
+2025-05-03 20:27:48,344 [INFO] PASSO 10
+2025-05-03 20:27:48,629 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 20:27:48,637 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 20:27:58,798 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:27:58,799 [INFO] Seletor repetido ignorado: .btn.btn-primary.fw-bold
+2025-05-03 20:27:59,062 [INFO] Navegação encerrada.
+2025-05-03 20:30:31,324 [INFO] PASSO 1
+2025-05-03 20:30:31,785 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 20:30:31,794 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 20:30:42,117 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold" }
+2025-05-03 20:30:47,455 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold
+2025-05-03 20:30:49,456 [INFO] PASSO 2
+2025-05-03 20:30:49,610 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 20:30:49,616 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 20:30:56,282 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.p-2.fw-bold.text-uppercase" }
+2025-05-03 20:30:56,648 [INFO] Clicou normalmente no seletor: .btn.btn-primary.p-2.fw-bold.text-uppercase
+2025-05-03 20:30:58,649 [INFO] PASSO 3
+2025-05-03 20:30:58,805 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 20:30:58,810 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 20:31:03,194 [INFO] Resposta LLM: { "action": "click", "selector": ".btn btn-primary fw-bold"}
+2025-05-03 20:31:08,519 [ERROR] Falha no clique via JavaScript para seletor: .btn btn-primary fw-bold
+2025-05-03 20:31:10,521 [INFO] PASSO 4
+2025-05-03 20:31:10,681 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 20:31:10,687 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 20:31:15,058 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']" }
+2025-05-03 20:31:20,407 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-03 20:31:22,408 [INFO] PASSO 5
+2025-05-03 20:31:22,683 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 20:31:22,693 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 20:31:35,666 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase" }
+2025-05-03 20:31:36,022 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase
+2025-05-03 20:31:38,023 [INFO] PASSO 6
+2025-05-03 20:31:38,292 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 20:31:38,301 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 20:31:49,426 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.ng-star-inserted" }
+2025-05-03 20:31:49,795 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.ng-star-inserted
+2025-05-03 20:31:51,797 [INFO] PASSO 7
+2025-05-03 20:31:52,004 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 20:31:52,013 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 20:32:45,154 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-outline-primary" }
+2025-05-03 20:32:45,524 [INFO] Clicou normalmente no seletor: .btn.btn-outline-primary
+2025-05-03 20:32:47,526 [INFO] PASSO 8
+2025-05-03 20:32:47,961 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 20:32:47,969 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 20:32:54,245 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:32:59,566 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.fw-bold
+2025-05-03 20:33:01,567 [INFO] PASSO 9
+2025-05-03 20:33:01,730 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 20:33:01,736 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 20:33:07,251 [INFO] Resposta LLM: { "action": "click", "selector": ".btn-esqueci-senha.text-primary" }
+2025-05-03 20:33:07,615 [INFO] Clicou normalmente no seletor: .btn-esqueci-senha.text-primary
+2025-05-03 20:33:09,616 [INFO] PASSO 10
+2025-05-03 20:33:09,768 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 20:33:09,774 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 20:33:14,174 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary" }
+2025-05-03 20:33:19,507 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary
+2025-05-03 20:33:21,737 [INFO] Navegação encerrada.
+2025-05-03 20:37:37,828 [INFO] PASSO 1
+2025-05-03 20:37:38,254 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 20:37:38,263 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 20:37:52,079 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold" }
+2025-05-03 20:37:57,421 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold
+2025-05-03 20:37:59,422 [INFO] PASSO 2
+2025-05-03 20:37:59,581 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 20:37:59,587 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 20:38:06,187 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu"}
+2025-05-03 20:38:11,527 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
+2025-05-03 20:38:13,528 [INFO] PASSO 3
+2025-05-03 20:38:13,801 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 20:38:13,810 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 20:38:26,275 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link" }
+2025-05-03 20:38:31,615 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link
+2025-05-03 20:38:33,616 [INFO] PASSO 4
+2025-05-03 20:38:33,891 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 20:38:33,899 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 20:38:45,059 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase" }
+2025-05-03 20:38:45,431 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase
+2025-05-03 20:38:47,432 [INFO] PASSO 5
+2025-05-03 20:38:47,704 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 20:38:47,713 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 20:38:57,897 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:39:03,233 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.fw-bold
+2025-05-03 20:39:05,234 [INFO] PASSO 6
+2025-05-03 20:39:05,386 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 20:39:05,391 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 20:39:11,141 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.p-2.fw-bold.text-uppercase" }
+2025-05-03 20:39:11,486 [INFO] Clicou normalmente no seletor: .btn.btn-primary.p-2.fw-bold.text-uppercase
+2025-05-03 20:39:13,487 [INFO] PASSO 7
+2025-05-03 20:39:13,643 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 20:39:13,648 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 20:39:18,176 [INFO] Resposta LLM: { "action": "click", "selector": ".btn-esqueci-senha.text-primary" }
+2025-05-03 20:39:18,539 [INFO] Clicou normalmente no seletor: .btn-esqueci-senha.text-primary
+2025-05-03 20:39:20,540 [INFO] PASSO 8
+2025-05-03 20:39:20,701 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 20:39:20,706 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 20:39:25,301 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:39:25,301 [INFO] Seletor repetido ignorado: .btn.btn-primary.fw-bold
+2025-05-03 20:39:25,302 [INFO] PASSO 9
+2025-05-03 20:39:25,454 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 20:39:25,459 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 20:39:28,872 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:39:28,873 [INFO] Seletor repetido ignorado: .btn.btn-primary.fw-bold
+2025-05-03 20:39:28,873 [INFO] PASSO 10
+2025-05-03 20:39:29,025 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 20:39:29,031 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 20:39:32,437 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 20:39:32,437 [INFO] Seletor repetido ignorado: .btn.btn-primary.fw-bold
+2025-05-03 20:39:32,756 [INFO] Navegação encerrada.
+2025-05-03 20:42:05,237 [INFO] PASSO 1
+2025-05-03 20:42:05,659 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 20:42:05,667 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 20:42:16,825 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold" }
+2025-05-03 20:42:22,162 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold
+2025-05-03 20:42:24,162 [INFO] PASSO 2
+2025-05-03 20:42:24,320 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 20:42:24,325 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 20:42:31,489 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']"}
+2025-05-03 20:42:36,830 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-03 20:42:38,831 [INFO] PASSO 3
+2025-05-03 20:42:39,090 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 20:42:39,099 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 20:42:52,115 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase" }
+2025-05-03 20:42:52,466 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase
+2025-05-03 20:42:54,467 [INFO] PASSO 4
+2025-05-03 20:42:54,740 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 20:42:54,749 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 20:43:05,033 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.ng-star-inserted"}
+2025-05-03 20:43:05,407 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.ng-star-inserted
+2025-05-03 20:43:07,408 [INFO] PASSO 5
+2025-05-03 20:43:07,614 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 20:43:07,623 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 20:43:57,028 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-outline-primary" }
+2025-05-03 20:43:57,411 [INFO] Clicou normalmente no seletor: .btn.btn-outline-primary
+2025-05-03 20:43:59,412 [INFO] PASSO 6
+2025-05-03 20:43:59,845 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 20:43:59,852 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 20:44:07,068 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']" }
+2025-05-03 20:44:07,068 [INFO] Seletor repetido ignorado: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-03 20:44:07,069 [INFO] PASSO 7
+2025-05-03 20:44:07,500 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 20:44:07,506 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 20:44:11,255 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu"}
+2025-05-03 20:44:16,604 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
+2025-05-03 20:44:18,605 [INFO] PASSO 8
+2025-05-03 20:44:18,864 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 20:44:18,873 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 20:44:25,640 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link" }
+2025-05-03 20:44:30,973 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link
+2025-05-03 20:44:32,974 [INFO] PASSO 9
+2025-05-03 20:44:33,247 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 20:44:33,256 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 20:44:38,822 [INFO] Resposta LLM: { "action": "click", "selector": ".page-link:contains('Próximo')" }
+2025-05-03 20:44:38,838 [ERROR] Erro durante execução da ação final: Page.evaluate: SyntaxError: Failed to execute 'querySelector' on 'Document': '.page-link:contains('Próximo')' is not a valid selector.
+    at eval (eval at evaluate (:234:30), <anonymous>:2:41)
+    at UtilityScript.evaluate (<anonymous>:241:19)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+2025-05-03 20:44:40,840 [INFO] PASSO 10
+2025-05-03 20:44:41,095 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 20:44:41,104 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 20:44:44,699 [INFO] Resposta LLM: { "action": "click", "selector": ".page-link:contains('Próximo')" }
+2025-05-03 20:44:44,700 [INFO] Seletor repetido ignorado: .page-link:contains('Próximo')
+2025-05-03 20:44:45,041 [INFO] Navegação encerrada.
+2025-05-03 21:49:11,602 [INFO] PASSO 1
+2025-05-03 21:49:12,030 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 21:49:12,040 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 21:49:44,553 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold" }
+2025-05-03 21:49:49,889 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold
+2025-05-03 21:49:51,890 [INFO] PASSO 2
+2025-05-03 21:49:52,039 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 21:49:52,045 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 21:49:59,291 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']" }
+2025-05-03 21:50:04,634 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-03 21:50:06,635 [INFO] PASSO 3
+2025-05-03 21:50:06,888 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 21:50:06,897 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 21:50:19,833 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 21:50:25,178 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.fw-bold
+2025-05-03 21:50:27,179 [INFO] PASSO 4
+2025-05-03 21:50:27,330 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 21:50:27,336 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 21:50:35,438 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']" }
+2025-05-03 21:50:35,439 [INFO] Seletor repetido ignorado: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']
+2025-05-03 21:50:35,439 [INFO] PASSO 5
+2025-05-03 21:50:35,588 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 21:50:35,593 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 21:50:39,309 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu"}
+2025-05-03 21:50:44,640 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
+2025-05-03 21:50:46,641 [INFO] PASSO 6
+2025-05-03 21:50:46,925 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 21:50:46,934 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 21:50:59,455 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link" }
+2025-05-03 21:51:04,779 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link
+2025-05-03 21:51:06,780 [INFO] PASSO 7
+2025-05-03 21:51:07,045 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 21:51:07,055 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 21:51:18,289 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase" }
+2025-05-03 21:51:18,630 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase
+2025-05-03 21:51:20,631 [INFO] PASSO 8
+2025-05-03 21:51:20,886 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 21:51:20,895 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 21:51:31,088 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 21:51:31,088 [INFO] Seletor repetido ignorado: .btn.btn-primary.fw-bold
+2025-05-03 21:51:31,088 [INFO] PASSO 9
+2025-05-03 21:51:31,368 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 21:51:31,376 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 21:51:35,746 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.ng-star-inserted[href='/portal/avaliacoes/17']" }
+2025-05-03 21:51:36,111 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.ng-star-inserted[href='/portal/avaliacoes/17']
+2025-05-03 21:51:38,113 [INFO] PASSO 10
+2025-05-03 21:51:38,316 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 21:51:38,329 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 21:52:30,747 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.fw-bold" }
+2025-05-03 21:52:30,747 [INFO] Seletor repetido ignorado: .btn.btn-primary.fw-bold
+2025-05-03 21:52:31,026 [INFO] Navegação encerrada.
+2025-05-03 22:02:57,589 [INFO] PASSO 1
+2025-05-03 22:02:58,054 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 22:02:58,063 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 22:03:13,221 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "motivo": "O texto 'Avaliações e Concursos' está mais relevante para a busca de concursos." }
+2025-05-03 22:03:18,558 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu | Motivo: O texto 'Avaliações e Concursos' está mais relevante para a busca de concursos.
+2025-05-03 22:03:20,560 [INFO] PASSO 2
+2025-05-03 22:03:20,833 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 22:03:20,842 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 22:03:37,092 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link", "motivo": "Este botão/elemento é relevante devido ao texto 'Avaliações e Concursos' que parece ser um menu principal para concursos." }
+2025-05-03 22:03:42,424 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link | Motivo: Este botão/elemento é relevante devido ao texto 'Avaliações e Concursos' que parece ser um menu principal para concursos.
+2025-05-03 22:03:44,425 [INFO] PASSO 3
+2025-05-03 22:03:44,706 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 22:03:44,714 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 22:03:58,863 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold", "motivo": "Botão com o texto 'Área do Candidato' e classe que indica um botão primário" }
+2025-05-03 22:04:04,207 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold | Motivo: Botão com o texto 'Área do Candidato' e classe que indica um botão primário
+2025-05-03 22:04:06,209 [INFO] PASSO 4
+2025-05-03 22:04:06,356 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 22:04:06,361 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 22:04:13,500 [INFO] Resposta LLM: { "action": "click", "selector": ".btn-esqueci-senha.text-primary", "motivo": "Este botão permite ao usuário recuperar sua senha, que é uma funcionalidade importante." }
+2025-05-03 22:04:13,858 [INFO] Clicou normalmente no seletor: .btn-esqueci-senha.text-primary | Motivo: Este botão permite ao usuário recuperar sua senha, que é uma funcionalidade importante.
+2025-05-03 22:04:15,859 [INFO] PASSO 5
+2025-05-03 22:04:16,017 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 22:04:16,022 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 22:04:22,063 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary", "motivo": "Botão com texto 'Enviar' e classe que sugere funcionalidade de enviar dados" }
+2025-05-03 22:04:27,393 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary | Motivo: Botão com texto 'Enviar' e classe que sugere funcionalidade de enviar dados
+2025-05-03 22:04:29,394 [INFO] PASSO 6
+2025-05-03 22:04:29,548 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 22:04:29,554 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 22:04:36,004 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.p-2.fw-bold.text-uppercase", "motivo": "Botão 'Entrar' é mais relevante para a tarefa proposta." }
+2025-05-03 22:04:36,350 [INFO] Clicou normalmente no seletor: .btn.btn-primary.p-2.fw-bold.text-uppercase | Motivo: Botão 'Entrar' é mais relevante para a tarefa proposta.
+2025-05-03 22:04:38,351 [INFO] PASSO 7
+2025-05-03 22:04:38,525 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 22:04:38,531 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 22:04:44,659 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.p-2.fw-bold.text-uppercase", "motivo": "Botão com texto mais relevante para ação de cadastro" }
+2025-05-03 22:04:45,004 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.p-2.fw-bold.text-uppercase | Motivo: Botão com texto mais relevante para ação de cadastro
+2025-05-03 22:04:47,005 [INFO] PASSO 8
+2025-05-03 22:04:47,286 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 22:04:47,295 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 22:04:59,979 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase", "motivo": "Botão de busca mais relevante e de maior destaque na página." }
+2025-05-03 22:05:00,325 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase | Motivo: Botão de busca mais relevante e de maior destaque na página.
+2025-05-03 22:05:02,326 [INFO] PASSO 9
+2025-05-03 22:05:02,590 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 22:05:02,598 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 22:05:16,182 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.ng-star-inserted", "motivo": "O atributo HREF do link aponta para uma URL relacionada ao portal de avaliações, sugerindo que é um botão relevante." }
+2025-05-03 22:05:16,537 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.ng-star-inserted | Motivo: O atributo HREF do link aponta para uma URL relacionada ao portal de avaliações, sugerindo que é um botão relevante.
+2025-05-03 22:05:18,538 [INFO] PASSO 10
+2025-05-03 22:05:18,746 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 22:05:18,755 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 22:14:19,072 [INFO] PASSO 1
+2025-05-03 22:14:19,491 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 22:14:19,499 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 22:14:33,634 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']", "motivo": "Este botão leva diretamente para a página de concursos e avaliações, que é o foco da tarefa." }
+2025-05-03 22:14:38,971 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes'] | Motivo: Este botão leva diretamente para a página de concursos e avaliações, que é o foco da tarefa.
+2025-05-03 22:14:40,972 [INFO] PASSO 2
+2025-05-03 22:14:41,232 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 22:14:41,242 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 22:14:56,575 [INFO] Resposta LLM: { "action": "click", "selector": ".page-link", "motivo": "Botão 'Próximo' para navegar para a próxima página de concursos." }
+2025-05-03 22:15:26,936 [INFO] Clique forçado por JavaScript no seletor: .page-link | Motivo: Botão 'Próximo' para navegar para a próxima página de concursos.
+2025-05-03 22:15:28,938 [INFO] PASSO 3
+2025-05-03 22:15:29,215 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 22:15:29,224 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 22:15:36,525 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link", "motivo": "Esta é uma das opções de 'Avaliações e Concursos' que está destacada, provavelmente indicando a página atual." }
+2025-05-03 22:15:41,854 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link | Motivo: Esta é uma das opções de 'Avaliações e Concursos' que está destacada, provavelmente indicando a página atual.
+2025-05-03 22:15:43,855 [INFO] PASSO 4
+2025-05-03 22:15:44,111 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 22:15:44,119 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 22:15:58,153 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold", "motivo": "Botão 'Área do Candidato' para navegar pelas páginas de concursos" }
+2025-05-03 22:16:03,479 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold | Motivo: Botão 'Área do Candidato' para navegar pelas páginas de concursos
+2025-05-03 22:16:05,480 [INFO] PASSO 5
+2025-05-03 22:16:05,630 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 22:16:05,635 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 22:16:16,366 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "motivo": "Este elemento tem o texto 'Avaliações e Concursos' que é mais relevante para a navegação de concursos." }
+2025-05-03 22:16:21,698 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu | Motivo: Este elemento tem o texto 'Avaliações e Concursos' que é mais relevante para a navegação de concursos.
+2025-05-03 22:16:23,699 [INFO] PASSO 6
+2025-05-03 22:16:23,969 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-03 22:16:23,979 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-03 22:16:35,449 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.me-2.text-uppercase", "motivo": "Botão de busca mais relevante para o usuário" }
+2025-05-03 22:16:35,810 [INFO] Clicou normalmente no seletor: .btn.btn-primary.me-2.text-uppercase | Motivo: Botão de busca mais relevante para o usuário
+2025-05-03 22:16:37,811 [INFO] PASSO 7
+2025-05-03 22:16:38,065 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-03 22:16:38,074 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-03 22:16:50,461 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.ng-star-inserted[href='/portal/avaliacoes/17']", "motivo": "O link com o maior número indica que é um concurso recente." }
+2025-05-03 22:16:50,837 [INFO] Clicou normalmente no seletor: .btn.btn-secondary.ng-star-inserted[href='/portal/avaliacoes/17'] | Motivo: O link com o maior número indica que é um concurso recente.
+2025-05-03 22:16:52,838 [INFO] PASSO 8
+2025-05-03 22:16:53,053 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-03 22:16:53,062 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-03 22:17:45,932 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-outline-primary", "motivo": "O botão 'Voltar' é o mais relevante para navegar entre as páginas de concursos." }
+2025-05-03 22:17:46,296 [INFO] Clicou normalmente no seletor: .btn.btn-outline-primary | Motivo: O botão 'Voltar' é o mais relevante para navegar entre as páginas de concursos.
+2025-05-03 22:17:48,297 [INFO] PASSO 9
+2025-05-03 22:17:48,718 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-03 22:17:48,727 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-03 22:17:56,684 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase", "motivo": "Botão com texto mais relevante e atributo HREF que parece estar relacionado aos serviços." }
+2025-05-03 22:18:02,016 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase | Motivo: Botão com texto mais relevante e atributo HREF que parece estar relacionado aos serviços.
+2025-05-03 22:18:04,017 [INFO] PASSO 10
+2025-05-03 22:18:04,166 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-03 22:18:04,171 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-03 22:18:11,019 [INFO] Resposta LLM: { "action": "click", "selector": ".btn-esqueci-senha.text-primary", "motivo": "Este botão permite acessar a página de recuperação de senha." }
+2025-05-03 22:18:11,369 [INFO] Clicou normalmente no seletor: .btn-esqueci-senha.text-primary | Motivo: Este botão permite acessar a página de recuperação de senha.
+2025-05-03 22:18:13,609 [INFO] Navegação encerrada.
+2025-05-03 22:32:49,465 [INFO] PASSO 1
+2025-05-03 22:32:49,904 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 22:32:49,912 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 22:33:03,386 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "motivo": "O texto 'Avaliações e Concursos' é mais relevante para uma auditoria de concursos." }
+2025-05-03 22:33:08,729 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu | Motivo: O texto 'Avaliações e Concursos' é mais relevante para uma auditoria de concursos.
+2025-05-03 22:33:10,730 [INFO] PASSO 2
+2025-05-03 22:33:10,990 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 22:33:10,998 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 22:35:40,708 [INFO] PASSO 1
+2025-05-03 22:35:41,128 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 22:35:41,136 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 22:38:13,633 [INFO] PASSO 1
+2025-05-03 22:38:14,067 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 22:38:14,076 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 22:38:22,709 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "motivo": "Leva diretamente para as avaliações e concursos, sem necessidade de navegação adicional." }
+2025-05-03 22:38:28,063 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu | Motivo: Leva diretamente para as avaliações e concursos, sem necessidade de navegação adicional.
+2025-05-03 22:38:30,065 [INFO] PASSO 2
+2025-05-03 22:38:30,331 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 22:38:30,340 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-03 22:38:46,041 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link", "motivo": "Esta opção leva diretamente à seção de concursos, que é o foco principal da solicitação." }
+2025-05-03 22:38:51,363 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link | Motivo: Esta opção leva diretamente à seção de concursos, que é o foco principal da solicitação.
+2025-05-03 22:38:53,363 [INFO] PASSO 3
+2025-05-03 22:38:53,644 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-03 22:38:53,653 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-03 22:39:07,522 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold", "motivo": "Botão com maior relevância e funcionalidade para acessar o portal de candidatos" }
+2025-05-03 22:39:12,861 [INFO] Clique forçado por JavaScript no seletor: .btn.btn-primary.text-uppercase.fw-bold | Motivo: Botão com maior relevância e funcionalidade para acessar o portal de candidatos
+2025-05-03 22:39:14,862 [INFO] PASSO 4
+2025-05-03 22:39:15,014 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-03 22:39:15,019 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-03 22:39:21,893 [INFO] Resposta LLM: { "action": "click", "selector": ".btn-esqueci-senha.text-primary", "motivo": "Este botão permite ao usuário recuperar a senha esquecida." }
+2025-05-03 22:39:22,262 [INFO] Clicou normalmente no seletor: .btn-esqueci-senha.text-primary | Motivo: Este botão permite ao usuário recuperar a senha esquecida.
+2025-05-03 22:39:24,262 [INFO] PASSO 5
+2025-05-03 22:39:24,398 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-03 22:39:24,402 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-03 22:39:30,399 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary", "motivo": "Botão com o texto 'Enviar' é mais relevante para enviar uma solicitação." }
+2025-05-03 22:39:33,992 [ERROR] Erro durante execução da ação final: Page.evaluate: Target page, context or browser has been closed
+2025-05-03 22:39:51,432 [INFO] PASSO 1
+2025-05-03 22:39:51,892 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-03 22:39:51,900 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-03 22:40:06,372 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']", "motivo": "A escolha foi feita porque o texto 'Avaliações e Concursos' está relacionado diretamente com a busca por concursos." }
+2025-05-03 22:40:11,721 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes'] | Motivo: A escolha foi feita porque o texto 'Avaliações e Concursos' está relacionado diretamente com a busca por concursos.
+2025-05-03 22:40:13,721 [INFO] PASSO 2
+2025-05-03 22:40:14,021 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-03 22:40:14,031 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
