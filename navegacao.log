@@ -2986,3 +2986,484 @@ Call log:
 2025-05-03 22:40:13,721 [INFO] PASSO 2
 2025-05-03 22:40:14,021 [INFO] Screenshot salva em: prints/passo_2.png
 2025-05-03 22:40:14,031 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 14:47:35,906 [INFO] PASSO 1
+2025-05-04 14:47:36,397 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 14:47:36,408 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 14:48:10,243 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "motivo": "Esse texto é mais relevante para navegar por concursos e avaliações." }
+2025-05-04 14:48:15,586 [INFO] Clique no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu | Motivo: Esse texto é mais relevante para navegar por concursos e avaliações.
+2025-05-04 14:48:17,586 [INFO] PASSO 2
+2025-05-04 14:48:17,859 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 14:48:17,869 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 14:48:34,977 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link", "motivo": "O texto 'Avaliações e Concursos' está destacado com o atributo active-link, indicando que é o elemento atualmente ativo." }
+2025-05-04 14:48:40,301 [INFO] Clique no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link | Motivo: O texto 'Avaliações e Concursos' está destacado com o atributo active-link, indicando que é o elemento atualmente ativo.
+2025-05-04 14:48:42,302 [INFO] PASSO 3
+2025-05-04 14:48:42,563 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 14:48:42,572 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 14:48:48,830 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link", "motivo": "Esse texto é um botão ativo e corresponde ao título 'Avaliações e Concursos'." }
+2025-05-04 14:48:48,831 [INFO] Seletor repetido ignorado: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link
+2025-05-04 14:48:48,831 [INFO] PASSO 4
+2025-05-04 14:48:49,107 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 14:48:49,116 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 14:48:53,905 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-secondary.ng-star-inserted", "motivo": "Botão para acessar um concurso específico" }
+2025-05-04 14:48:54,300 [INFO] Clique no seletor: .btn.btn-secondary.ng-star-inserted | Motivo: Botão para acessar um concurso específico
+2025-05-04 14:48:56,301 [INFO] PASSO 5
+2025-05-04 14:48:56,528 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 14:48:56,537 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 14:49:52,404 [INFO] Resposta LLM: { "action": "click", "selector": ".list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted", "motivo": "Escolhido para navegar pelas páginas de concursos." }
+2025-05-04 14:49:52,761 [INFO] Clique no seletor: .list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted | Motivo: Escolhido para navegar pelas páginas de concursos.
+2025-05-04 14:49:54,762 [INFO] PASSO 6
+2025-05-04 14:49:54,970 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 14:49:54,980 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 14:50:03,260 [INFO] Resposta LLM: { "action": "click", "selector": ".list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted", "motivo": "Este seletor representa os links para as provas e gabaritos, que são diretamente relacionados a concursos." }
+2025-05-04 14:50:03,261 [INFO] Seletor repetido ignorado: .list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted
+2025-05-04 14:50:03,261 [INFO] PASSO 7
+2025-05-04 14:50:03,472 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 14:50:03,482 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 14:50:11,852 [INFO] Resposta LLM: {
+  "action": "click",
+  "selector": ".list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted",
+  "motivo": "Esse elemento parece ser um link para uma prova específica, o que é relevante para navegar pelos concursos."
+}
+2025-05-04 14:50:11,852 [INFO] Seletor repetido ignorado: .list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted
+2025-05-04 14:50:11,852 [INFO] PASSO 8
+2025-05-04 14:50:12,068 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 14:50:12,077 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 14:50:18,687 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link", "motivo": "Botão ativo que parece navegar para a página de concursos" }
+2025-05-04 14:50:18,687 [INFO] Seletor repetido ignorado: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu.active-link
+2025-05-04 14:50:18,688 [INFO] PASSO 9
+2025-05-04 14:50:18,907 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 14:50:18,916 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 14:50:27,773 [INFO] Resposta LLM: { "action": "click", "selector": ".list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted", "motivo": "O elemento contém texto relevante sobre concursos e provas, sugerindo que é uma opção para navegar pelas páginas de concursos." }
+2025-05-04 14:50:27,773 [INFO] Seletor repetido ignorado: .list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted
+2025-05-04 14:50:27,775 [INFO] PASSO 10
+2025-05-04 14:50:28,023 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 14:50:28,032 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 14:50:36,551 [INFO] Resposta LLM: {
+  "action": "click",
+  "selector": ".list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted",
+  "motivo": "Escolhido por ser um item de lista relevante e específico, provavelmente levando ao conteúdo desejado."
+}
+2025-05-04 14:50:36,551 [INFO] Seletor repetido ignorado: .list-group-item.list-group-item-action.fw-bold.text-primary.text-uppercase.pointer.ng-star-inserted
+2025-05-04 14:50:36,820 [INFO] Navegação encerrada.
+2025-05-04 15:05:11,612 [INFO] PASSO 1
+2025-05-04 15:05:12,048 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 15:05:12,058 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 15:05:28,392 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "motivo": "Link para avaliações e concursos está mais visível e relevante." }
+2025-05-04 15:05:33,726 [INFO] Clique no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu | Motivo: Link para avaliações e concursos está mais visível e relevante.
+2025-05-04 15:05:35,727 [INFO] PASSO 2
+2025-05-04 15:05:36,004 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 15:05:36,014 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 15:05:51,855 [INFO] Resposta LLM: { "action": "fill", "selector": "#busca", "motivo": "Preencher campo de busca com valor sugerido", "value": "teste-busca" }
+2025-05-04 15:05:53,856 [INFO] PASSO 3
+2025-05-04 15:05:54,122 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 15:05:54,131 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 15:05:59,018 [INFO] Resposta LLM: { "action": "fill", "selector": "#busca", "motivo": "Campo de busca sugerido pelo placeholder", "value": "teste-busca" }
+2025-05-04 15:06:01,019 [INFO] PASSO 4
+2025-05-04 15:06:01,296 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 15:06:01,305 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 15:06:06,926 [INFO] Resposta LLM: { "action": "fill", "selector": "#busca", "motivo": "Campo de busca sugerido para preenchimento com o valor 'teste-busca'", "value": "teste-busca" }
+2025-05-04 15:06:08,926 [INFO] PASSO 5
+2025-05-04 15:06:09,204 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 15:06:09,213 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 15:06:14,327 [INFO] Resposta LLM: { "action": "click", "selector": ".btn.btn-primary.text-uppercase.fw-bold", "motivo": "Botão de acesso à área do candidato", "value": "" }
+2025-05-04 15:06:19,669 [INFO] Clique no seletor: .btn.btn-primary.text-uppercase.fw-bold | Motivo: Botão de acesso à área do candidato
+2025-05-04 15:06:21,670 [INFO] PASSO 6
+2025-05-04 15:06:21,818 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 15:06:21,823 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 15:06:32,884 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes']", "motivo": "Link para avaliações e concursos" }
+2025-05-04 15:06:38,220 [INFO] Clique no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu[href='/portal/avaliacoes'] | Motivo: Link para avaliações e concursos
+2025-05-04 15:06:40,221 [INFO] PASSO 7
+2025-05-04 15:06:40,491 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 15:06:40,499 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 15:06:56,324 [INFO] Resposta LLM: { "action": "fill", "selector": "#busca", "motivo": "Preencher campo de busca com valor sugerido.", "value": "teste-busca" }
+2025-05-04 15:06:58,325 [INFO] PASSO 8
+2025-05-04 15:06:58,591 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 15:06:58,600 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 15:07:03,846 [INFO] Resposta LLM: { "action": "fill", "selector": "#busca", "motivo": "Preencher o campo de busca com um valor sugerido", "value": "teste-busca" }
+2025-05-04 15:07:05,846 [INFO] PASSO 9
+2025-05-04 15:07:06,113 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 15:07:06,125 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 15:07:11,231 [INFO] Resposta LLM: { "action": "fill", "selector": "#busca", "motivo": "Preencher campo de busca com valor sugerido.", "value": "teste-busca" }
+2025-05-04 15:07:13,232 [INFO] PASSO 10
+2025-05-04 15:07:13,486 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 15:07:13,495 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 15:07:18,581 [INFO] Resposta LLM: { "action": "fill", "selector": "#busca", "motivo": "Preencher campo de busca com valor sugerido", "value": "teste-busca" }
+2025-05-04 15:07:20,807 [INFO] Navegação encerrada.
+2025-05-04 15:18:33,582 [INFO] PASSO 1
+2025-05-04 15:18:33,859 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 15:18:33,869 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 15:18:41,182 [INFO] Resposta LLM: { "action": "click", "selector": "a[href='http://demoqa.com']", "motivo": "Link válido mencionado no texto." }
+2025-05-04 15:18:42,153 [INFO] Clique no seletor: a[href='http://demoqa.com'] | Motivo: Link válido mencionado no texto.
+2025-05-04 15:18:44,154 [INFO] PASSO 2
+2025-05-04 15:18:44,911 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 15:18:44,918 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 15:18:48,139 [INFO] Resposta LLM: {}
+2025-05-04 15:18:50,141 [INFO] PASSO 3
+2025-05-04 15:18:50,339 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 15:18:50,343 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 15:18:52,531 [INFO] Resposta LLM: {}
+2025-05-04 15:18:54,533 [INFO] PASSO 4
+2025-05-04 15:18:54,726 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 15:18:54,730 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 15:18:56,920 [INFO] Resposta LLM: {}
+2025-05-04 15:18:58,921 [INFO] PASSO 5
+2025-05-04 15:18:59,117 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 15:18:59,121 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 15:19:01,322 [INFO] Resposta LLM: {}
+2025-05-04 15:19:03,323 [INFO] PASSO 6
+2025-05-04 15:19:03,518 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 15:19:03,521 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 15:19:05,705 [INFO] Resposta LLM: {}
+2025-05-04 15:19:07,706 [INFO] PASSO 7
+2025-05-04 15:19:07,905 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 15:19:07,909 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 15:19:10,092 [INFO] Resposta LLM: {}
+2025-05-04 15:19:12,093 [INFO] PASSO 8
+2025-05-04 15:19:12,279 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 15:19:12,284 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 15:19:14,463 [INFO] Resposta LLM: {}
+2025-05-04 15:19:16,464 [INFO] PASSO 9
+2025-05-04 15:19:16,667 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 15:19:16,672 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 15:19:18,883 [INFO] Resposta LLM: {}
+2025-05-04 15:19:20,884 [INFO] PASSO 10
+2025-05-04 15:19:21,074 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 15:19:21,077 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 15:19:23,291 [INFO] Resposta LLM: {}
+2025-05-04 15:19:25,616 [INFO] Navegação encerrada.
+2025-05-04 15:20:07,210 [INFO] PASSO 1
+2025-05-04 15:20:07,485 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 15:20:07,499 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 15:20:14,145 [INFO] Resposta LLM: { "action": "click", "selector": "a[href='http://demoqa.com']", "motivo": "Liga para um link válido.", "valor": "" }
+2025-05-04 15:20:15,105 [INFO] Clique no seletor: a[href='http://demoqa.com'] | Motivo: Liga para um link válido.
+2025-05-04 15:20:17,106 [INFO] PASSO 2
+2025-05-04 15:20:17,961 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 15:20:17,968 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 15:20:21,200 [INFO] Resposta LLM: {}
+2025-05-04 15:20:23,202 [INFO] PASSO 3
+2025-05-04 15:20:23,420 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 15:20:23,424 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 15:20:25,600 [INFO] Resposta LLM: {}
+2025-05-04 15:20:27,602 [INFO] PASSO 4
+2025-05-04 15:20:27,784 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 15:20:27,788 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 15:20:29,975 [INFO] Resposta LLM: {}
+2025-05-04 15:20:31,977 [INFO] PASSO 5
+2025-05-04 15:20:32,177 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 15:20:32,182 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 15:20:34,382 [INFO] Resposta LLM: {}
+2025-05-04 15:20:36,384 [INFO] PASSO 6
+2025-05-04 15:20:36,576 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 15:20:36,580 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 15:20:38,790 [INFO] Resposta LLM: {}
+2025-05-04 15:20:40,791 [INFO] PASSO 7
+2025-05-04 15:20:40,978 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 15:20:40,982 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 15:20:43,192 [INFO] Resposta LLM: {}
+2025-05-04 15:20:45,194 [INFO] PASSO 8
+2025-05-04 15:20:45,387 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 15:20:45,391 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 15:20:47,584 [INFO] Resposta LLM: {}
+2025-05-04 15:20:49,585 [INFO] PASSO 9
+2025-05-04 15:20:49,792 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 15:20:49,796 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 15:20:51,998 [INFO] Resposta LLM: {}
+2025-05-04 15:20:53,998 [INFO] PASSO 10
+2025-05-04 15:20:54,197 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 15:20:54,201 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 15:20:56,387 [INFO] Resposta LLM: {}
+2025-05-04 15:20:58,649 [INFO] Navegação encerrada.
+2025-05-04 15:36:05,867 [INFO] PASSO 1
+2025-05-04 15:36:06,141 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 15:36:06,154 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 15:36:14,978 [INFO] Resposta LLM: { "action": "click", "selector": "a[href='http://demoqa.com']", "motivo": "Este link é válido e pode levar ao próximo passo da navegação." }
+2025-05-04 15:36:15,979 [INFO] Clique no seletor: a[href='http://demoqa.com'] | Motivo: Este link é válido e pode levar ao próximo passo da navegação.
+2025-05-04 15:36:17,979 [INFO] PASSO 2
+2025-05-04 15:36:19,038 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 15:36:19,043 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 15:36:22,268 [INFO] Resposta LLM: {}
+2025-05-04 15:36:24,269 [INFO] PASSO 3
+2025-05-04 15:36:24,474 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 15:36:24,478 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 15:36:26,645 [INFO] Resposta LLM: {}
+2025-05-04 15:36:28,646 [INFO] PASSO 4
+2025-05-04 15:36:28,842 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 15:36:28,847 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 15:36:31,036 [INFO] Resposta LLM: {}
+2025-05-04 15:36:33,037 [INFO] PASSO 5
+2025-05-04 15:36:33,235 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 15:36:33,240 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 15:36:35,434 [INFO] Resposta LLM: {}
+2025-05-04 15:36:37,436 [INFO] PASSO 6
+2025-05-04 15:36:37,624 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 15:36:37,628 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 15:36:39,793 [INFO] Resposta LLM: {}
+2025-05-04 15:36:41,794 [INFO] PASSO 7
+2025-05-04 15:36:41,992 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 15:36:41,997 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 15:36:44,179 [INFO] Resposta LLM: {}
+2025-05-04 15:36:46,181 [INFO] PASSO 8
+2025-05-04 15:36:46,385 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 15:36:46,389 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 15:36:48,557 [INFO] Resposta LLM: {}
+2025-05-04 15:36:50,558 [INFO] PASSO 9
+2025-05-04 15:36:50,746 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 15:36:50,750 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 15:36:52,919 [INFO] Resposta LLM: {}
+2025-05-04 15:36:54,920 [INFO] PASSO 10
+2025-05-04 15:36:55,127 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 15:36:55,132 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 15:36:57,307 [INFO] Resposta LLM: {}
+2025-05-04 15:36:59,606 [INFO] Navegação encerrada.
+2025-05-04 15:45:16,830 [INFO] PASSO 1
+2025-05-04 15:45:22,079 [ERROR] Erro no passo 1: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:22,080 [INFO] PASSO 2
+2025-05-04 15:45:27,089 [ERROR] Erro no passo 2: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:27,089 [INFO] PASSO 3
+2025-05-04 15:45:32,094 [ERROR] Erro no passo 3: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:32,094 [INFO] PASSO 4
+2025-05-04 15:45:37,098 [ERROR] Erro no passo 4: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:37,098 [INFO] PASSO 5
+2025-05-04 15:45:42,108 [ERROR] Erro no passo 5: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:42,108 [INFO] PASSO 6
+2025-05-04 15:45:47,125 [ERROR] Erro no passo 6: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:47,126 [INFO] PASSO 7
+2025-05-04 15:45:52,130 [ERROR] Erro no passo 7: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:52,131 [INFO] PASSO 8
+2025-05-04 15:45:57,137 [ERROR] Erro no passo 8: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:45:57,137 [INFO] PASSO 9
+2025-05-04 15:46:02,156 [ERROR] Erro no passo 9: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:46:02,157 [INFO] PASSO 10
+2025-05-04 15:46:07,161 [ERROR] Erro no passo 10: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:46:07,549 [INFO] Navegação encerrada.
+2025-05-04 15:46:40,838 [INFO] PASSO 1
+2025-05-04 15:46:45,853 [ERROR] Erro no passo 1: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:46:45,853 [INFO] PASSO 2
+2025-05-04 15:46:50,857 [ERROR] Erro no passo 2: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:46:50,857 [INFO] PASSO 3
+2025-05-04 15:46:55,870 [ERROR] Erro no passo 3: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:46:55,871 [INFO] PASSO 4
+2025-05-04 15:47:00,883 [ERROR] Erro no passo 4: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:47:00,883 [INFO] PASSO 5
+2025-05-04 15:47:00,990 [ERROR] Erro no passo 5: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:47:00,990 [INFO] PASSO 6
+2025-05-04 15:47:00,994 [ERROR] Erro no passo 6: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:47:00,994 [INFO] PASSO 7
+2025-05-04 15:47:00,997 [ERROR] Erro no passo 7: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:47:00,998 [INFO] PASSO 8
+2025-05-04 15:47:01,001 [ERROR] Erro no passo 8: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:47:01,002 [INFO] PASSO 9
+2025-05-04 15:47:01,006 [ERROR] Erro no passo 9: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:47:01,009 [INFO] PASSO 10
+2025-05-04 15:47:01,014 [ERROR] Erro no passo 10: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:47:01,346 [INFO] Navegação encerrada.
+2025-05-04 15:52:29,547 [INFO] PASSO 1
+2025-05-04 15:52:29,997 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 15:52:30,010 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 15:52:36,871 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O placeholder indica que este campo é para inserir o nome completo.", "valor": "Full Name" }
+2025-05-04 15:52:36,956 [INFO] Preenchimento no seletor: #userName | Valor: Full Name
+2025-05-04 15:52:38,958 [INFO] PASSO 2
+2025-05-04 15:52:39,175 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 15:52:39,186 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 15:52:43,991 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que este campo é para o nome completo.", "valor": "Full Name Suggestion" }
+2025-05-04 15:52:45,992 [INFO] PASSO 3
+2025-05-04 15:52:46,228 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 15:52:46,238 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 15:52:51,515 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O campo tem o atributo placeholder que indica que é para preencher com o nome completo.", "valor": "Full Name" }
+2025-05-04 15:52:53,516 [INFO] PASSO 4
+2025-05-04 15:52:53,745 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 15:52:53,756 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 15:52:58,097 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Input field for Full Name", "valor": "John Doe" }
+2025-05-04 15:53:00,098 [INFO] PASSO 5
+2025-05-04 15:53:00,310 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 15:53:00,321 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 15:53:05,047 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O campo de entrada mais relevante para preenchimento.", "valor": "Full Name" }
+2025-05-04 15:53:07,048 [INFO] PASSO 6
+2025-05-04 15:53:07,265 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 15:53:07,275 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 15:53:11,749 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Input field for user's full name", "valor": "Full Name" }
+2025-05-04 15:53:13,751 [INFO] PASSO 7
+2025-05-04 15:53:14,011 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 15:53:14,021 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 15:53:18,466 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Input field for user's full name.", "valor": "Full Name" }
+2025-05-04 15:53:20,467 [INFO] PASSO 8
+2025-05-04 15:53:20,710 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 15:53:20,720 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 15:53:25,701 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "placeholder indica que este é o campo para inserir o nome completo", "valor": "Full Name Suggestion" }
+2025-05-04 15:53:27,702 [INFO] PASSO 9
+2025-05-04 15:53:27,937 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 15:53:27,947 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 15:53:33,113 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Full Name é o texto do campo de entrada e é relevante para preenchimento.", "valor": "Nome Completo" }
+2025-05-04 15:53:35,113 [INFO] PASSO 10
+2025-05-04 15:53:35,342 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 15:53:35,353 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 15:53:39,975 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que é para inserir o nome completo.", "valor": "Full Name" }
+2025-05-04 15:53:42,302 [INFO] Navegação encerrada.
+2025-05-04 15:57:07,044 [INFO] PASSO 1
+2025-05-04 15:57:07,336 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 15:57:07,346 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 15:57:12,168 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que é o campo para inserir o nome completo", "valor": "Full Name" }
+2025-05-04 15:57:12,207 [INFO] Preenchimento no seletor: #userName | Valor: Full Name
+2025-05-04 15:57:14,207 [INFO] PASSO 2
+2025-05-04 15:57:14,427 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 15:57:14,438 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 15:57:19,356 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que este é o campo para inserir o nome completo.", "valor": "Full Name" }
+2025-05-04 15:57:21,357 [INFO] PASSO 3
+2025-05-04 15:57:21,568 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 15:57:21,578 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 15:57:26,076 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Full Name é solicitado no texto.", "valor": "Full Name" }
+2025-05-04 15:57:28,078 [INFO] PASSO 4
+2025-05-04 15:57:28,296 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 15:57:28,307 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 15:57:33,061 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Full Name é o placeholder do campo de entrada.", "valor": "João da Silva" }
+2025-05-04 15:57:35,063 [INFO] PASSO 5
+2025-05-04 15:57:35,293 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 15:57:35,304 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 15:57:40,185 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que é o campo para inserir nome completo.", "valor": "Full Name Suggestion" }
+2025-05-04 15:57:42,186 [INFO] PASSO 6
+2025-05-04 15:57:42,429 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 15:57:42,439 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 15:57:47,980 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O campo de input para o nome completo é identificado pela tag 'input' e pelo atributo PLACEHOLDER.", "valor": "Full Name" }
+2025-05-04 15:57:49,981 [INFO] PASSO 7
+2025-05-04 15:57:50,203 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 15:57:50,218 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 15:57:55,011 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que é um campo de nome completo", "valor": "Full Name Suggestion" }
+2025-05-04 15:57:57,013 [INFO] PASSO 8
+2025-05-04 15:57:57,230 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 15:57:57,240 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 15:58:02,106 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que este é um campo de entrada de nome completo.", "valor": "Full Name" }
+2025-05-04 15:58:04,108 [INFO] PASSO 9
+2025-05-04 15:58:04,337 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 15:58:04,347 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 15:58:09,627 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O campo de entrada do texto é um campo de nome completo que pode ser preenchido.", "valor": "Full Name" }
+2025-05-04 15:58:11,628 [INFO] PASSO 10
+2025-05-04 15:58:11,845 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 15:58:11,855 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 15:58:17,159 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O campo de entrada é relevante e o placeholder indica que é para inserir o nome completo.", "valor": "Full Name" }
+2025-05-04 15:58:19,488 [INFO] Navegação encerrada.
+2025-05-04 15:58:46,786 [INFO] PASSO 1
+2025-05-04 15:58:51,793 [ERROR] Erro no passo 1: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:58:51,793 [INFO] PASSO 2
+2025-05-04 15:58:56,805 [ERROR] Erro no passo 2: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:58:56,805 [INFO] PASSO 3
+2025-05-04 15:58:58,337 [ERROR] Erro no passo 3: Page.wait_for_selector: Target page, context or browser has been closed
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 15:58:58,337 [INFO] PASSO 4
+2025-05-04 15:58:58,340 [ERROR] Erro no passo 4: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:58:58,340 [INFO] PASSO 5
+2025-05-04 15:58:58,343 [ERROR] Erro no passo 5: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:58:58,344 [INFO] PASSO 6
+2025-05-04 15:58:58,347 [ERROR] Erro no passo 6: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:58:58,347 [INFO] PASSO 7
+2025-05-04 15:58:58,351 [ERROR] Erro no passo 7: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:58:58,351 [INFO] PASSO 8
+2025-05-04 15:58:58,354 [ERROR] Erro no passo 8: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:58:58,354 [INFO] PASSO 9
+2025-05-04 15:58:58,357 [ERROR] Erro no passo 9: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:58:58,358 [INFO] PASSO 10
+2025-05-04 15:58:58,361 [ERROR] Erro no passo 10: Page.wait_for_selector: Target page, context or browser has been closed
+2025-05-04 15:58:58,659 [INFO] Navegação encerrada.
+2025-05-04 15:59:39,149 [INFO] PASSO 1
+2025-05-04 15:59:39,483 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 15:59:39,496 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 15:59:44,245 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O placeholder indica que este campo é para o nome completo.", "valor": "Full Name" }
+2025-05-04 15:59:44,357 [INFO] Preenchimento no seletor: #userName | Valor: Full Name
+2025-05-04 15:59:46,381 [INFO] PASSO 2
+2025-05-04 15:59:46,625 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 15:59:46,635 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 15:59:51,318 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "É um campo de texto que requer preenchimento.", "valor": "Full Name" }
+2025-05-04 15:59:51,318 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 15:59:51,319 [INFO] PASSO 3
+2025-05-04 15:59:51,554 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 15:59:51,565 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 15:59:56,410 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "placeholder indica que este campo é para o nome completo", "valor": "Full Name Suggestion" }
+2025-05-04 15:59:56,410 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 15:59:56,410 [INFO] PASSO 4
+2025-05-04 15:59:56,650 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 15:59:56,660 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 16:00:00,946 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "placeholder é Full Name", "valor": "John Doe" }
+2025-05-04 16:00:00,946 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 16:00:00,946 [INFO] PASSO 5
+2025-05-04 16:00:01,189 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 16:00:01,200 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 16:00:06,214 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "placeholder indica que é o campo para inserir o nome completo", "valor": "João da Silva" }
+2025-05-04 16:00:06,214 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 16:00:06,214 [INFO] PASSO 6
+2025-05-04 16:00:06,457 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 16:00:06,467 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 16:00:11,482 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Placeholder indica que este campo é para o nome completo do usuário", "valor": "Full Name Suggestion" }
+2025-05-04 16:00:11,482 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 16:00:11,483 [INFO] PASSO 7
+2025-05-04 16:00:11,733 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 16:00:11,743 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 16:00:16,821 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O campo Full Name é o mais relevante para preenchimento.", "valor": "Full Name Suggestion" }
+2025-05-04 16:00:16,821 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 16:00:16,821 [INFO] PASSO 8
+2025-05-04 16:00:17,055 [INFO] Screenshot salva em: prints/passo_8.png
+2025-05-04 16:00:17,065 [INFO] Lista de seletores salva em: logs/seletores_passo_8.txt
+2025-05-04 16:00:22,046 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "placeholder indica que é o campo para inserir o nome completo", "valor": "Full Name Suggestion" }
+2025-05-04 16:00:22,047 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 16:00:22,047 [INFO] PASSO 9
+2025-05-04 16:00:22,275 [INFO] Screenshot salva em: prints/passo_9.png
+2025-05-04 16:00:22,286 [INFO] Lista de seletores salva em: logs/seletores_passo_9.txt
+2025-05-04 16:00:27,062 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Campo de texto para inserir o nome completo", "valor": "Full Name Suggestion" }
+2025-05-04 16:00:27,063 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 16:00:27,063 [INFO] PASSO 10
+2025-05-04 16:00:27,298 [INFO] Screenshot salva em: prints/passo_10.png
+2025-05-04 16:00:27,308 [INFO] Lista de seletores salva em: logs/seletores_passo_10.txt
+2025-05-04 16:00:32,071 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "Input placeholder matches the action of filling out a full name.", "valor": "Full Name" }
+2025-05-04 16:00:32,071 [INFO] Seletor repetido ignorado: #userName
+2025-05-04 16:00:32,396 [INFO] Navegação encerrada.

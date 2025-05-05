@@ -1,34 +1,31 @@
 import time
 import logging
-from datetime import datetime
 from pathlib import Path
 from agent.browser import iniciar_navegador
-from agent.llm import chamar_llm  # agora usa config
-from agent.utils import (
-    extrair_html,
-    gerar_prompt_para_llm,
-    executar_acao,
-    fechar_aviso_de_cookies,
-    extrair_json_da_resposta
-)
-from config import TARGET_URLS, LOG_FILE, LOG_DIR, PRINT_DIR
+from agent.llm import chamar_llm
+from agent.html_extractor import extrair_html, gerar_prompt_para_llm
+from agent.parser import extrair_json_da_resposta
+from agent.interacao import executar_acao, fechar_aviso_de_cookies
+from config import TARGET_URLS
 
 # Configura log em arquivo
 logging.basicConfig(
-    filename=str(LOG_FILE),
+    filename='navegacao.log',
     level=logging.INFO,
     format='%(asctime)s [%(levelname)s] %(message)s',
     encoding='utf-8'
 )
 
 def salvar_screenshot(pagina, passo):
-    caminho = PRINT_DIR / f"passo_{passo}.png"
-    pagina.screenshot(path=str(caminho), full_page=True)
+    Path("prints").mkdir(exist_ok=True)
+    caminho = f"prints/passo_{passo}.png"
+    pagina.screenshot(path=caminho, full_page=True)
     print(f"[📸] Screenshot salva em: {caminho}")
     logging.info(f"Screenshot salva em: {caminho}")
 
 def salvar_lista_de_seletores(html, passo):
-    caminho = LOG_DIR / f"seletores_passo_{passo}.txt"
+    Path("logs").mkdir(exist_ok=True)
+    caminho = f"logs/seletores_passo_{passo}.txt"
     with open(caminho, "w", encoding="utf-8") as f:
         payload = gerar_prompt_para_llm(html)
         f.write(str(payload))
@@ -38,11 +35,9 @@ def salvar_lista_de_seletores(html, passo):
 def agente_explorador(url, max_passos=10):
     navegador, pagina, playwright = iniciar_navegador()
     pagina.goto(url)
-
-    # Maximiza a janela após abertura
     pagina.evaluate("window.moveTo(0, 0); window.resizeTo(screen.width, screen.height);")
 
-    fechar_aviso_de_cookies(pagina)
+  ##  fechar_aviso_de_cookies(pagina)
     seletores_visitados = set()
 
     for passo in range(max_passos):
@@ -50,13 +45,13 @@ def agente_explorador(url, max_passos=10):
         logging.info(f"PASSO {passo+1}")
 
         try:
-            html = extrair_html(pagina)
+            pagina.wait_for_selector("input#userName", timeout=5000)
 
+            html = extrair_html(pagina)
             salvar_screenshot(pagina, passo + 1)
             salvar_lista_de_seletores(html, passo + 1)
 
             payload = gerar_prompt_para_llm(html)
-
             print("\n[DEBUG] Payload enviado ao LLM:")
             print(payload)
 
@@ -71,16 +66,22 @@ def agente_explorador(url, max_passos=10):
             logging.info(f"Resposta LLM: {resposta_llm.strip()}")
 
             acao = extrair_json_da_resposta(resposta_llm)
-            if acao and acao.get("action") == "click":
-                seletor = acao.get("selector")
-                if seletor in seletores_visitados:
-                    print(f"[AVISO] Seletor já visitado: {seletor}, pulando para evitar repetição.")
-                    logging.info(f"Seletor repetido ignorado: {seletor}")
-                    continue
-                seletores_visitados.add(seletor)
+            if acao and acao.get("selector") in seletores_visitados:
+                print(f"[AVISO] Seletor já interagido: {acao.get('selector')}, pulando para evitar repetição.")
+                logging.info(f"Seletor repetido ignorado: {acao.get('selector')}")
+                continue
+
+            if acao:
+                seletores_visitados.add(acao.get("selector"))
 
             executar_acao(pagina, resposta_llm)
             time.sleep(2)
+
+            # NOVO: verifica se formulário foi enviado
+            if pagina.locator("#output").is_visible():
+                print("[🎯] Formulário enviado com sucesso! Encerrando navegação.")
+                logging.info("Formulário enviado com sucesso, encerrando.")
+                break
 
         except Exception as e:
             print(f"[ERRO] Falha no passo {passo+1}: {e}")
