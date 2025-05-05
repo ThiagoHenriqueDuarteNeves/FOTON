@@ -3,7 +3,7 @@ import logging
 from pathlib import Path
 from agent.browser import iniciar_navegador
 from agent.llm import chamar_llm
-from agent.html_extractor import extrair_html, gerar_prompt_para_llm
+from agent.html_extractor import extrair_html, gerar_prompt_para_llm, seletores_interagidos
 from agent.parser import extrair_json_da_resposta
 from agent.interacao import executar_acao, fechar_aviso_de_cookies
 from config import TARGET_URLS
@@ -37,7 +37,6 @@ def agente_explorador(url, max_passos=10):
     pagina.goto(url)
     pagina.evaluate("window.moveTo(0, 0); window.resizeTo(screen.width, screen.height);")
 
-  ##  fechar_aviso_de_cookies(pagina)
     seletores_visitados = set()
 
     for passo in range(max_passos):
@@ -72,12 +71,13 @@ def agente_explorador(url, max_passos=10):
                 continue
 
             if acao:
-                seletores_visitados.add(acao.get("selector"))
+                seletor = acao.get("selector")
+                seletores_visitados.add(seletor)
+                seletores_interagidos.add(seletor)
 
             executar_acao(pagina, resposta_llm)
             time.sleep(2)
 
-            # NOVO: verifica se formulário foi enviado
             if pagina.locator("#output").is_visible():
                 print("[🎯] Formulário enviado com sucesso! Encerrando navegação.")
                 logging.info("Formulário enviado com sucesso, encerrando.")
