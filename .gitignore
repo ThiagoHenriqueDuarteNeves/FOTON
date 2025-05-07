@@ -1,13 +1,31 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
-AgenteIA/
-ptints/
-logs/
-Estrutura de pastas e arquivos.bat
-navegacao.lo# Ignorar arquivos e diretórios desnecessários
+# Ambiente virtual
+.venv/
+venv/
+
+# Caches e arquivos compilados do Python
 __pycache__/
+*.pyc
+*.pyo
+
+# Logs
 *.log
 logs/
+navegacao.log
+
+# Prints de execução
 prints/
+ptints/  # caso tenha sido criado por erro de digitação
+
+# Arquivos auxiliares desnecessários
+*.bat
 Estrutura de pastas e arquivos.bat
-__pycache__/
+
+# Cache específico dentro de módulos
 llm_agent_test/__pycache__/
+
+# Backup ou arquivos temporários de sistema/editor
+*.swp
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
