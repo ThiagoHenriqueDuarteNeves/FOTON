@@ -1,8 +1,3 @@
-Perfeito, Thiago. Vamos montar a estrutura ideal para apresentar o Fóton no GitHub e deixar claro seu diferencial. Aqui vai uma sugestão de esqueleto para o README.md:
-
-
----
-
 Fóton – Explorador de Sistemas com IA
 
 Testes não precisam ser rígidos. Eles podem explorar, adaptar e aprender.
