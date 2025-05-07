@@ -29,3 +29,4 @@ llm_agent_test/__pycache__/
 *.tmp
 .DS_Store
 Thumbs.db
+navegacao.log
