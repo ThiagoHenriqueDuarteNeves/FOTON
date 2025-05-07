@@ -75,9 +75,3 @@ Resposta em JSON estruturado + logs.
 
 Este é um projeto autoral criado por Thiago Neves, como expressão prática de uma nova forma de testar sistemas com inteligência real.
 Se quiser apoiar ou contribuir, fique à vontade para entrar em contato ou abrir um pull request.
-
-
----
-
-Se quiser, posso escrever esse README.md por completo já com seus dados e incluir sugestões de badges, estilo visual e até um pitch em vídeo/markdown. Deseja que eu gere a primeira versão agora?
-
