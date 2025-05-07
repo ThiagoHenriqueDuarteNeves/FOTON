@@ -3569,3 +3569,54 @@ Call log:
   - waiting for locator("input#userName") to be visible
 
 2025-05-04 22:05:29,999 [INFO] Navegação encerrada.
+2025-05-04 22:20:46,334 [INFO] PASSO 1
+2025-05-04 22:20:46,600 [INFO] Screenshot salva em: prints/passo_1.png
+2025-05-04 22:20:46,613 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-05-04 22:20:57,069 [INFO] Resposta LLM: { "action": "fill", "selector": "#userName", "motivo": "O campo Full Name é o mais relevante para preenchimento.", "valor": "valor-campo" }
+2025-05-04 22:20:57,161 [INFO] Preenchimento no seletor: #userName | Valor: valor-campo
+2025-05-04 22:20:59,188 [INFO] PASSO 2
+2025-05-04 22:20:59,428 [INFO] Screenshot salva em: prints/passo_2.png
+2025-05-04 22:20:59,439 [INFO] Lista de seletores salva em: logs/seletores_passo_2.txt
+2025-05-04 22:21:09,638 [INFO] Resposta LLM: { "action": "fill", "selector": "#userEmail", "motivo": "Escolhido por ser um campo de email sem valor preenchido e com valor sugerido disponível.", "valor": "valor-campo" }
+2025-05-04 22:21:09,662 [INFO] Preenchimento no seletor: #userEmail | Valor: valor-campo
+2025-05-04 22:21:11,669 [INFO] PASSO 3
+2025-05-04 22:21:11,909 [INFO] Screenshot salva em: prints/passo_3.png
+2025-05-04 22:21:11,920 [INFO] Lista de seletores salva em: logs/seletores_passo_3.txt
+2025-05-04 22:21:20,654 [INFO] Resposta LLM: { "action": "click", "selector": "#submit", "motivo": "Este botão é o último na página e geralmente representa uma ação final, como enviar um formulário." }
+2025-05-04 22:21:21,015 [INFO] Clique no seletor: #submit | Motivo: Este botão é o último na página e geralmente representa uma ação final, como enviar um formulário.
+2025-05-04 22:21:23,021 [INFO] PASSO 4
+2025-05-04 22:21:23,230 [INFO] Screenshot salva em: prints/passo_4.png
+2025-05-04 22:21:23,242 [INFO] Lista de seletores salva em: logs/seletores_passo_4.txt
+2025-05-04 22:21:31,378 [INFO] Resposta LLM: { "action": "click", "selector": "#close-fixedban", "motivo": "Botão de fechar fixado na barra lateral." }
+2025-05-04 22:21:31,722 [INFO] Clique no seletor: #close-fixedban | Motivo: Botão de fechar fixado na barra lateral.
+2025-05-04 22:21:33,728 [INFO] PASSO 5
+2025-05-04 22:21:33,965 [INFO] Screenshot salva em: prints/passo_5.png
+2025-05-04 22:21:33,976 [INFO] Lista de seletores salva em: logs/seletores_passo_5.txt
+2025-05-04 22:21:41,735 [INFO] Resposta LLM: { "action": "click", "selector": ".navbar-toggler", "motivo": "Este botão de navegação é relevante para acessar elementos ocultos na página." }
+2025-05-04 22:21:47,067 [INFO] Clique no seletor: .navbar-toggler | Motivo: Este botão de navegação é relevante para acessar elementos ocultos na página.
+2025-05-04 22:21:49,073 [INFO] PASSO 6
+2025-05-04 22:21:49,273 [INFO] Screenshot salva em: prints/passo_6.png
+2025-05-04 22:21:49,277 [INFO] Lista de seletores salva em: logs/seletores_passo_6.txt
+2025-05-04 22:21:56,604 [INFO] Resposta LLM: { "action": "click", "selector": ".cursor-pointer", "motivo": "É um elemento de ação, diferente dos já interagidos." }
+2025-05-04 22:21:56,981 [INFO] Clique no seletor: .cursor-pointer | Motivo: É um elemento de ação, diferente dos já interagidos.
+2025-05-04 22:21:58,985 [INFO] PASSO 7
+2025-05-04 22:21:59,215 [INFO] Screenshot salva em: prints/passo_7.png
+2025-05-04 22:21:59,219 [INFO] Lista de seletores salva em: logs/seletores_passo_7.txt
+2025-05-04 22:22:07,124 [INFO] Resposta LLM: { "action": "click", "selector": "a[href='https://demoqa.com']", "motivo": "O link possui um atributo href válido e não foi interagido anteriormente." }
+2025-05-04 22:22:08,054 [INFO] Clique no seletor: a[href='https://demoqa.com'] | Motivo: O link possui um atributo href válido e não foi interagido anteriormente.
+2025-05-04 22:22:10,090 [INFO] PASSO 8
+2025-05-04 22:22:15,093 [ERROR] Erro no passo 8: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 22:22:15,094 [INFO] PASSO 9
+2025-05-04 22:22:20,097 [ERROR] Erro no passo 9: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 22:22:20,097 [INFO] PASSO 10
+2025-05-04 22:22:25,101 [ERROR] Erro no passo 10: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("input#userName") to be visible
+
+2025-05-04 22:22:25,453 [INFO] Navegação encerrada.
