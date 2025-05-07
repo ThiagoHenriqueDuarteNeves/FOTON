@@ -7,7 +7,7 @@ LOG_FILE = LOG_DIR / "navegacao.log"
 
 # URLs de destino
 TARGET_URLS = {
-    "cesgranrio": "https://demoqa.com/text-box"
+    "cesgranrio": "https://caixa.cesgranrio.org.br/"
 }
 
 # Backend atual do LLM (lmstudio ou ollama)

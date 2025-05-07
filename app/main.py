@@ -44,7 +44,8 @@ def agente_explorador(url, max_passos=10):
         logging.info(f"PASSO {passo+1}")
 
         try:
-            pagina.wait_for_selector("input#userName", timeout=5000)
+            # ✅ Espera genérica pelo carregamento da página
+            pagina.wait_for_load_state("domcontentloaded")
 
             html = extrair_html(pagina)
             salvar_screenshot(pagina, passo + 1)
