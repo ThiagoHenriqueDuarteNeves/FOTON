@@ -44,3 +44,61 @@
 2025-04-30 01:09:12,838 [INFO] Navegação encerrada.
 2025-04-30 01:31:34,086 [INFO] PASSO 1
 2025-04-30 01:41:57,451 [INFO] PASSO 1
+2025-08-07 22:11:48,756 [INFO] PASSO 1
+2025-08-07 22:11:49,029 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:11:49,040 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:12:57,127 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu" }
+2025-08-07 22:13:02,562 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
+2025-08-07 22:13:09,258 [INFO] Navegação encerrada.
+2025-08-07 22:21:03,991 [INFO] PASSO 1
+2025-08-07 22:21:04,264 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:21:04,273 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:21:12,177 [INFO] Resposta LLM: {"action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "href": "/portal/avaliacoes"}
+2025-08-07 22:21:17,532 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
+2025-08-07 22:21:19,831 [INFO] Navegação encerrada.
+2025-08-07 22:30:21,943 [INFO] PASSO 1
+2025-08-07 22:30:22,197 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:30:22,223 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:30:32,300 [INFO] Resposta LLM: {
+  "action": "click",
+  "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu",
+  "href":
+2025-08-07 22:30:51,340 [ERROR] Falha na validação do seletor
+2025-08-07 22:30:51,563 [INFO] Navegação encerrada.
+2025-08-07 22:31:24,494 [INFO] PASSO 1
+2025-08-07 22:31:24,767 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:31:24,791 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:31:28,690 [WARNING] LLM respondeu vazio
+2025-08-07 22:31:28,962 [INFO] Navegação encerrada.
+2025-08-07 22:32:14,443 [INFO] PASSO 1
+2025-08-07 22:32:14,690 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:32:14,709 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:32:22,995 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "href": "/portal/avaliacoes" }
+2025-08-07 22:32:28,332 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
+2025-08-07 22:32:30,599 [INFO] Navegação encerrada.
+2025-08-07 22:33:19,198 [INFO] PASSO 1
+2025-08-07 22:33:19,469 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:33:19,490 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:33:23,089 [WARNING] LLM respondeu vazio
+2025-08-07 22:33:23,363 [INFO] Navegação encerrada.
+2025-08-07 22:35:37,333 [INFO] PASSO 1
+2025-08-07 22:35:37,614 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:35:37,633 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:35:47,336 [INFO] Resposta LLM: {
+  "action": "click",
+  "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]",
+  "href": "/portal/avaliacoes"
+}
+2025-08-07 22:35:52,355 [ERROR] Erro durante execução da ação final: Page.evaluate: SyntaxError: missing ) after argument list
+    at eval (<anonymous>)
+    at UtilityScript.evaluate (<anonymous>:234:30)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+2025-08-07 22:35:54,590 [INFO] Navegação encerrada.
+2025-08-07 22:38:46,367 [INFO] PASSO 1
+2025-08-07 22:38:46,657 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:38:46,681 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:38:58,359 [INFO] Resposta LLM: ```json
+{"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]", "href": "/portal/avaliacoes"}
+```
+2025-08-07 22:39:03,698 [INFO] Clique forçado por JavaScript no seletor: [data-testid="auto-avaliacoes-e-concursos-2"]
+2025-08-07 22:39:06,784 [INFO] Navegação encerrada.

@@ -1,6 +1,7 @@
 import json
 import re
 import os
+import base64
 from bs4 import BeautifulSoup
 
 # Histórico de seletores já clicados durante a sessão
@@ -9,66 +10,137 @@ seletores_clicados = set()
 def extrair_html(pagina):
     return pagina.content()
 
-def gerar_prompt_em_chat_format(html):
+def gerar_prompt_em_chat_format(html, screenshot_path=None):
     soup = BeautifulSoup(html, "html.parser")
     elementos = []
+    seletores_validos = []  # Lista para validação
 
     for el in soup.find_all(["button", "a", "input"]):
         texto = (el.text or el.get("value") or "").strip()
         seletor = gerar_selector(el)
         tag = el.name
 
+        # Priorizar data-testid se existir
+        testid = el.get("data-testid", "")
+        if testid:
+            seletor_preferido = f'[data-testid="{testid}"]'
+        else:
+            seletor_preferido = seletor
+
+        # Extrair HREF específicamente
+        href = el.get("href", "")
+        
+        # Extrair outros atributos
         extras = []
-        for attr in ["href", "type", "aria-label", "placeholder", "title"]:
+        for attr in ["type", "aria-label", "placeholder", "title"]:
             if el.has_attr(attr):
                 extras.append(f'{attr.upper()}: "{el[attr]}"')
-        extras_str = " | ".join(extras)
+        extras_str = " | ".join(extras) if extras else ""
 
-        if texto and seletor and seletor not in seletores_clicados:
-            descricao = f'TEXTO: "{texto}" | SELECTOR: {seletor} | TAG: {tag}'
+        if texto and seletor_preferido and seletor_preferido not in seletores_clicados:
+            # Formato: [TEXTO: "...", SELECTOR: "...", TAG: ..., HREF: "...", TESTID: "..."]
+            descricao = f'[TEXTO: "{texto}", SELECTOR: "{seletor_preferido}", TAG: {tag}, HREF: "{href}"'
+            if testid:
+                descricao += f', TESTID: "{testid}"'
             if extras_str:
-                descricao += f' | {extras_str}'
+                descricao += f', {extras_str}'
+            descricao += ']'
             elementos.append(descricao)
+            seletores_validos.append(seletor_preferido)
 
     lista = "\n".join(elementos) if elementos else "Nenhum elemento interativo encontrado."
 
+    # Preparar imagem se screenshot fornecido
+    image_content = None
+    if screenshot_path and os.path.exists(screenshot_path):
+        with open(screenshot_path, "rb") as img_file:
+            image_base64 = base64.b64encode(img_file.read()).decode('utf-8')
+            image_content = {
+                "type": "image_url",
+                "image_url": {
+                    "url": f"data:image/png;base64,{image_base64}"
+                }
+            }
+
     prompt_usuario = f"""
-Você é um agente de QA automatizado.
+Você é um agente de QA automatizado. Analise a imagem da página e a lista de elementos para escolher o mais relevante.
 
-Sua tarefa:
-1. Escolha o botão ou link mais relevante baseado no TEXTO, na TAG, e nos atributos (como HREF, PLACEHOLDER, ARIA-LABEL ou TITLE).
-⚠️ ATENÇÃO:
-- ❌ NÃO escreva nenhuma explicação, comentários ou conteúdo adicional.
-- ✅ Escreva SOMENTE um JSON como este, na PRIMEIRA LINHA da resposta:
+INSTRUÇÕES:
+1. Olhe a imagem fornecida para ver os elementos visuais da página
+2. Retorne APENAS um JSON válido
+3. Escolha UM elemento da lista abaixo baseado na imagem e no objetivo
+4. Use o SELECTOR exato da lista (não modifique)
 
-{{ "action": "click", "selector": ".btn.btn-primary.fw-bold" }}
+OBJETIVO: Navegar no site de concursos - escolha elementos que levem a informações sobre concursos, editais, inscrições, etc.
 
-❌ NÃO inclua mais nada após essa linha. Isso é OBRIGATÓRIO.
+FORMATO OBRIGATÓRIO:
+{{"action": "click", "selector": "SELETOR_EXATO_DA_LISTA", "href": "HREF_DA_LISTA"}}
 
-Formato esperado:
-{{ "action": "click", "selector": "<seletor CSS>" }}
-
-Lista de elementos interativos:
+ELEMENTOS DISPONÍVEIS:
 {lista}
-"""
+
+Baseado na imagem, escolha o elemento mais apropriado para o objetivo:"""
+
+    # Construir mensagens com suporte a imagem
+    messages = [
+        {
+            "role": "system",
+            "content": "Você é um assistente que analisa imagens de páginas web e responde apenas com JSON válido conforme solicitado."
+        }
+    ]
+    
+    if image_content:
+        # Formato multimodal para qwen2.5-vl
+        messages.append({
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": prompt_usuario
+                },
+                image_content
+            ]
+        })
+        print("[🖼️] Screenshot incluído no prompt para análise visual")
+    else:
+        # Formato texto apenas (fallback)
+        messages.append({
+            "role": "user",
+            "content": prompt_usuario
+        })
+        print("[📝] Usando apenas texto (sem screenshot)")
+    
+    # TODO: Reativar imagem depois de testar
+    # if image_content:
+    #     # Formato multimodal para qwen2.5-vl
+    #     messages.append({
+    #         "role": "user",
+    #         "content": [
+    #             {
+    #                 "type": "text",
+    #                 "text": prompt_usuario
+    #             },
+    #             image_content
+    #         ]
+    #     })
+    # else:
+    #     # Formato texto apenas
+    #     messages.append({
+    #         "role": "user",
+    #         "content": prompt_usuario
+    #     })
 
     return {
-        "model": "qwen2.5-7b-instruct-uncensored",
-        "messages": [
-            {
-                "role": "system",
-                "content": "Você é um agente de QA automatizado. Retorne apenas o JSON na primeira linha como solicitado."
-            },
-            {
-                "role": "user",
-                "content": prompt_usuario
-            }
-        ],
-        "temperature": 0.7,
-        "max_tokens": 512,
+        "model": "qwen/qwen2.5-vl-7b",
+        "messages": messages,
+        "temperature": 0.1,  # Pequeno valor para permitir alguma criatividade
+        "top_p": 0.9,
+        "max_tokens": 150,  # Aumentar um pouco mais
+        "stop": None,  # Remover stop tokens que podem estar bloqueando
         "stream": False,
-        "language": "pt-BR"
-    }
+        "presence_penalty": 0.0,
+        "frequency_penalty": 0.0
+    }, seletores_validos
 
 def gerar_selector(el):
     if el.has_attr("id"):
@@ -82,15 +154,86 @@ def gerar_selector(el):
         return "button"
     return ""
 
+def validar_seletor_e_retry(resposta_llm, seletores_validos, chamar_llm_func, payload_original, max_tentativas=3):
+    """
+    Valida se o seletor retornado está na lista válida.
+    Se não estiver, faz retry com mensagem de erro.
+    """
+    for tentativa in range(max_tentativas):
+        acao = extrair_json_da_resposta(resposta_llm)
+        
+        if not acao:
+            print(f"[ERRO] Tentativa {tentativa + 1}: JSON inválido na resposta")
+            if tentativa < max_tentativas - 1:
+                # Retry com mensagem de erro
+                payload_retry = payload_original.copy()
+                erro_msg = "ERRO: Resposta anterior não continha JSON válido. Responda SOMENTE com JSON na primeira linha."
+                
+                if isinstance(payload_retry["messages"][-1]["content"], list):
+                    # Formato multimodal
+                    payload_retry["messages"][-1]["content"][0]["text"] += f"\n\n{erro_msg}"
+                else:
+                    # Formato texto
+                    payload_retry["messages"][-1]["content"] += f"\n\n{erro_msg}"
+                
+                resposta_llm = chamar_llm_func(payload_retry)
+                continue
+            else:
+                return None
+        
+        seletor = acao.get("selector", "")
+        
+        if seletor in seletores_validos:
+            print(f"[✅] Seletor válido encontrado: {seletor}")
+            return acao
+        else:
+            print(f"[⚠️] Tentativa {tentativa + 1}: Seletor inválido '{seletor}' não está na lista")
+            if tentativa < max_tentativas - 1:
+                # Retry com mensagem específica
+                payload_retry = payload_original.copy()
+                erro_msg = f"ERRO: O seletor '{seletor}' não está na lista. Responda com um dos SELECTORs fornecidos, copiado verbatim."
+                
+                if isinstance(payload_retry["messages"][-1]["content"], list):
+                    # Formato multimodal
+                    payload_retry["messages"][-1]["content"][0]["text"] += f"\n\n{erro_msg}"
+                else:
+                    # Formato texto
+                    payload_retry["messages"][-1]["content"] += f"\n\n{erro_msg}"
+                
+                resposta_llm = chamar_llm_func(payload_retry)
+                continue
+    
+    print(f"[❌] Falha após {max_tentativas} tentativas. Nenhum seletor válido encontrado.")
+    return None
+
 def extrair_json_da_resposta(resposta_llm):
     try:
+        # Limpar a resposta - pegar apenas a primeira linha
+        primeira_linha = resposta_llm.split('\n')[0].strip()
+        
+        # Tentar encontrar JSON na primeira linha
+        matches = re.findall(r'\{[^{}]*\}', primeira_linha)
+        for m in matches:
+            try:
+                json_obj = json.loads(m)
+                if "action" in json_obj and "selector" in json_obj:
+                    return json_obj
+            except json.JSONDecodeError:
+                continue
+                
+        # Se não encontrou, tentar em toda a resposta como fallback
         matches = re.findall(r'\{[^{}]*\}', resposta_llm)
         for m in matches:
-            json_obj = json.loads(m)
-            if "action" in json_obj and "selector" in json_obj:
-                return json_obj
-    except Exception:
-        pass
+            try:
+                json_obj = json.loads(m)
+                if "action" in json_obj and "selector" in json_obj:
+                    return json_obj
+            except json.JSONDecodeError:
+                continue
+                
+    except Exception as e:
+        print(f"[DEBUG] Erro ao extrair JSON: {e}")
+        
     return None
 
 def fechar_aviso_de_cookies(pagina):
@@ -140,9 +283,12 @@ def executar_acao(pagina, resposta_llm):
             el = pagina.locator(seletor).first
 
             try:
+                # Escapar aspas duplas no seletor para JavaScript
+                seletor_escaped = seletor.replace('"', '\\"')
+                
                 pagina.evaluate(f'''
                     () => {{
-                        const el = document.querySelector("{seletor}");
+                        const el = document.querySelector("{seletor_escaped}");
                         if (el) {{
                             el.scrollIntoView({{ behavior: "smooth", block: "center" }});
                         }}
@@ -165,9 +311,12 @@ def executar_acao(pagina, resposta_llm):
                 print(f"[⚠️ AVISO] Clique padrão falhou: {e}")
                 print("[INFO] Tentando clique forçado no DOM com JavaScript...")
 
+            # Escapar aspas duplas no seletor para JavaScript
+            seletor_escaped = seletor.replace('"', '\\"')
+            
             sucesso = pagina.evaluate(f'''
                 () => {{
-                    const el = document.querySelector("{seletor}");
+                    const el = document.querySelector("{seletor_escaped}");
                     if (el) {{
                         el.click();
                         return true;
