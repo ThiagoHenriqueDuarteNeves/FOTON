@@ -10,7 +10,7 @@ seletores_clicados = set()
 def extrair_html(pagina):
     return pagina.content()
 
-def gerar_prompt_em_chat_format(html, screenshot_path=None):
+def gerar_prompt_em_chat_format(html, screenshot_path=None, instrucoes_customizadas=None, modelo="qwen/qwen2.5-vl-7b"):
     soup = BeautifulSoup(html, "html.parser")
     elementos = []
     seletores_validos = []  # Lista para validação
@@ -27,7 +27,7 @@ def gerar_prompt_em_chat_format(html, screenshot_path=None):
         else:
             seletor_preferido = seletor
 
-        # Extrair HREF específicamente
+        # Extrair HREF especificamente
         href = el.get("href", "")
         
         # Extrair outros atributos
@@ -62,19 +62,27 @@ def gerar_prompt_em_chat_format(html, screenshot_path=None):
                 }
             }
 
+    # Determinar objetivo baseado nas instruções customizadas
+    if instrucoes_customizadas and instrucoes_customizadas.strip():
+        objetivo = f"OBJETIVO CUSTOMIZADO: {instrucoes_customizadas.strip()}"
+        print(f"[🎯] Usando instruções customizadas: {instrucoes_customizadas[:50]}...")
+    else:
+        objetivo = "OBJETIVO: Navegar no site de concursos - escolha elementos que levem a informações sobre concursos, editais, inscrições, etc."
+
     prompt_usuario = f"""
 Você é um agente de QA automatizado. Analise a imagem da página e a lista de elementos para escolher o mais relevante.
 
 INSTRUÇÕES:
 1. Olhe a imagem fornecida para ver os elementos visuais da página
-2. Retorne APENAS um JSON válido
-3. Escolha UM elemento da lista abaixo baseado na imagem e no objetivo
-4. Use o SELECTOR exato da lista (não modifique)
+2. Responda APENAS com um JSON VÁLIDO na PRIMEIRA linha, sem markdown, sem ``` e sem explicações
+3. Escolha UM elemento da lista abaixo com base na IMAGEM e no OBJETIVO
+4. Use o SELECTOR EXATO da lista (não modifique)
+5. A resposta deve conter SOMENTE as chaves action e selector
 
-OBJETIVO: Navegar no site de concursos - escolha elementos que levem a informações sobre concursos, editais, inscrições, etc.
+{objetivo}
 
 FORMATO OBRIGATÓRIO:
-{{"action": "click", "selector": "SELETOR_EXATO_DA_LISTA", "href": "HREF_DA_LISTA"}}
+{{"action": "click", "selector": "SELETOR_EXATO_DA_LISTA"}}
 
 ELEMENTOS DISPONÍVEIS:
 {lista}
@@ -84,69 +92,37 @@ Baseado na imagem, escolha o elemento mais apropriado para o objetivo:"""
     # Construir mensagens com suporte a imagem
     messages = [
         {
-            "role": "system",
-            "content": "Você é um assistente que analisa imagens de páginas web e responde apenas com JSON válido conforme solicitado."
+            "role": "user",
+            "content": []
         }
     ]
     
+    # Adicionar imagem primeiro, se existir
     if image_content:
-        # Formato multimodal para qwen2.5-vl
-        messages.append({
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": prompt_usuario
-                },
-                image_content
-            ]
-        })
-        print("[🖼️] Screenshot incluído no prompt para análise visual")
-    else:
-        # Formato texto apenas (fallback)
-        messages.append({
-            "role": "user",
-            "content": prompt_usuario
-        })
-        print("[📝] Usando apenas texto (sem screenshot)")
+        messages[0]["content"].append(image_content)
+        
+    # Adicionar o prompt de texto depois
+    messages[0]["content"].append({
+        "type": "text",
+        "text": prompt_usuario
+    })
     
-    # TODO: Reativar imagem depois de testar
-    # if image_content:
-    #     # Formato multimodal para qwen2.5-vl
-    #     messages.append({
-    #         "role": "user",
-    #         "content": [
-    #             {
-    #                 "type": "text",
-    #                 "text": prompt_usuario
-    #             },
-    #             image_content
-    #         ]
-    #     })
-    # else:
-    #     # Formato texto apenas
-    #     messages.append({
-    #         "role": "user",
-    #         "content": prompt_usuario
-    #     })
-
-    return {
-        "model": "qwen/qwen2.5-vl-7b",
+    payload = {
+        "model": modelo,
         "messages": messages,
-        "temperature": 0.1,  # Pequeno valor para permitir alguma criatividade
-        "top_p": 0.9,
-        "max_tokens": 150,  # Aumentar um pouco mais
-        "stop": None,  # Remover stop tokens que podem estar bloqueando
-        "stream": False,
-        "presence_penalty": 0.0,
-        "frequency_penalty": 0.0
-    }, seletores_validos
+        "temperature": 0,
+        "top_p": 1,
+        "max_tokens": 128000,  # Definido para 128k
+        "stop": ["\n\n", "\r\n\r\n"]
+    }
+    
+    return payload, seletores_validos
 
 def gerar_selector(el):
     if el.has_attr("id"):
         return f'#{el["id"]}'
     elif el.has_attr("class"):
-        classes = ".".join(el["class"])
+        classes = ".".join(el["class"]) 
         return f'.{classes}'
     elif el.name == "a":
         return "a"
@@ -167,7 +143,7 @@ def validar_seletor_e_retry(resposta_llm, seletores_validos, chamar_llm_func, pa
             if tentativa < max_tentativas - 1:
                 # Retry com mensagem de erro
                 payload_retry = payload_original.copy()
-                erro_msg = "ERRO: Resposta anterior não continha JSON válido. Responda SOMENTE com JSON na primeira linha."
+                erro_msg = "ERRO: Responda SOMENTE com JSON válido na PRIMEIRA linha, sem markdown (sem ```)."
                 
                 if isinstance(payload_retry["messages"][-1]["content"], list):
                     # Formato multimodal
@@ -191,7 +167,7 @@ def validar_seletor_e_retry(resposta_llm, seletores_validos, chamar_llm_func, pa
             if tentativa < max_tentativas - 1:
                 # Retry com mensagem específica
                 payload_retry = payload_original.copy()
-                erro_msg = f"ERRO: O seletor '{seletor}' não está na lista. Responda com um dos SELECTORs fornecidos, copiado verbatim."
+                erro_msg = f"ERRO: O seletor '{seletor}' não está na lista. Responda com um dos SELECTORs fornecidos, copiado verbatim, sem markdown."
                 
                 if isinstance(payload_retry["messages"][-1]["content"], list):
                     # Formato multimodal

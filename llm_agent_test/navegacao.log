@@ -102,3 +102,23 @@
 ```
 2025-08-07 22:39:03,698 [INFO] Clique forçado por JavaScript no seletor: [data-testid="auto-avaliacoes-e-concursos-2"]
 2025-08-07 22:39:06,784 [INFO] Navegação encerrada.
+2025-08-07 22:59:44,553 [INFO] PASSO 1
+2025-08-07 22:59:44,834 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 22:59:44,857 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 22:59:54,733 [INFO] Resposta LLM: ```json
+{"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]", "href": "/portal/avaliacoes"}
+```
+2025-08-07 23:00:00,070 [INFO] Clique forçado por JavaScript no seletor: [data-testid="auto-avaliacoes-e-concursos-2"]
+2025-08-07 23:00:02,350 [INFO] Navegação encerrada.
+2025-08-07 23:09:46,690 [INFO] PASSO 1
+2025-08-07 23:09:47,005 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 23:09:47,030 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 23:09:56,293 [INFO] Resposta LLM: {"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]", "href":
+2025-08-07 23:10:15,136 [ERROR] Falha na validação do seletor
+2025-08-07 23:10:15,439 [INFO] Navegação encerrada.
+2025-08-07 23:11:04,925 [INFO] PASSO 1
+2025-08-07 23:11:05,246 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-07 23:11:05,271 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
+2025-08-07 23:11:13,798 [INFO] Resposta LLM: {"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]"}
+2025-08-07 23:11:19,139 [INFO] Clique forçado por JavaScript no seletor: [data-testid="auto-avaliacoes-e-concursos-2"]
+2025-08-07 23:11:21,416 [INFO] Navegação encerrada.
