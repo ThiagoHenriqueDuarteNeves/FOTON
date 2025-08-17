@@ -1,237 +1,179 @@
 import time
 import logging
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 from agent.browser import iniciar_navegador
-from agent.llm import chamar_llm_lmstudio  # LM Studio como padrão
+from agent.llm import chamar_llm_openai_style, obter_modelos_disponiveis, obter_modelo_carregado, normalizar_payload  # LLM functions
+from agent.io import configurar_logging, salvar_screenshot, salvar_payload_log, salvar_resposta_modelo  # I/O functions
+from agent.validation import objetivo_atingido, validar_resposta_llm  # Validation functions
+from agent.browser_actions import executar_acao, fechar_aviso_de_cookies, limpar_estado_campos  # Browser actions
+from agent.html_parser import extrair_html  # HTML parsing
+from agent.prompt_generator import gerar_prompt_em_chat_format, extrair_elementos_otimizados_llm, gerar_prompt_autonomo_completo, validar_seletor_e_retry, gerar_prompt_otimizado_com_contexto  # Prompt generation
 from agent.testid_injector import injetar_data_testids  # Novo injetor
-from agent.utils import (
-    extrair_html,
-    gerar_prompt_em_chat_format,
-    executar_acao,
-    fechar_aviso_de_cookies,
-    extrair_json_da_resposta,  # Usar a função padrão
-    validar_seletor_e_retry,  # Nova função de validação
-    extrair_elementos_otimizados_llm,  # Nova função otimizada
-    gerar_prompt_otimizado_com_contexto,  # Nova função de prompt otimizado
-    gerar_prompt_autonomo_completo  # Nova função completa e autônoma
-)
 import requests
 
-# Configura log em arquivo
-logging.basicConfig(
-    filename='navegacao.log',
-    level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
-    encoding='utf-8'
-)
+# Configurar logging usando módulo de I/O
+configurar_logging('navegacao.log')
 
-def objetivo_atingido(pagina, instrucoes, url_antes=None, url_depois=None):
-    """Heurísticas simples para determinar se o objetivo declarado foi cumprido.
-    Foco inicial: login (cpf/senha/login/entrar).
+def capturar_valores_atuais(pagina):
+    """Captura valores atuais de todos os campos de formulário na página"""
+    try:
+        valores_campos = {}
+        
+        # Usar método síncrono do Playwright para capturar valores
+        # Capturar valores de inputs de texto, email, tel, password, etc.
+        try:
+            inputs = pagina.locator('input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="number"], input[type="url"], input:not([type])').all()
+            for input_elem in inputs:
+                try:
+                    value = input_elem.input_value() or ''  # Usar input_value() em vez de get_attribute('value')
+                    if value.strip():
+                        # Tentar identificar o campo pelo name, id ou placeholder
+                        name = input_elem.get_attribute('name') or input_elem.get_attribute('id') or input_elem.get_attribute('placeholder') or 'campo_sem_nome'
+                        valores_campos[f"[name='{name}']"] = value.strip()  # Formato seletor consistente
+                except:
+                    continue
+        except:
+            pass
+                
+        # Capturar valores de textareas
+        try:
+            textareas = pagina.locator('textarea').all()
+            for textarea in textareas:
+                try:
+                    value = textarea.input_value() or ''  # Usar input_value() em vez de get_attribute('value')
+                    if value.strip():
+                        name = textarea.get_attribute('name') or textarea.get_attribute('id') or textarea.get_attribute('placeholder') or 'textarea_sem_nome'
+                        valores_campos[f"[name='{name}']"] = value.strip()
+                except:
+                    continue
+        except:
+            pass
+                
+        # Capturar valores de selects
+        try:
+            selects = pagina.locator('select').all()
+            for select in selects:
+                try:
+                    value = select.input_value() or ''  # Usar input_value() para selects também
+                    if value.strip() and value.strip() != '':
+                        name = select.get_attribute('name') or select.get_attribute('id') or 'select_sem_nome'
+                        valores_campos[f"[name='{name}']"] = value.strip()
+                except:
+                    continue
+        except:
+            pass
+        
+        return valores_campos
+    except Exception as e:
+        print(f"⚠️ Erro ao capturar valores atuais: {e}")
+        return {}
+
+def normalizar_acao_llm(acao_data):
     """
-    try:
-        instr = (instrucoes or "").lower()
-        # Só encerramos automaticamente se a instrução pedir explicitamente para finalizar
-        pedido_finalizar = any(t in instr for t in ["finalizar", "encerrar", "concluir", "terminar"])
-        if any(t in instr for t in ["cpf", "senha", "login", "entrar", "acessar"]) and pedido_finalizar:
-            # 1) Se houve navegação e não estamos mais numa URL de login
-            if url_antes and url_depois and url_depois != url_antes and 'login' not in (url_depois or '').lower():
-                return True, "Mudança de URL pós-login detectada"
-            # 2) Se não há mais campo de senha na página e há indicadores de sessão ativa
-            try:
-                if pagina.locator("input[type='password']").count() == 0:
-                    indic_textos = [
-                        r"/\\b(Sair|Logout|Minha Conta|Perfil|Bem-vindo|Olá)\\b/i",
-                        r"/\\b(Dashboard|Área do Candidato|Minha Área)\\b/i"
-                    ]
-                    for t in indic_textos:
-                        if pagina.locator(f"text:{t}").count() > 0:
-                            return True, "Indicadores de sessão ativa na página"
-            except Exception:
-                pass
-        return False, "Objetivo não identificado como concluído"
-    except Exception as e:
-        print(f"[AVISO] Falha na verificação de objetivo: {e}")
-        return False, "Erro na verificação"
-
-def obter_modelos_disponiveis():
-    """Obtém a lista de modelos disponíveis do LM Studio"""
-    try:
-        print("[INFO] Obtendo lista de modelos do LM Studio...")
-        resposta = requests.get("http://localhost:1234/v1/models", timeout=5)
-        resposta.raise_for_status()
-        
-        dados = resposta.json()
-        modelos = []
-        
-        if "data" in dados:
-            for modelo in dados["data"]:
-                if "id" in modelo:
-                    modelos.append(modelo["id"])
-        
-        print(f"[INFO] Modelos encontrados: {modelos}")
-        return modelos
-        
-    except requests.exceptions.ConnectionError:
-        print("[AVISO] LM Studio não está disponível. Usando modelos padrão.")
-        return [
-            "qwen/qwen2.5-vl-7b",
-            "gpt-4-vision-preview", 
-            "claude-3-5-sonnet-20241022",
-            "llava-v1.6-34b",
-            "minicpm-v-2_6"
-        ]
-    except Exception as e:
-        print(f"[ERRO] Falha ao obter modelos: {e}")
-        return ["qwen/qwen2.5-vl-7b"]  # Modelo padrão como fallback
-
-def obter_modelo_carregado():
-    """Obtém o modelo atualmente carregado no LM Studio"""
-    try:
-        print("[INFO] Verificando modelo carregado no LM Studio...")
-        
-        # Método 1: Tentar uma requisição simples para identificar o modelo ativo
-        payload_teste = {
-            "model": "current",  # Alguns LM Studios aceitam "current"
-            "messages": [{"role": "user", "content": "test"}],
-            "max_tokens": 1,
-            "temperature": 0
-        }
-        
-        try:
-            resposta = requests.post("http://localhost:1234/v1/chat/completions", 
-                                   json=payload_teste, timeout=5)
-            
-            if resposta.status_code == 200:
-                dados = resposta.json()
-                if "model" in dados and dados["model"]:
-                    modelo_ativo = dados["model"]
-                    print(f"[INFO] Modelo carregado identificado via resposta: {modelo_ativo}")
-                    return modelo_ativo
-        except:
-            pass
-        
-        # Método 2: Tentar com modelo vazio e ver se retorna erro informativo
-        try:
-            payload_vazio = {
-                "messages": [{"role": "user", "content": "test"}],
-                "max_tokens": 1
-            }
-            
-            resposta = requests.post("http://localhost:1234/v1/chat/completions", 
-                                   json=payload_vazio, timeout=5)
-            
-            if resposta.status_code == 200:
-                dados = resposta.json()
-                if "model" in dados and dados["model"]:
-                    modelo_ativo = dados["model"]
-                    print(f"[INFO] Modelo carregado identificado via payload vazio: {modelo_ativo}")
-                    return modelo_ativo
-        except:
-            pass
-        
-        # Método 3: Usar o primeiro modelo da lista que não seja embedding
-        modelos = obter_modelos_disponiveis()
-        for modelo in modelos:
-            # Filtrar modelos de embedding
-            if not any(termo in modelo.lower() for termo in ['embedding', 'embed']):
-                print(f"[INFO] Usando primeiro modelo não-embedding da lista: {modelo}")
-                return modelo
-        
-        # Método 4: Se só há embeddings, usar o primeiro da lista mesmo assim
-        if modelos and len(modelos) > 0:
-            print(f"[INFO] Usando primeiro modelo da lista: {modelos[0]}")
-            return modelos[0]
-            
-    except Exception as e:
-        print(f"[AVISO] Erro ao identificar modelo carregado: {e}")
+    Normaliza resposta do LLM para formato padronizado em inglês
+    """
+    if not isinstance(acao_data, dict):
+        return None
     
-    # Retorna None se não conseguiu identificar
-    print("[INFO] Não foi possível identificar modelo carregado automaticamente")
-    return None
+    # Mapeamento de chaves português -> inglês
+    mapeamento_chaves = {
+        "acao": "action",
+        "seletor": "selector", 
+        "valor": "value",
+        "confianca": "confidence",
+        "justificativa": "justification"
+    }
+    
+    # Mapeamento de ações português -> inglês/padronizado
+    mapeamento_acoes = {
+        "cadastro": "click",     # Mapear cadastro para click
+        "clicar": "click",
+        "clique": "click", 
+        "digitar": "type",
+        "escrever": "type",
+        "rolar": "scroll",
+        "aguardar": "wait",
+        "enviar": "submit"
+    }
+    
+    # Criar nova estrutura normalizada
+    acao_normalizada = {}
+    
+    for chave_pt, chave_en in mapeamento_chaves.items():
+        if chave_pt in acao_data:
+            valor = acao_data[chave_pt]
+            
+            # Normalizar ação se for a chave "acao"
+            if chave_pt == "acao" and valor in mapeamento_acoes:
+                valor = mapeamento_acoes[valor]
+            
+            acao_normalizada[chave_en] = valor
+        elif chave_en in acao_data:
+            # Já está em inglês
+            acao_normalizada[chave_en] = acao_data[chave_en]
+    
+    # Garantir campos obrigatórios
+    if "action" not in acao_normalizada:
+        acao_normalizada["action"] = "click"  # padrão
+    
+    print(f"🔧 [NORMALIZAÇÃO] {acao_data} → {acao_normalizada}")
+    return acao_normalizada
 
-def salvar_screenshot(pagina, passo):
-    Path("prints").mkdir(exist_ok=True)
-    caminho = f"prints/passo_{passo}.png"
-    pagina.screenshot(path=caminho, full_page=True)
-    print(f"[📸] Screenshot salva em: {caminho}")
-    logging.info(f"Screenshot salva em: {caminho}")
 
-def salvar_lista_de_seletores(html, passo, screenshot_path=None, instrucoes_customizadas=None, modelo="qwen/qwen2.5-vl-7b", historico_acoes=None):
-    Path("logs").mkdir(exist_ok=True)
-    caminho = f"logs/seletores_passo_{passo}.txt"
-    with open(caminho, "w", encoding="utf-8") as f:
-        payload, seletores_validos = gerar_prompt_em_chat_format(html, screenshot_path, instrucoes_customizadas, modelo, historico_acoes)
-        f.write(str(payload))
-    print(f"[🧾] Lista de seletores salva em: {caminho}")
-    logging.info(f"Lista de seletores salva em: {caminho}")
-    return payload, seletores_validos
-
-def chamar_llm_openai_style(payload):
-    try:
-        modelo_usado = payload.get('model', 'modelo-desconhecido')
-        print(f"\n🔄 ENVIANDO REQUISIÇÃO PARA LM STUDIO")
-        print(f"   Endpoint: http://localhost:1234/v1/chat/completions")
-        print(f"   Modelo: {modelo_usado}")
-        print(f"   Timeout: 60 segundos")
-        
-        resposta = requests.post("http://localhost:1234/v1/chat/completions", json=payload, timeout=60)
-        
-        print(f"📥 RESPOSTA RECEBIDA:")
-        print(f"   Status: {resposta.status_code}")
-        print(f"   Headers: {dict(resposta.headers)}")
-        
-        if not resposta.ok:
-            # Logar o corpo para entender o 400/erro
-            try:
-                print(f"❌ ERRO - Response text: {resposta.text}")
-            except Exception:
-                pass
-            resposta.raise_for_status()
-        retorno = resposta.json()
-        
-        print(f"✅ JSON keys recebidos: {list(retorno.keys())}")
-        
-        if "choices" in retorno and len(retorno["choices"]) > 0:
-            content = retorno["choices"][0]["message"]["content"]
-            print(f"📝 Conteúdo extraído ({len(content)} chars): '{content[:200]}{'...' if len(content) > 200 else ''}'")
-            return content
+def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=None, modo_extracao="padrao"):
+    """
+    Agente explorador que navega automaticamente em páginas web usando IA.
+    
+    Args:
+        url (str): URL inicial para navegação
+        max_passos (int): Número máximo de passos/ações
+        instrucoes_customizadas (str): Instruções específicas do usuário
+        modelo (str): Modelo LLM a usar (se None, detecta automaticamente)
+        modo_extracao (str): Modo de extração ("padrao", "autonomo", "completo")
+    """
+    # Detectar modelo automaticamente se não especificado
+    if modelo is None:
+        modelo_detectado = obter_modelo_carregado()
+        if modelo_detectado:
+            modelo = modelo_detectado
+            print(f"✅ Modelo pré-selecionado: {modelo}")
         else:
-            print(f"⚠️  Estrutura inesperada no JSON: {retorno}")
-            return ""
-            
-    except Exception as e:
-        print(f"[ERRO] Falha na chamada LLM: {e}")
-        # Dica comum: 400 pode ser causado por modelo inválido, payload multimodal em modelo texto ou max_tokens alto
-        print("[DICA] Verifique se o modelo suporta o formato enviado (multimodal vs texto) e se max_tokens não está alto.")
-        return ""
+            modelo = "qwen/qwen2.5-vl-7b"  # fallback
+            print(f"⚠️ Nenhum modelo detectado, usando fallback: {modelo}")
 
-def agente_explorador(url, max_passos=5, instrucoes_customizadas=None, modelo="qwen/qwen2.5-vl-7b", modo_extracao="padrao"):
-    # Verificar se há uma instância da UI para controle de parada
-    def check_stop_requested():
-        try:
-            from ui_agente import current_ui_instance
-            return current_ui_instance and current_ui_instance.is_stop_requested()
-        except:
-            return False
-    
+    # Iniciar navegador e executar loop de navegação dentro da função
+    print("🚀 DEBUG: Prestes a iniciar navegador...")
     navegador, pagina, playwright = iniciar_navegador()
+    print("🚀 DEBUG: Navegador iniciado com sucesso!")
+    
+    print("🚀 DEBUG: Navegando para a URL...")
     pagina.goto(url)
+    print("🚀 DEBUG: Navegação para URL concluída!")
 
     # Maximiza a janela após abertura
+    print("🚀 DEBUG: Maximizando janela...")
     pagina.evaluate("window.moveTo(0, 0); window.resizeTo(screen.width, screen.height);")
+    print("🚀 DEBUG: Janela maximizada!")
 
+    print("🚀 DEBUG: Fechando avisos de cookies...")
     fechar_aviso_de_cookies(pagina)
+    print("🚀 DEBUG: Avisos de cookies fechados!")
     
     # Injetar data-testids únicos para melhor estabilidade
+    print("🚀 DEBUG: Injetando data-testids...")
     injetar_data_testids(pagina)
+    print("🚀 DEBUG: Data-testids injetados!")
     
     seletores_visitados = set()
     historico_acoes = []  # Histórico de ações para contexto do LLM
+    seletores_validos_anteriores = None  # Para detectar mudança de seletores
 
+    print("🚀 DEBUG: Iniciando loop principal...")
     for passo in range(max_passos):
+        print(f"🚀 DEBUG: Iniciando PASSO {passo+1}/{max_passos}...")
         # Verificar se foi solicitada a parada
         if check_stop_requested():
             print("🛑 Execução interrompida pelo usuário")
@@ -246,12 +188,17 @@ def agente_explorador(url, max_passos=5, instrucoes_customizadas=None, modelo="q
             url_atual = pagina.url
             print(f"[INFO] URL atual: {url_atual}")
             
+            # Aguardar carregamento completo da página
+            print("⏳ Aguardando carregamento completo da página...")
+            pagina.wait_for_load_state('networkidle', timeout=10000)
+            pagina.wait_for_timeout(2000)  # Aguarda mais 2 segundos para elementos dinâmicos
+            
             html = extrair_html(pagina)
 
             # Salvar screenshot primeiro
             salvar_screenshot(pagina, passo + 1)
             screenshot_path = f"prints/passo_{passo + 1}.png"
-            
+
             # Escolher modo de extração
             if modo_extracao == "otimizado":
                 print("🔍 Usando extração otimizada para LLM...")
@@ -415,7 +362,7 @@ def agente_explorador(url, max_passos=5, instrucoes_customizadas=None, modelo="q
                     
                     # SE CHEGOU AQUI: login automático falhou ou não aplicável - continuar com LLM
                     # Usar prompt otimizado antigo
-                    prompt_otimizado, seletores_validos = gerar_prompt_otimizado_com_contexto(navegacao_llm, instrucoes_customizadas, historico_acoes)
+                    prompt_otimizado, seletores_validos = gerar_prompt_otimizado_com_contexto(navegacao_llm, instrucoes_customizadas, historico_acoes, modelo)
                     
                     if prompt_otimizado:
                         payload = {
@@ -426,8 +373,7 @@ def agente_explorador(url, max_passos=5, instrucoes_customizadas=None, modelo="q
                             ],
                             "temperature": 0,
                             "top_p": 1,
-                            "max_tokens": 2048,
-                            "stop": ["\n\n", "\r\n\r\n"]
+                            "max_tokens": 2048
                         }
                     else:
                         print("[AVISO] Falha na geração do prompt otimizado, usando método padrão...")
@@ -453,14 +399,68 @@ def agente_explorador(url, max_passos=5, instrucoes_customizadas=None, modelo="q
                     print("🔍 Usando método padrão...")
                     payload, seletores_validos = gerar_prompt_em_chat_format(html, screenshot_path, instrucoes_customizadas, modelo, historico_acoes)
 
+            # ★ CAPTURAR VALORES ATUAIS DOS CAMPOS PARA EVITAR LOOPS ★
+            print("🔍 Capturando valores atuais dos campos...")
+            valores_atuais = capturar_valores_atuais(pagina)
+            
+            if valores_atuais:
+                print(f"📋 CAMPOS JÁ PREENCHIDOS DETECTADOS:")
+                for campo, valor in valores_atuais.items():
+                    print(f"   • {campo}: '{valor}'")
+                
+                # Adicionar informações dos campos preenchidos ao payload
+                if isinstance(payload, dict) and 'messages' in payload:
+                    for msg in payload['messages']:
+                        if msg.get('role') == 'user':
+                            if isinstance(msg['content'], str):
+                                # Adicionar seção de campos preenchidos ao prompt
+                                campos_preenchidos_info = "\n\n=== CAMPOS JÁ PREENCHIDOS ===\n"
+                                campos_preenchidos_info += "⚠️ NÃO preencha novamente estes campos que já possuem valores:\n"
+                                for campo, valor in valores_atuais.items():
+                                    campos_preenchidos_info += f"  • Campo '{campo}': já contém '{valor}'\n"
+                                campos_preenchidos_info += "========================\n"
+                                
+                                msg['content'] = msg['content'] + campos_preenchidos_info
+                                break
+                            elif isinstance(msg['content'], list):
+                                # Para conteúdo multimodal, adicionar ao texto
+                                for content_item in msg['content']:
+                                    if content_item.get('type') == 'text':
+                                        campos_preenchidos_info = "\n\n=== CAMPOS JÁ PREENCHIDOS ===\n"
+                                        campos_preenchidos_info += "⚠️ NÃO preencha novamente estes campos que já possuem valores:\n"
+                                        for campo, valor in valores_atuais.items():
+                                            campos_preenchidos_info += f"  • Campo '{campo}': já contém '{valor}'\n"
+                                        campos_preenchidos_info += "========================\n"
+                                        
+                                        content_item['text'] = content_item['text'] + campos_preenchidos_info
+                                        break
+            else:
+                print("📋 Nenhum campo preenchido detectado")
+
             print("\n" + "="*80)
             print("📤 DADOS ENVIADOS AO MODELO LLM")
             print("="*80)
             print(f"🤖 Modelo: {payload['model']}")
             print(f"🌡️  Temperature: {payload['temperature']}")
             print(f"🔢 Max tokens: {payload['max_tokens']}")
-            print(f"⏹️  Stop tokens: {payload['stop']}")
+            if 'stop' in payload:
+                print(f"⏹️  Stop tokens: {payload['stop']}")
             print(f"🎯 Seletores válidos encontrados: {len(seletores_validos)}")
+            
+            # Verificar se a lista de seletores mudou e resetar histórico se necessário
+            if seletores_validos_anteriores is not None:
+                seletores_atuais_set = set(seletores_validos)
+                seletores_anteriores_set = set(seletores_validos_anteriores)
+                
+                if seletores_atuais_set != seletores_anteriores_set:
+                    print(f"🔄 Lista de seletores mudou - resetando histórico")
+                    print(f"   Seletores anteriores: {len(seletores_anteriores_set)} elementos")
+                    print(f"   Seletores atuais: {len(seletores_atuais_set)} elementos")
+                    historico_acoes = []  # Reset do histórico
+                    seletores_visitados = set()  # Reset dos seletores visitados
+            
+            # Atualizar lista de seletores para próxima comparação  
+            seletores_validos_anteriores = seletores_validos.copy()
             
             # MOSTRAR TODOS OS SELETORES QUE ESTÃO SENDO ENVIADOS
             print(f"\n📋 LISTA COMPLETA DOS {len(seletores_validos)} SELETORES ENVIADOS AO LLM:")
@@ -511,28 +511,30 @@ def agente_explorador(url, max_passos=5, instrucoes_customizadas=None, modelo="q
                     else:
                         preview = text_content
                     print(f"  Preview:\n{preview}")
-                    
-                    # Verificar se a seção ELEMENTOS DISPONÍVEIS está presente
-                    if "ELEMENTOS DISPONÍVEIS:" in text_content:
-                        elementos_section = text_content.split("ELEMENTOS DISPONÍVEIS:")[1] if "ELEMENTOS DISPONÍVEIS:" in text_content else ""
-                        if elementos_section:
-                            linhas_elementos = [linha for linha in elementos_section.split('\n') if linha.strip() and not linha.startswith('Baseado')]
-                            print(f"  ✅ Seção 'ELEMENTOS DISPONÍVEIS' encontrada com {len(linhas_elementos)} itens")
-                        else:
-                            print(f"  ⚠️  Seção 'ELEMENTOS DISPONÍVEIS' vazia")
-                    else:
-                        print(f"  ❌ Seção 'ELEMENTOS DISPONÍVEIS' não encontrada no texto!")
-            
-            # PAYLOAD COMPLETO (OPCIONAL - DESCOMENTE SE QUISER VER TUDO)
-            # print(f"\n🔍 PAYLOAD COMPLETO:")
-            # print(json.dumps(payload, indent=2, ensure_ascii=False))
-            
+
+            # Preparar e enviar payload ao LLM
+            print("\n" + "="*80)
+            print("📤 DADOS ENVIADOS AO MODELO LLM")
             print("="*80)
+            try:
+                payload = normalizar_payload(payload, modelo)
+            except Exception:
+                # Se normalizar falhar, continuar com payload original
+                pass
+            try:
+                salvar_payload_log(payload, modelo)
+            except Exception:
+                pass
 
-            # Primeira tentativa
-            resposta_llm = chamar_llm_openai_style(payload)
+            # Chamar LLM
+            try:
+                resposta_llm = chamar_llm_openai_style(payload)
+            except Exception as e:
+                print(f"[ERRO] Falha ao chamar LLM: {e}")
+                logging.error(f"Erro ao chamar LLM: {e}")
+                continue
 
-            if not resposta_llm.strip():
+            if not resposta_llm or not resposta_llm.strip():
                 print("[LLM] <Resposta vazia>")
                 logging.warning("LLM respondeu vazio")
                 continue
@@ -540,104 +542,219 @@ def agente_explorador(url, max_passos=5, instrucoes_customizadas=None, modelo="q
             print("[✔️ LLM]", resposta_llm.strip())
             logging.info(f"Resposta LLM: {resposta_llm.strip()}")
 
-            # Validação com retry
+            if '```' in resposta_llm:
+                print("🚨 [AVISO] LLM usou markdown - formato será corrigido automaticamente")
+
+            # Validar seletor e tentar retry se necessário
             acao = validar_seletor_e_retry(resposta_llm, seletores_validos, chamar_llm_openai_style, payload)
-            
             if not acao:
                 print("[ERRO] Falha na validação do seletor após todas as tentativas")
                 logging.error("Falha na validação do seletor")
                 continue
 
-            # Verificar novamente se foi solicitada a parada antes de executar ação
+            # Normalizar ação
+            acao = normalizar_acao_llm(acao)
+            if not acao:
+                print("[ERRO] Falha na normalização da ação")
+                continue
+
+            # Salvar resposta completa do modelo para análise
+            try:
+                salvar_resposta_modelo(resposta_llm, acao, passo, modelo)
+            except Exception as e:
+                print(f"⚠️ Aviso: Erro ao salvar resposta do modelo: {e}")
+
+            seletor_acao = acao.get("selector", "")
+            # Usar validação flexível em vez de verificar apenas na lista
+            if seletor_acao:
+                from agent.validation import validar_seletor_existente
+                if not validar_seletor_existente(seletor_acao, seletores_validos):
+                    print(f"🚨 [ERRO CRÍTICO] Seletor '{seletor_acao}' inválido - ação rejeitada")
+                    print(f"📋 Seletores válidos (exemplo): {seletores_validos[:5]}")
+                    continue
+
             if check_stop_requested():
                 print("🛑 Execução interrompida pelo usuário antes da ação")
                 logging.info("Execução interrompida pelo usuário antes da ação")
                 break
 
-            if acao.get("action") == "click":
-                seletor = acao.get("selector")
-                if seletor in seletores_visitados:
-                    print(f"[AVISO] Seletor já visitado: {seletor}, pulando para evitar repetição.")
-                    logging.info(f"Seletor repetido ignorado: {seletor}")
-                    continue
+            action_type = acao.get('action')
+            selector = acao.get('selector')
+            value = acao.get('value')
+            
+            if action_type == 'type':
+                print(f"📝 [PREENCHENDO] Campo {selector}")
+                if value:
+                    print(f"   ✏️  Valor: '{value}'")
+            elif action_type == 'click':
+                print(f"🎯 [CLICANDO] {selector}")
+            elif action_type == 'submit':
+                print(f"📤 [ENVIANDO] Formulário via {selector}")
+            else:
+                print(f"🎯 [EXECUTANDO] {action_type} em {selector}")
+                if value:
+                    print(f"   Valor: {value}")
+
+            # Verificar se é ação repetida (mas não bloquear)
+            seletor = acao.get("selector")
+            acao_repetida = seletor and seletor in seletores_visitados
+            
+            if acao_repetida:
+                print(f"[INFO] Ação repetida detectada para seletor: {seletor} - executando mesmo assim")
+                logging.info(f"Ação repetida executada: {seletor}")
+            
+            # Adicionar à lista de visitados
+            if seletor:
                 seletores_visitados.add(seletor)
 
-            # Executar ação e capturar resultado estruturado
-            resultado_acao = executar_acao(pagina, resposta_llm)
-            
-            # Coletar informações para o histórico
+            # Preparar payload normalizado para execução: converter a ação validada (em inglês) para JSON string
+            try:
+                if isinstance(acao, dict):
+                    payload_exec = {
+                        "action": acao.get("action"),
+                        "selector": acao.get("selector", ""),
+                        "value": acao.get("value", ""),
+                        # manter confidence/justification se disponíveis
+                        **({"confidence": acao.get("confidence")} if acao.get("confidence") is not None else {}),
+                        **({"justification": acao.get("justification")} if acao.get("justification") else {})
+                    }
+                    resposta_para_execucao = json.dumps(payload_exec, ensure_ascii=False)
+                else:
+                    # fallback: usar a resposta LLm bruta
+                    resposta_para_execucao = resposta_llm
+            except Exception as e:
+                logging.error(f"Erro ao preparar payload de execução: {e}")
+                resposta_para_execucao = resposta_llm
+
+            # Executar a ação uma única vez usando payload normalizado
+            try:
+                resultado_acao = executar_acao(pagina, resposta_para_execucao)
+            except Exception as e:
+                print(f"[ERRO] Falha ao executar ação: {e}")
+                logging.error(f"Falha ao executar ação: {e}")
+                resultado_acao = None
+
+            # Normalizar o resultado para um dicionário consistente
+            resultado_dict = None
+            try:
+                if isinstance(resultado_acao, tuple) and len(resultado_acao) >= 2:
+                    sucesso_flag = bool(resultado_acao[0])
+                    mensagem = str(resultado_acao[1]) if len(resultado_acao) > 1 else ""
+                    resultado_dict = {"success": sucesso_flag, "message": mensagem}
+                elif isinstance(resultado_acao, dict):
+                    resultado_dict = resultado_acao
+                elif resultado_acao is None:
+                    resultado_dict = None
+                else:
+                    resultado_dict = {"success": False, "message": str(resultado_acao)}
+            except Exception as e:
+                logging.error(f"Erro ao normalizar resultado_acao: {e}")
+                resultado_dict = {"success": False, "message": f"Erro ao normalizar resultado: {e}"}
+
             nova_url = pagina.url
             sucesso_navegacao = nova_url != url_atual
-            
-            # Adicionar ao histórico de ações com resultado da verificação
+
+            # Adicionar informação sobre ação repetida ao histórico
+            acao_info = resposta_llm.strip()
+            if acao_repetida:
+                acao_info += f" [AÇÃO REPETIDA: seletor {seletor} já foi usado anteriormente]"
+
+            # Extrair justificativa da ação para histórico mais rico
+            justificativa = acao.get('justification', acao.get('justificativa', 'Não informada'))
+            confianca = acao.get('confidence', acao.get('confianca', 0))
+
             acao_historico = {
                 "passo": passo + 1,
-                "acao": resposta_llm.strip(),
+                "acao": acao.get('action', acao.get('acao', 'N/A')),
+                "seletor": acao.get('selector', acao.get('seletor', 'N/A')), 
+                "valor": acao.get('value', acao.get('valor', '')),
+                "justificativa": justificativa,
+                "confianca": confianca,
+                "sucesso": resultado_dict.get('success', False),
                 "url_antes": url_atual,
                 "url_depois": nova_url,
                 "navegacao": sucesso_navegacao,
-                "resultado": resultado_acao,  # ✅ Inclui resultado da ação (sucesso/falha)
-                "timestamp": datetime.now().strftime("%H:%M:%S")
+                "resultado": resultado_dict,
+                "timestamp": datetime.now().strftime("%H:%M:%S"),
+                "repetida": acao_repetida  # Flag para uso interno
             }
             historico_acoes.append(acao_historico)
-            
-            # Manter apenas as últimas 5 ações para não sobrecarregar o LLM
-            if len(historico_acoes) > 5:
-                historico_acoes.pop(0)
-            
-            # Log do resultado da ação para o usuário
-            if resultado_acao:
-                status_icon = "✅" if resultado_acao.get('success') else "❌"
-                action_desc = resultado_acao.get('action', 'ação')
-                message = resultado_acao.get('message', '')
+
+            # Não limitamos mais o histórico por número fixo de ações
+            # O histórico será mantido até que a lista de seletores mude
+
+            if resultado_dict:
+                status_icon = "✅" if resultado_dict.get('success') else "❌"
+                action_desc = resultado_dict.get('action', 'ação')
+                message = resultado_dict.get('message', '') or resultado_dict.get('message', '')
                 print(f"[📋] Ação {action_desc}: {status_icon} {message}")
-                logging.info(f"Resultado da ação: {resultado_acao}")
-            
-            print(f"[📋] Ação adicionada ao histórico: {resposta_llm.strip()}")
-            
-            # Aguardar carregamento da página após ação
-            print("⏳ Aguardando carregamento da página...")
+                logging.info(f"Resultado da ação: {resultado_dict}")
+
+            # Aguardar carregamento
             try:
-                # Aguarda até que o documento esteja carregado
                 pagina.wait_for_load_state("domcontentloaded", timeout=5000)
-                print("✅ Página carregada")
-            except:
-                print("⚠️ Timeout no carregamento - continuando")
-            
-            # Verificar se a URL mudou
-            if sucesso_navegacao:
-                print(f"[INFO] Navegação detectada: {url_atual} → {nova_url}")
-                logging.info(f"Navegação: {url_atual} → {nova_url}")
-                
-                # Limpar estado dos campos preenchidos ao mudar de página
-                from agent.utils import limpar_estado_campos
-                limpar_estado_campos()
-                print("[INFO] Estado dos campos limpo devido à navegação")
-                
-                # Injetar data-testids na nova página
-                injetar_data_testids(pagina)
-            else:
-                print(f"[INFO] Ação executada na mesma página")
-            
-            # Se o objetivo foi atingido, encerrar
+            except Exception:
+                pass
+
+            # Checar objetivo
             atingido, motivo = objetivo_atingido(pagina, instrucoes_customizadas, url_atual, nova_url)
             if atingido:
                 print(f"🏁 Objetivo cumprido: {motivo}. Encerrando teste.")
                 break
-            
+
             time.sleep(2)
 
         except Exception as e:
             print(f"[ERRO] Falha no passo {passo+1}: {e}")
             logging.error(f"Erro no passo {passo+1}: {e}")
 
-    navegador.close()
-    playwright.stop()
+    try:
+        navegador.close()
+    except Exception:
+        pass
+    try:
+        playwright.stop()
+    except Exception:
+        pass
     print("\n[FIM] Navegação encerrada.")
     logging.info("Navegação encerrada.")
 
+def check_stop_requested():
+    """Verificar se há uma instância da UI para controle de parada"""
+    try:
+        from ui_agente import current_ui_instance
+        return current_ui_instance and current_ui_instance.is_stop_requested()
+    except:
+        return False
+
+
 if __name__ == "__main__":
-    # O entry point agora chama a UI diretamente.
-    from ui_agente import main as ui_main
-    ui_main()
+    import argparse
+    import sys
+    
+    # Se tem argumentos de linha de comando, processar diretamente
+    if len(sys.argv) > 1:
+        print("🚀 DEBUG: Processando argumentos da linha de comando...")
+        
+        parser = argparse.ArgumentParser(description='Agente IA para navegação web')
+        parser.add_argument('--url', required=True, help='URL inicial para navegação')
+        parser.add_argument('--instrucoes', required=True, help='Instruções para o agente')
+        parser.add_argument('--max_passos', type=int, default=10, help='Número máximo de passos')
+        parser.add_argument('--modelo', help='Modelo LLM a usar')
+        parser.add_argument('--modo_extracao', default='padrao', help='Modo de extração')
+        
+        args = parser.parse_args()
+        
+        print("🚀 DEBUG: Argumentos processados, iniciando navegar_com_agente...")
+        navegar_com_agente(
+            url=args.url,
+            max_passos=args.max_passos,
+            instrucoes_customizadas=args.instrucoes,
+            modelo=args.modelo,
+            modo_extracao=args.modo_extracao
+        )
+    else:
+        # Se não tem argumentos, chamar a UI
+        from ui_agente import main as ui_main
+        ui_main()
 

@@ -197,25 +197,39 @@ def gerar_prompt_em_chat_format(html, screenshot_path=None, instrucoes_customiza
         
         historico_texto += "\n⚠️  IMPORTANTE: NÃO REPITA ações em campos já preenchidos com sucesso!\nCONSIDERE o progresso acima ao escolher a próxima ação.\n"
 
+    # Texto condicional baseado se há imagem ou não
+    if image_content:
+        prompt_inicio = "Você é um agente de QA automatizado. Analise a imagem da página e a lista de elementos para escolher o mais relevante."
+        instrucao_visual = "3. Olhe a imagem fornecida para ver os elementos visuais da página"
+        final_prompt = "Baseado na imagem e no histórico, escolha o elemento mais apropriado para continuar o objetivo:"
+    else:
+        prompt_inicio = "Você é um agente de QA automatizado. Analise a lista de elementos para escolher o mais relevante."
+        instrucao_visual = "3. Analise os elementos textuais disponíveis listados abaixo"
+        final_prompt = "Baseado na lista de elementos e no histórico, escolha o elemento mais apropriado para continuar o objetivo:"
+
     prompt_usuario = f"""
-Você é um agente de QA automatizado. Analise a imagem da página e a lista de elementos para escolher o mais relevante.
+{prompt_inicio}
 
 INSTRUÇÕES:
-1. Olhe a imagem fornecida para ver os elementos visuais da página
-2. Responda APENAS com um JSON VÁLIDO na PRIMEIRA linha, sem markdown, sem ``` e sem explicações
-3. Escolha UM elemento da lista abaixo com base na IMAGEM e no OBJETIVO
-4. Use o SELECTOR EXATO da lista (não modifique)
-5. A resposta deve conter SOMENTE as chaves action e selector
+1. 🎯 EXECUTE **UMA ÚNICA AÇÃO** por resposta
+2. 📋 ESCOLHA **APENAS** um seletor da lista abaixo (não invente seletores)
+{instrucao_visual}
+4. Responda APENAS com um JSON VÁLIDO na PRIMEIRA linha, sem markdown, sem ``` e sem explicações
+5. Use o SELECTOR EXATO da lista (não modifique)
+6. A resposta deve conter SOMENTE as chaves action e selector
+
+🚨 CRÍTICO: **ESCOLHA APENAS** entre os seletores listados abaixo!
+🚨 Se o seletor não estiver na lista, NÃO use - escolha outro da lista!
 
 {objetivo}{historico_texto}
 
-FORMATO OBRIGATÓRIO:
+FORMATO OBRIGATÓRIO (copie exatamente):
 {{"action": "click", "selector": "SELETOR_EXATO_DA_LISTA"}}
 
 ELEMENTOS DISPONÍVEIS:
 {lista}
 
-Baseado na imagem e no histórico, escolha o elemento mais apropriado para continuar o objetivo:"""
+{final_prompt}"""
 
     # Construir mensagens: multimodal apenas para modelos de visão, senão apenas texto
     if image_content:
@@ -260,7 +274,18 @@ def validar_seletor_e_retry(resposta_llm, seletores_validos, chamar_llm_func, pa
             if tentativa < max_tentativas - 1:
                 # Retry com mensagem de erro
                 payload_retry = json.loads(json.dumps(payload_original))
-                erro_msg = "ERRO: Responda SOMENTE com JSON válido na PRIMEIRA linha, sem markdown (sem ```)."
+                erro_msg = """🚨 ERRO CRÍTICO: Formato inválido!
+
+VOCÊ DEVE responder com UM JSON VÁLIDO na PRIMEIRA linha, exemplo:
+{"action": "click", "selector": "#customer\\.firstName"}
+
+NÃO use:
+- Markdown (```json)
+- Explicações
+- Múltiplas linhas
+- Texto adicional
+
+RESPONDA AGORA APENAS com o JSON:"""
                 
                 if isinstance(payload_retry["messages"][-1]["content"], list):
                     payload_retry["messages"][-1]["content"][0]["text"] += f"\n\n{erro_msg}"
@@ -284,7 +309,18 @@ def validar_seletor_e_retry(resposta_llm, seletores_validos, chamar_llm_func, pa
             print(f"[DEBUG] Primeiros 5 seletores válidos: {seletores_validos[:5]}")
             if tentativa < max_tentativas - 1:
                 payload_retry = json.loads(json.dumps(payload_original))
-                erro_msg = f"ERRO: O seletor '{seletor}' não está na lista. Responda com um dos SELECTORs fornecidos, copiado verbatim, sem markdown."
+                erro_msg = f"""🚨 ERRO: Seletor inválido!
+
+O seletor '{seletor}' NÃO EXISTE na lista fornecida.
+
+VOCÊ DEVE:
+1. Escolher APENAS um dos seletores listados abaixo
+2. Copiar o seletor EXATAMENTE como está
+3. Responder com JSON válido em uma linha
+
+SELETORES DISPONÍVEIS: {', '.join(seletores_validos[:10])}
+
+RESPONDA AGORA com JSON usando UM destes seletores:"""
                 
                 if isinstance(payload_retry["messages"][-1]["content"], list):
                     payload_retry["messages"][-1]["content"][0]["text"] += f"\n\n{erro_msg}"
@@ -304,7 +340,15 @@ def sanitizar_e_parsear_json(resposta_bruta):
     Remove ```json, normaliza aspas, etc.
     """
     if not resposta_bruta or not resposta_bruta.strip():
+        print("[ERRO] Resposta vazia do LLM")
         return None
+    
+    # Log da resposta original para debug
+    print(f"[DEBUG] Resposta original do LLM: {repr(resposta_bruta[:100])}...")
+    
+    # Detectar uso incorreto de markdown
+    if '```' in resposta_bruta:
+        print("⚠️ [AVISO] LLM usou markdown (```), será removido automaticamente")
     
     # Remover cercas de código e prefixos
     texto = resposta_bruta.strip()
@@ -314,16 +358,20 @@ def sanitizar_e_parsear_json(resposta_bruta):
     
     # Tentar parse normal primeiro
     try:
-        return json.loads(texto)
-    except (json.JSONDecodeError, ValueError):
-        pass
+        resultado = json.loads(texto)
+        print("✅ [SUCESSO] JSON parseado corretamente")
+        return resultado
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"❌ [ERRO] Parse JSON falhou: {e}")
     
     # Tentar corrigir aspas simples → duplas
     try:
         texto_corrigido = texto.replace("'", '"')
-        return json.loads(texto_corrigido)
+        resultado = json.loads(texto_corrigido)
+        print("✅ [SUCESSO] JSON corrigido (aspas simples → duplas)")
+        return resultado
     except (json.JSONDecodeError, ValueError):
-        pass
+        print("❌ [ERRO] Correção de aspas falhou")
     
     # Última tentativa: extrair JSON válido da resposta
     try:
@@ -332,9 +380,11 @@ def sanitizar_e_parsear_json(resposta_bruta):
         if match:
             json_candidato = match.group(0)
             json_candidato = json_candidato.replace("'", '"')
-            return json.loads(json_candidato)
+            resultado = json.loads(json_candidato)
+            print("✅ [SUCESSO] JSON extraído via regex")
+            return resultado
     except (json.JSONDecodeError, ValueError):
-        pass
+        print("❌ [ERRO] Extração por regex falhou")
     
     print(f"[ERRO] Não foi possível parsear JSON: {resposta_bruta[:200]}...")
     return None
@@ -1511,22 +1561,43 @@ def gerar_prompt_autonomo_completo(html, screenshot_path, instrucoes_customizada
 Você é um agente de automação web inteligente. Analise a página e escolha a melhor ação.
 
 INSTRUÇÕES PARA AÇÃO AUTÔNOMA:
-1. Se há FORMULÁRIO detectado: preencha campos em ordem lógica, depois envie
-2. Para INPUT campos: use valores realistas e apropriados para o tipo
-3. Para SENHAS: use senhas seguras (ex: "MinhaSenh@123")
-4. Para CADASTRO: preencha TODOS os campos obrigatórios antes de enviar
-5. 🚫 NUNCA repita ações em campos já preenchidos com SUCESSO (veja histórico)
-6. ✅ Se um campo mostra "Fill OK", passe para o PRÓXIMO campo disponível
-7. PRIORIZE elementos 🔥 sobre 📋
+1. 🎯 EXECUTE **UMA ÚNICA AÇÃO** por resposta
+2. 📋 ESCOLHA **APENAS** seletores da lista fornecida abaixo
+3. ⚠️ Se precisar focar antes de digitar, envie um `{"action":"click","selector":"..."}` primeiro
+4. ⚠️ Na **próxima resposta**, envie o `{"action":"fill","selector":"...","value":"..."}`
+5. Para INPUT campos: use valores realistas e apropriados para o tipo
+6. Para SENHAS: use senhas seguras (ex: "MinhaSenh@123")
+7. Para CADASTRO: preencha TODOS os campos obrigatórios antes de enviar
+8. 🚫 NUNCA repita ações em campos já preenchidos com SUCESSO (veja histórico)
+9. ✅ Se um campo mostra "Fill OK", passe para o PRÓXIMO campo disponível
+10. PRIORIZE elementos 🔥 sobre 📋
 
 FORMATO DE RESPOSTA (JSON apenas):
 - Para preencher: {{"action": "fill", "selector": "SELETOR_EXATO", "value": "valor_adequado"}}
 - Para clicar: {{"action": "click", "selector": "SELETOR_EXATO"}}
 
+🚨 CRÍTICO - FORMATO OBRIGATÓRIO:
+• Responda com **UM ÚNICO JSON** válido na PRIMEIRA linha
+• **ESCOLHA APENAS** entre os seletores listados abaixo
+• NÃO use markdown (```json)
+• NÃO adicione explicações
+• NÃO quebre o JSON em múltiplas linhas
+• Se o JSON não estiver exatamente válido, responda APENAS o JSON corrigido
+• Use EXATAMENTE um dos seletores da lista abaixo
+
+FLUXO CORRETO EXEMPLO:
+1ª resposta: {"action":"click","selector":"[data-testid='auto-area-do-candidato-10']"}
+2ª resposta: {"action":"fill","selector":"#login","value":"11380897700"}
+3ª resposta: {"action":"fill","selector":"#senha","value":"Senha123"}
+4ª resposta: {"action":"click","selector":"[data-testid='auto-entrar-3']"}
+
 {objetivo}{contexto_texto}{historico_texto}{campos_texto}
 
 ELEMENTOS DISPONÍVEIS NA PÁGINA:
 {lista}
+
+LEMBRE-SE: Sua resposta deve ser UM JSON VÁLIDO na primeira linha, exemplo:
+{{"action": "fill", "selector": "#customer\\.firstName", "value": "João"}}
 
 Com base na imagem{'(se disponível) ' if image_content else ''}e elementos listados, escolha a próxima ação mais apropriada:"""
 
@@ -1646,11 +1717,16 @@ AÇÕES POSSÍVEIS IDENTIFICADAS:
 OBJETIVO: {objetivo}
 
 INSTRUÇÕES PARA LOGIN:
-1. PRIMEIRO: Preencha o campo de CPF/email usando fill:seletor:valor
-2. SEGUNDO: Preencha o campo de senha usando fill:seletor:valor  
-3. TERCEIRO: Envie o formulário usando submit:seletor ou press:seletor:Enter
-4. Responda APENAS com JSON VÁLIDO na PRIMEIRA linha, sem markdown, sem ```
-5. Use o SELECTOR EXATO da lista (não modifique)
+1. 🎯 EXECUTE **UMA ÚNICA AÇÃO** por resposta
+2. 📋 ESCOLHA **APENAS** seletores da lista abaixo
+3. PRIMEIRO: Preencha o campo de CPF/email usando fill:seletor:valor
+4. SEGUNDO: Preencha o campo de senha usando fill:seletor:valor  
+5. TERCEIRO: Envie o formulário usando submit:seletor ou press:seletor:Enter
+6. Responda APENAS com JSON VÁLIDO na PRIMEIRA linha, sem markdown, sem ```
+7. Use o SELECTOR EXATO da lista (não modifique)
+
+🚨 FORMATO CRÍTICO: Resposta deve ser UM JSON na primeira linha!
+🚨 **NÃO INVENTE SELETORES** - use apenas os listados abaixo!
 
 AÇÕES DISPONÍVEIS:
 - "fill": Para preencher campos (ex: {{"action": "fill", "selector": "#login", "value": "12345678901"}})
