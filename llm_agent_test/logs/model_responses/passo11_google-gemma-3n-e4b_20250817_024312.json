@@ -1,0 +1,22 @@
+{
+  "passo": 11,
+  "timestamp": "20250817_024312",
+  "modelo": "google/gemma-3n-e4b",
+  "resposta_bruta": "{\"acao\": \"click\", \"seletor\": \"[data-testid='auto-register-14']\", \"valor\": \"N/A\", \"confianca\": 95, \"justificativa\": \"O botão de registro é o próximo elemento interativo disponível após preencher todos os campos.\"}",
+  "acao_parseada": {
+    "action": "click",
+    "selector": "[data-testid='auto-register-14']",
+    "value": "N/A",
+    "confidence": 95,
+    "justification": "O botão de registro é o próximo elemento interativo disponível após preencher todos os campos."
+  },
+  "justificativa": "O botão de registro é o próximo elemento interativo disponível após preencher todos os campos.",
+  "confianca": 95,
+  "metadados": {
+    "acao": "click",
+    "seletor": "[data-testid='auto-register-14']",
+    "valor": "N/A",
+    "tem_markdown": false,
+    "tamanho_resposta": 212
+  }
+}

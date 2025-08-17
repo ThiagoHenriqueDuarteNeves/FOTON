@@ -1,124 +1,308 @@
-2025-04-30 00:51:44,382 [INFO] PASSO 1
-2025-04-30 00:51:46,445 [WARNING] LLM respondeu vazio
-2025-04-30 00:51:46,445 [INFO] PASSO 2
-2025-04-30 00:51:48,492 [WARNING] LLM respondeu vazio
-2025-04-30 00:51:48,493 [INFO] PASSO 3
-2025-04-30 00:51:50,553 [WARNING] LLM respondeu vazio
-2025-04-30 00:51:50,554 [INFO] PASSO 4
-2025-04-30 00:51:52,622 [WARNING] LLM respondeu vazio
-2025-04-30 00:51:52,623 [INFO] PASSO 5
-2025-04-30 00:51:54,696 [WARNING] LLM respondeu vazio
-2025-04-30 00:51:55,250 [INFO] Navegação encerrada.
-2025-04-30 01:00:49,299 [INFO] PASSO 1
-2025-04-30 01:00:51,436 [WARNING] LLM respondeu vazio
-2025-04-30 01:00:51,473 [INFO] PASSO 2
-2025-04-30 01:00:53,534 [WARNING] LLM respondeu vazio
-2025-04-30 01:00:53,535 [INFO] PASSO 3
-2025-04-30 01:00:55,633 [WARNING] LLM respondeu vazio
-2025-04-30 01:00:55,634 [INFO] PASSO 4
-2025-04-30 01:00:57,692 [WARNING] LLM respondeu vazio
-2025-04-30 01:00:57,693 [INFO] PASSO 5
-2025-04-30 01:00:59,788 [WARNING] LLM respondeu vazio
-2025-04-30 01:01:00,456 [INFO] Navegação encerrada.
-2025-04-30 01:01:55,905 [INFO] PASSO 1
-2025-04-30 01:01:57,984 [WARNING] LLM respondeu vazio
-2025-04-30 01:01:57,984 [INFO] PASSO 2
-2025-04-30 01:02:00,073 [WARNING] LLM respondeu vazio
-2025-04-30 01:02:00,073 [INFO] PASSO 3
-2025-04-30 01:02:02,146 [WARNING] LLM respondeu vazio
-2025-04-30 01:02:02,148 [INFO] PASSO 4
-2025-04-30 01:02:04,250 [WARNING] LLM respondeu vazio
-2025-04-30 01:02:04,251 [INFO] PASSO 5
-2025-04-30 01:02:06,354 [WARNING] LLM respondeu vazio
-2025-04-30 01:02:06,931 [INFO] Navegação encerrada.
-2025-04-30 01:09:01,760 [INFO] PASSO 1
-2025-04-30 01:09:03,877 [WARNING] LLM respondeu vazio
-2025-04-30 01:09:03,878 [INFO] PASSO 2
-2025-04-30 01:09:05,981 [WARNING] LLM respondeu vazio
-2025-04-30 01:09:05,981 [INFO] PASSO 3
-2025-04-30 01:09:08,093 [WARNING] LLM respondeu vazio
-2025-04-30 01:09:08,094 [INFO] PASSO 4
-2025-04-30 01:09:10,205 [WARNING] LLM respondeu vazio
-2025-04-30 01:09:10,205 [INFO] PASSO 5
-2025-04-30 01:09:12,298 [WARNING] LLM respondeu vazio
-2025-04-30 01:09:12,838 [INFO] Navegação encerrada.
-2025-04-30 01:31:34,086 [INFO] PASSO 1
-2025-04-30 01:41:57,451 [INFO] PASSO 1
-2025-08-07 22:11:48,756 [INFO] PASSO 1
-2025-08-07 22:11:49,029 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:11:49,040 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:12:57,127 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu" }
-2025-08-07 22:13:02,562 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
-2025-08-07 22:13:09,258 [INFO] Navegação encerrada.
-2025-08-07 22:21:03,991 [INFO] PASSO 1
-2025-08-07 22:21:04,264 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:21:04,273 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:21:12,177 [INFO] Resposta LLM: {"action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "href": "/portal/avaliacoes"}
-2025-08-07 22:21:17,532 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
-2025-08-07 22:21:19,831 [INFO] Navegação encerrada.
-2025-08-07 22:30:21,943 [INFO] PASSO 1
-2025-08-07 22:30:22,197 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:30:22,223 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:30:32,300 [INFO] Resposta LLM: {
-  "action": "click",
-  "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu",
-  "href":
-2025-08-07 22:30:51,340 [ERROR] Falha na validação do seletor
-2025-08-07 22:30:51,563 [INFO] Navegação encerrada.
-2025-08-07 22:31:24,494 [INFO] PASSO 1
-2025-08-07 22:31:24,767 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:31:24,791 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:31:28,690 [WARNING] LLM respondeu vazio
-2025-08-07 22:31:28,962 [INFO] Navegação encerrada.
-2025-08-07 22:32:14,443 [INFO] PASSO 1
-2025-08-07 22:32:14,690 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:32:14,709 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:32:22,995 [INFO] Resposta LLM: { "action": "click", "selector": ".nav-link.text-primary.text-uppercase.fw-bold.btn-menu", "href": "/portal/avaliacoes" }
-2025-08-07 22:32:28,332 [INFO] Clique forçado por JavaScript no seletor: .nav-link.text-primary.text-uppercase.fw-bold.btn-menu
-2025-08-07 22:32:30,599 [INFO] Navegação encerrada.
-2025-08-07 22:33:19,198 [INFO] PASSO 1
-2025-08-07 22:33:19,469 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:33:19,490 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:33:23,089 [WARNING] LLM respondeu vazio
-2025-08-07 22:33:23,363 [INFO] Navegação encerrada.
-2025-08-07 22:35:37,333 [INFO] PASSO 1
-2025-08-07 22:35:37,614 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:35:37,633 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:35:47,336 [INFO] Resposta LLM: {
-  "action": "click",
-  "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]",
-  "href": "/portal/avaliacoes"
-}
-2025-08-07 22:35:52,355 [ERROR] Erro durante execução da ação final: Page.evaluate: SyntaxError: missing ) after argument list
-    at eval (<anonymous>)
-    at UtilityScript.evaluate (<anonymous>:234:30)
-    at UtilityScript.<anonymous> (<anonymous>:1:44)
-2025-08-07 22:35:54,590 [INFO] Navegação encerrada.
-2025-08-07 22:38:46,367 [INFO] PASSO 1
-2025-08-07 22:38:46,657 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:38:46,681 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:38:58,359 [INFO] Resposta LLM: ```json
-{"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]", "href": "/portal/avaliacoes"}
+2025-08-17 02:41:08,116 [INFO] Verificando modelo carregado no LM Studio...
+2025-08-17 02:41:10,611 [INFO] Modelo carregado identificado via resposta: google/gemma-3n-e4b
+2025-08-17 02:41:14,045 [INFO] Nenhum aviso de cookies encontrado para fechar
+2025-08-17 02:41:14,098 [INFO] PASSO 1
+2025-08-17 02:41:16,645 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-17 02:41:16,654 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:41:16,654 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:41:16,739 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024116.json
+2025-08-17 02:41:16,741 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024116.json
+2025-08-17 02:41:21,770 [INFO] Resposta LLM: {"acao": "type", "seletor": "[name='customer.firstName']", "valor": "Teste", "confianca": 95, "justificativa": "Preenchendo o primeiro campo do cadastro com um nome de teste."}
+2025-08-17 02:41:21,773 [INFO] Resposta do modelo salva em: logs/model_responses/passo0_google-gemma-3n-e4b_20250817_024121.json
+2025-08-17 02:41:21,773 [INFO] Executando ação: type no seletor: [name='customer.firstName']
+2025-08-17 02:41:22,213 [INFO] Texto digitado em [name='customer.firstName']: 'Teste'
+2025-08-17 02:41:22,213 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Teste' digitado com sucesso"}
+2025-08-17 02:41:24,218 [INFO] PASSO 2
+2025-08-17 02:41:26,359 [INFO] Screenshot salva em: prints/passo_2.png
+2025-08-17 02:41:26,367 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:41:26,367 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:41:26,456 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024126.json
+2025-08-17 02:41:26,458 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024126.json
+2025-08-17 02:41:31,499 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.lastName']", "valor": "Silva", "confianca": 95, "justificativa": "Preenchendo o campo 'customer.lastName' como próximo na sequência de campos pendentes."}
 ```
-2025-08-07 22:39:03,698 [INFO] Clique forçado por JavaScript no seletor: [data-testid="auto-avaliacoes-e-concursos-2"]
-2025-08-07 22:39:06,784 [INFO] Navegação encerrada.
-2025-08-07 22:59:44,553 [INFO] PASSO 1
-2025-08-07 22:59:44,834 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 22:59:44,857 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 22:59:54,733 [INFO] Resposta LLM: ```json
-{"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]", "href": "/portal/avaliacoes"}
+2025-08-17 02:41:31,502 [INFO] Resposta do modelo salva em: logs/model_responses/passo1_google-gemma-3n-e4b_20250817_024131.json
+2025-08-17 02:41:31,502 [INFO] Executando ação: type no seletor: [name='customer.lastName']
+2025-08-17 02:41:31,928 [INFO] Texto digitado em [name='customer.lastName']: 'Silva'
+2025-08-17 02:41:31,928 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Silva' digitado com sucesso"}
+2025-08-17 02:41:33,933 [INFO] PASSO 3
+2025-08-17 02:41:36,058 [INFO] Screenshot salva em: prints/passo_3.png
+2025-08-17 02:41:36,067 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:41:36,067 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:41:36,158 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024136.json
+2025-08-17 02:41:36,160 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024136.json
+2025-08-17 02:41:41,213 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.address.street']", "valor": "Rua das Flores, 123", "confianca": 95, "justificativa": "Preenchendo o primeiro campo pendente da lista."}
 ```
-2025-08-07 23:00:00,070 [INFO] Clique forçado por JavaScript no seletor: [data-testid="auto-avaliacoes-e-concursos-2"]
-2025-08-07 23:00:02,350 [INFO] Navegação encerrada.
-2025-08-07 23:09:46,690 [INFO] PASSO 1
-2025-08-07 23:09:47,005 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 23:09:47,030 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 23:09:56,293 [INFO] Resposta LLM: {"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]", "href":
-2025-08-07 23:10:15,136 [ERROR] Falha na validação do seletor
-2025-08-07 23:10:15,439 [INFO] Navegação encerrada.
-2025-08-07 23:11:04,925 [INFO] PASSO 1
-2025-08-07 23:11:05,246 [INFO] Screenshot salva em: prints/passo_1.png
-2025-08-07 23:11:05,271 [INFO] Lista de seletores salva em: logs/seletores_passo_1.txt
-2025-08-07 23:11:13,798 [INFO] Resposta LLM: {"action": "click", "selector": "[data-testid=\"auto-avaliacoes-e-concursos-2\"]"}
-2025-08-07 23:11:19,139 [INFO] Clique forçado por JavaScript no seletor: [data-testid="auto-avaliacoes-e-concursos-2"]
-2025-08-07 23:11:21,416 [INFO] Navegação encerrada.
+2025-08-17 02:41:41,216 [INFO] Resposta do modelo salva em: logs/model_responses/passo2_google-gemma-3n-e4b_20250817_024141.json
+2025-08-17 02:41:41,216 [INFO] Executando ação: type no seletor: [name='customer.address.street']
+2025-08-17 02:41:42,580 [INFO] Texto digitado em [name='customer.address.street']: 'Rua das Flores, 123'
+2025-08-17 02:41:42,580 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Rua das Flores, 123' digitado com sucesso"}
+2025-08-17 02:41:44,585 [INFO] PASSO 4
+2025-08-17 02:41:46,724 [INFO] Screenshot salva em: prints/passo_4.png
+2025-08-17 02:41:46,734 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:41:46,734 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:41:46,821 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024146.json
+2025-08-17 02:41:46,824 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024146.json
+2025-08-17 02:41:52,088 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.address.city']", "valor": "Sao Paulo", "confianca": 95, "justificativa": "Preenchendo o campo 'customer.address.city' como próximo passo na sequência."}
+```
+2025-08-17 02:41:52,090 [INFO] Resposta do modelo salva em: logs/model_responses/passo3_google-gemma-3n-e4b_20250817_024152.json
+2025-08-17 02:41:52,091 [INFO] Executando ação: type no seletor: [name='customer.address.city']
+2025-08-17 02:41:52,795 [INFO] Texto digitado em [name='customer.address.city']: 'Sao Paulo'
+2025-08-17 02:41:52,796 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Sao Paulo' digitado com sucesso"}
+2025-08-17 02:41:54,801 [INFO] PASSO 5
+2025-08-17 02:41:56,943 [INFO] Screenshot salva em: prints/passo_5.png
+2025-08-17 02:41:56,951 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:41:56,952 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:41:57,045 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024157.json
+2025-08-17 02:41:57,047 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024157.json
+2025-08-17 02:42:02,067 [INFO] Resposta LLM: {"acao": "type", "seletor": "[name='customer.address.state']", "valor": "SP", "confianca": 95, "justificativa": "Preenchendo o campo state, que é o próximo disponível na sequência de campos pendentes."}
+2025-08-17 02:42:02,068 [INFO] Resposta do modelo salva em: logs/model_responses/passo4_google-gemma-3n-e4b_20250817_024202.json
+2025-08-17 02:42:02,069 [INFO] Executando ação: type no seletor: [name='customer.address.state']
+2025-08-17 02:42:02,294 [INFO] Texto digitado em [name='customer.address.state']: 'SP'
+2025-08-17 02:42:02,295 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'SP' digitado com sucesso"}
+2025-08-17 02:42:04,299 [INFO] PASSO 6
+2025-08-17 02:42:06,425 [INFO] Screenshot salva em: prints/passo_6.png
+2025-08-17 02:42:06,433 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:42:06,434 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:42:06,531 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024206.json
+2025-08-17 02:42:06,533 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024206.json
+2025-08-17 02:42:11,868 [INFO] Resposta LLM: {"acao": "type", "seletor": "[name='customer.address.zipCode']", "valor": "01234-567", "confianca": 95, "justificativa": "Preenchendo o campo de CEP, que é o próximo da lista de campos pendentes."}
+2025-08-17 02:42:11,870 [INFO] Resposta do modelo salva em: logs/model_responses/passo5_google-gemma-3n-e4b_20250817_024211.json
+2025-08-17 02:42:11,871 [INFO] Executando ação: type no seletor: [name='customer.address.zipCode']
+2025-08-17 02:42:12,562 [INFO] Texto digitado em [name='customer.address.zipCode']: '01234-567'
+2025-08-17 02:42:12,562 [INFO] Resultado da ação: {'success': True, 'message': "Texto '01234-567' digitado com sucesso"}
+2025-08-17 02:42:14,567 [INFO] PASSO 7
+2025-08-17 02:42:16,710 [INFO] Screenshot salva em: prints/passo_7.png
+2025-08-17 02:42:16,720 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:42:16,720 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:42:16,820 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024216.json
+2025-08-17 02:42:16,822 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024216.json
+2025-08-17 02:42:22,255 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.phoneNumber']", "valor": "11999999999", "confianca": 95, "justificativa": "Preenchendo o campo de telefone, que é o próximo na lista de campos pendentes."}
+```
+2025-08-17 02:42:22,257 [INFO] Resposta do modelo salva em: logs/model_responses/passo6_google-gemma-3n-e4b_20250817_024222.json
+2025-08-17 02:42:22,258 [INFO] Executando ação: type no seletor: [name='customer.phoneNumber']
+2025-08-17 02:42:23,079 [INFO] Texto digitado em [name='customer.phoneNumber']: '11999999999'
+2025-08-17 02:42:23,080 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11999999999' digitado com sucesso"}
+2025-08-17 02:42:25,085 [INFO] PASSO 8
+2025-08-17 02:42:27,242 [INFO] Screenshot salva em: prints/passo_8.png
+2025-08-17 02:42:27,251 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:42:27,251 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:42:27,358 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024227.json
+2025-08-17 02:42:27,359 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024227.json
+2025-08-17 02:42:32,582 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.ssn']", "valor": "123456789", "confianca": 95, "justificativa": "Preenchendo o campo SSN como solicitado na tarefa."}
+```
+2025-08-17 02:42:32,584 [INFO] Resposta do modelo salva em: logs/model_responses/passo7_google-gemma-3n-e4b_20250817_024232.json
+2025-08-17 02:42:32,585 [INFO] Executando ação: type no seletor: [name='customer.ssn']
+2025-08-17 02:42:33,296 [INFO] Texto digitado em [name='customer.ssn']: '123456789'
+2025-08-17 02:42:33,297 [INFO] Resultado da ação: {'success': True, 'message': "Texto '123456789' digitado com sucesso"}
+2025-08-17 02:42:35,301 [INFO] PASSO 9
+2025-08-17 02:42:37,458 [INFO] Screenshot salva em: prints/passo_9.png
+2025-08-17 02:42:37,467 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:42:37,467 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:42:37,579 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024237.json
+2025-08-17 02:42:37,581 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024237.json
+2025-08-17 02:42:42,684 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.username']", "valor": "joao123", "confianca": 95, "justificativa": "Preenchendo o campo username, que é o próximo disponível na sequência."}
+```
+2025-08-17 02:42:42,686 [INFO] Resposta do modelo salva em: logs/model_responses/passo8_google-gemma-3n-e4b_20250817_024242.json
+2025-08-17 02:42:42,686 [INFO] Executando ação: type no seletor: [name='customer.username']
+2025-08-17 02:42:43,246 [INFO] Texto digitado em [name='customer.username']: 'joao123'
+2025-08-17 02:42:43,247 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'joao123' digitado com sucesso"}
+2025-08-17 02:42:45,252 [INFO] PASSO 10
+2025-08-17 02:42:47,409 [INFO] Screenshot salva em: prints/passo_10.png
+2025-08-17 02:42:47,417 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:42:47,418 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:42:47,536 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024247.json
+2025-08-17 02:42:47,538 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024247.json
+2025-08-17 02:42:52,360 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.password']", "valor": "senha123", "confianca": 95, "justificativa": "Preenchendo o campo de senha com o valor especificado."}
+```
+2025-08-17 02:42:52,362 [INFO] Resposta do modelo salva em: logs/model_responses/passo9_google-gemma-3n-e4b_20250817_024252.json
+2025-08-17 02:42:52,363 [INFO] Executando ação: type no seletor: [name='customer.password']
+2025-08-17 02:42:52,961 [INFO] Texto digitado em [name='customer.password']: 'senha123'
+2025-08-17 02:42:52,961 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'senha123' digitado com sucesso"}
+2025-08-17 02:42:54,966 [INFO] PASSO 11
+2025-08-17 02:42:57,126 [INFO] Screenshot salva em: prints/passo_11.png
+2025-08-17 02:42:57,135 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:42:57,135 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:42:57,251 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024257.json
+2025-08-17 02:42:57,253 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024257.json
+2025-08-17 02:43:02,576 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='repeatedPassword']", "valor": "senha123", "confianca": 95, "justificativa": "Preenchendo campo repeatedPassword com a mesma senha do campo password"}
+```
+2025-08-17 02:43:02,577 [INFO] Resposta do modelo salva em: logs/model_responses/passo10_google-gemma-3n-e4b_20250817_024302.json
+2025-08-17 02:43:02,578 [INFO] Executando ação: type no seletor: [name='repeatedPassword']
+2025-08-17 02:43:03,196 [INFO] Texto digitado em [name='repeatedPassword']: 'senha123'
+2025-08-17 02:43:03,197 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'senha123' digitado com sucesso"}
+2025-08-17 02:43:05,202 [INFO] PASSO 12
+2025-08-17 02:43:07,359 [INFO] Screenshot salva em: prints/passo_12.png
+2025-08-17 02:43:07,370 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:43:07,370 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:43:07,492 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024307.json
+2025-08-17 02:43:07,493 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024307.json
+2025-08-17 02:43:12,956 [INFO] Resposta LLM: {"acao": "click", "seletor": "[data-testid='auto-register-14']", "valor": "N/A", "confianca": 95, "justificativa": "O botão de registro é o próximo elemento interativo disponível após preencher todos os campos."}
+2025-08-17 02:43:12,958 [INFO] Resposta do modelo salva em: logs/model_responses/passo11_google-gemma-3n-e4b_20250817_024312.json
+2025-08-17 02:43:12,958 [INFO] Executando ação: click no seletor: [data-testid='auto-register-14']
+2025-08-17 02:43:13,703 [INFO] Clique executado com sucesso: [data-testid='auto-register-14']
+2025-08-17 02:43:13,704 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-08-17 02:43:16,046 [INFO] Navegação encerrada.
+2025-08-17 02:44:31,663 [INFO] Verificando modelo carregado no LM Studio...
+2025-08-17 02:44:34,108 [INFO] Modelo carregado identificado via resposta: google/gemma-3n-e4b
+2025-08-17 02:44:37,394 [INFO] Nenhum aviso de cookies encontrado para fechar
+2025-08-17 02:44:37,417 [INFO] PASSO 1
+2025-08-17 02:44:39,996 [INFO] Screenshot salva em: prints/passo_1.png
+2025-08-17 02:44:40,004 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:44:40,005 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:44:40,089 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024440.json
+2025-08-17 02:44:40,091 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024440.json
+2025-08-17 02:44:44,840 [INFO] Resposta LLM: {"acao": "type", "seletor": "[name='customer.firstName']", "valor": "Teste", "confianca": 95, "justificativa": "Preenchendo o primeiro campo do cadastro."}
+2025-08-17 02:44:44,843 [INFO] Resposta do modelo salva em: logs/model_responses/passo0_google-gemma-3n-e4b_20250817_024444.json
+2025-08-17 02:44:44,843 [INFO] Executando ação: type no seletor: [name='customer.firstName']
+2025-08-17 02:44:45,280 [INFO] Texto digitado em [name='customer.firstName']: 'Teste'
+2025-08-17 02:44:45,281 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Teste' digitado com sucesso"}
+2025-08-17 02:44:47,285 [INFO] PASSO 2
+2025-08-17 02:44:49,428 [INFO] Screenshot salva em: prints/passo_2.png
+2025-08-17 02:44:49,436 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:44:49,436 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:44:49,529 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024449.json
+2025-08-17 02:44:49,530 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024449.json
+2025-08-17 02:44:54,573 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.lastName']", "valor": "Silva", "confianca": 95, "justificativa": "Preenchendo o campo 'customer.lastName' como próximo na sequência de campos pendentes."}
+```
+2025-08-17 02:44:54,576 [INFO] Resposta do modelo salva em: logs/model_responses/passo1_google-gemma-3n-e4b_20250817_024454.json
+2025-08-17 02:44:54,576 [INFO] Executando ação: type no seletor: [name='customer.lastName']
+2025-08-17 02:44:54,995 [INFO] Texto digitado em [name='customer.lastName']: 'Silva'
+2025-08-17 02:44:54,995 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Silva' digitado com sucesso"}
+2025-08-17 02:44:57,001 [INFO] PASSO 3
+2025-08-17 02:44:59,140 [INFO] Screenshot salva em: prints/passo_3.png
+2025-08-17 02:44:59,149 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:44:59,150 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:44:59,245 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024459.json
+2025-08-17 02:44:59,247 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024459.json
+2025-08-17 02:45:04,389 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.address.street']", "valor": "Rua das Flores, 123", "confianca": 95, "justificativa": "Preenchendo o primeiro campo pendente da lista."}
+```
+2025-08-17 02:45:04,392 [INFO] Resposta do modelo salva em: logs/model_responses/passo2_google-gemma-3n-e4b_20250817_024504.json
+2025-08-17 02:45:04,392 [INFO] Executando ação: type no seletor: [name='customer.address.street']
+2025-08-17 02:45:05,730 [INFO] Texto digitado em [name='customer.address.street']: 'Rua das Flores, 123'
+2025-08-17 02:45:05,730 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Rua das Flores, 123' digitado com sucesso"}
+2025-08-17 02:45:07,735 [INFO] PASSO 4
+2025-08-17 02:45:09,893 [INFO] Screenshot salva em: prints/passo_4.png
+2025-08-17 02:45:09,901 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:45:09,901 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:45:09,998 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024509.json
+2025-08-17 02:45:10,000 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024509.json
+2025-08-17 02:45:15,047 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.address.city']", "valor": "Sao Paulo", "confianca": 95, "justificativa": "Preenchendo o campo 'customer.address.city' como o próximo campo pendente."}
+```
+2025-08-17 02:45:15,049 [INFO] Resposta do modelo salva em: logs/model_responses/passo3_google-gemma-3n-e4b_20250817_024515.json
+2025-08-17 02:45:15,050 [INFO] Executando ação: type no seletor: [name='customer.address.city']
+2025-08-17 02:45:15,744 [INFO] Texto digitado em [name='customer.address.city']: 'Sao Paulo'
+2025-08-17 02:45:15,744 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Sao Paulo' digitado com sucesso"}
+2025-08-17 02:45:17,749 [INFO] PASSO 5
+2025-08-17 02:45:19,877 [INFO] Screenshot salva em: prints/passo_5.png
+2025-08-17 02:45:19,885 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:45:19,886 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:45:19,985 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024519.json
+2025-08-17 02:45:19,987 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024519.json
+2025-08-17 02:45:24,815 [INFO] Resposta LLM: {"acao": "type", "seletor": "[name='customer.address.state']", "valor": "SP", "confianca": 95, "justificativa": "Preenchendo o campo state, que é o próximo disponível na sequência."}
+2025-08-17 02:45:24,818 [INFO] Resposta do modelo salva em: logs/model_responses/passo4_google-gemma-3n-e4b_20250817_024524.json
+2025-08-17 02:45:24,818 [INFO] Executando ação: type no seletor: [name='customer.address.state']
+2025-08-17 02:45:25,046 [INFO] Texto digitado em [name='customer.address.state']: 'SP'
+2025-08-17 02:45:25,046 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'SP' digitado com sucesso"}
+2025-08-17 02:45:27,051 [INFO] PASSO 6
+2025-08-17 02:45:29,178 [INFO] Screenshot salva em: prints/passo_6.png
+2025-08-17 02:45:29,186 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:45:29,186 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:45:29,293 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024529.json
+2025-08-17 02:45:29,295 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024529.json
+2025-08-17 02:45:34,597 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.address.zipCode']", "valor": "01234-567", "confianca": 95, "justificativa": "Preenchendo o campo de CEP, que é o próximo na sequência de campos pendentes."}
+```
+2025-08-17 02:45:34,599 [INFO] Resposta do modelo salva em: logs/model_responses/passo5_google-gemma-3n-e4b_20250817_024534.json
+2025-08-17 02:45:34,600 [INFO] Executando ação: type no seletor: [name='customer.address.zipCode']
+2025-08-17 02:45:35,264 [INFO] Texto digitado em [name='customer.address.zipCode']: '01234-567'
+2025-08-17 02:45:35,264 [INFO] Resultado da ação: {'success': True, 'message': "Texto '01234-567' digitado com sucesso"}
+2025-08-17 02:45:37,269 [INFO] PASSO 7
+2025-08-17 02:45:39,409 [INFO] Screenshot salva em: prints/passo_7.png
+2025-08-17 02:45:39,418 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:45:39,418 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:45:39,528 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024539.json
+2025-08-17 02:45:39,530 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024539.json
+2025-08-17 02:45:45,077 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.phoneNumber']", "valor": "11999999999", "confianca": 95, "justificativa": "Preenchendo o campo de telefone, que é o próximo na lista de campos pendentes."}
+```
+2025-08-17 02:45:45,079 [INFO] Resposta do modelo salva em: logs/model_responses/passo6_google-gemma-3n-e4b_20250817_024545.json
+2025-08-17 02:45:45,080 [INFO] Executando ação: type no seletor: [name='customer.phoneNumber']
+2025-08-17 02:45:45,895 [INFO] Texto digitado em [name='customer.phoneNumber']: '11999999999'
+2025-08-17 02:45:45,895 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11999999999' digitado com sucesso"}
+2025-08-17 02:45:47,901 [INFO] PASSO 8
+2025-08-17 02:45:50,058 [INFO] Screenshot salva em: prints/passo_8.png
+2025-08-17 02:45:50,066 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:45:50,067 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:45:50,180 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024550.json
+2025-08-17 02:45:50,182 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024550.json
+2025-08-17 02:45:55,584 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.ssn']", "valor": "123456789", "confianca": 95, "justificativa": "Preenchendo o campo SSN, que é o próximo campo pendente na sequência."}
+```
+2025-08-17 02:45:55,586 [INFO] Resposta do modelo salva em: logs/model_responses/passo7_google-gemma-3n-e4b_20250817_024555.json
+2025-08-17 02:45:55,586 [INFO] Executando ação: type no seletor: [name='customer.ssn']
+2025-08-17 02:45:56,281 [INFO] Texto digitado em [name='customer.ssn']: '123456789'
+2025-08-17 02:45:56,281 [INFO] Resultado da ação: {'success': True, 'message': "Texto '123456789' digitado com sucesso"}
+2025-08-17 02:45:58,286 [INFO] PASSO 9
+2025-08-17 02:46:00,444 [INFO] Screenshot salva em: prints/passo_9.png
+2025-08-17 02:46:00,452 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:46:00,453 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:46:00,568 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024600.json
+2025-08-17 02:46:00,571 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024600.json
+2025-08-17 02:46:05,702 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.username']", "valor": "joao123", "confianca": 95, "justificativa": "Preenchendo o campo username, pois é o próximo campo pendente na sequência."}
+```
+2025-08-17 02:46:05,704 [INFO] Resposta do modelo salva em: logs/model_responses/passo8_google-gemma-3n-e4b_20250817_024605.json
+2025-08-17 02:46:05,705 [INFO] Executando ação: type no seletor: [name='customer.username']
+2025-08-17 02:46:06,263 [INFO] Texto digitado em [name='customer.username']: 'joao123'
+2025-08-17 02:46:06,264 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'joao123' digitado com sucesso"}
+2025-08-17 02:46:08,269 [INFO] PASSO 10
+2025-08-17 02:46:10,428 [INFO] Screenshot salva em: prints/passo_10.png
+2025-08-17 02:46:10,436 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:46:10,437 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:46:10,561 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024610.json
+2025-08-17 02:46:10,563 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024610.json
+2025-08-17 02:46:15,459 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='customer.password']", "valor": "senha123", "confianca": 95, "justificativa": "Preenchendo o campo de senha com o valor especificado."}
+```
+2025-08-17 02:46:15,462 [INFO] Resposta do modelo salva em: logs/model_responses/passo9_google-gemma-3n-e4b_20250817_024615.json
+2025-08-17 02:46:15,462 [INFO] Executando ação: type no seletor: [name='customer.password']
+2025-08-17 02:46:16,081 [INFO] Texto digitado em [name='customer.password']: 'senha123'
+2025-08-17 02:46:16,081 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'senha123' digitado com sucesso"}
+2025-08-17 02:46:18,086 [INFO] PASSO 11
+2025-08-17 02:46:20,243 [INFO] Screenshot salva em: prints/passo_11.png
+2025-08-17 02:46:20,251 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:46:20,251 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:46:20,377 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024620.json
+2025-08-17 02:46:20,379 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024620.json
+2025-08-17 02:46:25,960 [INFO] Resposta LLM: ```json
+{"acao": "type", "seletor": "[name='repeatedPassword']", "valor": "senha123", "confianca": 95, "justificativa": "Preenchendo campo de confirmação de senha com o mesmo valor da senha principal."}
+```
+2025-08-17 02:46:25,963 [INFO] Resposta do modelo salva em: logs/model_responses/passo10_google-gemma-3n-e4b_20250817_024625.json
+2025-08-17 02:46:25,963 [INFO] Executando ação: type no seletor: [name='repeatedPassword']
+2025-08-17 02:46:26,580 [INFO] Texto digitado em [name='repeatedPassword']: 'senha123'
+2025-08-17 02:46:26,580 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'senha123' digitado com sucesso"}
+2025-08-17 02:46:28,585 [INFO] PASSO 12
+2025-08-17 02:46:30,741 [INFO] Screenshot salva em: prints/passo_12.png
+2025-08-17 02:46:30,750 [INFO] Extraídos 19 elementos interativos
+2025-08-17 02:46:30,750 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-08-17 02:46:30,878 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024630.json
+2025-08-17 02:46:30,880 [INFO] Payload salvo em: logs/payloads/google-gemma-3n-e4b_20250817_024630.json
+2025-08-17 02:46:36,454 [INFO] Resposta LLM: ```json
+{"acao": "click", "seletor": "[data-testid='auto-register-14']", "valor": "N/A", "confianca": 95, "justificativa": "Localizando e clicando no botão de registro para finalizar o cadastro após preencher todos os campos."}
+```
+2025-08-17 02:46:36,457 [INFO] Resposta do modelo salva em: logs/model_responses/passo11_google-gemma-3n-e4b_20250817_024636.json
+2025-08-17 02:46:36,457 [INFO] Executando ação: click no seletor: [data-testid='auto-register-14']
+2025-08-17 02:46:37,179 [INFO] Clique executado com sucesso: [data-testid='auto-register-14']
+2025-08-17 02:46:37,179 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-08-17 02:46:39,544 [INFO] Navegação encerrada.

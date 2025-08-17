@@ -1,0 +1,22 @@
+{
+  "passo": 5,
+  "timestamp": "20250817_024534",
+  "modelo": "google/gemma-3n-e4b",
+  "resposta_bruta": "```json\n{\"acao\": \"type\", \"seletor\": \"[name='customer.address.zipCode']\", \"valor\": \"01234-567\", \"confianca\": 95, \"justificativa\": \"Preenchendo o campo de CEP, que é o próximo na sequência de campos pendentes.\"}\n```",
+  "acao_parseada": {
+    "action": "type",
+    "selector": "[name='customer.address.zipCode']",
+    "value": "01234-567",
+    "confidence": 95,
+    "justification": "Preenchendo o campo de CEP, que é o próximo na sequência de campos pendentes."
+  },
+  "justificativa": "Preenchendo o campo de CEP, que é o próximo na sequência de campos pendentes.",
+  "confianca": 95,
+  "metadados": {
+    "acao": "type",
+    "seletor": "[name='customer.address.zipCode']",
+    "valor": "01234-567",
+    "tem_markdown": true,
+    "tamanho_resposta": 213
+  }
+}

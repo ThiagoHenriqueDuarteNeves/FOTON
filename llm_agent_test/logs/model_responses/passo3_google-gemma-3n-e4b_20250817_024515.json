@@ -1,0 +1,22 @@
+{
+  "passo": 3,
+  "timestamp": "20250817_024515",
+  "modelo": "google/gemma-3n-e4b",
+  "resposta_bruta": "```json\n{\"acao\": \"type\", \"seletor\": \"[name='customer.address.city']\", \"valor\": \"Sao Paulo\", \"confianca\": 95, \"justificativa\": \"Preenchendo o campo 'customer.address.city' como o próximo campo pendente.\"}\n```",
+  "acao_parseada": {
+    "action": "type",
+    "selector": "[name='customer.address.city']",
+    "value": "Sao Paulo",
+    "confidence": 95,
+    "justification": "Preenchendo o campo 'customer.address.city' como o próximo campo pendente."
+  },
+  "justificativa": "Preenchendo o campo 'customer.address.city' como o próximo campo pendente.",
+  "confianca": 95,
+  "metadados": {
+    "acao": "type",
+    "seletor": "[name='customer.address.city']",
+    "valor": "Sao Paulo",
+    "tem_markdown": true,
+    "tamanho_resposta": 207
+  }
+}

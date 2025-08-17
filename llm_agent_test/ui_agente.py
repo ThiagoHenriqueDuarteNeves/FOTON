@@ -12,7 +12,7 @@ import io
 from pathlib import Path
 
 # Importar as funções do main
-from main import agente_explorador, obter_modelos_disponiveis
+from main import navegar_com_agente, obter_modelos_disponiveis, obter_modelo_carregado
 
 # Variável global para acessar a UI
 current_ui_instance = None
@@ -130,12 +130,36 @@ class AgenteUI:
         self.modelo_combo = ttk.Combobox(modelo_frame, textvariable=self.modelo_var, width=25, state="readonly")
         self.modelo_combo.grid(row=0, column=0, sticky="ew", padx=(0, 5))
         
-        # Botão para atualizar lista de modelos
+        # Botão para atualizar lista de modelos (detecta automaticamente o modelo carregado)
         refresh_btn = ttk.Button(modelo_frame, text="🔄", width=3, command=self.atualizar_modelos)
         refresh_btn.grid(row=0, column=1)
         
         # Carregar modelos inicialmente
         self.carregar_modelos()
+        row += 1
+        
+        # Modo de extração
+        modo_label = ttk.Label(controls_frame, text="⚙️ Modo de Extração:")
+        modo_label.grid(row=row, column=0, sticky=tk.W, pady=2)
+        
+        self.modo_extracao_var = tk.StringVar(value="padrao")
+        modo_frame = ttk.Frame(controls_frame)
+        modo_frame.grid(row=row, column=1, columnspan=2, sticky="ew", pady=2)
+        
+        modo_padrao_rb = ttk.Radiobutton(modo_frame, text="Padrão", variable=self.modo_extracao_var, value="padrao")
+        modo_padrao_rb.pack(side=tk.LEFT, padx=(0, 10))
+        
+        modo_otimizado_rb = ttk.Radiobutton(modo_frame, text="Otimizado LLM", variable=self.modo_extracao_var, value="otimizado")
+        modo_otimizado_rb.pack(side=tk.LEFT)
+        
+        row += 1
+        
+        # Checkbox de Teste
+        self.teste_var = tk.BooleanVar(value=False)
+        teste_checkbox = ttk.Checkbutton(controls_frame, text="🧪 Modo Teste (ParaBank - Cadastro Automático)", 
+                                        variable=self.teste_var, command=self.toggle_teste_mode)
+        teste_checkbox.grid(row=row, column=0, columnspan=3, sticky=tk.W, pady=5)
+        
         row += 1
         
         # Instruções
@@ -212,7 +236,7 @@ class AgenteUI:
         sys.stdout = RedirectText(self.console_text, "INFO")
         
     def carregar_modelos(self):
-        """Carrega a lista de modelos disponíveis"""
+        """Carrega a lista de modelos disponíveis e pré-seleciona o modelo carregado"""
         try:
             if hasattr(self, 'status_var'):
                 self.status_var.set("Carregando modelos...")
@@ -220,15 +244,44 @@ class AgenteUI:
             modelos = obter_modelos_disponiveis()
             self.modelo_combo["values"] = modelos
             
-            # Se o modelo atual não estiver na lista, selecionar o primeiro
-            if self.modelo_var.get() not in modelos and modelos:
+            # Tentar identificar o modelo atualmente carregado no LM Studio
+            modelo_carregado = obter_modelo_carregado()
+            modelo_selecionado = None
+            
+            if modelo_carregado:
+                # Verificar se o modelo carregado está na lista
+                if modelo_carregado in modelos:
+                    modelo_selecionado = modelo_carregado
+                    print(f"🎯 Modelo carregado detectado e selecionado: {modelo_carregado}")
+                else:
+                    # Se não estiver na lista exata, tentar encontrar por correspondência parcial
+                    for modelo in modelos:
+                        if modelo_carregado.lower() in modelo.lower() or modelo.lower() in modelo_carregado.lower():
+                            modelo_selecionado = modelo
+                            print(f"🎯 Modelo similar encontrado e selecionado: {modelo} (carregado: {modelo_carregado})")
+                            break
+            
+            # Configurar seleção
+            if modelo_selecionado:
+                self.modelo_var.set(modelo_selecionado)
+                print(f"✅ Modelo pré-selecionado: {modelo_selecionado}")
+                if hasattr(self, 'status_var'):
+                    self.status_var.set(f"🎯 {len(modelos)} modelos - {modelo_selecionado} auto-detectado")
+            elif self.modelo_var.get() not in modelos and modelos:
+                # Se o modelo atual não estiver na lista, selecionar o primeiro
                 self.modelo_var.set(modelos[0])
+                print(f"✅ Primeiro modelo selecionado: {modelos[0]}")
+                if hasattr(self, 'status_var'):
+                    self.status_var.set(f"✅ {len(modelos)} modelos carregados")
             elif not modelos:
                 self.modelo_var.set("qwen/qwen2.5-vl-7b")  # Fallback
+                if hasattr(self, 'status_var'):
+                    self.status_var.set("⚠️ Usando modelo padrão")
+            else:
+                print(f"✅ Modelo atual mantido: {self.modelo_var.get()}")
+                if hasattr(self, 'status_var'):
+                    self.status_var.set(f"✅ {len(modelos)} modelos carregados")
                 
-            print(f"✅ {len(modelos)} modelos carregados")
-            if hasattr(self, 'status_var'):
-                self.status_var.set(f"✅ {len(modelos)} modelos carregados")
         except Exception as e:
             print(f"⚠️ Erro ao carregar modelos: {e}")
             if hasattr(self, 'status_var'):
@@ -238,13 +291,63 @@ class AgenteUI:
             self.modelo_combo["values"] = modelos_fallback
             self.modelo_var.set(modelos_fallback[0])
         
-        # Resetar status após 3 segundos
+        # Resetar status após 5 segundos (aumentado para dar tempo de ler)
         if hasattr(self, 'status_var') and hasattr(self, 'root'):
-            self.root.after(3000, lambda: self.status_var.set("Aguardando..."))
+            self.root.after(5000, lambda: self.status_var.set("Aguardando..."))
     
     def atualizar_modelos(self):
         """Atualiza a lista de modelos"""
         self.carregar_modelos()
+    
+    def toggle_teste_mode(self):
+        """Configura campos automaticamente quando modo teste é ativado/desativado"""
+        if self.teste_var.get():
+            # Ativar modo teste - configurar campos automaticamente
+            print("🧪 Modo Teste ATIVADO - Configurando automaticamente...")
+            
+            # Configurar URL
+            self.url_var.set("https://parabank.parasoft.com/parabank/index.htm")
+            
+            # Configurar passos
+            self.max_passos_var.set("4")
+            
+            # Usar modelo carregado (manter seleção atual)
+            print(f"🤖 Usando modelo: {self.modelo_var.get()}")
+            
+            # Configurar instruções
+            instrucoes_teste = "encontre um meio de fazer cadastro, preencha os dados necessarios com dados fake."
+            self.instructions_text.delete("1.0", tk.END)
+            self.instructions_text.insert("1.0", instrucoes_teste)
+            
+            # Atualizar status
+            if hasattr(self, 'status_var'):
+                self.status_var.set("🧪 Modo Teste: ParaBank configurado automaticamente")
+                self.root.after(3000, lambda: self.status_var.set("Aguardando..."))
+            
+            print("✅ Configuração de teste aplicada:")
+            print(f"   📍 URL: {self.url_var.get()}")
+            print(f"   🔢 Passos: {self.max_passos_var.get()}")
+            print(f"   🎯 Instruções: {instrucoes_teste}")
+            
+        else:
+            # Desativar modo teste - limpar campos para configuração manual
+            print("🧪 Modo Teste DESATIVADO - Campos liberados para configuração manual")
+            
+            # Restaurar URL padrão
+            self.url_var.set("https://concursos.cesgranrio.org.br/portal")
+            
+            # Restaurar passos padrão
+            self.max_passos_var.set("10")
+            
+            # Limpar instruções
+            self.instructions_text.delete("1.0", tk.END)
+            
+            # Atualizar status
+            if hasattr(self, 'status_var'):
+                self.status_var.set("✅ Modo manual ativado - Configure os campos")
+                self.root.after(3000, lambda: self.status_var.set("Aguardando..."))
+            
+            print("✅ Campos restaurados para configuração manual")
         
     def load_url_from_file(self):
         """Carrega URL de um arquivo de texto"""
@@ -272,6 +375,8 @@ class AgenteUI:
                 config = f"""URL: {self.url_var.get()}
 Max Passos: {self.max_passos_var.get()}
 Modelo LLM: {self.modelo_var.get()}
+Modo de Extração: {self.modo_extracao_var.get()}
+Modo Teste: {self.teste_var.get()}
 
 Instruções:
 {self.instructions_text.get("1.0", tk.END)}"""
@@ -317,27 +422,29 @@ Instruções:
         # Pegar instruções customizadas
         instructions = self.instructions_text.get("1.0", tk.END).strip()
         modelo = self.modelo_var.get().strip()
+        modo_extracao = self.modo_extracao_var.get()
         
         # Iniciar thread
         self.current_thread = threading.Thread(
             target=self.run_agent,
-            args=(url, max_passos, instructions, modelo),
+            args=(url, max_passos, instructions, modelo, modo_extracao),
             daemon=True
         )
         self.current_thread.start()
         
-    def run_agent(self, url, max_passos, instructions, modelo):
+    def run_agent(self, url, max_passos, instructions, modelo, modo_extracao):
         """Executa o agente com instruções customizadas e modelo selecionado"""
         try:
             print(f"🚀 Iniciando agente com instruções customizadas...")
             print(f"📍 URL: {url}")
             print(f"🔢 Max passos: {max_passos}")
             print(f"🤖 Modelo LLM: {modelo}")
+            print(f"⚙️ Modo de extração: {modo_extracao}")
             print(f"🎯 Instruções: {instructions}")
             print("-" * 60)
             
             # Chama o agente passando instruções e modelo
-            agente_explorador(url, max_passos, instructions, modelo)
+            navegar_com_agente(url, max_passos, instructions, modelo, modo_extracao)
             print("✅ Navegação concluída com sucesso!")
             
         except Exception as e:

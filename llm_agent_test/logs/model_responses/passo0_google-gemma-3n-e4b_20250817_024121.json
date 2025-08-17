@@ -1,0 +1,22 @@
+{
+  "passo": 0,
+  "timestamp": "20250817_024121",
+  "modelo": "google/gemma-3n-e4b",
+  "resposta_bruta": "{\"acao\": \"type\", \"seletor\": \"[name='customer.firstName']\", \"valor\": \"Teste\", \"confianca\": 95, \"justificativa\": \"Preenchendo o primeiro campo do cadastro com um nome de teste.\"}",
+  "acao_parseada": {
+    "action": "type",
+    "selector": "[name='customer.firstName']",
+    "value": "Teste",
+    "confidence": 95,
+    "justification": "Preenchendo o primeiro campo do cadastro com um nome de teste."
+  },
+  "justificativa": "Preenchendo o primeiro campo do cadastro com um nome de teste.",
+  "confianca": 95,
+  "metadados": {
+    "acao": "type",
+    "seletor": "[name='customer.firstName']",
+    "valor": "Teste",
+    "tem_markdown": false,
+    "tamanho_resposta": 176
+  }
+}

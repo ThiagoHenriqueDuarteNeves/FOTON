@@ -1,0 +1,22 @@
+{
+  "passo": 9,
+  "timestamp": "20250817_024252",
+  "modelo": "google/gemma-3n-e4b",
+  "resposta_bruta": "```json\n{\"acao\": \"type\", \"seletor\": \"[name='customer.password']\", \"valor\": \"senha123\", \"confianca\": 95, \"justificativa\": \"Preenchendo o campo de senha com o valor especificado.\"}\n```",
+  "acao_parseada": {
+    "action": "type",
+    "selector": "[name='customer.password']",
+    "value": "senha123",
+    "confidence": 95,
+    "justification": "Preenchendo o campo de senha com o valor especificado."
+  },
+  "justificativa": "Preenchendo o campo de senha com o valor especificado.",
+  "confianca": 95,
+  "metadados": {
+    "acao": "type",
+    "seletor": "[name='customer.password']",
+    "valor": "senha123",
+    "tem_markdown": true,
+    "tamanho_resposta": 182
+  }
+}

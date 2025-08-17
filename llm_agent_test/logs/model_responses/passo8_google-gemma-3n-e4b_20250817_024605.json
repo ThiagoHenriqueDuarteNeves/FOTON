@@ -1,0 +1,22 @@
+{
+  "passo": 8,
+  "timestamp": "20250817_024605",
+  "modelo": "google/gemma-3n-e4b",
+  "resposta_bruta": "```json\n{\"acao\": \"type\", \"seletor\": \"[name='customer.username']\", \"valor\": \"joao123\", \"confianca\": 95, \"justificativa\": \"Preenchendo o campo username, pois é o próximo campo pendente na sequência.\"}\n```",
+  "acao_parseada": {
+    "action": "type",
+    "selector": "[name='customer.username']",
+    "value": "joao123",
+    "confidence": 95,
+    "justification": "Preenchendo o campo username, pois é o próximo campo pendente na sequência."
+  },
+  "justificativa": "Preenchendo o campo username, pois é o próximo campo pendente na sequência.",
+  "confianca": 95,
+  "metadados": {
+    "acao": "type",
+    "seletor": "[name='customer.username']",
+    "valor": "joao123",
+    "tem_markdown": true,
+    "tamanho_resposta": 202
+  }
+}
