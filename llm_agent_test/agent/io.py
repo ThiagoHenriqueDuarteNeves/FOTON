@@ -59,11 +59,15 @@ def salvar_screenshot(pagina, passo):
     Fluxo: Chamado a cada passo do agente para documentar progresso
     """
     try:
-        # Criar diretório de prints se não existir
-        criar_diretorio_se_necessario("prints")
+        # Obter diretório do projeto (dois níveis acima deste arquivo)
+        project_dir = Path(__file__).parent.parent
+        prints_dir = project_dir / "prints"
         
-        # Gerar nome do arquivo
-        screenshot_path = f"prints/passo_{passo}.png"
+        # Criar diretório de prints se não existir
+        criar_diretorio_se_necessario(str(prints_dir))
+        
+        # Gerar nome do arquivo com caminho absoluto
+        screenshot_path = str(prints_dir / f"passo_{passo}.png")
         
         # Salvar screenshot
         pagina.screenshot(path=screenshot_path, full_page=True)
@@ -90,8 +94,12 @@ def salvar_payload_log(payload, modelo):
     Fluxo: Chamado antes de cada requisição ao LLM para auditoria/debug
     """
     try:
+        # Obter diretório do projeto (dois níveis acima deste arquivo)
+        project_dir = Path(__file__).parent.parent
+        payloads_dir = project_dir / "logs" / "payloads"
+        
         # Criar diretório de logs de payloads
-        criar_diretorio_se_necessario("logs/payloads")
+        criar_diretorio_se_necessario(str(payloads_dir))
         
         # Gerar timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -101,7 +109,7 @@ def salvar_payload_log(payload, modelo):
         
         # Gerar nome do arquivo: modelo_YYYYMMDD_HHMMSS.json
         nome_arquivo = f"{modelo_limpo}_{timestamp}.json"
-        caminho_arquivo = f"logs/payloads/{nome_arquivo}"
+        caminho_arquivo = str(payloads_dir / nome_arquivo)
         
         # Salvar payload em JSON formatado
         with open(caminho_arquivo, 'w', encoding='utf-8') as f:
@@ -133,8 +141,12 @@ def salvar_resposta_modelo(resposta_llm, acao_parseada, passo, modelo):
     Fluxo: Chamado após cada resposta do LLM para análise detalhada
     """
     try:
+        # Usar caminho absoluto baseado na localização do script
+        project_root = Path(__file__).parent.parent
+        model_responses_dir = project_root / "logs" / "model_responses"
+        
         # Criar diretório de respostas se não existir
-        criar_diretorio_se_necessario("logs/model_responses")
+        criar_diretorio_se_necessario(str(model_responses_dir))
         
         # Gerar timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -144,7 +156,7 @@ def salvar_resposta_modelo(resposta_llm, acao_parseada, passo, modelo):
         
         # Gerar nome do arquivo
         nome_arquivo = f"passo{passo}_{modelo_limpo}_{timestamp}.json"
-        caminho_arquivo = f"logs/model_responses/{nome_arquivo}"
+        caminho_arquivo = model_responses_dir / nome_arquivo
         
         # Preparar dados para salvamento
         dados_resposta = {
@@ -165,7 +177,7 @@ def salvar_resposta_modelo(resposta_llm, acao_parseada, passo, modelo):
         }
         
         # Salvar em JSON formatado
-        with open(caminho_arquivo, 'w', encoding='utf-8') as f:
+        with open(str(caminho_arquivo), 'w', encoding='utf-8') as f:
             json.dump(dados_resposta, f, ensure_ascii=False, indent=2)
         
         print(f"📋 Resposta do modelo salva em: {caminho_arquivo}")
@@ -173,7 +185,7 @@ def salvar_resposta_modelo(resposta_llm, acao_parseada, passo, modelo):
         print(f"🎯 Confiança: {dados_resposta['confianca']}")
         
         logging.info(f"Resposta do modelo salva em: {caminho_arquivo}")
-        return caminho_arquivo
+        return str(caminho_arquivo)
         
     except Exception as e:
         print(f"⚠️ Erro ao salvar resposta do modelo: {e}")
@@ -195,14 +207,18 @@ def salvar_lista_seletores(elementos, passo):
     Fluxo: Chamado após extração de elementos para auditoria
     """
     try:
+        # Usar caminho absoluto baseado na localização do script
+        project_root = Path(__file__).parent.parent
+        logs_dir = project_root / "logs"
+        
         # Criar diretório de logs se não existir
-        criar_diretorio_se_necessario("logs")
+        criar_diretorio_se_necessario(str(logs_dir))
         
         # Gerar nome do arquivo
-        arquivo_path = f"logs/seletores_passo_{passo}.txt"
+        arquivo_path = logs_dir / f"seletores_passo_{passo}.txt"
         
         # Salvar lista de seletores
-        with open(arquivo_path, 'w', encoding='utf-8') as f:
+        with open(str(arquivo_path), 'w', encoding='utf-8') as f:
             f.write(f"SELETORES EXTRAÍDOS - PASSO {passo}\n")
             f.write("=" * 50 + "\n\n")
             
@@ -210,7 +226,7 @@ def salvar_lista_seletores(elementos, passo):
                 f.write(f"{i}. {elemento}\n")
         
         logging.info(f"Lista de seletores salva em: {arquivo_path}")
-        return arquivo_path
+        return str(arquivo_path)
         
     except Exception as e:
         logging.error(f"Erro ao salvar lista de seletores: {e}")

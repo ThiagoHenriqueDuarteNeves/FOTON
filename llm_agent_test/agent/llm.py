@@ -338,7 +338,16 @@ def chamar_llm_openai_style(payload):
         if not resposta.ok:
             # Logar o corpo para entender o erro
             try:
-                print(f"❌ ERRO - Response text: {resposta.text}")
+                error_text = resposta.text
+                print(f"❌ ERRO - Response text: {error_text}")
+                
+                # Verificar se é erro de modelo multimodal e tentar fallback
+                if "base64" in error_text or "image" in error_text or "url" in error_text:
+                    print("🔄 [FALLBACK] Erro multimodal detectado - tentando conversão para texto puro...")
+                    payload_texto = _converter_payload_para_texto_puro(payload)
+                    if payload_texto:
+                        return chamar_llm_openai_style(payload_texto)
+                        
             except Exception:
                 pass
             resposta.raise_for_status()
@@ -359,3 +368,47 @@ def chamar_llm_openai_style(payload):
         print(f"[ERRO] Falha na chamada LLM: {e}")
         print("[DICA] Verifique se o modelo suporta o formato enviado (multimodal vs texto) e se max_tokens não está alto.")
         return ""
+
+
+def _converter_payload_para_texto_puro(payload):
+    """
+    Converte payload multimodal para texto puro (fallback).
+    
+    Args:
+        payload (dict): Payload original (possivelmente multimodal)
+        
+    Returns:
+        dict: Payload convertido para texto puro ou None se não for possível
+    """
+    try:
+        payload_texto = payload.copy()
+        
+        if "messages" not in payload_texto:
+            return None
+            
+        messages_convertidas = []
+        
+        for message in payload_texto["messages"]:
+            message_convertida = message.copy()
+            
+            # Se o conteúdo é uma lista (multimodal), extrair apenas o texto
+            if isinstance(message.get("content"), list):
+                texto_extraido = ""
+                for item in message["content"]:
+                    if item.get("type") == "text":
+                        texto_extraido += item.get("text", "") + "\n"
+                    elif item.get("type") == "image_url":
+                        texto_extraido += "[IMAGEM_REMOVIDA_PARA_COMPATIBILIDADE]\n"
+                
+                message_convertida["content"] = texto_extraido.strip()
+            
+            messages_convertidas.append(message_convertida)
+        
+        payload_texto["messages"] = messages_convertidas
+        
+        print("✅ [FALLBACK] Payload convertido para texto puro com sucesso")
+        return payload_texto
+        
+    except Exception as e:
+        print(f"❌ [FALLBACK] Erro ao converter payload: {e}")
+        return None

@@ -138,6 +138,49 @@ class AgenteUI:
         self.carregar_modelos()
         row += 1
         
+        # Configuração de LLM Provider
+        llm_config_frame = ttk.LabelFrame(controls_frame, text="🔧 Configuração do LLM", padding="5")
+        llm_config_frame.grid(row=row, column=0, columnspan=3, sticky="ew", pady=5)
+        llm_config_frame.columnconfigure(1, weight=1)
+        
+        # Tipo de Provider
+        provider_label = ttk.Label(llm_config_frame, text="Tipo:")
+        provider_label.grid(row=0, column=0, sticky=tk.W, pady=2, padx=(0, 5))
+        
+        self.provider_var = tk.StringVar(value="lmstudio_local")
+        provider_combo = ttk.Combobox(llm_config_frame, textvariable=self.provider_var, 
+                                     values=["lmstudio_local", "ollama_local", "api_externa"], 
+                                     state="readonly", width=15)
+        provider_combo.grid(row=0, column=1, sticky=tk.W, pady=2)
+        provider_combo.bind('<<ComboboxSelected>>', self.on_provider_change)
+        
+        # URL/Endpoint
+        url_llm_label = ttk.Label(llm_config_frame, text="URL:")
+        url_llm_label.grid(row=1, column=0, sticky=tk.W, pady=2, padx=(0, 5))
+        
+        self.url_llm_var = tk.StringVar(value="http://localhost:1234")
+        self.url_llm_entry = ttk.Entry(llm_config_frame, textvariable=self.url_llm_var)
+        self.url_llm_entry.grid(row=1, column=1, columnspan=2, sticky="ew", pady=2)
+        
+        # API Key (inicialmente oculta)
+        self.api_key_label = ttk.Label(llm_config_frame, text="API Key:")
+        self.api_key_var = tk.StringVar()
+        self.api_key_entry = ttk.Entry(llm_config_frame, textvariable=self.api_key_var, show="*")
+        
+        # Status de conexão
+        self.connection_status_label = ttk.Label(llm_config_frame, text="⚪ Não testado", 
+                                                foreground="gray")
+        self.connection_status_label.grid(row=3, column=0, columnspan=2, sticky=tk.W, pady=2)
+        
+        test_connection_btn = ttk.Button(llm_config_frame, text="🧪 Testar Conexão", 
+                                       command=self.testar_conexao_llm, width=15)
+        test_connection_btn.grid(row=3, column=2, sticky=tk.E, pady=2)
+        
+        # Inicializar configuração padrão
+        self.on_provider_change()
+        
+        row += 1
+        
         # Modo de extração
         modo_label = ttk.Label(controls_frame, text="⚙️ Modo de Extração:")
         modo_label.grid(row=row, column=0, sticky=tk.W, pady=2)
@@ -348,6 +391,103 @@ class AgenteUI:
                 self.root.after(3000, lambda: self.status_var.set("Aguardando..."))
             
             print("✅ Campos restaurados para configuração manual")
+    
+    def on_provider_change(self, event=None):
+        """Callback quando o tipo de provider LLM é alterado"""
+        provider_type = self.provider_var.get()
+        
+        # Configurar URL padrão baseada no provider
+        if provider_type == "lmstudio_local":
+            self.url_llm_var.set("http://localhost:1234")
+            self.hide_api_key_field()
+            print("🔧 LM Studio configurado (localhost:1234)")
+            
+        elif provider_type == "ollama_local":
+            self.url_llm_var.set("http://localhost:11434")
+            self.hide_api_key_field()
+            print("🔧 Ollama configurado (localhost:11434)")
+            
+        elif provider_type == "api_externa":
+            self.url_llm_var.set("https://api.openai.com/v1")
+            self.show_api_key_field()
+            print("🔧 API Externa configurada - Insira sua API Key")
+        
+        # Resetar status de conexão
+        self.connection_status_label.config(text="⚪ Não testado", foreground="gray")
+    
+    def show_api_key_field(self):
+        """Mostra o campo de API Key"""
+        self.api_key_label.grid(row=2, column=0, sticky=tk.W, pady=2, padx=(0, 5))
+        self.api_key_entry.grid(row=2, column=1, columnspan=2, sticky="ew", pady=2)
+    
+    def hide_api_key_field(self):
+        """Oculta o campo de API Key"""
+        self.api_key_label.grid_remove()
+        self.api_key_entry.grid_remove()
+        self.api_key_var.set("")  # Limpar o valor
+    
+    def testar_conexao_llm(self):
+        """Testa a conexão com o LLM configurado"""
+        provider_type = self.provider_var.get()
+        url = self.url_llm_var.get().strip()
+        api_key = self.api_key_var.get().strip()
+        
+        if not url:
+            messagebox.showwarning("Aviso", "Por favor, insira uma URL válida")
+            return
+        
+        if provider_type == "api_externa" and not api_key:
+            messagebox.showwarning("Aviso", "API Key é obrigatória para APIs externas")
+            return
+        
+        # Atualizar status para "testando"
+        self.connection_status_label.config(text="🟡 Testando conexão...", foreground="orange")
+        self.root.update()
+        
+        try:
+            import requests
+            
+            if provider_type in ["lmstudio_local", "ollama_local"]:
+                # Testar conexão local
+                if provider_type == "lmstudio_local":
+                    test_url = f"{url}/v1/models"
+                else:  # ollama
+                    test_url = f"{url}/api/tags"
+                
+                response = requests.get(test_url, timeout=5)
+                
+                if response.status_code == 200:
+                    self.connection_status_label.config(text="🟢 Conexão OK", foreground="green")
+                    print(f"✅ Conexão com {provider_type} estabelecida: {url}")
+                else:
+                    self.connection_status_label.config(text="🔴 Erro de conexão", foreground="red")
+                    print(f"❌ Erro de conexão: Status {response.status_code}")
+                    
+            elif provider_type == "api_externa":
+                # Testar API externa (exemplo com OpenAI)
+                headers = {"Authorization": f"Bearer {api_key}"}
+                test_url = f"{url}/models"
+                
+                response = requests.get(test_url, headers=headers, timeout=10)
+                
+                if response.status_code == 200:
+                    self.connection_status_label.config(text="🟢 API OK", foreground="green")
+                    print(f"✅ Conexão com API externa estabelecida: {url}")
+                else:
+                    self.connection_status_label.config(text="🔴 API Key inválida", foreground="red")
+                    print(f"❌ Erro na API: Status {response.status_code}")
+                    
+        except requests.exceptions.Timeout:
+            self.connection_status_label.config(text="🔴 Timeout", foreground="red")
+            print("❌ Timeout na conexão")
+            
+        except requests.exceptions.ConnectionError:
+            self.connection_status_label.config(text="🔴 Sem conexão", foreground="red")
+            print("❌ Não foi possível conectar ao servidor")
+            
+        except Exception as e:
+            self.connection_status_label.config(text="🔴 Erro", foreground="red")
+            print(f"❌ Erro na conexão: {e}")
         
     def load_url_from_file(self):
         """Carrega URL de um arquivo de texto"""
@@ -377,6 +517,11 @@ Max Passos: {self.max_passos_var.get()}
 Modelo LLM: {self.modelo_var.get()}
 Modo de Extração: {self.modo_extracao_var.get()}
 Modo Teste: {self.teste_var.get()}
+
+Configuração LLM:
+Provider: {self.provider_var.get()}
+URL LLM: {self.url_llm_var.get()}
+API Key: {'***' if self.api_key_var.get() else 'N/A'}
 
 Instruções:
 {self.instructions_text.get("1.0", tk.END)}"""
@@ -424,15 +569,22 @@ Instruções:
         modelo = self.modelo_var.get().strip()
         modo_extracao = self.modo_extracao_var.get()
         
+        # Pegar configurações de LLM
+        llm_config = {
+            'provider': self.provider_var.get(),
+            'url': self.url_llm_var.get().strip(),
+            'api_key': self.api_key_var.get().strip()
+        }
+        
         # Iniciar thread
         self.current_thread = threading.Thread(
             target=self.run_agent,
-            args=(url, max_passos, instructions, modelo, modo_extracao),
+            args=(url, max_passos, instructions, modelo, modo_extracao, llm_config),
             daemon=True
         )
         self.current_thread.start()
         
-    def run_agent(self, url, max_passos, instructions, modelo, modo_extracao):
+    def run_agent(self, url, max_passos, instructions, modelo, modo_extracao, llm_config):
         """Executa o agente com instruções customizadas e modelo selecionado"""
         try:
             print(f"🚀 Iniciando agente com instruções customizadas...")
@@ -440,11 +592,15 @@ Instruções:
             print(f"🔢 Max passos: {max_passos}")
             print(f"🤖 Modelo LLM: {modelo}")
             print(f"⚙️ Modo de extração: {modo_extracao}")
-            print(f"🎯 Instruções: {instructions}")
+            print(f"🔧 Provider LLM: {llm_config['provider']}")
+            print(f"� URL LLM: {llm_config['url']}")
+            if llm_config['api_key']:
+                print(f"🔑 API Key: ***{'*' * (len(llm_config['api_key']) - 3)}")
+            print(f"�🎯 Instruções: {instructions}")
             print("-" * 60)
             
-            # Chama o agente passando instruções e modelo
-            navegar_com_agente(url, max_passos, instructions, modelo, modo_extracao)
+            # Chama o agente passando instruções, modelo e configurações LLM
+            navegar_com_agente(url, max_passos, instructions, modelo, modo_extracao, llm_config)
             print("✅ Navegação concluída com sucesso!")
             
         except Exception as e:

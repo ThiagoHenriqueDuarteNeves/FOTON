@@ -144,10 +144,21 @@ def gerar_prompt_em_chat_format(html: str, screenshot_path: Optional[str] = None
         
         # Adicionar screenshot se disponivel e modelo suportar
         if screenshot_path and _modelo_suporta_imagem(modelo):
-            messages[-1]["content"] = [
-                {"type": "text", "text": f"{contexto_pagina}\n\n{instrucoes_finais}"},
-                {"type": "image_url", "image_url": {"url": f"file://{screenshot_path}"}}
-            ]
+            try:
+                import base64
+                import os
+                
+                if os.path.exists(screenshot_path):
+                    with open(screenshot_path, "rb") as img_file:
+                        image_base64 = base64.b64encode(img_file.read()).decode('utf-8')
+                        messages[-1]["content"] = [
+                            {"type": "text", "text": f"{contexto_pagina}\n\n{instrucoes_finais}"},
+                            {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{image_base64}"}}
+                        ]
+            except Exception as e:
+                logging.warning(f"Erro ao processar imagem para modelo multimodal: {e}")
+                # Fallback para só texto se houver erro com a imagem
+                messages[-1]["content"] = f"{contexto_pagina}\n\n{instrucoes_finais}"
         
         payload = {
             "model": modelo,
@@ -406,8 +417,22 @@ DADOS FAKE PARA USAR (com acao "type"):
 
 def _modelo_suporta_imagem(modelo: str) -> bool:
     """Verifica se o modelo suporta imagens"""
-    modelos_com_visao = ["qwen2.5-vl", "llava", "gpt-4-vision", "gemini-pro-vision", "claude-3"]
-    return any(visao in modelo.lower() for visao in modelos_com_visao)
+    if not modelo:
+        return False
+        
+    modelo_lower = modelo.lower()
+    
+    # Lista mais completa e precisa de modelos com visão
+    modelos_com_visao = [
+        "qwen2.5-vl", "qwen-vl", "qwen2-vl",  # Familia Qwen VL
+        "llava", "llava-1.5", "llava-1.6",   # Familia LLaVA
+        "gpt-4-vision", "gpt-4v", "gpt-4-turbo-vision",  # OpenAI Vision
+        "gemini-pro-vision", "gemini-1.5-pro", "gemini-1.5-flash",  # Google Vision
+        "claude-3-opus", "claude-3-sonnet", "claude-3-haiku",  # Anthropic Vision
+        "minicpm-v", "internvl", "idefics", "kosmos", "cogvlm", "blip"  # Outros
+    ]
+    
+    return any(visao in modelo_lower for visao in modelos_com_visao)
 
 
 def _gerar_prompt_basico(html: str, instrucoes: Optional[str], modelo: str, historico_acoes: Optional[List] = None) -> Tuple[Dict, List[str]]:

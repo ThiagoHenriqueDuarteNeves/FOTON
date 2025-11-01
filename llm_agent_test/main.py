@@ -14,8 +14,11 @@ from agent.prompt_generator import gerar_prompt_em_chat_format, extrair_elemento
 from agent.testid_injector import injetar_data_testids  # Novo injetor
 import requests
 
-# Configurar logging usando módulo de I/O
-configurar_logging('navegacao.log')
+# Configurar logging usando módulo de I/O - usar caminho absoluto
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+log_path = os.path.join(script_dir, 'navegacao.log')
+configurar_logging(log_path)
 
 def capturar_valores_atuais(pagina):
     """Captura valores atuais de todos os campos de formulário na página"""
@@ -123,7 +126,7 @@ def normalizar_acao_llm(acao_data):
     return acao_normalizada
 
 
-def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=None, modo_extracao="padrao"):
+def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=None, modo_extracao="padrao", llm_config=None):
     """
     Agente explorador que navega automaticamente em páginas web usando IA.
     
@@ -133,7 +136,25 @@ def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=N
         instrucoes_customizadas (str): Instruções específicas do usuário
         modelo (str): Modelo LLM a usar (se None, detecta automaticamente)
         modo_extracao (str): Modo de extração ("padrao", "autonomo", "completo")
+        llm_config (dict): Configurações do LLM (provider, url, api_key)
     """
+    # Configurar LLM com base nas configurações fornecidas
+    if llm_config:
+        provider_type = llm_config.get('provider', 'lmstudio_local')
+        llm_url = llm_config.get('url', 'http://localhost:1234')
+        api_key = llm_config.get('api_key', '')
+        
+        print(f"🔧 Configurando LLM Provider: {provider_type}")
+        print(f"🌐 URL: {llm_url}")
+        if api_key:
+            print(f"🔑 API Key: ***{'*' * (len(api_key) - 3)}")
+        
+        # Atualizar configurações globais do LLM (se necessário)
+        # Isso permitirá que as funções de LLM usem as configurações corretas
+        import agent.llm as llm_module
+        if hasattr(llm_module, 'configurar_provider'):
+            llm_module.configurar_provider(provider_type, llm_url, api_key)
+    
     # Detectar modelo automaticamente se não especificado
     if modelo is None:
         modelo_detectado = obter_modelo_carregado()

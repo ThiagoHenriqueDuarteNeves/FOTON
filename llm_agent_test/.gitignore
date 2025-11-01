@@ -1,0 +1,36 @@
+# Logs e evidências de execução
+logs/
+prints/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Ambiente virtual
+venv/
+env/
+ENV/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+
+# Arquivos de teste
+test_*.py
+teste_*.py
+*_test.py
+*_teste.py
