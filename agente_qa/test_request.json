@@ -1,0 +1,7 @@
+{
+  "url": "https://example.com",
+  "max_passos": 2,
+  "instrucoes": "Explore a página",
+  "modelo": "openai/gpt-oss-20b",
+  "modo_extracao": "completo"
+}
