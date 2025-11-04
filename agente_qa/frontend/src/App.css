@@ -1,0 +1,31 @@
+﻿* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #f5f5f5; }
+.app { display: flex; flex-direction: column; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
+.header h1 { font-size: 2rem; margin-bottom: 5px; }
+.header p { font-size: 1rem; opacity: 0.9; }
+.main-content { display: flex; flex: 1; padding: 20px; gap: 20px; }
+.config-panel, .logs-panel { flex: 1; background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+.advanced-options { margin-bottom: 15px; border: 1px solid #e0e0e0; border-radius: 4px; padding: 10px; }
+.advanced-options summary { cursor: pointer; font-weight: bold; user-select: none; padding: 5px; color: #667eea; }
+.advanced-options summary:hover { color: #5568d3; }
+.button-group { display: flex; gap: 10px; }
+.btn { padding: 12px 24px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
+.btn-primary { background: #667eea; color: white; }
+.btn-primary:hover { background: #5568d3; }
+.btn-danger { background: #e74c3c; color: white; }
+.btn-danger:hover { background: #c0392b; }
+.btn-secondary { background: #95a5a6; color: white; }
+.btn-secondary:hover { background: #7f8c8d; }
+.logs-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.logs-content { background: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 4px; height: 400px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 13px; }
+.log-entry { margin-bottom: 5px; }
+.log-output { color: #50fa7b; }
+.log-error { color: #ff5555; }
+.log-info { color: #8be9fd; }
+.log-success { color: #50fa7b; }
+.log-warning { color: #f1fa8c; }
+.status-indicator { color: #50fa7b; font-size: 14px; }

@@ -1,3 +1,15 @@
+import sys
+import os
+
+# Configurar encoding UTF-8 para stdout/stderr no Windows
+if sys.platform == 'win32':
+    # Forçar encoding UTF-8 sem usar TextIOWrapper que pode causar problemas
+    os.environ['PYTHONIOENCODING'] = 'utf-8'
+    # Reconfigurar stdout/stderr para UTF-8 de forma mais segura
+    if hasattr(sys.stdout, 'reconfigure'):
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 import time
 import logging
 import json
