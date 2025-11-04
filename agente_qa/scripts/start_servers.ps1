@@ -2,12 +2,12 @@ param(
     [switch]$Watch = $false
 )
 
-if (-not (Test-Path "$PSScriptRoot/../.venv/Scripts/python.exe")) {
+if (-not (Test-Path "$PSScriptRoot/../../.venv/Scripts/python.exe")) {
     Write-Host "[ERRO] .venv não encontrado." -ForegroundColor Red
     exit 1
 }
 
-$python = "$PSScriptRoot/../.venv/Scripts/python.exe"
+$python = "$PSScriptRoot/../../.venv/Scripts/python.exe"
 $projectRoot = "$PSScriptRoot/.."
 
 Write-Host "[INFO] Usando Python: $python" -ForegroundColor Cyan
