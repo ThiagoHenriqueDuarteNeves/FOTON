@@ -8,8 +8,10 @@ let mainWindow = null;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
+    width: 1400,
+    height: 900,
+    minWidth: 1000,
+    minHeight: 700,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -98,6 +100,76 @@ ipcMain.handle('stop-python-script', async () => {
     return { success: true };
   }
   return { success: false, error: 'No process running' };
+});
+
+ipcMain.handle('fetch-models', async (event, provider, llmUrl) => {
+  try {
+    let url;
+    
+    // Determinar endpoint baseado no provider
+    if (provider === 'lmstudio_local') {
+      url = `${llmUrl}/v1/models`;
+    } else if (provider === 'ollama_local') {
+      url = `${llmUrl}/api/tags`;
+    } else if (provider === 'api_externa') {
+      url = `${llmUrl}/models`;
+    } else {
+      return { success: false, error: 'Provider desconhecido' };
+    }
+    
+    console.log(`[Fetch Models] Buscando modelos de: ${url}`);
+    
+    const https = require('https');
+    const http = require('http');
+    const urlModule = require('url');
+    const parsedUrl = urlModule.parse(url);
+    const protocol = parsedUrl.protocol === 'https:' ? https : http;
+    
+    return new Promise((resolve) => {
+      const req = protocol.get(url, (res) => {
+        let data = '';
+        
+        res.on('data', (chunk) => {
+          data += chunk;
+        });
+        
+        res.on('end', () => {
+          try {
+            const jsonData = JSON.parse(data);
+            let models = [];
+            
+            // Parsear resposta baseado no provider
+            if (provider === 'lmstudio_local' || provider === 'api_externa') {
+              // Formato OpenAI: { data: [{ id: "model-name" }] }
+              models = jsonData.data ? jsonData.data.map(m => m.id) : [];
+            } else if (provider === 'ollama_local') {
+              // Formato Ollama: { models: [{ name: "model-name" }] }
+              models = jsonData.models ? jsonData.models.map(m => m.name) : [];
+            }
+            
+            console.log(`[Fetch Models] Modelos encontrados: ${models.length}`);
+            resolve({ success: true, models });
+          } catch (parseError) {
+            console.error('[Fetch Models] Erro ao parsear JSON:', parseError);
+            resolve({ success: false, error: 'Erro ao parsear resposta', details: parseError.message });
+          }
+        });
+      });
+      
+      req.on('error', (error) => {
+        console.error('[Fetch Models] Erro na requisição:', error);
+        resolve({ success: false, error: 'Erro ao conectar com servidor', details: error.message });
+      });
+      
+      req.setTimeout(5000, () => {
+        req.destroy();
+        resolve({ success: false, error: 'Timeout ao buscar modelos' });
+      });
+    });
+  } catch (error) {
+    console.error('[Fetch Models] Erro geral:', error);
+    return { success: false, error: error.message };
+  }
 });
 
 app.whenReady().then(createWindow);
