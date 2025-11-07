@@ -6,6 +6,7 @@ Isso torna os seletores mais estáveis e determinísticos.
 def injetar_data_testids(pagina):
     """
     Injeta data-testids únicos em elementos interativos da página.
+    PULA elementos invisíveis para evitar que o modelo tente clicar neles.
     """
     script = """
     () => {
@@ -15,8 +16,19 @@ def injetar_data_testids(pagina):
         const elements = document.querySelectorAll('button, a, input[type="button"], input[type="submit"], [onclick], [role="button"]');
         
         elements.forEach(el => {
-            // Só adicionar se não tem data-testid
-            if (!el.hasAttribute('data-testid')) {
+            // VERIFICAR SE O ELEMENTO ESTÁ VISÍVEL
+            const style = window.getComputedStyle(el);
+            const isVisible = (
+                el.offsetParent !== null &&
+                style.display !== 'none' &&
+                style.visibility !== 'hidden' &&
+                style.opacity !== '0' &&
+                el.offsetWidth > 0 &&
+                el.offsetHeight > 0
+            );
+            
+            // Só adicionar testid se não tem E se está visível
+            if (!el.hasAttribute('data-testid') && isVisible) {
                 let testid = '';
                 
                 // Gerar testid baseado no texto ou contexto

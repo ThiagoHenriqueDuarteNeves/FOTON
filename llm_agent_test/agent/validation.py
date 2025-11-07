@@ -81,32 +81,27 @@ def validar_resposta_llm(resposta: str) -> Tuple[bool, Optional[Dict[str, Any]],
         if not resposta or not resposta.strip():
             return False, None, "Resposta vazia"
             
-        # Limpar resposta removendo markdown e espaços
-        resposta_limpa = resposta.strip()
-        if resposta_limpa.startswith("```"):
-            # Remover blocos de código markdown
-            linhas = resposta_limpa.split('\n')
-            resposta_limpa = '\n'.join(linhas[1:-1]) if len(linhas) > 2 else resposta_limpa
+        # Importar extrair_json_da_resposta para processar resposta completa
+        from agent.json_parser import extrair_json_da_resposta
+        
+        # Usar o parser robusto que remove <think>, markdown, etc
+        dados_json = extrair_json_da_resposta(resposta)
+        
+        if not dados_json:
+            return False, None, "Falha ao extrair JSON da resposta"
             
-        # Tentar parsear JSON
-        try:
-            dados_json = json.loads(resposta_limpa)
+        # Validar estrutura básica
+        if not isinstance(dados_json, dict):
+            return False, None, "JSON não é um objeto"
             
-            # Validar estrutura básica
-            if not isinstance(dados_json, dict):
-                return False, None, "JSON não é um objeto"
-                
-            # Validar campos obrigatórios
-            if "action" not in dados_json:
-                return False, None, "Campo 'action' obrigatório não encontrado"
-                
-            if "selector" not in dados_json:
-                return False, None, "Campo 'selector' obrigatório não encontrado"
-                
-            return True, dados_json, "JSON válido"
+        # Validar campos obrigatórios
+        if "action" not in dados_json:
+            return False, None, "Campo 'action' obrigatório não encontrado"
             
-        except json.JSONDecodeError as e:
-            return False, None, f"JSON inválido: {e}"
+        if "selector" not in dados_json:
+            return False, None, "Campo 'selector' obrigatório não encontrado"
+            
+        return True, dados_json, "JSON válido"
             
     except Exception as e:
         return False, None, f"Erro na validação: {e}"

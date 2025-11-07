@@ -4,6 +4,8 @@ import os
 import base64
 from bs4 import BeautifulSoup
 
+from agent.json_parser import extrair_json_da_resposta
+
 # Histórico de seletores já clicados durante a sessão
 seletores_clicados = set()
 
@@ -334,61 +336,6 @@ RESPONDA AGORA com JSON usando UM destes seletores:"""
     return None
 
 
-def sanitizar_e_parsear_json(resposta_bruta):
-    """
-    Sanitiza e parseia resposta do LLM à prova de formatação inconsistente
-    Remove ```json, normaliza aspas, etc.
-    """
-    if not resposta_bruta or not resposta_bruta.strip():
-        print("[ERRO] Resposta vazia do LLM")
-        return None
-    
-    # Log da resposta original para debug
-    print(f"[DEBUG] Resposta original do LLM: {repr(resposta_bruta[:100])}...")
-    
-    # Detectar uso incorreto de markdown
-    if '```' in resposta_bruta:
-        print("⚠️ [AVISO] LLM usou markdown (```), será removido automaticamente")
-    
-    # Remover cercas de código e prefixos
-    texto = resposta_bruta.strip()
-    texto = re.sub(r'^```[\s\S]*?\n', '', texto)  # Remove ```json\n
-    texto = re.sub(r'```$', '', texto)  # Remove ``` do final
-    texto = texto.strip()
-    
-    # Tentar parse normal primeiro
-    try:
-        resultado = json.loads(texto)
-        print("✅ [SUCESSO] JSON parseado corretamente")
-        return resultado
-    except (json.JSONDecodeError, ValueError) as e:
-        print(f"❌ [ERRO] Parse JSON falhou: {e}")
-    
-    # Tentar corrigir aspas simples → duplas
-    try:
-        texto_corrigido = texto.replace("'", '"')
-        resultado = json.loads(texto_corrigido)
-        print("✅ [SUCESSO] JSON corrigido (aspas simples → duplas)")
-        return resultado
-    except (json.JSONDecodeError, ValueError):
-        print("❌ [ERRO] Correção de aspas falhou")
-    
-    # Última tentativa: extrair JSON válido da resposta
-    try:
-        # Procurar padrão {"action":...,"selector":...}
-        match = re.search(r'\{[^{}]*"action"[^{}]*"selector"[^{}]*\}', texto)
-        if match:
-            json_candidato = match.group(0)
-            json_candidato = json_candidato.replace("'", '"')
-            resultado = json.loads(json_candidato)
-            print("✅ [SUCESSO] JSON extraído via regex")
-            return resultado
-    except (json.JSONDecodeError, ValueError):
-        print("❌ [ERRO] Extração por regex falhou")
-    
-    print(f"[ERRO] Não foi possível parsear JSON: {resposta_bruta[:200]}...")
-    return None
-
 def normalizar_seletor(seletor):
     """
     Normaliza seletores CSS para comparação consistente
@@ -427,10 +374,6 @@ def seletor_esta_na_lista(seletor, lista_permitida):
         return any(normalizar_seletor(s) == f'[data-testid="{valor}"]' for s in lista_permitida)
     
     return False
-
-def extrair_json_da_resposta(resposta_llm):
-    """Extrai JSON da resposta do LLM usando sanitização robusta"""
-    return sanitizar_e_parsear_json(resposta_llm)
 
 
 # ===================== Execução de ações com verificação =====================

@@ -174,7 +174,13 @@ def _executar_click(pagina, seletor: str) -> Tuple[bool, str]:
         return True, "Clique executado"
         
     except Exception as e:
+        erro_str = str(e)
         logging.error(f"Erro ao clicar em {seletor}: {e}")
+        
+        # Detectar se o erro foi por elemento oculto/invisível
+        if "hidden" in erro_str.lower() or "not visible" in erro_str.lower() or "detached" in erro_str.lower():
+            return False, f"ELEMENTO_INVISIVEL: {seletor} existe mas está oculto na página. Tente outro seletor alternativo!"
+        
         return False, f"Erro no clique: {e}"
 
 

@@ -14,6 +14,19 @@ import json
 import re
 from typing import Optional, Dict, Any, Tuple
 
+PT_TO_EN_KEY_MAP = {
+    "acao": "action",
+    "ação": "action",
+    "seletor": "selector",
+    "valor": "value",
+    "confianca": "confidence",
+    "confiança": "confidence",
+    "justificativa": "reason",
+    "motivo": "reason",
+}
+
+REQUIRED_KEYS = {"action", "selector"}
+
 
 def extrair_json_da_resposta(resposta_llm: str) -> Optional[Dict[str, Any]]:
     """
@@ -63,23 +76,22 @@ def sanitizar_e_parsear_json(resposta_bruta: str) -> Optional[Dict[str, Any]]:
         if not resposta_bruta or not resposta_bruta.strip():
             return None
         
-        # Etapa 1: Remover markdown
-        texto_limpo = _remover_markdown(resposta_bruta)
-        
-        # Etapa 2: Extrair JSON
-        json_extraido = _extrair_bloco_json(texto_limpo)
+        texto_sem_markdown = _remover_markdown(resposta_bruta)
+        texto_processado = _remover_blocos_think(texto_sem_markdown)
+
+        json_extraido = _extrair_bloco_json(texto_processado)
         
         if not json_extraido:
             return None
         
-        # Etapa 3: Limpar e normalizar JSON
+        # Limpar e normalizar JSON
         json_normalizado = _normalizar_json_string(json_extraido)
         
-        # Etapa 4: Tentar parsear
         resultado = _parsear_json_seguro(json_normalizado)
         
-        if resultado:
-            # Etapa 5: Validar estrutura
+        if isinstance(resultado, dict):
+            resultado = _normalizar_chaves_portugues(resultado)
+
             if _validar_estrutura_json(resultado):
                 return resultado
         
@@ -90,54 +102,105 @@ def sanitizar_e_parsear_json(resposta_bruta: str) -> Optional[Dict[str, Any]]:
         return None
 
 
+def extract_last_json_object(content: str) -> Optional[Dict[str, Any]]:
+    """Retorna o último objeto JSON válido encontrado, já normalizado."""
+    return sanitizar_e_parsear_json(content)
+
+
+extractLastJsonObject = extract_last_json_object
+
+
 def _remover_markdown(texto: str) -> str:
-    """
-    Remove blocos de código markdown.
-    
-    Args:
-        texto (str): Texto com possível markdown
-    
-    Returns:
-        str: Texto limpo
-    """
-    # Remover ```json...``` ou ```...```
-    padrao_markdown = r'```(?:json)?\s*(.*?)\s*```'
-    match = re.search(padrao_markdown, texto, re.DOTALL | re.IGNORECASE)
-    
-    if match:
-        return match.group(1).strip()
-    
-    return texto.strip()
+    """Remove blocos markdown preservando o conteúdo interno."""
+    if not texto:
+        return ""
+
+    def _replace(match: re.Match) -> str:
+        inner = match.group(1)
+        return inner.strip() if inner else ""
+
+    texto_sem_cercas = re.sub(r'```(?:json)?\s*([\s\S]*?)```', _replace, texto, flags=re.IGNORECASE)
+    return texto_sem_cercas.strip()
+
+
+def _remover_blocos_think(texto: str) -> str:
+    """Remove blocos <think>...</think> da resposta do LLM."""
+    if not texto:
+        return ""
+    return re.sub(r'<think>[\s\S]*?</think>', ' ', texto, flags=re.IGNORECASE).strip()
+
+
+def _extrair_ultimo_json_balanceado(texto: str) -> Optional[str]:
+    """Retorna o último bloco JSON bem-balanceado encontrado no texto."""
+    if not texto:
+        return None
+
+    stack = []
+    in_string = False
+    escape = False
+    ultimo_inicio = None
+    ultimo_fim = None
+
+    for indice, caractere in enumerate(texto):
+        if in_string:
+            if escape:
+                escape = False
+                continue
+            if caractere == '\\':
+                escape = True
+                continue
+            if caractere == '"':
+                in_string = False
+            continue
+
+        if caractere == '"':
+            in_string = True
+            continue
+
+        if caractere == '{':
+            stack.append(indice)
+            continue
+
+        if caractere == '}' and stack:
+            inicio = stack.pop()
+            if not stack:
+                ultimo_inicio = inicio
+                ultimo_fim = indice + 1
+
+    if ultimo_inicio is not None and ultimo_fim is not None:
+        return texto[ultimo_inicio:ultimo_fim].strip()
+
+    return None
 
 
 def _extrair_bloco_json(texto: str) -> Optional[str]:
-    """
-    Extrai bloco JSON do texto.
-    
-    Args:
-        texto (str): Texto contendo JSON
-    
-    Returns:
-        str: JSON extraído ou None
-    """
-    # Procurar por blocos JSON válidos
+    """Extrai o último bloco JSON plausível presente no texto."""
+    if not texto:
+        return None
+
+    ultimo_balanceado = _extrair_ultimo_json_balanceado(texto)
+    if ultimo_balanceado:
+        return ultimo_balanceado
+
     padroes = [
-        r'\{.*?\}',  # JSON simples
-        r'\{.*?\}\s*$',  # JSON no final
-        r'^\s*\{.*?\}',  # JSON no início
+        r'\{.*?\}',
+        r'\{.*?\}\s*$',
+        r'^\s*\{.*?\}',
     ]
-    
+
+    candidato = None
     for padrao in padroes:
         matches = re.findall(padrao, texto, re.DOTALL)
         for match in matches:
-            # Verificar se parece um JSON válido
             if _parece_json(match):
-                return match.strip()
-    
-    # Se não encontrou padrão, retornar texto completo se parece JSON
+                candidato = match.strip()
+
+    if candidato:
+        return candidato
+
     if _parece_json(texto):
         return texto.strip()
-    
+
     return None
 
 
@@ -158,7 +221,7 @@ def _parece_json(texto: str) -> bool:
         return False
     
     # Deve conter pelo menos uma chave comum
-    chaves_comuns = ['action', 'selector', 'value', 'reasoning', 'type']
+    chaves_comuns = ['action', 'selector', 'value', 'reasoning', 'type', 'acao', 'seletor', 'valor', 'justificativa', 'confianca', 'motivo']
     return any(f'"{chave}"' in texto for chave in chaves_comuns)
 
 
@@ -193,6 +256,22 @@ def _normalizar_json_string(json_str: str) -> str:
     json_str = re.sub(r':\s*None\b', ': null', json_str)
     
     return json_str.strip()
+
+
+def _normalizar_chaves_portugues(json_obj: Dict[str, Any]) -> Dict[str, Any]:
+    """Normaliza chaves do português para o inglês padrão."""
+    if not isinstance(json_obj, dict):
+        return json_obj
+
+    normalizado: Dict[str, Any] = {}
+    for chave, valor in json_obj.items():
+        chave_str = chave if isinstance(chave, str) else str(chave)
+        chave_normalizada = PT_TO_EN_KEY_MAP.get(chave_str.lower(), chave_str)
+        if isinstance(valor, dict):
+            valor = _normalizar_chaves_portugues(valor)
+        normalizado[chave_normalizada] = valor
+
+    return normalizado
 
 
 def _parsear_json_seguro(json_str: str) -> Optional[Dict[str, Any]]:
@@ -284,14 +363,15 @@ def _validar_estrutura_json(json_obj: Dict[str, Any]) -> bool:
     if not isinstance(json_obj, dict):
         return False
     
-    # Deve ter pelo menos uma chave importante
-    chaves_importantes = ['action', 'selector', 'type', 'command']
-    tem_chave_importante = any(chave in json_obj for chave in chaves_importantes)
-    
-    if not tem_chave_importante:
-        logging.warning(f"JSON não tem chaves importantes: {list(json_obj.keys())}")
+    faltantes = [chave for chave in REQUIRED_KEYS if chave not in json_obj]
+    if faltantes:
+        logging.warning(
+            "JSON não possui chaves obrigatórias %s | chaves encontradas: %s",
+            faltantes,
+            list(json_obj.keys()),
+        )
         return False
-    
+
     return True
 
 

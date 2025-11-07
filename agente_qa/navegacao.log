@@ -1,0 +1,514 @@
+2025-11-05 02:36:21,225 [INFO] Obtendo lista de modelos do LM Studio...
+2025-11-05 02:36:23,293 [INFO] Modelos encontrados: ['openai/gpt-oss-20b', 'qwen/qwen3-8b', 'qwen3-8b-64k-context-2x-josiefied-uncensored', 'text-embedding-nomic-embed-text-v1.5']
+2025-11-05 02:36:23,294 [INFO] Verificando modelo carregado no LM Studio...
+2025-11-05 02:36:26,892 [INFO] Modelo carregado identificado via resposta: openai/gpt-oss-20b
+2025-11-05 02:36:26,897 [INFO] Obtendo lista de modelos do LM Studio...
+2025-11-05 02:36:28,958 [INFO] Modelos encontrados: ['openai/gpt-oss-20b', 'qwen/qwen3-8b', 'qwen3-8b-64k-context-2x-josiefied-uncensored', 'text-embedding-nomic-embed-text-v1.5']
+2025-11-05 02:36:28,959 [INFO] Verificando modelo carregado no LM Studio...
+2025-11-05 02:36:31,515 [INFO] Modelo carregado identificado via resposta: openai/gpt-oss-20b
+2025-11-05 02:37:18,498 [INFO] Nenhum aviso de cookies encontrado para fechar
+2025-11-05 02:37:18,531 [INFO] PASSO 1
+2025-11-05 02:37:21,167 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_1.png
+2025-11-05 02:37:21,172 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:37:21,173 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:37:21,205 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023721.json
+2025-11-05 02:37:21,206 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023721.json
+2025-11-05 02:37:47,519 [INFO] Resposta LLM: {"acao":"click","seletor":"[data-testid='auto-register-13']","valor":"","confianca":90,"justificativa":"Nenhum campo de cadastro presente na lista; clicando no botão 'Register' para navegar à página de registro."}
+2025-11-05 02:37:47,521 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo0_openai-gpt-oss-20b_20251105_023747.json
+2025-11-05 02:37:47,521 [INFO] Executando ação: click no seletor: [data-testid='auto-register-13']
+2025-11-05 02:37:47,883 [INFO] Clique executado com sucesso: [data-testid='auto-register-13']
+2025-11-05 02:37:47,883 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-05 02:37:49,918 [INFO] PASSO 2
+2025-11-05 02:37:52,124 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_2.png
+2025-11-05 02:37:52,132 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:37:52,132 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:37:52,224 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023752.json
+2025-11-05 02:37:52,226 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023752.json
+2025-11-05 02:38:13,912 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.firstName']","valor":"Joao Silva","confianca":95,"justificativa":"Preenchendo primeiro campo do cadastro"}
+2025-11-05 02:38:13,914 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo1_openai-gpt-oss-20b_20251105_023813.json
+2025-11-05 02:38:13,914 [INFO] Executando ação: type no seletor: [name='customer.firstName']
+2025-11-05 02:38:14,712 [INFO] Texto digitado em [name='customer.firstName']: 'Joao Silva'
+2025-11-05 02:38:14,713 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Joao Silva' digitado com sucesso"}
+2025-11-05 02:38:16,717 [INFO] PASSO 3
+2025-11-05 02:38:18,889 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_3.png
+2025-11-05 02:38:18,897 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:38:18,897 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:38:18,985 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023818.json
+2025-11-05 02:38:18,986 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023818.json
+2025-11-05 02:38:37,492 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.lastName']","valor":"Silva","confianca":95,"justificativa":"Preenchendo segundo campo do cadastro conforme sequência lógica"}
+2025-11-05 02:38:37,493 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo2_openai-gpt-oss-20b_20251105_023837.json
+2025-11-05 02:38:37,494 [INFO] Executando ação: type no seletor: [name='customer.lastName']
+2025-11-05 02:38:37,963 [INFO] Texto digitado em [name='customer.lastName']: 'Silva'
+2025-11-05 02:38:37,963 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Silva' digitado com sucesso"}
+2025-11-05 02:38:39,967 [INFO] PASSO 4
+2025-11-05 02:38:42,156 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_4.png
+2025-11-05 02:38:42,163 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:38:42,164 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:38:42,258 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023842.json
+2025-11-05 02:38:42,259 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023842.json
+2025-11-05 02:39:01,493 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.address.street']","valor":"Rua das Flores, 123","confianca":95,"justificativa":"Preenchendo próximo campo obrigatório na sequência de cadastro"}
+2025-11-05 02:39:01,494 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo3_openai-gpt-oss-20b_20251105_023901.json
+2025-11-05 02:39:01,494 [INFO] Executando ação: type no seletor: [name='customer.address.street']
+2025-11-05 02:39:02,813 [INFO] Texto digitado em [name='customer.address.street']: 'Rua das Flores, 123'
+2025-11-05 02:39:02,814 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Rua das Flores, 123' digitado com sucesso"}
+2025-11-05 02:39:04,818 [INFO] PASSO 5
+2025-11-05 02:39:06,992 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_5.png
+2025-11-05 02:39:07,002 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:39:07,002 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:39:07,108 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023907.json
+2025-11-05 02:39:07,110 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023907.json
+2025-11-05 02:39:28,131 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.address.city']","valor":"Sao Paulo","confianca":95,"justificativa":"Preenchendo próximo campo obrigatório na sequência de cadastro"}
+2025-11-05 02:39:28,133 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo4_openai-gpt-oss-20b_20251105_023928.json
+2025-11-05 02:39:28,133 [INFO] Executando ação: type no seletor: [name='customer.address.city']
+2025-11-05 02:39:28,847 [INFO] Texto digitado em [name='customer.address.city']: 'Sao Paulo'
+2025-11-05 02:39:28,847 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Sao Paulo' digitado com sucesso"}
+2025-11-05 02:39:30,851 [INFO] PASSO 6
+2025-11-05 02:39:33,024 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_6.png
+2025-11-05 02:39:33,032 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:39:33,032 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:39:33,133 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023933.json
+2025-11-05 02:39:33,134 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023933.json
+2025-11-05 02:39:54,000 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.address.state']","valor":"SP","confianca":95,"justificativa":"Preenchendo o próximo campo obrigatório na sequência de cadastro"}
+2025-11-05 02:39:54,001 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo5_openai-gpt-oss-20b_20251105_023954.json
+2025-11-05 02:39:54,001 [INFO] Executando ação: type no seletor: [name='customer.address.state']
+2025-11-05 02:39:54,279 [INFO] Texto digitado em [name='customer.address.state']: 'SP'
+2025-11-05 02:39:54,280 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'SP' digitado com sucesso"}
+2025-11-05 02:39:56,284 [INFO] PASSO 7
+2025-11-05 02:39:58,460 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_7.png
+2025-11-05 02:39:58,467 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:39:58,468 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:39:58,571 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023958.json
+2025-11-05 02:39:58,572 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_023958.json
+2025-11-05 02:40:20,367 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.address.zipCode']","valor":"01234-567","confianca":95,"justificativa":"Preenchendo próximo campo obrigatório na sequência de cadastro"}
+2025-11-05 02:40:20,369 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo6_openai-gpt-oss-20b_20251105_024020.json
+2025-11-05 02:40:20,369 [INFO] Executando ação: type no seletor: [name='customer.address.zipCode']
+2025-11-05 02:40:21,112 [INFO] Texto digitado em [name='customer.address.zipCode']: '01234-567'
+2025-11-05 02:40:21,112 [INFO] Resultado da ação: {'success': True, 'message': "Texto '01234-567' digitado com sucesso"}
+2025-11-05 02:40:23,116 [INFO] PASSO 8
+2025-11-05 02:40:25,290 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_8.png
+2025-11-05 02:40:25,298 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:40:25,299 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:40:25,405 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024025.json
+2025-11-05 02:40:25,407 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024025.json
+2025-11-05 02:40:46,494 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.phoneNumber']","valor":"11999999999","confianca":95,"justificativa":"Preenchendo próximo campo obrigatório na sequência de cadastro"}
+2025-11-05 02:40:46,495 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo7_openai-gpt-oss-20b_20251105_024046.json
+2025-11-05 02:40:46,496 [INFO] Executando ação: type no seletor: [name='customer.phoneNumber']
+2025-11-05 02:40:47,344 [INFO] Texto digitado em [name='customer.phoneNumber']: '11999999999'
+2025-11-05 02:40:47,344 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11999999999' digitado com sucesso"}
+2025-11-05 02:40:49,349 [INFO] PASSO 9
+2025-11-05 02:40:51,526 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_9.png
+2025-11-05 02:40:51,533 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:40:51,534 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:40:51,645 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024051.json
+2025-11-05 02:40:51,646 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024051.json
+2025-11-05 02:41:13,474 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.ssn']","valor":"123456789","confianca":95,"justificativa":"Preenchendo próximo campo obrigatório na sequência de cadastro"}
+2025-11-05 02:41:13,475 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo8_openai-gpt-oss-20b_20251105_024113.json
+2025-11-05 02:41:13,475 [INFO] Executando ação: type no seletor: [name='customer.ssn']
+2025-11-05 02:41:14,195 [INFO] Texto digitado em [name='customer.ssn']: '123456789'
+2025-11-05 02:41:14,195 [INFO] Resultado da ação: {'success': True, 'message': "Texto '123456789' digitado com sucesso"}
+2025-11-05 02:41:16,200 [INFO] PASSO 10
+2025-11-05 02:41:18,394 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_10.png
+2025-11-05 02:41:18,401 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:41:18,401 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:41:18,520 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024118.json
+2025-11-05 02:41:18,521 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024118.json
+2025-11-05 02:41:40,846 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.username']","valor":"joao123","confianca":95,"justificativa":"Preenchendo próximo campo obrigatório na sequência de cadastro"}
+2025-11-05 02:41:40,848 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo9_openai-gpt-oss-20b_20251105_024140.json
+2025-11-05 02:41:40,848 [INFO] Executando ação: type no seletor: [name='customer.username']
+2025-11-05 02:41:41,446 [INFO] Texto digitado em [name='customer.username']: 'joao123'
+2025-11-05 02:41:41,446 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'joao123' digitado com sucesso"}
+2025-11-05 02:41:43,450 [INFO] PASSO 11
+2025-11-05 02:41:45,625 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_11.png
+2025-11-05 02:41:45,632 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:41:45,633 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:41:45,756 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024145.json
+2025-11-05 02:41:45,758 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024145.json
+2025-11-05 02:42:07,144 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='customer.password']","valor":"senha123","confianca":95,"justificativa":"Preenchendo o campo de senha, seguindo a sequência lógica e usando o valor indicado"}
+2025-11-05 02:42:07,145 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo10_openai-gpt-oss-20b_20251105_024207.json
+2025-11-05 02:42:07,146 [INFO] Executando ação: type no seletor: [name='customer.password']
+2025-11-05 02:42:07,789 [INFO] Texto digitado em [name='customer.password']: 'senha123'
+2025-11-05 02:42:07,789 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'senha123' digitado com sucesso"}
+2025-11-05 02:42:09,795 [INFO] PASSO 12
+2025-11-05 02:42:11,953 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_12.png
+2025-11-05 02:42:11,961 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:42:11,962 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:42:12,091 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024212.json
+2025-11-05 02:42:12,093 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024212.json
+2025-11-05 02:42:35,033 [INFO] Resposta LLM: {"acao":"type","seletor":"[name='repeatedPassword']","valor":"senha123","confianca":95,"justificativa":"Preenchendo campo de confirmação de senha com o mesmo valor usado em customer.password"}
+2025-11-05 02:42:35,034 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo11_openai-gpt-oss-20b_20251105_024235.json
+2025-11-05 02:42:35,034 [INFO] Executando ação: type no seletor: [name='repeatedPassword']
+2025-11-05 02:42:35,679 [INFO] Texto digitado em [name='repeatedPassword']: 'senha123'
+2025-11-05 02:42:35,679 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'senha123' digitado com sucesso"}
+2025-11-05 02:42:37,684 [INFO] PASSO 13
+2025-11-05 02:42:39,860 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_13.png
+2025-11-05 02:42:39,867 [INFO] Extraídos 19 elementos interativos
+2025-11-05 02:42:39,867 [INFO] Prompt gerado com 19 elementos para contexto 'general'
+2025-11-05 02:42:40,007 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024240.json
+2025-11-05 02:42:40,008 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024240.json
+2025-11-05 02:43:03,195 [INFO] Resposta LLM: {"acao":"click","seletor":"input[type='submit'][value='Register']","valor":"","confianca":95,"justificativa":"Enviando o formulário de registro após todos os campos estarem preenchidos"}
+2025-11-05 02:43:03,196 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\model_responses\passo12_openai-gpt-oss-20b_20251105_024303.json
+2025-11-05 02:43:03,196 [INFO] Executando ação: click no seletor: input[type='submit'][value='Register']
+2025-11-05 02:43:03,873 [INFO] Clique executado com sucesso: input[type='submit'][value='Register']
+2025-11-05 02:43:03,873 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-05 02:43:05,878 [INFO] PASSO 14
+2025-11-05 02:43:08,054 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_14.png
+2025-11-05 02:43:08,057 [INFO] Extraídos 0 elementos interativos
+2025-11-05 02:43:08,058 [INFO] Prompt gerado com 0 elementos para contexto 'general'
+2025-11-05 02:43:08,061 [INFO] Extraídos 0 elementos interativos
+2025-11-05 02:43:08,061 [INFO] Prompt gerado com 0 elementos para contexto 'general'
+2025-11-05 02:43:08,078 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024308.json
+2025-11-05 02:43:08,080 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024308.json
+2025-11-05 02:43:26,603 [INFO] Resposta LLM: {"acao":"wait","seletor":"","valor":"","confianca":100,"justificativa":"Todos os campos já foram preenchidos e o formulário foi submetido com sucesso; não há mais ações a serem realizadas."}
+2025-11-05 02:43:26,604 [WARNING] Seletor invalido: , tentando correcao...
+2025-11-05 02:43:26,605 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\openai-gpt-oss-20b_20251105_024326.json
+2025-11-05 02:44:49,006 [INFO] Nenhum aviso de cookies encontrado para fechar
+2025-11-05 02:44:49,030 [INFO] PASSO 1
+2025-11-05 02:44:51,630 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_1.png
+2025-11-05 02:44:51,637 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:44:51,637 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:44:51,669 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024451.json
+2025-11-05 02:44:51,670 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024451.json
+2025-11-05 02:45:53,724 [WARNING] LLM respondeu vazio
+2025-11-05 02:45:53,724 [INFO] PASSO 2
+2025-11-05 02:45:55,968 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_2.png
+2025-11-05 02:45:55,973 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:45:55,973 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:45:55,998 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024555.json
+2025-11-05 02:45:55,999 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024555.json
+2025-11-05 02:46:22,605 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:46:22,605 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:46:22,605 [ERROR] Falha na validação do seletor
+2025-11-05 02:46:22,605 [INFO] PASSO 3
+2025-11-05 02:46:24,878 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_3.png
+2025-11-05 02:46:24,883 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:46:24,883 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:46:24,963 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024624.json
+2025-11-05 02:46:24,964 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024624.json
+2025-11-05 02:46:50,362 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:46:50,362 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:46:50,362 [ERROR] Falha na validação do seletor
+2025-11-05 02:46:50,362 [INFO] PASSO 4
+2025-11-05 02:46:52,659 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_4.png
+2025-11-05 02:46:52,663 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:46:52,664 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:46:52,689 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024652.json
+2025-11-05 02:46:52,690 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024652.json
+2025-11-05 02:47:20,275 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:47:20,275 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:47:20,275 [ERROR] Falha na validação do seletor
+2025-11-05 02:47:20,275 [INFO] PASSO 5
+2025-11-05 02:47:22,459 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_5.png
+2025-11-05 02:47:22,463 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:47:22,463 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:47:22,488 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024722.json
+2025-11-05 02:47:22,489 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024722.json
+2025-11-05 02:47:48,365 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:47:48,365 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:47:48,365 [ERROR] Falha na validação do seletor
+2025-11-05 02:47:48,366 [INFO] PASSO 6
+2025-11-05 02:47:50,593 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_6.png
+2025-11-05 02:47:50,598 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:47:50,598 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:47:50,623 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024750.json
+2025-11-05 02:47:50,625 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024750.json
+2025-11-05 02:48:16,878 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:48:16,878 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:48:16,878 [ERROR] Falha na validação do seletor
+2025-11-05 02:48:16,879 [INFO] PASSO 7
+2025-11-05 02:48:19,063 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_7.png
+2025-11-05 02:48:19,067 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:48:19,067 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:48:19,091 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024819.json
+2025-11-05 02:48:19,092 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024819.json
+2025-11-05 02:48:45,231 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:48:45,232 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:48:45,232 [ERROR] Falha na validação do seletor
+2025-11-05 02:48:45,232 [INFO] PASSO 8
+2025-11-05 02:48:47,437 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_8.png
+2025-11-05 02:48:47,441 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:48:47,441 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:48:47,469 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024847.json
+2025-11-05 02:48:47,470 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024847.json
+2025-11-05 02:49:14,485 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:49:14,485 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:49:14,485 [ERROR] Falha na validação do seletor
+2025-11-05 02:49:14,485 [INFO] PASSO 9
+2025-11-05 02:49:16,660 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_9.png
+2025-11-05 02:49:16,664 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:49:16,665 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:49:16,688 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024916.json
+2025-11-05 02:49:16,689 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024916.json
+2025-11-05 02:49:42,970 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:49:42,970 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:49:42,970 [ERROR] Falha na validação do seletor
+2025-11-05 02:49:42,970 [INFO] PASSO 10
+2025-11-05 02:49:45,175 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_10.png
+2025-11-05 02:49:45,181 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:49:45,181 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:49:45,210 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024945.json
+2025-11-05 02:49:45,211 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_024945.json
+2025-11-05 02:50:13,534 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:50:13,534 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:50:13,534 [ERROR] Falha na validação do seletor
+2025-11-05 02:50:13,534 [INFO] PASSO 11
+2025-11-05 02:50:15,731 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_11.png
+2025-11-05 02:50:15,736 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:50:15,736 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:50:15,768 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025015.json
+2025-11-05 02:50:15,770 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025015.json
+2025-11-05 02:50:46,010 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:50:46,010 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:50:46,011 [ERROR] Falha na validação do seletor
+2025-11-05 02:50:46,011 [INFO] PASSO 12
+2025-11-05 02:50:48,197 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_12.png
+2025-11-05 02:50:48,202 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:50:48,202 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:50:48,228 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025048.json
+2025-11-05 02:50:48,230 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025048.json
+2025-11-05 02:51:19,366 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:51:19,366 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:51:19,366 [ERROR] Falha na validação do seletor
+2025-11-05 02:51:19,366 [INFO] PASSO 13
+2025-11-05 02:51:21,563 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_13.png
+2025-11-05 02:51:21,567 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:51:21,567 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:51:21,877 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025121.json
+2025-11-05 02:51:21,878 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025121.json
+2025-11-05 02:51:51,509 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:51:51,509 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:51:51,509 [ERROR] Falha na validação do seletor
+2025-11-05 02:51:51,509 [INFO] PASSO 14
+2025-11-05 02:51:53,699 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_14.png
+2025-11-05 02:51:53,703 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:51:53,703 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:51:53,739 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025153.json
+2025-11-05 02:51:53,740 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025153.json
+2025-11-05 02:52:24,533 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:52:24,534 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:52:24,534 [ERROR] Falha na validação do seletor
+2025-11-05 02:52:24,534 [INFO] PASSO 15
+2025-11-05 02:52:26,698 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_15.png
+2025-11-05 02:52:26,704 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:52:26,704 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:52:26,728 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025226.json
+2025-11-05 02:52:26,729 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025226.json
+2025-11-05 02:52:56,018 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:52:56,018 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:52:56,019 [ERROR] Falha na validação do seletor
+2025-11-05 02:52:56,019 [INFO] PASSO 16
+2025-11-05 02:52:58,204 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_16.png
+2025-11-05 02:52:58,209 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:52:58,209 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:52:58,232 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025258.json
+2025-11-05 02:52:58,233 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025258.json
+2025-11-05 02:53:29,568 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:53:29,568 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:53:29,569 [ERROR] Falha na validação do seletor
+2025-11-05 02:53:29,569 [INFO] PASSO 17
+2025-11-05 02:53:31,770 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_17.png
+2025-11-05 02:53:31,774 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:53:31,774 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:53:31,874 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025331.json
+2025-11-05 02:53:31,874 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025331.json
+2025-11-05 02:54:03,907 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:54:03,907 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:54:03,907 [ERROR] Falha na validação do seletor
+2025-11-05 02:54:03,907 [INFO] PASSO 18
+2025-11-05 02:54:06,095 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_18.png
+2025-11-05 02:54:06,101 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:54:06,101 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:54:06,340 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025406.json
+2025-11-05 02:54:06,341 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025406.json
+2025-11-05 02:54:35,762 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:54:35,762 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:54:35,762 [ERROR] Falha na validação do seletor
+2025-11-05 02:54:35,763 [INFO] PASSO 19
+2025-11-05 02:54:37,976 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\prints\passo_19.png
+2025-11-05 02:54:37,980 [INFO] Extraídos 6 elementos interativos
+2025-11-05 02:54:37,980 [INFO] Prompt gerado com 6 elementos para contexto 'general'
+2025-11-05 02:54:38,004 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025438.json
+2025-11-05 02:54:38,005 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\agente_qa\logs\payloads\qwen-qwen3-8b_20251105_025438.json
+2025-11-05 02:55:07,832 [INFO] Resposta LLM: <think>
+Okay, let's tackle this step by step. The user wants to sign up on the ParaBank website. First, I need to check if they're already on the registration page. The current page is "ParaBank | Welcome | Online Banking," so they probably need to navigate to the register page.
+
+Looking at the available elements, there's a button with [data-testid='auto-register-13'] labeled "Register." That's the first step—clicking that link to go to the registration form. Once there, they can start filling out the fields. 
+
+But wait, the user mentioned that if the #customer.firstName isn't in the elements list, they shouldn't try to fill it yet. Right now, the available elements don't include those customer fields. So the next logical action is to click the Register button to navigate to the registration page. After that, they can proceed with entering the fake data as per the sequence provided. 
+
+I should make sure not to attempt any field entries until the correct page is loaded. The first action here is definitely clicking the Register button. No other elements seem relevant for navigation right now. So the JSON response should be a "click" on that register button.
+</think>
+
+{"acao": "click", "seletor": "[data-testid='auto-register-13']", "valor": "", "confianca": 90, "justificativa": "Navegando para pagina de cadastro usando botao 'Register' disponivel na lista"}
+2025-11-05 02:55:07,832 [ERROR] Erro na validacao: Expecting value: line 1 column 1 (char 0)
+2025-11-05 02:55:07,832 [ERROR] Falha na validação do seletor
+2025-11-05 02:55:08,755 [INFO] Navegação encerrada.
