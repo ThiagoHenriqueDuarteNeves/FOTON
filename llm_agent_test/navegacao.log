@@ -5845,3 +5845,1925 @@ Call log:
 2025-11-07 06:32:22,482 [INFO] Clique executado com sucesso: [data-testid='auto-contato-3']
 2025-11-07 06:32:22,483 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
 2025-11-07 06:32:24,726 [INFO] Navegação encerrada.
+2025-11-07 07:04:12,112 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 07:04:13,137 [INFO] PASSO 1
+2025-11-07 07:04:15,484 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 07:04:15,492 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:04:15,492 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:04:15,505 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070415.json
+2025-11-07 07:04:15,506 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070415.json
+2025-11-07 07:04:19,846 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 07:04:19,848 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:19,849 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_070419.json
+2025-11-07 07:04:19,849 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:19,849 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 07:04:19,989 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 07:04:19,989 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:04:21,993 [INFO] PASSO 2
+2025-11-07 07:04:24,391 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 07:04:24,404 [INFO] Extraídos 43 elementos interativos
+2025-11-07 07:04:24,405 [INFO] Prompt gerado com 30 elementos para contexto 'general'
+2025-11-07 07:04:24,417 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070424.json
+2025-11-07 07:04:24,418 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070424.json
+2025-11-07 07:04:29,199 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 07:04:29,200 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:29,200 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 07:04:29,202 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070429.json
+2025-11-07 07:04:33,217 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:33,219 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_070433.json
+2025-11-07 07:04:33,219 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:33,220 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 07:04:33,277 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-coi-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-coi-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 07:04:33,277 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-coi-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-coi-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 07:04:35,282 [INFO] PASSO 3
+2025-11-07 07:04:37,645 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 07:04:37,658 [INFO] Extraídos 43 elementos interativos
+2025-11-07 07:04:37,658 [INFO] Prompt gerado com 30 elementos para contexto 'general'
+2025-11-07 07:04:37,671 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070437.json
+2025-11-07 07:04:37,672 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070437.json
+2025-11-07 07:04:41,967 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que é específico para usuários cadastrados e está identificado por data-testid, evitando ambiguidade."
+}
+2025-11-07 07:04:41,967 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:41,969 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_070441.json
+2025-11-07 07:04:41,969 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:41,969 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:04:42,097 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:04:42,097 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:04:44,102 [INFO] PASSO 4
+2025-11-07 07:04:46,282 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 07:04:46,288 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:04:46,288 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:04:46,312 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070446.json
+2025-11-07 07:04:46,313 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070446.json
+2025-11-07 07:04:50,721 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 07:04:50,721 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:50,722 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_070450.json
+2025-11-07 07:04:50,723 [INFO] JSON extraído com sucesso
+2025-11-07 07:04:50,723 [INFO] Executando ação: type no seletor: #login
+2025-11-07 07:04:51,569 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 07:04:51,569 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 07:04:53,573 [INFO] PASSO 5
+2025-11-07 07:05:05,751 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 07:05:05,757 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:05:05,757 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:05:05,791 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070505.json
+2025-11-07 07:05:05,792 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070505.json
+2025-11-07 07:05:09,586 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 07:05:09,587 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:09,588 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_070509.json
+2025-11-07 07:05:09,588 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:09,588 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 07:05:10,425 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 07:05:10,425 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 07:05:12,429 [INFO] PASSO 6
+2025-11-07 07:05:24,591 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 07:05:24,597 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:05:24,597 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:05:24,638 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070524.json
+2025-11-07 07:05:24,639 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070524.json
+2025-11-07 07:05:28,732 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 07:05:28,733 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:28,734 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_070528.json
+2025-11-07 07:05:28,734 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:28,734 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 07:05:28,848 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 07:05:28,848 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:05:30,853 [INFO] PASSO 7
+2025-11-07 07:05:33,615 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 07:05:33,622 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:05:33,623 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:05:33,645 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070533.json
+2025-11-07 07:05:33,646 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070533.json
+2025-11-07 07:05:38,432 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para navegação no site de concursos; preenchendo com 'Cesgranrio' permite encontrar conteúdos relacionados ao concurso."
+}
+2025-11-07 07:05:38,433 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:38,434 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_070538.json
+2025-11-07 07:05:38,434 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:38,434 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 07:05:39,211 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 07:05:39,211 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 07:05:41,216 [INFO] PASSO 8
+2025-11-07 07:05:43,396 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 07:05:43,402 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:05:43,402 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:05:43,429 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070543.json
+2025-11-07 07:05:43,430 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_070543.json
+2025-11-07 07:05:48,172 [INFO] Resposta LLM: {"acao": "click", "seletor": "#dropdownManual", "valor": "", "confianca": 90, "justificativa": "Clique no botão 'Thiago BNDES' para navegar ou acessar opções de login, já que o campo de busca foi preenchido e não há campos vazios disponíveis para preenchimento da tarefa de login."}
+2025-11-07 07:05:48,172 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:48,173 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo7_qwen3-vl-4b-instruct_20251107_070548.json
+2025-11-07 07:05:48,173 [INFO] JSON extraído com sucesso
+2025-11-07 07:05:48,173 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 07:05:48,319 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 07:05:48,319 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:05:50,323 [INFO] PASSO 9
+2025-11-07 07:22:14,854 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 07:22:15,894 [INFO] PASSO 1
+2025-11-07 07:22:18,366 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 07:22:18,372 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:22:18,373 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:22:18,386 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072218.json
+2025-11-07 07:22:18,387 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072218.json
+2025-11-07 07:22:23,064 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 07:22:23,081 [INFO] JSON extraído com sucesso
+2025-11-07 07:22:23,082 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_072223.json
+2025-11-07 07:22:23,083 [INFO] JSON extraído com sucesso
+2025-11-07 07:22:23,083 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 07:22:23,257 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 07:22:23,257 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:22:25,260 [INFO] PASSO 2
+2025-11-07 07:22:27,697 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 07:22:27,711 [INFO] Extraídos 43 elementos interativos
+2025-11-07 07:22:27,711 [INFO] Prompt gerado com 30 elementos para contexto 'general'
+2025-11-07 07:22:27,722 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072227.json
+2025-11-07 07:22:27,724 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072227.json
+2025-11-07 07:22:32,195 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 07:22:32,195 [INFO] JSON extraído com sucesso
+2025-11-07 07:22:32,195 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 07:22:32,196 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072232.json
+2025-11-07 07:22:36,013 [INFO] JSON extraído com sucesso
+2025-11-07 07:22:36,015 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_072236.json
+2025-11-07 07:22:36,015 [INFO] JSON extraído com sucesso
+2025-11-07 07:22:36,015 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 07:22:36,018 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Target page, context or browser has been closed
+2025-11-07 07:22:36,019 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Target page, context or browser has been closed'}
+2025-11-07 07:22:38,023 [INFO] PASSO 3
+2025-11-07 07:23:29,221 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 07:23:30,249 [INFO] PASSO 1
+2025-11-07 07:23:32,592 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 07:23:32,599 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:23:32,599 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:23:32,612 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072332.json
+2025-11-07 07:23:32,613 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072332.json
+2025-11-07 07:23:37,187 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 07:23:37,189 [INFO] JSON extraído com sucesso
+2025-11-07 07:23:37,192 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_072337.json
+2025-11-07 07:23:37,193 [INFO] JSON extraído com sucesso
+2025-11-07 07:23:37,193 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 07:23:37,329 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 07:23:37,329 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:23:39,335 [INFO] PASSO 2
+2025-11-07 07:23:41,682 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 07:23:41,695 [INFO] Extraídos 43 elementos interativos
+2025-11-07 07:23:41,695 [INFO] Prompt gerado com 30 elementos para contexto 'general'
+2025-11-07 07:23:41,708 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072341.json
+2025-11-07 07:23:41,709 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072341.json
+2025-11-07 07:23:46,542 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 07:23:46,543 [INFO] JSON extraído com sucesso
+2025-11-07 07:23:46,543 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 07:23:46,544 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072346.json
+2025-11-07 07:23:50,465 [INFO] JSON extraído com sucesso
+2025-11-07 07:23:50,466 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_072350.json
+2025-11-07 07:23:50,466 [INFO] JSON extraído com sucesso
+2025-11-07 07:23:50,466 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 07:23:50,522 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-jse-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-jse-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 07:23:50,522 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-jse-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-jse-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 07:23:52,528 [INFO] PASSO 3
+2025-11-07 07:23:54,852 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 07:23:54,867 [INFO] Extraídos 43 elementos interativos
+2025-11-07 07:23:54,868 [INFO] Prompt gerado com 30 elementos para contexto 'general'
+2025-11-07 07:23:54,882 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072354.json
+2025-11-07 07:23:54,883 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072354.json
+2025-11-07 07:23:59,204 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que é específico para usuários cadastrados e está identificado por data-testid, evitando ambiguidade."
+}
+2025-11-07 07:23:59,204 [INFO] JSON extraído com sucesso
+2025-11-07 07:23:59,206 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_072359.json
+2025-11-07 07:23:59,206 [INFO] JSON extraído com sucesso
+2025-11-07 07:23:59,206 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:23:59,336 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:23:59,336 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:24:01,342 [INFO] PASSO 4
+2025-11-07 07:24:03,532 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 07:24:03,539 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:24:03,539 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:24:03,565 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072403.json
+2025-11-07 07:24:03,566 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072403.json
+2025-11-07 07:24:07,969 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 07:24:07,969 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:08,052 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_072407.json
+2025-11-07 07:24:08,052 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:08,052 [INFO] Executando ação: type no seletor: #login
+2025-11-07 07:24:08,945 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 07:24:08,945 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 07:24:10,948 [INFO] PASSO 5
+2025-11-07 07:24:23,133 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 07:24:23,139 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:24:23,139 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:24:23,172 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072423.json
+2025-11-07 07:24:23,174 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072423.json
+2025-11-07 07:24:27,004 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 07:24:27,004 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:27,006 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_072427.json
+2025-11-07 07:24:27,006 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:27,007 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 07:24:27,845 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 07:24:27,846 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 07:24:29,849 [INFO] PASSO 6
+2025-11-07 07:24:42,031 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 07:24:42,037 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:24:42,037 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:24:42,085 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072442.json
+2025-11-07 07:24:42,086 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072442.json
+2025-11-07 07:24:46,121 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 07:24:46,121 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:46,123 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_072446.json
+2025-11-07 07:24:46,123 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:46,123 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 07:24:46,251 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 07:24:46,251 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:24:48,255 [INFO] PASSO 7
+2025-11-07 07:24:51,269 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 07:24:51,277 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:24:51,277 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:24:51,300 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072451.json
+2025-11-07 07:24:51,300 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072451.json
+2025-11-07 07:24:56,059 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para navegação no site de concursos; preenchendo com 'Cesgranrio' permite encontrar conteúdos relacionados ao concurso."
+}
+2025-11-07 07:24:56,059 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:56,060 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_072456.json
+2025-11-07 07:24:56,061 [INFO] JSON extraído com sucesso
+2025-11-07 07:24:56,061 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 07:24:56,861 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 07:24:56,861 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 07:24:58,865 [INFO] PASSO 8
+2025-11-07 07:25:01,021 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 07:25:01,026 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:25:01,026 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:25:01,055 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072501.json
+2025-11-07 07:25:01,055 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072501.json
+2025-11-07 07:25:05,617 [INFO] Resposta LLM: {"acao": "click", "seletor": "#dropdownManual", "valor": "", "confianca": 80, "justificativa": "Clique no botão 'Thiago BNDES' para acessar a seção de login ou perfil, pois é o elemento mais relevante para iniciar o processo de autenticação com as credenciais fornecidas."}
+2025-11-07 07:25:05,617 [INFO] JSON extraído com sucesso
+2025-11-07 07:25:05,618 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo7_qwen3-vl-4b-instruct_20251107_072505.json
+2025-11-07 07:25:05,618 [INFO] JSON extraído com sucesso
+2025-11-07 07:25:05,619 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 07:25:05,752 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 07:25:05,752 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:25:07,756 [INFO] PASSO 9
+2025-11-07 07:25:09,930 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_9.png
+2025-11-07 07:25:09,935 [INFO] Extraídos 13 elementos interativos
+2025-11-07 07:25:09,936 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 07:25:09,963 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072509.json
+2025-11-07 07:25:09,963 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072509.json
+2025-11-07 07:25:14,872 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "#minhasInscricoes",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Clicando em 'Minhas Inscrições' para navegar até a seção de login ou autenticação, já que o campo de busca foi preenchido e não há campos vazios disponíveis para preenchimento."
+}
+2025-11-07 07:25:14,872 [INFO] JSON extraído com sucesso
+2025-11-07 07:25:14,874 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo8_qwen3-vl-4b-instruct_20251107_072514.json
+2025-11-07 07:25:14,874 [INFO] JSON extraído com sucesso
+2025-11-07 07:25:14,874 [INFO] Executando ação: click no seletor: #minhasInscricoes
+2025-11-07 07:25:14,903 [ERROR] Erro ao clicar em #minhasInscricoes: Locator.wait_for: Error: strict mode violation: locator("#minhasInscricoes") resolved to 2 elements:
+    1) <a id="minhasInscricoes" _ngcontent-jse-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka locator("app-side-menu").get_by_text("Minhas Inscrições")
+    2) <a id="minhasInscricoes" _ngcontent-jse-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka get_by_role("link", name="Minhas Inscrições")
+
+Call log:
+  - waiting for locator("#minhasInscricoes") to be visible
+
+2025-11-07 07:25:14,904 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator("#minhasInscricoes") resolved to 2 elements:\n    1) <a id="minhasInscricoes" _ngcontent-jse-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka locator("app-side-menu").get_by_text("Minhas Inscrições")\n    2) <a id="minhasInscricoes" _ngcontent-jse-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka get_by_role("link", name="Minhas Inscrições")\n\nCall log:\n  - waiting for locator("#minhasInscricoes") to be visible\n'}
+2025-11-07 07:25:16,908 [INFO] PASSO 10
+2025-11-07 07:25:19,097 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_10.png
+2025-11-07 07:25:19,107 [INFO] Extraídos 13 elementos interativos
+2025-11-07 07:25:19,107 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 07:25:19,134 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072519.json
+2025-11-07 07:25:19,135 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072519.json
+2025-11-07 07:25:24,140 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 95,
+  "justificativa": "Campo já contém 'Cesgranrio', mas para garantir consistência e evitar conflitos, reafirmar o valor é lógico. A tarefa de login não depende deste campo, mas ele pode ser necessário para navegação ou filtro."
+}
+2025-11-07 07:25:24,141 [INFO] JSON extraído com sucesso
+2025-11-07 07:25:24,142 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo9_qwen3-vl-4b-instruct_20251107_072524.json
+2025-11-07 07:25:24,143 [INFO] JSON extraído com sucesso
+2025-11-07 07:25:24,143 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 07:25:24,892 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 07:25:24,893 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 07:25:27,146 [INFO] Navegação encerrada.
+2025-11-07 07:28:57,687 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 07:28:58,712 [INFO] PASSO 1
+2025-11-07 07:29:05,004 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 07:29:05,012 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:29:05,012 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:29:05,026 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072905.json
+2025-11-07 07:29:05,027 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072905.json
+2025-11-07 07:29:09,535 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 07:29:09,536 [INFO] JSON extraído com sucesso
+2025-11-07 07:29:09,537 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_072909.json
+2025-11-07 07:29:09,538 [INFO] JSON extraído com sucesso
+2025-11-07 07:29:09,538 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 07:29:09,661 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 07:29:09,661 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:29:11,664 [INFO] PASSO 2
+2025-11-07 07:29:43,690 [ERROR] Erro ao salvar screenshot: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  -   - waiting for fonts to load...
+  -   - fonts loaded
+
+2025-11-07 07:29:43,702 [INFO] Extraídos 43 elementos interativos
+2025-11-07 07:29:43,703 [INFO] Prompt gerado com 30 elementos para contexto 'general'
+2025-11-07 07:29:43,714 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072943.json
+2025-11-07 07:29:43,715 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072943.json
+2025-11-07 07:29:48,574 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 07:29:48,575 [INFO] JSON extraído com sucesso
+2025-11-07 07:29:48,575 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 07:29:48,576 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_072948.json
+2025-11-07 07:29:52,556 [INFO] JSON extraído com sucesso
+2025-11-07 07:29:52,558 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_072952.json
+2025-11-07 07:29:52,558 [INFO] JSON extraído com sucesso
+2025-11-07 07:29:52,558 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 07:29:52,639 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-uxp-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-uxp-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 07:29:52,639 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-uxp-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-uxp-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 07:29:54,644 [INFO] PASSO 3
+2025-11-07 07:30:26,674 [ERROR] Erro ao salvar screenshot: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  -   - waiting for fonts to load...
+  -   - fonts loaded
+
+2025-11-07 07:30:26,686 [INFO] Extraídos 43 elementos interativos
+2025-11-07 07:30:26,687 [INFO] Prompt gerado com 30 elementos para contexto 'general'
+2025-11-07 07:30:26,699 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_073026.json
+2025-11-07 07:30:26,700 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_073026.json
+2025-11-07 07:30:31,127 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que é específico para usuários cadastrados e está identificado por data-testid, evitando ambiguidade."
+}
+2025-11-07 07:30:31,128 [INFO] JSON extraído com sucesso
+2025-11-07 07:30:31,129 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_073031.json
+2025-11-07 07:30:31,129 [INFO] JSON extraído com sucesso
+2025-11-07 07:30:31,130 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:30:31,271 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:30:31,271 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:30:33,275 [INFO] PASSO 4
+2025-11-07 07:52:58,594 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 07:52:59,621 [INFO] PASSO 1
+2025-11-07 07:53:01,921 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 07:53:01,928 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:53:01,929 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:53:01,941 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075301.json
+2025-11-07 07:53:01,942 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075301.json
+2025-11-07 07:53:06,218 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que o formulário está oculto ou requer clique para revelá-lo."
+}
+2025-11-07 07:53:06,220 [INFO] JSON extraído com sucesso
+2025-11-07 07:53:06,221 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_075306.json
+2025-11-07 07:53:06,221 [INFO] JSON extraído com sucesso
+2025-11-07 07:53:06,221 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 07:53:06,370 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 07:53:06,370 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:53:08,374 [INFO] PASSO 2
+2025-11-07 07:53:10,578 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 07:53:10,586 [INFO] Extraídos 9 elementos interativos
+2025-11-07 07:53:10,586 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 07:53:10,598 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075310.json
+2025-11-07 07:53:10,599 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075310.json
+2025-11-07 07:53:15,065 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 07:53:15,065 [INFO] JSON extraído com sucesso
+2025-11-07 07:53:15,065 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 07:53:15,231 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075315.json
+2025-11-07 07:56:17,763 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 07:56:18,788 [INFO] PASSO 1
+2025-11-07 07:56:21,106 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 07:56:21,113 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:56:21,113 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 07:56:21,127 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075621.json
+2025-11-07 07:56:21,128 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075621.json
+2025-11-07 07:56:25,732 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 07:56:25,734 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:25,735 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_075625.json
+2025-11-07 07:56:25,735 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:25,735 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 07:56:25,875 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 07:56:25,875 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:56:27,880 [INFO] PASSO 2
+2025-11-07 07:56:30,078 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 07:56:30,088 [INFO] Extraídos 9 elementos interativos
+2025-11-07 07:56:30,088 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 07:56:30,101 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075630.json
+2025-11-07 07:56:30,102 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075630.json
+2025-11-07 07:56:34,822 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 07:56:34,822 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:34,822 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 07:56:34,824 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075634.json
+2025-11-07 07:56:38,774 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:38,775 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_075638.json
+2025-11-07 07:56:38,775 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:38,775 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 07:56:38,815 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-qgy-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-qgy-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 07:56:38,816 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-qgy-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-qgy-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 07:56:40,820 [INFO] PASSO 3
+2025-11-07 07:56:43,015 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 07:56:43,023 [INFO] Extraídos 9 elementos interativos
+2025-11-07 07:56:43,023 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 07:56:43,036 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075643.json
+2025-11-07 07:56:43,037 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075643.json
+2025-11-07 07:56:47,522 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 07:56:47,522 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:47,523 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_075647.json
+2025-11-07 07:56:47,523 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:47,523 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:56:47,644 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 07:56:47,644 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 07:56:49,647 [INFO] PASSO 4
+2025-11-07 07:56:51,806 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 07:56:51,812 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:56:51,812 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:56:51,838 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075651.json
+2025-11-07 07:56:51,839 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075651.json
+2025-11-07 07:56:56,298 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 07:56:56,298 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:56,299 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_075656.json
+2025-11-07 07:56:56,299 [INFO] JSON extraído com sucesso
+2025-11-07 07:56:56,299 [INFO] Executando ação: type no seletor: #login
+2025-11-07 07:56:57,136 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 07:56:57,136 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 07:56:59,139 [INFO] PASSO 5
+2025-11-07 07:57:11,339 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 07:57:11,344 [INFO] Extraídos 11 elementos interativos
+2025-11-07 07:57:11,344 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 07:57:11,378 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075711.json
+2025-11-07 07:57:11,379 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_075711.json
+2025-11-07 08:00:40,863 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 08:00:41,888 [INFO] PASSO 1
+2025-11-07 08:00:44,216 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 08:00:44,223 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:00:44,223 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:00:44,236 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080044.json
+2025-11-07 08:00:44,237 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080044.json
+2025-11-07 08:00:48,945 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 08:00:48,947 [INFO] JSON extraído com sucesso
+2025-11-07 08:00:48,948 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_080048.json
+2025-11-07 08:00:48,949 [INFO] JSON extraído com sucesso
+2025-11-07 08:00:48,949 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 08:00:49,074 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 08:00:49,075 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:00:51,079 [INFO] PASSO 2
+2025-11-07 08:00:53,313 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 08:00:53,321 [INFO] Extraídos 9 elementos interativos
+2025-11-07 08:00:53,321 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 08:00:53,334 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080053.json
+2025-11-07 08:00:53,335 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080053.json
+2025-11-07 08:00:57,768 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 08:00:57,768 [INFO] JSON extraído com sucesso
+2025-11-07 08:00:57,768 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 08:00:57,769 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080057.json
+2025-11-07 08:01:01,703 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:01,704 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_080101.json
+2025-11-07 08:01:01,704 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:01,705 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 08:01:01,756 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-ruo-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-ruo-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 08:01:01,756 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-ruo-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-ruo-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 08:01:03,761 [INFO] PASSO 3
+2025-11-07 08:01:05,985 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 08:01:05,993 [INFO] Extraídos 9 elementos interativos
+2025-11-07 08:01:05,993 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 08:01:06,004 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080106.json
+2025-11-07 08:01:06,005 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080106.json
+2025-11-07 08:01:10,532 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 08:01:10,533 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:10,534 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_080110.json
+2025-11-07 08:01:10,534 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:10,534 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 08:01:10,675 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 08:01:10,675 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:01:12,680 [INFO] PASSO 4
+2025-11-07 08:01:14,849 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 08:01:14,855 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:01:14,856 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:01:14,881 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080114.json
+2025-11-07 08:01:14,881 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080114.json
+2025-11-07 08:01:18,965 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 08:01:18,965 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:18,967 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_080118.json
+2025-11-07 08:01:18,967 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:18,968 [INFO] Executando ação: type no seletor: #login
+2025-11-07 08:01:19,857 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 08:01:19,857 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 08:01:21,861 [INFO] PASSO 5
+2025-11-07 08:01:34,044 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 08:01:34,049 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:01:34,049 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:01:34,083 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080134.json
+2025-11-07 08:01:34,084 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080134.json
+2025-11-07 08:01:38,040 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 08:01:38,040 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:38,041 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_080138.json
+2025-11-07 08:01:38,041 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:38,041 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 08:01:38,888 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 08:01:38,888 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 08:01:40,891 [INFO] PASSO 6
+2025-11-07 08:01:53,070 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 08:01:53,075 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:01:53,076 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:01:53,116 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080153.json
+2025-11-07 08:01:53,117 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080153.json
+2025-11-07 08:01:57,064 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 08:01:57,065 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:57,066 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_080157.json
+2025-11-07 08:01:57,066 [INFO] JSON extraído com sucesso
+2025-11-07 08:01:57,066 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 08:01:57,194 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 08:01:57,194 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:01:59,198 [INFO] PASSO 7
+2025-11-07 08:02:01,978 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 08:02:01,986 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:02:01,986 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:02:02,009 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080202.json
+2025-11-07 08:02:02,010 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080202.json
+2025-11-07 08:02:07,029 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para a tarefa de encontrar concursos da Cesgranrio; o placeholder sugere que é para 'Buscar por nome', e o valor 'Cesgranrio' é coerente com o contexto do site."
+}
+2025-11-07 08:02:07,030 [INFO] JSON extraído com sucesso
+2025-11-07 08:02:07,031 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_080207.json
+2025-11-07 08:02:07,031 [INFO] JSON extraído com sucesso
+2025-11-07 08:02:07,031 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 08:02:07,838 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 08:02:07,838 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 08:02:09,842 [INFO] PASSO 8
+2025-11-07 08:02:12,005 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 08:02:12,011 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:02:12,011 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:02:12,042 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080212.json
+2025-11-07 08:02:12,043 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080212.json
+2025-11-07 08:02:46,265 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 08:02:47,293 [INFO] PASSO 1
+2025-11-07 08:02:49,621 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 08:02:49,629 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:02:49,629 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:02:49,643 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080249.json
+2025-11-07 08:02:49,644 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080249.json
+2025-11-07 08:02:54,336 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 08:02:54,338 [INFO] JSON extraído com sucesso
+2025-11-07 08:02:54,339 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_080254.json
+2025-11-07 08:02:54,340 [INFO] JSON extraído com sucesso
+2025-11-07 08:02:54,340 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 08:02:54,470 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 08:02:54,470 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:02:56,475 [INFO] PASSO 2
+2025-11-07 08:02:58,686 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 08:02:58,694 [INFO] Extraídos 9 elementos interativos
+2025-11-07 08:02:58,694 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 08:02:58,716 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080258.json
+2025-11-07 08:02:58,718 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080258.json
+2025-11-07 08:03:03,449 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 08:03:03,449 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:03,449 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 08:03:03,450 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080303.json
+2025-11-07 08:03:07,206 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:07,208 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_080307.json
+2025-11-07 08:03:07,208 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:07,208 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 08:03:07,262 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-cvi-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-cvi-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 08:03:07,262 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-cvi-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-cvi-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 08:03:09,266 [INFO] PASSO 3
+2025-11-07 08:03:11,478 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 08:03:11,486 [INFO] Extraídos 9 elementos interativos
+2025-11-07 08:03:11,486 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 08:03:11,498 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080311.json
+2025-11-07 08:03:11,498 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080311.json
+2025-11-07 08:03:15,838 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 08:03:15,838 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:15,840 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_080315.json
+2025-11-07 08:03:15,840 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:15,840 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 08:03:15,977 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 08:03:15,977 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:03:17,981 [INFO] PASSO 4
+2025-11-07 08:03:20,163 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 08:03:20,170 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:03:20,170 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:03:20,198 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080320.json
+2025-11-07 08:03:20,199 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080320.json
+2025-11-07 08:03:24,502 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 08:03:24,503 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:24,504 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_080324.json
+2025-11-07 08:03:24,505 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:24,505 [INFO] Executando ação: type no seletor: #login
+2025-11-07 08:03:25,347 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 08:03:25,347 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 08:03:27,351 [INFO] PASSO 5
+2025-11-07 08:03:39,497 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 08:03:39,502 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:03:39,502 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:03:39,536 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080339.json
+2025-11-07 08:03:39,537 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080339.json
+2025-11-07 08:03:43,547 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 08:03:43,547 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:43,548 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_080343.json
+2025-11-07 08:03:43,549 [INFO] JSON extraído com sucesso
+2025-11-07 08:03:43,549 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 08:03:44,402 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 08:03:44,402 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 08:03:46,406 [INFO] PASSO 6
+2025-11-07 08:03:58,572 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 08:03:58,578 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:03:58,578 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:03:58,622 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080358.json
+2025-11-07 08:03:58,623 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080358.json
+2025-11-07 08:04:02,486 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 08:04:02,487 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:02,488 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_080402.json
+2025-11-07 08:04:02,488 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:02,488 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 08:04:02,597 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 08:04:02,597 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:04:04,600 [INFO] PASSO 7
+2025-11-07 08:04:07,504 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 08:04:07,511 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:04:07,512 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:04:07,534 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080407.json
+2025-11-07 08:04:07,535 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080407.json
+2025-11-07 08:04:12,434 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para navegação no site de concursos; preenchendo com 'Cesgranrio' permite encontrar conteúdos relacionados ao concurso."
+}
+2025-11-07 08:04:12,434 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:12,436 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_080412.json
+2025-11-07 08:04:12,436 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:12,436 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 08:04:13,191 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 08:04:13,192 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 08:04:15,197 [INFO] PASSO 8
+2025-11-07 08:04:17,363 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 08:04:17,370 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:04:17,370 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:04:17,406 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080417.json
+2025-11-07 08:04:17,407 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080417.json
+2025-11-07 08:04:22,241 [INFO] Resposta LLM: {
+  "acao": "wait",
+  "seletor": ".page-link",
+  "valor": "",
+  "confianca": 85,
+  "justificativa": "Aguardar carregamento da página para verificar se há formulário de login ou botão de navegação relevante. O elemento .page-link pode indicar a presença de uma nova seção ou opção de acesso."
+}
+2025-11-07 08:04:22,241 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:22,242 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo7_qwen3-vl-4b-instruct_20251107_080422.json
+2025-11-07 08:04:22,242 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:22,242 [INFO] Executando ação: wait no seletor: .page-link
+2025-11-07 08:04:23,242 [INFO] Aguardou 1.0 segundos
+2025-11-07 08:04:23,243 [INFO] Resultado da ação: {'success': True, 'message': 'Aguardou 1.0s'}
+2025-11-07 08:04:25,246 [INFO] PASSO 9
+2025-11-07 08:04:27,410 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_9.png
+2025-11-07 08:04:27,415 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:04:27,415 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:04:27,443 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080427.json
+2025-11-07 08:04:27,444 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080427.json
+2025-11-07 08:04:31,945 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "#dropdownManual",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O elemento #dropdownManual é um botão de navegação que provavelmente leva ao menu de login ou perfil do usuário, necessário para acessar o formulário de login."
+}
+2025-11-07 08:04:31,945 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:31,947 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo8_qwen3-vl-4b-instruct_20251107_080431.json
+2025-11-07 08:04:31,947 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:31,947 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 08:04:32,067 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 08:04:32,067 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:04:34,072 [INFO] PASSO 10
+2025-11-07 08:04:36,243 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_10.png
+2025-11-07 08:04:36,249 [INFO] Extraídos 13 elementos interativos
+2025-11-07 08:04:36,249 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 08:04:36,281 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080436.json
+2025-11-07 08:04:36,282 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_080436.json
+2025-11-07 08:04:41,378 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "#dropdownManual",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O elemento #dropdownManual foi clicado anteriormente e parece ser um menu de navegação relevante para acessar a seção de login ou conta. Como não há campos vazios visíveis, o próximo passo é interagir com elementos que possam levar ao formulário de login."
+}
+2025-11-07 08:04:41,378 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:41,379 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo9_qwen3-vl-4b-instruct_20251107_080441.json
+2025-11-07 08:04:41,380 [INFO] JSON extraído com sucesso
+2025-11-07 08:04:41,380 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 08:04:41,496 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 08:04:41,496 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:04:43,810 [INFO] Navegação encerrada.
+2025-11-07 08:10:39,599 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 08:10:40,625 [INFO] PASSO 1
+2025-11-07 08:10:42,924 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 08:10:42,931 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:10:42,931 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:10:42,944 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081042.json
+2025-11-07 08:10:42,945 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081042.json
+2025-11-07 08:10:47,413 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, já que a tarefa é fazer login com credenciais fornecidas. A ausência de campos visíveis sugere que a página está em modo de autenticação ou espera um clique para revelar os campos de login."
+}
+2025-11-07 08:10:47,415 [INFO] JSON extraído com sucesso
+2025-11-07 08:10:47,416 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_081047.json
+2025-11-07 08:10:47,416 [INFO] JSON extraído com sucesso
+2025-11-07 08:10:47,416 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 08:10:47,541 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 08:10:47,541 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:10:49,545 [INFO] PASSO 2
+2025-11-07 08:10:51,744 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 08:10:51,752 [INFO] Extraídos 9 elementos interativos
+2025-11-07 08:10:51,752 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 08:10:51,765 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081051.json
+2025-11-07 08:10:51,766 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081051.json
+2025-11-07 08:10:56,497 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 08:10:56,497 [INFO] JSON extraído com sucesso
+2025-11-07 08:10:56,497 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 08:10:56,498 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081056.json
+2025-11-07 08:11:00,452 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:00,453 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_081100.json
+2025-11-07 08:11:00,453 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:00,453 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 08:11:00,491 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-rpc-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-rpc-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 08:11:00,492 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-rpc-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-rpc-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 08:11:02,496 [INFO] PASSO 3
+2025-11-07 08:11:04,685 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 08:11:04,693 [INFO] Extraídos 9 elementos interativos
+2025-11-07 08:11:04,693 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 08:11:04,705 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081104.json
+2025-11-07 08:11:04,705 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081104.json
+2025-11-07 08:11:09,119 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 08:11:09,119 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:09,121 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_081109.json
+2025-11-07 08:11:09,121 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:09,121 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 08:11:09,252 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 08:11:09,252 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:11:11,258 [INFO] PASSO 4
+2025-11-07 08:11:13,444 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 08:11:13,450 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:11:13,450 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:11:13,475 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081113.json
+2025-11-07 08:11:13,476 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081113.json
+2025-11-07 08:11:17,841 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 08:11:17,841 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:17,842 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_081117.json
+2025-11-07 08:11:17,842 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:17,842 [INFO] Executando ação: type no seletor: #login
+2025-11-07 08:11:18,678 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 08:11:18,678 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 08:11:20,683 [INFO] PASSO 5
+2025-11-07 08:11:32,842 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 08:11:32,847 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:11:32,847 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:11:32,881 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081132.json
+2025-11-07 08:11:32,882 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081132.json
+2025-11-07 08:11:36,539 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 08:11:36,539 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:36,540 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_081136.json
+2025-11-07 08:11:36,541 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:36,541 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 08:11:37,391 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 08:11:37,391 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 08:11:39,394 [INFO] PASSO 6
+2025-11-07 08:11:51,581 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 08:11:51,587 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:11:51,587 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 08:11:51,627 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081151.json
+2025-11-07 08:11:51,630 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081151.json
+2025-11-07 08:11:55,731 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 08:11:55,731 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:55,733 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_081155.json
+2025-11-07 08:11:55,733 [INFO] JSON extraído com sucesso
+2025-11-07 08:11:55,733 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 08:11:55,864 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 08:11:55,864 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:11:57,868 [INFO] PASSO 7
+2025-11-07 08:12:00,752 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 08:12:00,762 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:12:00,762 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:12:00,788 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081200.json
+2025-11-07 08:12:00,788 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081200.json
+2025-11-07 08:12:05,562 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para navegação no site; preenchendo com 'Cesgranrio' alinha ao contexto da tarefa (concurso da Cesgranrio)."
+}
+2025-11-07 08:12:05,562 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:05,563 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_081205.json
+2025-11-07 08:12:05,564 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:05,564 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 08:12:06,357 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 08:12:06,357 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 08:12:08,361 [INFO] PASSO 8
+2025-11-07 08:12:10,510 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 08:12:10,516 [INFO] Extraídos 11 elementos interativos
+2025-11-07 08:12:10,516 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 08:12:10,545 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081210.json
+2025-11-07 08:12:10,546 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081210.json
+2025-11-07 08:12:14,934 [INFO] Resposta LLM: {"acao": "click", "seletor": "#dropdownManual", "valor": "", "confianca": 90, "justificativa": "Clique no botão 'Thiago BNDES' para navegar ou acessar perfil relevante antes de prosseguir com login"}
+2025-11-07 08:12:14,934 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:14,936 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo7_qwen3-vl-4b-instruct_20251107_081214.json
+2025-11-07 08:12:14,937 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:14,937 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 08:12:15,065 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 08:12:15,065 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 08:12:17,070 [INFO] PASSO 9
+2025-11-07 08:12:19,241 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_9.png
+2025-11-07 08:12:19,246 [INFO] Extraídos 13 elementos interativos
+2025-11-07 08:12:19,246 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 08:12:19,272 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081219.json
+2025-11-07 08:12:19,273 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081219.json
+2025-11-07 08:12:23,864 [INFO] Resposta LLM: {
+  "acao": "wait",
+  "seletor": ".page-link",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Aguardando carregamento da seção de login ou próximo passo para acesso à área restrita, já que não há campos vazios visíveis e a tarefa exige autenticação."
+}
+2025-11-07 08:12:23,864 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:23,866 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo8_qwen3-vl-4b-instruct_20251107_081223.json
+2025-11-07 08:12:23,866 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:23,866 [INFO] Executando ação: wait no seletor: .page-link
+2025-11-07 08:12:24,867 [INFO] Aguardou 1.0 segundos
+2025-11-07 08:12:24,867 [INFO] Resultado da ação: {'success': True, 'message': 'Aguardou 1.0s'}
+2025-11-07 08:12:26,870 [INFO] PASSO 10
+2025-11-07 08:12:29,054 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_10.png
+2025-11-07 08:12:29,060 [INFO] Extraídos 13 elementos interativos
+2025-11-07 08:12:29,060 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 08:12:29,087 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081229.json
+2025-11-07 08:12:29,088 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_081229.json
+2025-11-07 08:12:33,555 [INFO] Resposta LLM: {
+  "acao": "wait",
+  "seletor": ".page-link",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Aguardar carregamento da página para garantir que os campos de login estejam disponíveis e visíveis antes de interagir."
+}
+2025-11-07 08:12:33,556 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:33,558 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo9_qwen3-vl-4b-instruct_20251107_081233.json
+2025-11-07 08:12:33,558 [INFO] Ação repetida executada: .page-link
+2025-11-07 08:12:33,559 [INFO] JSON extraído com sucesso
+2025-11-07 08:12:33,559 [INFO] Executando ação: wait no seletor: .page-link
+2025-11-07 08:12:34,559 [INFO] Aguardou 1.0 segundos
+2025-11-07 08:12:34,560 [INFO] Resultado da ação: {'success': True, 'message': 'Aguardou 1.0s'}
+2025-11-07 08:12:36,791 [INFO] Navegação encerrada.
+2025-11-07 09:20:26,850 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 09:20:27,884 [INFO] PASSO 1
+2025-11-07 09:20:30,208 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 09:20:30,214 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:20:30,215 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:20:30,227 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092030.json
+2025-11-07 09:20:30,228 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092030.json
+2025-11-07 09:20:45,772 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Acessar' é o elemento mais provável para iniciar o processo de login, pois corresponde à ação esperada para acessar a área do candidato com credenciais fornecidas."
+}
+2025-11-07 09:20:45,774 [INFO] JSON extraído com sucesso
+2025-11-07 09:20:45,775 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_092045.json
+2025-11-07 09:20:45,775 [INFO] JSON extraído com sucesso
+2025-11-07 09:20:45,776 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 09:20:45,931 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 09:20:45,931 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:20:47,935 [INFO] PASSO 2
+2025-11-07 09:20:50,133 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 09:20:50,142 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:20:50,142 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:20:50,155 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092050.json
+2025-11-07 09:20:50,156 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092050.json
+2025-11-07 09:20:54,782 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 09:20:54,782 [INFO] JSON extraído com sucesso
+2025-11-07 09:20:54,782 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 09:20:54,784 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092054.json
+2025-11-07 09:20:58,733 [INFO] JSON extraído com sucesso
+2025-11-07 09:20:58,734 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_092058.json
+2025-11-07 09:20:58,734 [INFO] JSON extraído com sucesso
+2025-11-07 09:20:58,734 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 09:20:58,773 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-aqr-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-aqr-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 09:20:58,773 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-aqr-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-aqr-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 09:21:00,778 [INFO] PASSO 3
+2025-11-07 09:21:02,965 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 09:21:02,973 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:21:02,973 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:21:02,985 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092102.json
+2025-11-07 09:21:02,986 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092102.json
+2025-11-07 09:21:07,689 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 09:21:07,690 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:07,692 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_092107.json
+2025-11-07 09:21:07,692 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:07,692 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:21:07,853 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:21:07,853 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:21:09,859 [INFO] PASSO 4
+2025-11-07 09:21:12,028 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 09:21:12,037 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:21:12,038 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:21:12,065 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092112.json
+2025-11-07 09:21:12,066 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092112.json
+2025-11-07 09:21:16,401 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 09:21:16,401 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:16,402 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_092116.json
+2025-11-07 09:21:16,403 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:16,403 [INFO] Executando ação: type no seletor: #login
+2025-11-07 09:21:17,274 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 09:21:17,274 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 09:21:19,278 [INFO] PASSO 5
+2025-11-07 09:21:31,456 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 09:21:31,462 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:21:31,462 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:21:31,498 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092131.json
+2025-11-07 09:21:31,500 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092131.json
+2025-11-07 09:21:35,486 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 09:21:35,487 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:35,488 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_092135.json
+2025-11-07 09:21:35,488 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:35,488 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 09:21:36,340 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 09:21:36,340 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 09:21:38,343 [INFO] PASSO 6
+2025-11-07 09:21:50,524 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 09:21:50,530 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:21:50,530 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:21:50,574 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092150.json
+2025-11-07 09:21:50,575 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092150.json
+2025-11-07 09:21:54,593 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 09:21:54,593 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:54,595 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_092154.json
+2025-11-07 09:21:54,595 [INFO] JSON extraído com sucesso
+2025-11-07 09:21:54,595 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 09:21:54,717 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 09:21:54,717 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:21:56,721 [INFO] PASSO 7
+2025-11-07 09:21:59,733 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 09:21:59,741 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:21:59,741 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:21:59,763 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092159.json
+2025-11-07 09:21:59,764 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092159.json
+2025-11-07 09:22:04,635 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Concurso Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para a tarefa de encontrar concursos; preenchendo com termo genérico 'Concurso Cesgranrio' permite avançar na navegação."
+}
+2025-11-07 09:22:04,635 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:04,637 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_092204.json
+2025-11-07 09:22:04,637 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:04,637 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 09:22:06,007 [INFO] Texto digitado em [name='busca']: 'Concurso Cesgranrio'
+2025-11-07 09:22:06,008 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Concurso Cesgranrio' digitado com sucesso"}
+2025-11-07 09:22:08,011 [INFO] PASSO 8
+2025-11-07 09:22:10,195 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 09:22:10,202 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:22:10,202 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:22:10,240 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092210.json
+2025-11-07 09:22:10,241 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092210.json
+2025-11-07 09:22:14,934 [INFO] Resposta LLM: {"acao": "click", "seletor": "#dropdownManual", "valor": "", "confianca": 90, "justificativa": "O elemento #dropdownManual é um botão de navegação que pode levar ao menu de login ou perfil; é o próximo passo lógico para acessar a seção de login após a busca."}
+2025-11-07 09:22:14,935 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:14,937 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo7_qwen3-vl-4b-instruct_20251107_092214.json
+2025-11-07 09:22:14,937 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:14,937 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 09:22:15,408 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 09:22:15,409 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:22:17,412 [INFO] PASSO 9
+2025-11-07 09:22:19,559 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_9.png
+2025-11-07 09:22:19,565 [INFO] Extraídos 13 elementos interativos
+2025-11-07 09:22:19,565 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 09:22:19,591 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092219.json
+2025-11-07 09:22:19,592 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092219.json
+2025-11-07 09:22:24,364 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "#minhasInscricoes",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Minhas Inscrições' é o próximo passo lógico para acessar a seção de login ou autenticação, já que o usuário precisa fazer login para prosseguir com as inscrições."
+}
+2025-11-07 09:22:24,364 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:24,366 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo8_qwen3-vl-4b-instruct_20251107_092224.json
+2025-11-07 09:22:24,366 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:24,366 [INFO] Executando ação: click no seletor: #minhasInscricoes
+2025-11-07 09:22:24,391 [ERROR] Erro ao clicar em #minhasInscricoes: Locator.wait_for: Error: strict mode violation: locator("#minhasInscricoes") resolved to 2 elements:
+    1) <a id="minhasInscricoes" _ngcontent-aqr-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka locator("app-side-menu").get_by_text("Minhas Inscrições")
+    2) <a id="minhasInscricoes" _ngcontent-aqr-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka get_by_role("link", name="Minhas Inscrições")
+
+Call log:
+  - waiting for locator("#minhasInscricoes") to be visible
+
+2025-11-07 09:22:24,391 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator("#minhasInscricoes") resolved to 2 elements:\n    1) <a id="minhasInscricoes" _ngcontent-aqr-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka locator("app-side-menu").get_by_text("Minhas Inscrições")\n    2) <a id="minhasInscricoes" _ngcontent-aqr-c175="" href="/portal/meus-eventos" routerlinkactive="active-link" class="nav-link text-primary text-uppercase fw-bold btn-menu active-link">Minhas Inscrições</a> aka get_by_role("link", name="Minhas Inscrições")\n\nCall log:\n  - waiting for locator("#minhasInscricoes") to be visible\n'}
+2025-11-07 09:22:26,395 [INFO] PASSO 10
+2025-11-07 09:22:28,559 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_10.png
+2025-11-07 09:22:28,565 [INFO] Extraídos 13 elementos interativos
+2025-11-07 09:22:28,565 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 09:22:28,593 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092228.json
+2025-11-07 09:22:28,594 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092228.json
+2025-11-07 09:22:33,439 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Concurso Cesgranrio",
+  "confianca": 95,
+  "justificativa": "Campo já contém valor, mas para garantir consistência e evitar conflitos de foco ou carregamento incorreto, reafirmar o conteúdo do campo de busca com o mesmo valor."
+}
+2025-11-07 09:22:33,439 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:33,441 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo9_qwen3-vl-4b-instruct_20251107_092233.json
+2025-11-07 09:22:33,441 [INFO] JSON extraído com sucesso
+2025-11-07 09:22:33,441 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 09:22:34,761 [INFO] Texto digitado em [name='busca']: 'Concurso Cesgranrio'
+2025-11-07 09:22:34,761 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Concurso Cesgranrio' digitado com sucesso"}
+2025-11-07 09:22:37,096 [INFO] Navegação encerrada.
+2025-11-07 09:23:23,350 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 09:23:24,376 [INFO] PASSO 1
+2025-11-07 09:27:25,085 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 09:27:26,110 [INFO] PASSO 1
+2025-11-07 09:27:28,407 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 09:27:28,413 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:27:28,413 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:27:28,426 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092728.json
+2025-11-07 09:27:28,427 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092728.json
+2025-11-07 09:27:32,409 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, pois está associado à ação de autenticação e não há campos visíveis para preenchimento no contexto atual."
+}
+2025-11-07 09:27:32,411 [INFO] JSON extraído com sucesso
+2025-11-07 09:27:32,413 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_092732.json
+2025-11-07 09:27:32,413 [INFO] JSON extraído com sucesso
+2025-11-07 09:27:32,413 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 09:27:32,562 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 09:27:32,563 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:27:34,568 [INFO] PASSO 2
+2025-11-07 09:27:36,765 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 09:27:36,773 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:27:36,774 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:27:36,786 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092736.json
+2025-11-07 09:27:36,787 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092736.json
+2025-11-07 09:27:41,209 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 09:27:41,209 [INFO] JSON extraído com sucesso
+2025-11-07 09:27:41,209 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 09:27:41,211 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092741.json
+2025-11-07 09:27:45,197 [INFO] JSON extraído com sucesso
+2025-11-07 09:27:45,198 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_092745.json
+2025-11-07 09:27:45,198 [INFO] JSON extraído com sucesso
+2025-11-07 09:27:45,198 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 09:27:45,240 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-who-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-who-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 09:27:45,241 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-who-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-who-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 09:27:47,244 [INFO] PASSO 3
+2025-11-07 09:27:49,435 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 09:27:49,444 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:27:49,444 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:27:49,456 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092749.json
+2025-11-07 09:27:49,457 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092749.json
+2025-11-07 09:27:53,775 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 09:27:53,776 [INFO] JSON extraído com sucesso
+2025-11-07 09:27:53,777 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_092753.json
+2025-11-07 09:27:53,778 [INFO] JSON extraído com sucesso
+2025-11-07 09:27:53,778 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:27:53,899 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:27:53,899 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:27:55,903 [INFO] PASSO 4
+2025-11-07 09:27:58,057 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 09:27:58,063 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:27:58,063 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:27:58,089 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092758.json
+2025-11-07 09:27:58,090 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092758.json
+2025-11-07 09:28:02,367 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 09:28:02,368 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:02,370 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_092802.json
+2025-11-07 09:28:02,370 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:02,370 [INFO] Executando ação: type no seletor: #login
+2025-11-07 09:28:03,250 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 09:28:03,250 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 09:28:05,254 [INFO] PASSO 5
+2025-11-07 09:28:17,427 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 09:28:17,433 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:28:17,433 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:28:17,468 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092817.json
+2025-11-07 09:28:17,469 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092817.json
+2025-11-07 09:28:21,402 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 09:28:21,402 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:21,403 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_092821.json
+2025-11-07 09:28:21,404 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:21,404 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 09:28:22,223 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 09:28:22,223 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 09:28:24,226 [INFO] PASSO 6
+2025-11-07 09:28:36,392 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 09:28:36,398 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:28:36,398 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:28:36,438 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092836.json
+2025-11-07 09:28:36,439 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092836.json
+2025-11-07 09:28:40,266 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 09:28:40,266 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:40,267 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_092840.json
+2025-11-07 09:28:40,267 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:40,267 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 09:28:40,383 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 09:28:40,384 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:28:42,388 [INFO] PASSO 7
+2025-11-07 09:28:54,600 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 09:28:54,610 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:28:54,610 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:28:54,633 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092854.json
+2025-11-07 09:28:54,635 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092854.json
+2025-11-07 09:28:59,440 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para a tarefa de navegação no site de concursos; preenchendo com 'Cesgranrio' permite encontrar conteúdos relacionados ao concurso."
+}
+2025-11-07 09:28:59,440 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:59,442 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_092859.json
+2025-11-07 09:28:59,442 [INFO] JSON extraído com sucesso
+2025-11-07 09:28:59,442 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 09:29:00,243 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 09:29:00,243 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 09:29:02,247 [INFO] PASSO 8
+2025-11-07 09:29:14,424 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 09:29:14,430 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:29:14,430 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:29:14,462 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092914.json
+2025-11-07 09:29:14,463 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092914.json
+2025-11-07 09:29:19,038 [INFO] Resposta LLM: {"acao": "click", "seletor": "#dropdownManual", "valor": "", "confianca": 95, "justificativa": "Clique no botão 'Thiago BNDES' para navegar ou acessar opções de login, já que o campo de busca foi preenchido e não há campos vazios disponíveis para login."}
+2025-11-07 09:29:19,038 [INFO] JSON extraído com sucesso
+2025-11-07 09:29:19,040 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo7_qwen3-vl-4b-instruct_20251107_092919.json
+2025-11-07 09:29:19,040 [INFO] JSON extraído com sucesso
+2025-11-07 09:29:19,040 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 09:29:19,150 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 09:29:19,151 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:29:21,156 [INFO] PASSO 9
+2025-11-07 09:29:33,329 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_9.png
+2025-11-07 09:29:33,334 [INFO] Extraídos 13 elementos interativos
+2025-11-07 09:29:33,334 [INFO] Prompt gerado com 13 elementos para contexto 'general'
+2025-11-07 09:29:33,361 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092933.json
+2025-11-07 09:29:33,362 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092933.json
+2025-11-07 09:29:38,505 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-avaliacoes-e-concursos-2']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Avaliações e Concursos' é o próximo passo lógico para acessar a seção de login ou cadastro, já que a tarefa envolve fazer login com credenciais específicas."
+}
+2025-11-07 09:29:38,506 [INFO] JSON extraído com sucesso
+2025-11-07 09:29:38,508 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo8_qwen3-vl-4b-instruct_20251107_092938.json
+2025-11-07 09:29:38,508 [INFO] JSON extraído com sucesso
+2025-11-07 09:29:38,508 [INFO] Executando ação: click no seletor: [data-testid='auto-avaliacoes-e-concursos-2']
+2025-11-07 09:29:38,635 [INFO] Clique executado com sucesso: [data-testid='auto-avaliacoes-e-concursos-2']
+2025-11-07 09:29:38,636 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:29:40,641 [INFO] PASSO 10
+2025-11-07 09:29:52,945 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_10.png
+2025-11-07 09:29:52,955 [INFO] Extraídos 25 elementos interativos
+2025-11-07 09:29:52,955 [INFO] Prompt gerado com 25 elementos para contexto 'general'
+2025-11-07 09:29:52,986 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092952.json
+2025-11-07 09:29:52,987 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_092952.json
+2025-11-07 09:29:57,288 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Preenchendo campo de busca com nome do concurso para filtrar resultados relevantes antes de login"
+}
+2025-11-07 09:29:57,288 [INFO] JSON extraído com sucesso
+2025-11-07 09:29:57,289 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo9_qwen3-vl-4b-instruct_20251107_092957.json
+2025-11-07 09:29:57,290 [INFO] JSON extraído com sucesso
+2025-11-07 09:29:57,290 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 09:29:58,074 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 09:29:58,074 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 09:30:00,309 [INFO] Navegação encerrada.
+2025-11-07 09:30:21,185 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 09:30:22,211 [INFO] PASSO 1
+2025-11-07 09:30:24,567 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 09:30:24,573 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:30:24,574 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:30:24,588 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093024.json
+2025-11-07 09:30:24,589 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093024.json
+2025-11-07 09:30:28,931 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, pois está associado à ação de autenticação e não há campos visíveis para preenchimento no contexto atual."
+}
+2025-11-07 09:30:28,933 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:28,934 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_093028.json
+2025-11-07 09:30:28,934 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:28,934 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 09:30:29,061 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 09:30:29,061 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:30:31,065 [INFO] PASSO 2
+2025-11-07 09:30:33,267 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 09:30:33,276 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:30:33,276 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:30:33,290 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093033.json
+2025-11-07 09:30:33,291 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093033.json
+2025-11-07 09:30:37,975 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 09:30:37,976 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:37,976 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 09:30:37,977 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093037.json
+2025-11-07 09:30:41,933 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:41,934 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_093041.json
+2025-11-07 09:30:41,934 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:41,934 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 09:30:41,972 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-hsf-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-hsf-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 09:30:41,972 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-hsf-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-hsf-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 09:30:43,977 [INFO] PASSO 3
+2025-11-07 09:30:46,168 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 09:30:46,177 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:30:46,177 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:30:46,189 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093046.json
+2025-11-07 09:30:46,189 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093046.json
+2025-11-07 09:30:50,881 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 09:30:50,882 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:50,883 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_093050.json
+2025-11-07 09:30:50,884 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:50,884 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:30:51,036 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:30:51,036 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:30:53,042 [INFO] PASSO 4
+2025-11-07 09:30:55,193 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 09:30:55,199 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:30:55,199 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:30:55,226 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093055.json
+2025-11-07 09:30:55,227 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093055.json
+2025-11-07 09:30:59,684 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 09:30:59,684 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:59,686 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_093059.json
+2025-11-07 09:30:59,686 [INFO] JSON extraído com sucesso
+2025-11-07 09:30:59,686 [INFO] Executando ação: type no seletor: #login
+2025-11-07 09:31:00,524 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 09:31:00,524 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 09:31:02,528 [INFO] PASSO 5
+2025-11-07 09:31:14,692 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 09:31:14,697 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:31:14,698 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:31:14,732 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093114.json
+2025-11-07 09:31:14,733 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093114.json
+2025-11-07 09:31:18,635 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 09:31:18,635 [INFO] JSON extraído com sucesso
+2025-11-07 09:31:18,636 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_093118.json
+2025-11-07 09:31:18,637 [INFO] JSON extraído com sucesso
+2025-11-07 09:31:18,637 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 09:31:19,475 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 09:31:19,475 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 09:31:21,480 [INFO] PASSO 6
+2025-11-07 09:31:33,659 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 09:31:33,664 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:31:33,665 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:31:33,710 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093133.json
+2025-11-07 09:31:33,711 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093133.json
+2025-11-07 09:31:37,749 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 09:31:37,750 [INFO] JSON extraído com sucesso
+2025-11-07 09:31:37,751 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_093137.json
+2025-11-07 09:31:37,751 [INFO] JSON extraído com sucesso
+2025-11-07 09:31:37,751 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 09:31:37,884 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 09:31:37,884 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:31:39,887 [INFO] PASSO 7
+2025-11-07 09:32:46,186 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 09:32:47,210 [INFO] PASSO 1
+2025-11-07 09:32:49,514 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 09:32:49,520 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:32:49,520 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:32:49,532 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093249.json
+2025-11-07 09:32:49,533 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093249.json
+2025-11-07 09:32:53,443 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Acessar' é o elemento mais provável para iniciar o processo de login, pois é o único que indica ação de entrada no sistema."
+}
+2025-11-07 09:32:53,445 [INFO] JSON extraído com sucesso
+2025-11-07 09:32:53,698 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_093253.json
+2025-11-07 09:32:53,698 [INFO] JSON extraído com sucesso
+2025-11-07 09:32:53,698 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 09:32:53,849 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 09:32:53,849 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:32:55,854 [INFO] PASSO 2
+2025-11-07 09:32:58,062 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 09:32:58,070 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:32:58,071 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:32:58,083 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093258.json
+2025-11-07 09:32:58,083 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093258.json
+2025-11-07 09:33:02,765 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 09:33:02,765 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:02,765 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 09:33:02,766 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093302.json
+2025-11-07 09:33:06,765 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:06,766 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_093306.json
+2025-11-07 09:33:06,767 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:06,767 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 09:33:06,815 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-dlx-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-dlx-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 09:33:06,816 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-dlx-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-dlx-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 09:33:08,819 [INFO] PASSO 3
+2025-11-07 09:33:11,004 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 09:33:11,012 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:33:11,012 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:33:11,024 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093311.json
+2025-11-07 09:33:11,025 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093311.json
+2025-11-07 09:33:15,411 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 09:33:15,411 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:15,412 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_093315.json
+2025-11-07 09:33:15,412 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:15,412 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:33:15,543 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:33:15,543 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:33:17,548 [INFO] PASSO 4
+2025-11-07 09:33:19,729 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 09:33:19,734 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:33:19,734 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:33:19,760 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093319.json
+2025-11-07 09:33:19,761 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093319.json
+2025-11-07 09:33:24,262 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 09:33:24,263 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:24,264 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_093324.json
+2025-11-07 09:33:24,264 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:24,264 [INFO] Executando ação: type no seletor: #login
+2025-11-07 09:33:25,092 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 09:33:25,092 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 09:33:27,096 [INFO] PASSO 5
+2025-11-07 09:33:39,296 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 09:33:39,302 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:33:39,302 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:33:39,336 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093339.json
+2025-11-07 09:33:39,337 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093339.json
+2025-11-07 09:33:43,228 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 09:33:43,228 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:43,229 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_093343.json
+2025-11-07 09:33:43,229 [INFO] JSON extraído com sucesso
+2025-11-07 09:33:43,229 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 09:33:44,077 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 09:33:44,077 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 09:33:46,080 [INFO] PASSO 6
+2025-11-07 09:33:58,264 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 09:33:58,270 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:33:58,271 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:33:58,315 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093358.json
+2025-11-07 09:33:58,315 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093358.json
+2025-11-07 09:34:02,436 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 09:34:02,436 [INFO] JSON extraído com sucesso
+2025-11-07 09:34:02,437 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_093402.json
+2025-11-07 09:34:02,438 [INFO] JSON extraído com sucesso
+2025-11-07 09:34:02,438 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 09:34:02,554 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 09:34:02,555 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:34:04,558 [INFO] PASSO 7
+2025-11-07 09:34:07,532 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 09:34:07,540 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:34:07,540 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:34:07,562 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093407.json
+2025-11-07 09:34:07,563 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093407.json
+2025-11-07 09:34:12,397 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para a tarefa de encontrar concursos da Cesgranrio; preenchendo com 'Cesgranrio' é coerente com o contexto do site."
+}
+2025-11-07 09:34:12,397 [INFO] JSON extraído com sucesso
+2025-11-07 09:34:12,398 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_093412.json
+2025-11-07 09:34:12,399 [INFO] JSON extraído com sucesso
+2025-11-07 09:34:12,399 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 09:34:13,191 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 09:34:13,192 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 09:34:15,195 [INFO] PASSO 8
+2025-11-07 09:34:17,394 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 09:34:17,402 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:34:17,402 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:34:17,432 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093417.json
+2025-11-07 09:34:17,433 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_093417.json
+2025-11-07 09:34:22,032 [INFO] Resposta LLM: {"acao": "click", "seletor": "#dropdownManual", "valor": "", "confianca": 85, "justificativa": "Clique no botão 'Thiago BNDES' para navegar ou acessar opções de login, já que o campo de busca foi preenchido e não há campos vazios disponíveis para preenchimento da tarefa de login."}
+2025-11-07 09:34:22,033 [INFO] JSON extraído com sucesso
+2025-11-07 09:34:22,035 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo7_qwen3-vl-4b-instruct_20251107_093422.json
+2025-11-07 09:34:22,035 [INFO] JSON extraído com sucesso
+2025-11-07 09:34:22,035 [INFO] Executando ação: click no seletor: #dropdownManual
+2025-11-07 09:34:22,155 [INFO] Clique executado com sucesso: #dropdownManual
+2025-11-07 09:34:22,155 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:34:24,159 [INFO] PASSO 9
+2025-11-07 09:41:30,023 [INFO] Aviso de cookies fechado usando: [id*='cookie'] button
+2025-11-07 09:41:31,050 [INFO] PASSO 1
+2025-11-07 09:41:33,368 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_1.png
+2025-11-07 09:41:33,378 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:41:33,378 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:41:33,397 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094133.json
+2025-11-07 09:41:33,399 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094133.json
+2025-11-07 09:41:37,755 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O botão 'Acessar' é o elemento mais provável para iniciar o processo de login, pois está associado à ação de autenticação e não há campos visíveis para preenchimento no contexto atual."
+}
+2025-11-07 09:41:37,757 [INFO] JSON extraído com sucesso
+2025-11-07 09:41:37,759 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo0_qwen3-vl-4b-instruct_20251107_094137.json
+2025-11-07 09:41:37,759 [INFO] JSON extraído com sucesso
+2025-11-07 09:41:37,759 [INFO] Executando ação: click no seletor: [data-testid='auto-acessar-7']
+2025-11-07 09:41:37,938 [INFO] Clique executado com sucesso: [data-testid='auto-acessar-7']
+2025-11-07 09:41:37,938 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:41:39,944 [INFO] PASSO 2
+2025-11-07 09:41:42,179 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_2.png
+2025-11-07 09:41:42,190 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:41:42,190 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:41:42,202 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094142.json
+2025-11-07 09:41:42,204 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094142.json
+2025-11-07 09:41:46,965 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-acessar-7']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "Elemento já foi clicado com sucesso na ação anterior. A próxima ação deve ser identificar o formulário de login e preencher os campos, mas nenhum campo está vazio no contexto atual. Portanto, é necessário navegar para a página de login ou encontrar o botão 'Entrar' que possa abrir o formulário."
+}
+2025-11-07 09:41:46,965 [INFO] JSON extraído com sucesso
+2025-11-07 09:41:46,965 [WARNING] Seletor invalido: [data-testid='auto-acessar-7'], tentando correcao...
+2025-11-07 09:41:46,967 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094146.json
+2025-11-07 09:41:50,964 [INFO] JSON extraído com sucesso
+2025-11-07 09:41:50,965 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo1_qwen3-vl-4b-instruct_20251107_094150.json
+2025-11-07 09:41:50,965 [INFO] JSON extraído com sucesso
+2025-11-07 09:41:50,965 [INFO] Executando ação: click no seletor: .btn.btn-primary
+2025-11-07 09:41:51,023 [ERROR] Erro ao clicar em .btn.btn-primary: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:
+    1) <a href="/portal/login" _ngcontent-qrm-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")
+    2) <a href="/portal/login" _ngcontent-qrm-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")
+
+Call log:
+  - waiting for locator(".btn.btn-primary") to be visible
+
+2025-11-07 09:41:51,024 [INFO] Resultado da ação: {'success': False, 'message': 'Erro no clique: Locator.wait_for: Error: strict mode violation: locator(".btn.btn-primary") resolved to 2 elements:\n    1) <a href="/portal/login" _ngcontent-qrm-c175="" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka locator("app-side-menu").get_by_text("Área do Candidato")\n    2) <a href="/portal/login" _ngcontent-qrm-c175="" data-testid="auto-area-do-candidato-4" class="btn btn-primary text-uppercase fw-bold">Área do Candidato</a> aka get_by_test_id("auto-area-do-candidato-4")\n\nCall log:\n  - waiting for locator(".btn.btn-primary") to be visible\n'}
+2025-11-07 09:41:53,029 [INFO] PASSO 3
+2025-11-07 09:41:55,213 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_3.png
+2025-11-07 09:41:55,223 [INFO] Extraídos 9 elementos interativos
+2025-11-07 09:41:55,224 [INFO] Prompt gerado com 9 elementos para contexto 'general'
+2025-11-07 09:41:55,240 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094155.json
+2025-11-07 09:41:55,241 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094155.json
+2025-11-07 09:41:59,747 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "[data-testid='auto-area-do-candidato-4']",
+  "valor": "",
+  "confianca": 90,
+  "justificativa": "O link 'Área do Candidato' é o caminho mais lógico para acessar a seção de login, já que o objetivo é fazer login com credenciais. O seletor [data-testid='auto-area-do-candidato-4'] é específico e evita ambiguidade."
+}
+2025-11-07 09:41:59,747 [INFO] JSON extraído com sucesso
+2025-11-07 09:41:59,749 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo2_qwen3-vl-4b-instruct_20251107_094159.json
+2025-11-07 09:41:59,749 [INFO] JSON extraído com sucesso
+2025-11-07 09:41:59,749 [INFO] Executando ação: click no seletor: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:41:59,910 [INFO] Clique executado com sucesso: [data-testid='auto-area-do-candidato-4']
+2025-11-07 09:41:59,910 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:42:01,916 [INFO] PASSO 4
+2025-11-07 09:42:04,096 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_4.png
+2025-11-07 09:42:04,102 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:42:04,103 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:42:04,132 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094204.json
+2025-11-07 09:42:04,133 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094204.json
+2025-11-07 09:42:08,583 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "#login",
+  "valor": "11380897700",
+  "confianca": 95,
+  "justificativa": "Campo de login (CPF) está vazio e precisa ser preenchido com o valor fornecido: 11380897700. O placeholder indica que é para digitar CPF ou e-mail."
+}
+2025-11-07 09:42:08,584 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:08,586 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo3_qwen3-vl-4b-instruct_20251107_094208.json
+2025-11-07 09:42:08,586 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:08,586 [INFO] Executando ação: type no seletor: #login
+2025-11-07 09:42:09,466 [INFO] Texto digitado em #login: '11380897700'
+2025-11-07 09:42:09,466 [INFO] Resultado da ação: {'success': True, 'message': "Texto '11380897700' digitado com sucesso"}
+2025-11-07 09:42:11,470 [INFO] PASSO 5
+2025-11-07 09:42:23,630 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_5.png
+2025-11-07 09:42:23,636 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:42:23,636 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:42:23,671 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094223.json
+2025-11-07 09:42:23,672 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094223.json
+2025-11-07 09:42:27,492 [INFO] Resposta LLM: {"acao": "type", "seletor": "#senha", "valor": "Cesgran@123", "confianca": 95, "justificativa": "Preenchendo campo de senha com valor fornecido pela tarefa, após o CPF já ter sido preenchido no campo #login"}
+2025-11-07 09:42:27,492 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:27,494 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo4_qwen3-vl-4b-instruct_20251107_094227.json
+2025-11-07 09:42:27,495 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:27,495 [INFO] Executando ação: type no seletor: #senha
+2025-11-07 09:42:28,305 [INFO] Texto digitado em #senha: 'Cesgran@123'
+2025-11-07 09:42:28,306 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgran@123' digitado com sucesso"}
+2025-11-07 09:42:30,309 [INFO] PASSO 6
+2025-11-07 09:42:42,503 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_6.png
+2025-11-07 09:42:42,509 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:42:42,509 [INFO] Prompt gerado com 11 elementos para contexto 'login'
+2025-11-07 09:42:42,549 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094242.json
+2025-11-07 09:42:42,550 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094242.json
+2025-11-07 09:42:46,606 [INFO] Resposta LLM: {
+  "acao": "click",
+  "seletor": "button:has-text('Entrar')",
+  "valor": "",
+  "confianca": 95,
+  "justificativa": "O botão 'Entrar' é o próximo passo lógico após preencher login e senha, para efetuar o acesso à conta."
+}
+2025-11-07 09:42:46,606 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:46,607 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo5_qwen3-vl-4b-instruct_20251107_094246.json
+2025-11-07 09:42:46,607 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:46,607 [INFO] Executando ação: click no seletor: button:has-text('Entrar')
+2025-11-07 09:42:46,726 [INFO] Clique executado com sucesso: button:has-text('Entrar')
+2025-11-07 09:42:46,726 [INFO] Resultado da ação: {'success': True, 'message': 'Clique executado'}
+2025-11-07 09:42:48,732 [INFO] PASSO 7
+2025-11-07 09:42:51,495 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_7.png
+2025-11-07 09:42:51,503 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:42:51,503 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:42:51,526 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094251.json
+2025-11-07 09:42:51,527 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094251.json
+2025-11-07 09:42:56,473 [INFO] Resposta LLM: {
+  "acao": "type",
+  "seletor": "[name='busca']",
+  "valor": "Cesgranrio",
+  "confianca": 90,
+  "justificativa": "Campo de busca está vazio e relevante para a tarefa de encontrar concursos da Cesgranrio; preenchendo com 'Cesgranrio' é coerente com o objetivo de navegar ou filtrar resultados."
+}
+2025-11-07 09:42:56,474 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:56,477 [INFO] Resposta do modelo salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\model_responses\passo6_qwen3-vl-4b-instruct_20251107_094256.json
+2025-11-07 09:42:56,477 [INFO] JSON extraído com sucesso
+2025-11-07 09:42:56,477 [INFO] Executando ação: type no seletor: [name='busca']
+2025-11-07 09:42:57,297 [INFO] Texto digitado em [name='busca']: 'Cesgranrio'
+2025-11-07 09:42:57,297 [INFO] Resultado da ação: {'success': True, 'message': "Texto 'Cesgranrio' digitado com sucesso"}
+2025-11-07 09:42:59,301 [INFO] PASSO 8
+2025-11-07 09:43:01,461 [INFO] Screenshot salva em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\prints\passo_8.png
+2025-11-07 09:43:01,466 [INFO] Extraídos 11 elementos interativos
+2025-11-07 09:43:01,466 [INFO] Prompt gerado com 11 elementos para contexto 'general'
+2025-11-07 09:43:01,495 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094301.json
+2025-11-07 09:43:01,496 [INFO] Payload salvo em: C:\Users\Thiago\Documents\FOTON\AgenteIA\llm_agent_test\logs\payloads\qwen3-vl-4b-instruct_20251107_094301.json
