@@ -14,6 +14,8 @@ import time
 import logging
 import json
 import re
+import subprocess
+import shutil
 from datetime import datetime
 from pathlib import Path
 from agent.browser import iniciar_navegador
@@ -216,16 +218,31 @@ def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=N
         print(f"\n[PASSO {passo+1}]")
         logging.info(f"PASSO {passo+1}")
 
+        # Capturar URL atual antes da extração
+        url_atual = pagina.url
+        print(f"[INFO] URL atual: {url_atual}")
+        
+        # Aguardar carregamento completo da página (com fallback flexível)
+        print("⏳ Aguardando carregamento completo da página...")
         try:
-            # Capturar URL atual antes da extração
-            url_atual = pagina.url
-            print(f"[INFO] URL atual: {url_atual}")
-            
-            # Aguardar carregamento completo da página
-            print("⏳ Aguardando carregamento completo da página...")
+            # Tentar networkidle primeiro (ideal mas pode falhar em sites com analytics)
             pagina.wait_for_load_state('networkidle', timeout=10000)
-            pagina.wait_for_timeout(2000)  # Aguarda mais 2 segundos para elementos dinâmicos
-            
+            print("✅ Página carregada (networkidle)")
+        except Exception as e:
+            print(f"[AVISO] Timeout esperando networkidle: {str(e)[:80]}...")
+            print("[INFO] Tentando fallback para domcontentloaded...")
+            try:
+                # Fallback para domcontentloaded (mais permissivo)
+                pagina.wait_for_load_state('domcontentloaded', timeout=5000)
+                print("✅ Página carregada (domcontentloaded)")
+            except Exception as e2:
+                print(f"[AVISO] Timeout esperando domcontentloaded: {str(e2)[:80]}...")
+                print("[INFO] ⚠️ Continuando mesmo assim (página pode estar pronta)...")
+        
+        # SEMPRE aguarda elementos dinâmicos e extrai HTML, mesmo se deu timeout acima
+        pagina.wait_for_timeout(2000)
+        
+        try:
             html = extrair_html(pagina)
 
             # Salvar screenshot primeiro
@@ -404,7 +421,7 @@ def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=N
                                 {"role": "system", "content": "Você é um assistente que analisa páginas web e responde apenas com JSON válido conforme solicitado."},
                                 {"role": "user", "content": prompt_otimizado}
                             ],
-                            "temperature": 0,
+                            "temperature": 0.4,  # Aumentado para mais criatividade
                             "top_p": 1,
                             "max_tokens": 2048
                         }
@@ -704,6 +721,7 @@ def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=N
                 "justificativa": justificativa,
                 "confianca": confianca,
                 "sucesso": resultado_dict.get('success', False),
+                "mensagem": resultado_dict.get('message', ''),  # Captura mensagem de erro incluindo ELEMENTO_INVISIVEL
                 "url_antes": url_atual,
                 "url_depois": nova_url,
                 "navegacao": sucesso_navegacao,
@@ -738,8 +756,15 @@ def navegar_com_agente(url, max_passos=5, instrucoes_customizadas=None, modelo=N
             time.sleep(2)
 
         except Exception as e:
-            print(f"[ERRO] Falha no passo {passo+1}: {e}")
-            logging.error(f"Erro no passo {passo+1}: {e}")
+            erro_msg = str(e)
+            print(f"[ERRO] Falha crítica no passo {passo+1}: {erro_msg[:200]}")
+            logging.error(f"Erro crítico no passo {passo+1}: {e}")
+            # Break apenas em erros REALMENTE críticos (navegador crashou, etc)
+            if 'Target page, context or browser has been closed' in erro_msg:
+                print("💥 Navegador fechou inesperadamente. Encerrando.")
+                break
+            # Para outros erros, continua o loop (tentativa de recovery)
+            print(f"[INFO] Tentando continuar no próximo passo...")
 
     try:
         navegador.close()
@@ -759,6 +784,41 @@ def check_stop_requested():
         return current_ui_instance and current_ui_instance.is_stop_requested()
     except:
         return False
+
+
+def start_electron_ui():
+    """Inicializa a interface Electron quando o script é executado sem argumentos."""
+    project_root = Path(__file__).resolve().parents[1]
+    frontend_dir = project_root / "agente_qa" / "frontend"
+
+    if not frontend_dir.exists():
+        print(f"[ERRO] Pasta do frontend não encontrada: {frontend_dir}")
+        return
+
+    print("🪟 Abrindo interface Electron...")
+
+    try:
+        if sys.platform.startswith("win"):
+            script_path = frontend_dir / "start-electron.bat"
+            if script_path.exists():
+                print(f"▶️ Executando {script_path.name}")
+                subprocess.run(["cmd", "/c", str(script_path)], cwd=str(frontend_dir), check=True)
+                return
+
+            print("⚠️ start-electron.bat não encontrado, tentando 'npm run electron'")
+            subprocess.run(["npm", "run", "electron"], cwd=str(frontend_dir), check=True)
+            return
+
+        if not shutil.which("npm"):
+            print("[ERRO] 'npm' não encontrado no PATH. Instale Node.js para iniciar a UI.")
+            return
+
+        subprocess.run(["npm", "run", "electron"], cwd=str(frontend_dir), check=True)
+
+    except FileNotFoundError as exc:
+        print(f"[ERRO] Não foi possível iniciar a UI Electron: {exc}")
+    except subprocess.CalledProcessError as exc:
+        print(f"[ERRO] Falha na execução da UI Electron (código {exc.returncode})")
 
 
 if __name__ == "__main__":
@@ -787,7 +847,5 @@ if __name__ == "__main__":
             modo_extracao=args.modo_extracao
         )
     else:
-        # Se não tem argumentos, chamar a UI
-        from ui_agente import main as ui_main
-        ui_main()
+        start_electron_ui()
 

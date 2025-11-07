@@ -126,13 +126,35 @@ def gerar_selector(el) -> str:
                 classes = el['class'] if isinstance(el['class'], list) else [el['class']]
                 return f"input[class='{' '.join(classes)}']"
         
-        # Prioridade 5: class específica única
+        # Prioridade 4.5: Botões com texto curto e único - usar button:has-text()
+        if el.name == 'button':
+            texto = el.get_text(strip=True) if hasattr(el, 'get_text') else ''
+            # Se texto curto (até 20 chars) e não vazio, pode ser identificador único
+            if texto and len(texto) <= 20 and len(texto.strip()) > 0:
+                # Usar sintaxe Playwright button:has-text("texto")
+                texto_limpo = texto.strip()
+                return f"button:has-text('{texto_limpo}')"
+        
+        # Prioridade 5: class específica única ou combinação de classes
         if el.get('class'):
             classes = el['class'] if isinstance(el['class'], list) else [el['class']]
-            # Usar primeira classe não genérica
+            # Filtrar classes significativas (não utilitárias do Bootstrap/Tailwind)
+            classes_relevantes = []
+            classes_utilitarias = {'p-1', 'p-2', 'p-3', 'p-4', 'p-5', 'm-1', 'm-2', 'm-3', 'm-4', 'm-5', 
+                                  'fw-bold', 'fw-normal', 'text-uppercase', 'text-lowercase', 
+                                  'd-flex', 'd-block', 'd-none', 'w-100', 'h-100'}
+            
             for cls in classes:
-                if cls and len(cls) > 2:  # Mudando de 3 para 2 para ser mais inclusivo
-                    return f".{cls}"
+                # Pular classes muito curtas ou utilitárias
+                if cls and len(cls) > 1 and cls not in classes_utilitarias:
+                    classes_relevantes.append(cls)
+            
+            # Se temos múltiplas classes relevantes, combinar para seletor mais específico
+            if len(classes_relevantes) >= 2:
+                # Combinar até 2 classes mais relevantes (btn + btn-primary)
+                return f".{'.'.join(classes_relevantes[:2])}"
+            elif len(classes_relevantes) == 1:
+                return f".{classes_relevantes[0]}"
         
         # Prioridade 6: combinação tag + atributos
         seletor_base = el.name
@@ -169,6 +191,64 @@ def gerar_selector(el) -> str:
         return el.name if el and hasattr(el, 'name') else "unknown"
 
 
+def _identificar_formulario_principal(soup: BeautifulSoup) -> Optional[Any]:
+    """
+    Identifica o formulário principal da página (maior e mais relevante).
+    
+    Args:
+        soup: BeautifulSoup object da página
+    
+    Returns:
+        Elemento do formulário principal ou None
+    """
+    formularios = soup.find_all('form')
+    
+    if not formularios:
+        return None
+    
+    if len(formularios) == 1:
+        return formularios[0]
+    
+    # Se há múltiplos formulários, escolher o maior (mais campos)
+    melhor_form = None
+    max_campos = 0
+    
+    for form in formularios:
+        # Contar inputs, textareas e selects dentro do formulário
+        campos = form.find_all(['input', 'textarea', 'select'])
+        num_campos = len([c for c in campos if c.get('type') not in ['submit', 'button', 'hidden']])
+        
+        if num_campos > max_campos:
+            max_campos = num_campos
+            melhor_form = form
+    
+    return melhor_form
+
+
+def _pertence_ao_formulario(elemento, formulario) -> bool:
+    """
+    Verifica se um elemento pertence a um formulário específico.
+    
+    Args:
+        elemento: Elemento BeautifulSoup
+        formulario: Elemento form BeautifulSoup
+    
+    Returns:
+        bool: True se elemento está dentro do formulário
+    """
+    if not formulario:
+        return True  # Se não há formulário definido, aceitar todos
+    
+    # Verificar se elemento é descendente do formulário
+    parent = elemento.parent
+    while parent:
+        if parent == formulario:
+            return True
+        parent = parent.parent
+    
+    return False
+
+
 def extrair_elementos_interativos_completos(soup: BeautifulSoup, page) -> List[Dict[str, Any]]:
     """
     Extrai todos os elementos interativos de uma página com informações completas.
@@ -185,9 +265,16 @@ def extrair_elementos_interativos_completos(soup: BeautifulSoup, page) -> List[D
     elementos = []
     
     try:
+        # Identificar o formulário principal (maior e mais relevante)
+        formulario_principal = _identificar_formulario_principal(soup)
+        
         # Inputs (campos de texto, checkbox, radio, etc.)
         for campo in soup.find_all(['input', 'textarea', 'select']):
             if _elemento_visivel_e_habilitado(campo, page):
+                # Filtrar campos que pertencem ao formulário principal
+                if formulario_principal and not _pertence_ao_formulario(campo, formulario_principal):
+                    continue
+                    
                 info_campo = _extrair_info_campo(campo, soup)
                 if info_campo:
                     elementos.append(info_campo)
@@ -349,7 +436,7 @@ def _extrair_info_botao(botao) -> Optional[Dict[str, Any]]:
         botao: Elemento button ou input[type=button/submit]
     
     Returns:
-        Dict: Informações do botão ou None se não importante
+        Dict: Informações do botão ou None se inválido
     """
     try:
         texto = botao.get_text(strip=True) if hasattr(botao, 'get_text') else botao.get('value', '')
@@ -360,18 +447,22 @@ def _extrair_info_botao(botao) -> Optional[Dict[str, Any]]:
         if not seletor or seletor == "unknown":
             return None
         
-        # Para botões de submit, sempre incluir mesmo se texto não for "importante"
-        if tipo_botao in ['submit'] or _eh_botao_importante(texto):
-            return {
-                "tipo": "botao",
-                "elemento": botao.name,
-                "seletor": seletor,
-                "texto": texto,
-                "tipo_botao": tipo_botao,
-                "acao_provavel": _detectar_acao_botao(texto)
-            }
+        # Validação mínima: deve ter algum texto identificador
+        if not texto or len(texto.strip()) < 1:
+            return None
         
-        return None
+        # Capturar data-testid se disponível (para ajudar modelo a escolher seletor único)
+        testid = botao.get('data-testid', '')
+        
+        return {
+            "tipo": "botao",
+            "elemento": botao.name,
+            "seletor": seletor,
+            "texto": texto,
+            "tipo_botao": tipo_botao,
+            "acao_provavel": _detectar_acao_botao(texto),
+            "data-testid": testid  # Adicionar testid para referência no prompt
+        }
         
     except Exception as e:
         logging.warning(f"Erro ao extrair info do botão: {e}")
@@ -386,16 +477,18 @@ def _extrair_info_link(link) -> Optional[Dict[str, Any]]:
         link: Elemento <a>
     
     Returns:
-        Dict: Informações do link ou None se não importante
+        Dict: Informações do link ou None se inválido
     """
     try:
         texto = link.get_text(strip=True)
         href = link.get('href', '')
         
-        if not texto or not _eh_link_importante(texto):
+        # Validação mínima: deve ter texto ou href válido
+        if not texto or len(texto.strip()) < 1:
             return None
         
         seletor = gerar_selector(link)
+        testid = link.get('data-testid', '')  # Capturar testid
         
         return {
             "tipo": "link",
@@ -403,7 +496,8 @@ def _extrair_info_link(link) -> Optional[Dict[str, Any]]:
             "seletor": seletor,
             "texto": texto,
             "href": href,
-            "acao_provavel": _detectar_acao_link(texto)
+            "acao_provavel": _detectar_acao_link(texto, href),
+            "data-testid": testid
         }
         
     except Exception as e:
@@ -419,12 +513,13 @@ def _extrair_info_role_button(elemento) -> Optional[Dict[str, Any]]:
         elemento: Elemento com role="button"
     
     Returns:
-        Dict: Informações do elemento ou None se não importante
+        Dict: Informações do elemento ou None se inválido
     """
     try:
         texto = elemento.get_text(strip=True)
         
-        if not texto or not _eh_botao_importante(texto):
+        # Validação mínima: deve ter texto
+        if not texto or len(texto.strip()) < 1:
             return None
         
         seletor = gerar_selector(elemento)
@@ -477,58 +572,6 @@ def _encontrar_label(campo, soup: BeautifulSoup) -> str:
         return ""
 
 
-def _eh_botao_importante(texto: str) -> bool:
-    """
-    Determina se um botão é importante para automação.
-    
-    Args:
-        texto (str): Texto do botão
-    
-    Returns:
-        bool: True se botão é importante
-    """
-    if not texto or len(texto.strip()) < 2:
-        return False
-    
-    texto_lower = texto.lower().strip()
-    
-    # Botões importantes
-    importantes = [
-        'entrar', 'login', 'acessar', 'continuar', 'próximo', 'enviar', 'submit',
-        'confirmar', 'salvar', 'finalizar', 'concluir', 'ok', 'sim', 'aceitar',
-        'cadastrar', 'registrar', 'register', 'criar', 'adicionar', 'buscar', 'pesquisar',
-        'filtrar', 'aplicar', 'conectar', 'vincular', 'validar', 'prosseguir', 'avançar'
-    ]
-    
-    return any(imp in texto_lower for imp in importantes)
-
-
-def _eh_link_importante(texto: str) -> bool:
-    """
-    Determina se um link é importante para automação.
-    
-    Args:
-        texto (str): Texto do link
-    
-    Returns:
-        bool: True se link é importante
-    """
-    if not texto or len(texto.strip()) < 3:
-        return False
-    
-    texto_lower = texto.lower().strip()
-    
-    # Links importantes
-    importantes = [
-        'entrar', 'login', 'acessar', 'cadastro', 'registro', 'criar conta',
-        'register', 'registrar', 'sign up', 'signup', 'cadastrar-se', 'criar',
-        'esqueci senha', 'recuperar', 'fale conosco', 'contato', 'suporte',
-        'ajuda', 'tutorial', 'como usar', 'política', 'termos', 'sobre'
-    ]
-    
-    return any(imp in texto_lower for imp in importantes)
-
-
 def _detectar_acao_botao(texto: str) -> str:
     """
     Detecta a ação provável de um botão baseado no texto.
@@ -555,23 +598,28 @@ def _detectar_acao_botao(texto: str) -> str:
         return "action"
 
 
-def _detectar_acao_link(texto: str) -> str:
+def _detectar_acao_link(texto: str, href: str = '') -> str:
     """
-    Detecta a ação provável de um link baseado no texto.
+    Detecta a ação provável de um link baseado no texto e href.
     
     Args:
         texto (str): Texto do link
+        href (str): URL do link
     
     Returns:
         str: Ação provável
     """
     texto_lower = texto.lower().strip()
+    href_lower = href.lower() if href else ''
     
-    if any(x in texto_lower for x in ['entrar', 'login', 'acessar']):
+    # Combinar texto e href para análise
+    conteudo = f"{texto_lower} {href_lower}"
+    
+    if any(x in conteudo for x in ['entrar', 'login', 'acessar', 'candidato', 'portal']):
         return "login"
-    elif any(x in texto_lower for x in ['cadastro', 'registro', 'criar']):
+    elif any(x in conteudo for x in ['cadastro', 'registro', 'criar']):
         return "register"
-    elif any(x in texto_lower for x in ['esqueci', 'recuperar']):
+    elif any(x in conteudo for x in ['esqueci', 'recuperar']):
         return "recovery"
     else:
         return "navigate"

@@ -1,89 +1,35 @@
 """
-Modulo de Geracao de prompts otimizados para LLM
+Modulo de Geracao de prompts otimizados para LLM.
 Centraliza toda logica de construcao de prompts com contexto e historico.
-
-Fluxo de Execucao    elementos_text = ""
-    for i, el in enumerate(elementos, 1):
-        seletor = el.get('seletor', 'N/A')
-        status = ""
-        
-        # Marcar campos ja preenchidos de forma mais visivel
-        if seletor in campos_preenchidos:
-            status = " [OK] JA PREENCHIDO"
-        else:
-            # Verificação mais inteligente - comparar também por name e id
-            campo_preenchido = False
-            for campo_hist in campos_preenchidos:
-                # Remover # se presente para comparar
-                campo_limpo = campo_hist.replace('#', '') if campo_hist.startswith('#') else campo_hist
-                
-                # Verificar se o seletor atual corresponde ao campo do histórico
-                if (campo_limpo in seletor or  # Ex: firstName em [name='firstName']
-                    seletor.replace("[name='", "").replace("']", "") in campo_limpo or  # Ex: firstName em customer.firstName
-                    campo_limpo.split('.')[-1] in seletor):  # Ex: firstName (última parte) em [name='firstName']
-                    campo_preenchido = True
-                    status = " [OK] JA PREENCHIDO"
-                    break
-            
-            if not campo_preenchido and el.get('tag') == 'INPUT' and any(campo in seletor for campo in ['firstName', 'lastName', 'customer']):
-                status = " [ACAO] AGUARDANDO PREENCHIMENTO"
-            
-        elementos_text += f"\n{i}. {el.get('tag', 'N/A')} - {seletor} - {el.get('texto', 'N/A')[:50]}{status}"
-    
-    # Adicionar seção especial para campos preenchidos se houver
-    if campos_preenchidos:
-        elementos_text += f"\n\n[ALERTA] CAMPOS JA PREENCHIDOS ({len(campos_preenchidos)}):\n"
-        for campo in sorted(campos_preenchidos):
-            elementos_text += f"   - {campo}\n"
-        elementos_text += "\n[ALERTA] CRITICO: NAO REPITA campos ja preenchidos!\n"
-        elementos_text += "[FOCO] PROXIMA ACAO OBRIGATORIA: Escolha o PROXIMO campo vazio da sequencia!\n"
-        elementos_text += "[PROIBIDO] Usar seletores ja preenchidos acima!\n"
-        elementos_text += "\n[FOCO] SEQUENCIA OBRIGATORIA DE PREENCHIMENTO:\n"
-        
-        # Adicionar sequência de campos com status dinâmico
-        campos_sequencia = [
-            "#customer.firstName",
-            "#customer.lastName", 
-            "#customer.address.street",
-            "#customer.address.city",
-            "#customer.address.state"
-        ]
-        
-        for i, campo in enumerate(campos_sequencia, 1):
-            status_campo = "[OK] JA FEITO" if campo in campos_preenchidos else "[ACAO] FAZER AGORA"
-            elementos_text += f"{i}. {campo} <- {status_campo}\n"
-    
-    return base_prompt.format(contexto=contexto) + elementos_textML e elementos extraidos
-- Gera prompt contextualizado
-- Adiciona historico de acoes
-- Otimiza para modelo especifico
-- Formata em chat format
 """
+
 import logging
 import json
+import re
 from typing import List, Dict, Any, Optional, Tuple
+
 from .html_parser import extrair_elementos_interativos_completos, _detectar_contexto_pagina, _priorizar_elementos
 from .io import salvar_lista_seletores
 
 
-def gerar_prompt_em_chat_format(html: str, screenshot_path: Optional[str] = None, 
-                               instrucoes_customizadas: Optional[str] = None, 
-                               modelo: str = "qwen/qwen2.5-vl-7b", 
+def gerar_prompt_em_chat_format(html: str, screenshot_path: Optional[str] = None,
+                               instrucoes_customizadas: Optional[str] = None,
+                               modelo: str = "qwen/qwen2.5-vl-7b",
                                historico_acoes: Optional[List] = None) -> Tuple[Dict, List[str]]:
     """
     Gera prompt no formato de chat para LLM com analise HTML otimizada.
-    
+
     Args:
-        html (str): HTML da pagina
-        screenshot_path (str, optional): Caminho para screenshot
-        instrucoes_customizadas (str, optional): Instrucoes especificas do usuario
-        modelo (str): Modelo LLM a ser usado
-        historico_acoes (List, optional): Historico de acoes executadas
-    
+        html (str): HTML da pagina.
+        screenshot_path (str, optional): Caminho para screenshot.
+        instrucoes_customizadas (str, optional): Instrucoes especificas do usuario.
+        modelo (str): Modelo LLM a ser usado.
+        historico_acoes (List, optional): Historico de acoes executadas.
+
     Returns:
         Tuple[Dict, List[str]]: (payload_chat, seletores_validos)
-    
-    Fluxo: Funcao principal para geracao de prompts contextualizados
+
+    Fluxo: Funcao principal para geracao de prompts contextualizados.
     """
     # Detectar modelo automaticamente se for o padrao
     if modelo == "qwen/qwen2.5-vl-7b":
@@ -92,84 +38,86 @@ def gerar_prompt_em_chat_format(html: str, screenshot_path: Optional[str] = None
             modelo_detectado = obter_modelo_carregado()
             if modelo_detectado:
                 modelo = modelo_detectado
-                print(f"🔄 Modelo redirecionado de fallback para detectado: {modelo}")
+                print(f"[INFO] Modelo redirecionado de fallback para detectado: {modelo}")
         except Exception as e:
-            print(f"⚠️ Erro ao detectar modelo: {e}")
+            print(f"[ALERTA] Erro ao detectar modelo: {e}")
             # Continua com modelo padrao
-    
+
     try:
         # Parsear HTML e extrair elementos
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(html, 'html.parser')
-        
+
         # Extrair elementos interativos (precisa da pagina, usar None como fallback)
         elementos = extrair_elementos_interativos_completos(soup, None)
-        
+
         # Detectar contexto e priorizar elementos
         contexto = _detectar_contexto_pagina(soup, elementos)
         elementos_priorizados = _priorizar_elementos(elementos, contexto)
-        
-        # Limitar elementos para nao sobrecarregar prompt - AUMENTADO para capturar mais elementos
-        elementos_limitados = elementos_priorizados[:30]  # Aumentado de 20 para 30
-        
+
+        # Limitar elementos para nao sobrecarregar prompt
+        elementos_limitados = elementos_priorizados[:30]
+
         # Gerar lista de seletores validos
         seletores_validos = [el['seletor'] for el in elementos_limitados if el.get('seletor')]
-        
+
         # Identificar campos preenchidos para marcar na lista
         campos_preenchidos = set()
         if historico_acoes:
             for acao in historico_acoes:
                 # Compatibilidade com ambos os formatos (acao/action)
                 acao_tipo = acao.get('acao') or acao.get('action')
-                if (acao_tipo == 'type' and 
-                    acao.get('sucesso', False) and 
-                    (acao.get('seletor') or acao.get('selector'))):
+                if (
+                    acao_tipo == 'type'
+                    and acao.get('sucesso', False)
+                    and (acao.get('seletor') or acao.get('selector'))
+                ):
                     seletor = acao.get('seletor') or acao.get('selector')
                     campos_preenchidos.add(seletor)
-        
+
         # Construir prompt do sistema com status dos campos
         prompt_sistema = _construir_prompt_sistema(contexto, elementos_limitados, campos_preenchidos)
-        
+
         # Construir contexto da pagina
         contexto_pagina = _construir_contexto_pagina(soup, elementos_limitados, historico_acoes)
-        
-        # Construir instrucoes especificas
-        instrucoes_finais = _construir_instrucoes_finais(instrucoes_customizadas, contexto)
-        
+
+        # Construir instrucoes especificas (passa histórico para reforçar objetivo em caso de falhas)
+        instrucoes_finais = _construir_instrucoes_finais(instrucoes_customizadas, contexto, historico_acoes)
+
         # Construir payload do chat
         messages = [
             {"role": "system", "content": prompt_sistema},
-            {"role": "user", "content": f"{contexto_pagina}\n\n{instrucoes_finais}"}
+            {"role": "user", "content": f"{contexto_pagina}\n\n{instrucoes_finais}"},
         ]
-        
+
         # Adicionar screenshot se disponivel e modelo suportar
         if screenshot_path and _modelo_suporta_imagem(modelo):
             try:
                 import base64
                 import os
-                
+
                 if os.path.exists(screenshot_path):
                     with open(screenshot_path, "rb") as img_file:
                         image_base64 = base64.b64encode(img_file.read()).decode('utf-8')
                         messages[-1]["content"] = [
                             {"type": "text", "text": f"{contexto_pagina}\n\n{instrucoes_finais}"},
-                            {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{image_base64}"}}
+                            {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{image_base64}"}},
                         ]
             except Exception as e:
                 logging.warning(f"Erro ao processar imagem para modelo multimodal: {e}")
-                # Fallback para só texto se houver erro com a imagem
+                # Fallback para so texto se houver erro com a imagem
                 messages[-1]["content"] = f"{contexto_pagina}\n\n{instrucoes_finais}"
-        
+
         payload = {
             "model": modelo,
             "messages": messages,
             "temperature": 0,
-            "max_tokens": 2048
+            "max_tokens": 2048,
         }
-        
+
         logging.info(f"Prompt gerado com {len(elementos_limitados)} elementos para contexto '{contexto}'")
         return payload, seletores_validos
-        
+
     except Exception as e:
         logging.error(f"Erro ao gerar prompt: {e}")
         print(f"[ALERTA] ERRO no gerar_prompt_em_chat_format: {e}")
@@ -188,14 +136,27 @@ def _construir_prompt_sistema(contexto: str, elementos: List[Dict], campos_preen
 
 Sua missao e analisar elementos HTML e decidir a melhor acao para completar uma tarefa especifica.
 
-🚨 PENALIZAÇÃO SEVERA POR REPETIÇÃO INADEQUADA:
-- VOCÊ SERÁ PENALIZADO se repetir campos já preenchidos com sucesso
-- VOCÊ SERÁ PENALIZADO se ignorar campos obrigatórios como [name='repeatedPassword']
-- VOCÊ SERÁ PENALIZADO se não seguir a sequência lógica de preenchimento
+ALERTA IMPORTANTE: PENALIZACAO SEVERA POR REPETICAO INADEQUADA:
+- VOCE SERA PENALIZADO se repetir campos ja preenchidos com sucesso
+- VOCE SERA PENALIZADO se ignorar campos obrigatorios como [name='repeatedPassword']
+- VOCE SERA PENALIZADO se nao seguir a sequencia logica de preenchimento
 
 REGRAS DE RESPOSTA:
 - SEMPRE responda com JSON valido
 - Use exatamente esta estrutura: {{"acao": "string", "seletor": "string", "valor": "string", "confianca": number, "justificativa": "string"}}
+
+[CRITICO] FORMATO DE SELETORES CSS - REGRAS ABSOLUTAS:
+- Use APENAS seletores CSS PUROS e VALIDOS (sem inventar sintaxe customizada!)
+- PROIBIDO usar pipe "|" ou ">>": isso NAO e CSS valido!
+- Exemplos de seletores VALIDOS:
+  * #login (ID)
+  * .btn (classe)
+  * [data-testid='auto-area-4'] (atributo)
+  * button[type='submit'] (elemento com atributo)
+  * .btn.primary (multiplas classes)
+- NUNCA invente: ".btn | texto='X'" ou ".btn >> text='X'" - isso e INVALIDO!
+- Se precisa de texto especifico, use o seletor exato da lista fornecida
+- Quando houver multiplos .btn, escolha o [data-testid] correspondente da lista
 
 ACOES DISPONIVEIS:
 - "click": Para clicar em links, botoes, checkboxes
@@ -204,215 +165,290 @@ ACOES DISPONIVEIS:
 - "scroll": Para rolar a pagina
 - "wait": Para aguardar carregamento
 
-🔥 REGRAS CRÍTICAS DE PREENCHIMENTO:
+FOCO EM CAMPOS DE TEXTO:
+- Para preencher campos use apenas acao "type"; o agente executa o clique de foco automaticamente antes de digitar
+- NUNCA envie uma acao "click" separada para o mesmo campo que sera preenchido
+- Use "click" somente quando o clique for o destino final (navegar, expandir, confirmar)
+
+REGRAS CRITICAS DE PREENCHIMENTO:
 - Para PREENCHER campos [name='customer.firstName'] etc: use acao "type" com valor
-- Para CLICAR em botoes: use acao "click"
-- NUNCA use "click" para preencher campos de input!
-- CAMPO CRÍTICO: [name='repeatedPassword'] deve usar o MESMO VALOR da senha anterior
-- NUNCA REPITA campos marcados como "JÁ PREENCHIDO"
+- CAMPO CRITICO: [name='repeatedPassword'] deve usar o MESMO VALOR da senha anterior
+- NUNCA REPITA campos marcados como "JA PREENCHIDO"
 
 EXEMPLO CORRETO para preencher nome:
 {{"acao": "type", "seletor": "[name='customer.firstName']", "valor": "Joao Silva", "confianca": 95, "justificativa": "Preenchendo primeiro campo do cadastro"}}
 
-EXEMPLO CORRETO para confirmação de senha:
+EXEMPLO CORRETO para confirmacao de senha:
 {{"acao": "type", "seletor": "[name='repeatedPassword']", "valor": "senha123", "confianca": 95, "justificativa": "Confirmando senha com o mesmo valor usado em customer.password"}}
 
-⚠️ REGRA ABSOLUTA: NAO REPITA campos ja preenchidos! Procure o PROXIMO campo vazio da sequência!
+[AVISO] REGRA ABSOLUTA: NAO REPITA campos ja preenchidos! Procure o PROXIMO campo vazio da sequencia!
 
 CONTEXTO DA PAGINA: {contexto}
 
 ELEMENTOS DISPONIVEIS:"""
-    
-    elementos_text = ""
-    for i, el in enumerate(elementos[:15], 1):
-        seletor = el.get('seletor', 'N/A')
-        status = ""
+
+    def _format_text(value: Optional[str], limit: int = 50) -> str:
+        if not value:
+            return "-"
+        texto = str(value).strip().replace("\n", " ")
+        return texto[:limit]
+
+    elementos_textuais = [
+        el for el in elementos
+        if el.get('tipo') == 'campo' and (el.get('elemento') or '').lower() in {'input', 'textarea'}
+    ]
+    inputs_vazios = [
+        el for el in elementos_textuais
+        if not (el.get('valor_atual') or '').strip() and (el.get('seletor') not in campos_preenchidos)
+    ]
+    outros_campos_texto = [el for el in elementos_textuais if el not in inputs_vazios]
+
+    elementos_clicaveis = [
+        el for el in elementos
+        if el.get('tipo') in {'botao', 'botao_role', 'link'}
+    ]
+
+    elementos_text_parts = []
+
+    elementos_text_parts.append(f"\n[CAMPOS DE INPUT VAZIOS: {len(inputs_vazios)}]")
+    if inputs_vazios:
+        for el in inputs_vazios[:10]:
+            seletor = el.get('seletor', 'N/A')
+            label = _format_text(el.get('label'), 40)
+            placeholder = _format_text(el.get('placeholder'), 40)
+            proposito = _format_text(el.get('proposito') or el.get('tipo_campo'), 25)
+            elementos_text_parts.append(
+                f" - {seletor} | label='{label}' | placeholder='{placeholder}' | tipo={proposito}"
+            )
+        if len(inputs_vazios) > 10:
+            elementos_text_parts.append(f"   ... {len(inputs_vazios) - 10} campos adicionais ocultos")
+    else:
+        elementos_text_parts.append(" - Nenhum campo vazio encontrado")
+
+    if outros_campos_texto:
+        elementos_text_parts.append(f"\n[OUTROS CAMPOS DE TEXTO: {len(outros_campos_texto)}]")
+        for el in outros_campos_texto[:10]:
+            seletor = el.get('seletor', 'N/A')
+            label = _format_text(el.get('label'), 40)
+            placeholder = _format_text(el.get('placeholder'), 40)
+            valor_atual = _format_text(el.get('valor_atual'), 35)
+            status = " [OK] JA PREENCHIDO" if seletor in campos_preenchidos or el.get('preenchido') else ""
+            elementos_text_parts.append(
+                f" - {seletor} | atual='{valor_atual}' | label='{label}' | placeholder='{placeholder}'{status}"
+            )
+        if len(outros_campos_texto) > 10:
+            elementos_text_parts.append(f"   ... {len(outros_campos_texto) - 10} campos adicionais ocultos")
+
+    elementos_text_parts.append(f"\n[AREAS CLICAVEIS RELEVANTES: {len(elementos_clicaveis)}]")
+    if elementos_clicaveis:
+        # Detectar multiplos elementos com mesma classe/seletor (ex: .btn, .btn.btn-primary)
+        seletores_duplicados = {}
+        for el in elementos_clicaveis:
+            seletor = el.get('seletor', '')
+            # Detectar seletores baseados em classe (com ou sem combinações)
+            if seletor.startswith('.') and not '[' in seletor:  
+                seletores_duplicados[seletor] = seletores_duplicados.get(seletor, 0) + 1
         
-        # Marcar campos ja preenchidos
-        if seletor in campos_preenchidos:
-            status = " [OK] JÁ PREENCHIDO"
-        elif el.get('tag') == 'INPUT' and any(campo in seletor for campo in ['firstName', 'lastName', 'customer']):
-            status = " [ACAO] AGUARDANDO PREENCHIMENTO"
+        tem_duplicados = any(count > 1 for count in seletores_duplicados.values())
+        if tem_duplicados:
+            elementos_text_parts.append("\n⚠️ [ALERTA] Ha multiplos elementos com mesma classe (ex: .btn, .nav-link)")
+            elementos_text_parts.append("   SEMPRE prefira seletores [data-testid='...'] para evitar ambiguidade!\n")
+        
+        for el in elementos_clicaveis[:10]:
+            seletor = el.get('seletor', 'N/A')
+            texto = _format_text(el.get('texto') or el.get('label'), 50)
+            tipo = (el.get('tipo') or el.get('elemento') or 'N/A').upper()
             
-        elementos_text += f"\n{i}. {el.get('tag', 'N/A')} - {seletor} - {el.get('texto', 'N/A')[:50]}{status}"
-    
+            # FORMATO CLARO: Seletor primeiro, depois texto entre parênteses
+            # Exemplo: .btn.btn-primary (texto: "Entrar")
+            elementos_text_parts.append(
+                f" - {seletor} → {tipo} com texto=\"{texto}\""
+            )
+        if len(elementos_clicaveis) > 10:
+            elementos_text_parts.append(f"   ... {len(elementos_clicaveis) - 10} elementos clicaveis adicionais ocultos")
+    else:
+        elementos_text_parts.append(" - Nenhum elemento clicavel relevante encontrado")
+
+    elementos_text = "".join(elementos_text_parts)
+
     return base_prompt.format(contexto=contexto) + elementos_text
 
 
 def _construir_contexto_pagina(soup: Any, elementos: List[Dict], historico: Optional[List] = None) -> str:
     """Constroi contexto atual da pagina"""
-    
+
     title = soup.find('title')
     title_text = title.get_text() if title else "Sem titulo"
-    
-    contexto = f"PÁGINA ATUAL: {title_text}\n"
+
+    contexto = f"PAGINA ATUAL: {title_text}\n"
     contexto += f"ELEMENTOS INTERATIVOS ENCONTRADOS: {len(elementos)}\n"
-    
+
     if historico:
-        contexto += f"\nHISTÓRICO DE AÇÕES ({len(historico)} acoes):\n"
+        contexto += f"\nHISTORICO DE ACOES ({len(historico)} acoes):\n"
         acoes_repetidas = 0
         campos_preenchidos = set()
-        
-        # Identificar campos ja preenchidos com sucesso
+        elementos_invisiveis = set()
+
+        # Identificar campos ja preenchidos com sucesso e elementos invisíveis
         for acao in historico:
             # Compatibilidade com ambos os formatos (acao/action)
             acao_tipo = acao.get('acao') or acao.get('action')
-            if (acao_tipo == 'type' and 
-                acao.get('sucesso', False) and 
-                (acao.get('seletor') or acao.get('selector'))):
-                seletor = acao.get('seletor') or acao.get('selector')
+            seletor = acao.get('seletor') or acao.get('selector')
+            mensagem_erro = acao.get('mensagem', '')
+            
+            # Campos preenchidos com sucesso
+            if (
+                acao_tipo == 'type'
+                and acao.get('sucesso', False)
+                and seletor
+            ):
                 campos_preenchidos.add(seletor)
-        
+            
+            # Elementos que falharam por invisibilidade
+            if not acao.get('sucesso', False) and 'ELEMENTO_INVISIVEL' in mensagem_erro:
+                elementos_invisiveis.add(seletor)
+
         # Mostrar historico de todas as acoes (sem limitacao)
-        for i, acao in enumerate(historico, 1):  # Todas as ações do histórico
+        for i, acao in enumerate(historico, 1):
             acao_tipo = acao.get('acao') or acao.get('action')
             acao_texto = acao_tipo or 'N/A'
             seletor = acao.get('seletor', 'N/A')
             sucesso = acao.get('sucesso', False)
+            mensagem = acao.get('mensagem', '')
+            
             status = "[OK] SUCESSO" if sucesso else "[ERRO] FALHOU"
+            motivo_falha = ""
+            
             if acao.get('repetida', False):
                 acoes_repetidas += 1
                 status += " (REPETIDA)"
-            contexto += f"{i}. {acao_texto} em {seletor} - {status}\n"
-        
+            
+            # Adicionar detalhes específicos da falha
+            if not sucesso:
+                if 'ELEMENTO_INVISIVEL' in mensagem:
+                    status += " - ELEMENTO OCULTO"
+                    motivo_falha = " | Motivo: Elemento existe mas está invisível no DOM"
+                elif 'strict mode violation' in mensagem:
+                    status += " - SELETOR AMBIGUO"
+                    motivo_falha = " | Motivo: Seletor retornou múltiplos elementos, seja mais específico"
+                elif 'Timeout' in mensagem or 'timeout' in mensagem:
+                    status += " - TIMEOUT"
+                    motivo_falha = " | Motivo: Elemento não foi encontrado no tempo limite"
+                elif 'not found' in mensagem.lower():
+                    status += " - NAO ENCONTRADO"
+                    motivo_falha = " | Motivo: Elemento não existe na página"
+                elif mensagem:
+                    motivo_falha = f" | Motivo: {mensagem[:80]}"
+            
+            contexto += f"{i}. {acao_texto} em {seletor} - {status}{motivo_falha}\n"
+
         # Informar sobre campos preenchidos
         if campos_preenchidos:
-            contexto += f"\n[OK] CAMPOS JÁ PREENCHIDOS ({len(campos_preenchidos)}):\n"
+            contexto += f"\n[OK] CAMPOS JA PREENCHIDOS ({len(campos_preenchidos)}):\n"
             for campo in sorted(campos_preenchidos):
-                contexto += f"   • {campo}\n"
+                contexto += f"   - {campo}\n"
             
-            # Listar campos pendentes explicitamente
-            campos_formulario = [
-                '[name=\'customer.firstName\']',
-                '[name=\'customer.lastName\']', 
-                '[name=\'customer.address.street\']',
-                '[name=\'customer.address.city\']',
-                '[name=\'customer.address.state\']',
-                '[name=\'customer.address.zipCode\']',
-                '[name=\'customer.phoneNumber\']',
-                '[name=\'customer.ssn\']',
-                '[name=\'customer.username\']',
-                '[name=\'customer.password\']',
-                '[name=\'repeatedPassword\']'
-            ]
-            
-            campos_pendentes = [campo for campo in campos_formulario if campo not in campos_preenchidos]
-            
-            if campos_pendentes:
-                contexto += f"\n🎯 CAMPOS PENDENTES ({len(campos_pendentes)}) - PREENCHA UM DESTES:\n"
-                for campo in campos_pendentes:
-                    if campo == '[name=\'customer.firstName\']':
-                        contexto += f"   → {campo} (usar valor: 'Joao Silva')\n"
-                    elif campo == '[name=\'customer.lastName\']':
-                        contexto += f"   → {campo} (usar valor: 'Silva')\n"
-                    elif campo == '[name=\'customer.address.street\']':
-                        contexto += f"   → {campo} (usar valor: 'Rua das Flores, 123')\n"
-                    elif campo == '[name=\'customer.address.city\']':
-                        contexto += f"   → {campo} (usar valor: 'Sao Paulo')\n"
-                    elif campo == '[name=\'customer.address.state\']':
-                        contexto += f"   → {campo} (usar valor: 'SP')\n"
-                    elif campo == '[name=\'customer.address.zipCode\']':
-                        contexto += f"   → {campo} (usar valor: '01234-567')\n"
-                    elif campo == '[name=\'customer.phoneNumber\']':
-                        contexto += f"   → {campo} (usar valor: '11999999999')\n"
-                    elif campo == '[name=\'customer.ssn\']':
-                        contexto += f"   → {campo} (usar valor: '123456789') ⚠️ OBRIGATÓRIO\n"
-                    elif campo == '[name=\'customer.username\']':
-                        contexto += f"   → {campo} (usar valor: 'joao123')\n"
-                    elif campo == '[name=\'customer.password\']':
-                        contexto += f"   → {campo} (usar valor: 'senha123')\n"
-                    elif campo == '[name=\'repeatedPassword\']':
-                        contexto += f"   → {campo} (usar valor: 'senha123') 🔑 CRÍTICO\n"
-                    else:
-                        contexto += f"   → {campo}\n"
-            
-            # LÓGICA INTELIGENTE: Se customer.password foi preenchido, FORCE repeatedPassword
-            tem_password = any('customer.password' in campo for campo in campos_preenchidos)
-            tem_repeated = any('repeatedPassword' in campo for campo in campos_preenchidos)
-            
-            if tem_password and not tem_repeated:
-                contexto += "\n🚨 PRIORIDADE MÁXIMA: customer.password foi preenchido!\n"
-                contexto += "🎯 PRÓXIMA AÇÃO OBRIGATÓRIA: Preencher [name='repeatedPassword'] com \"senha123\"\n"
-                contexto += "⚠️ PENALIZAÇÃO SEVERA se ignorar esta sequência crítica!\n"
-                contexto += "\n💡 USE EXATAMENTE: {\"acao\": \"type\", \"seletor\": \"[name='repeatedPassword']\", \"valor\": \"senha123\"}\n"
-            elif campos_pendentes:
-                contexto += f"\n[FOCO] PRÓXIMA AÇÃO: Escolha o PRIMEIRO campo da lista CAMPOS PENDENTES acima!\n"
-                contexto += f"🚨 NÃO REPITA campos já preenchidos! Use apenas campos da lista PENDENTES!\n"
-            else:
-                contexto += "\n✅ TODOS OS CAMPOS PREENCHIDOS! Procure botão de submit para finalizar.\n"
+            contexto += "\n[REGRA] NAO REPITA campos ja preenchidos!\n"
+            contexto += "[FOCO] Analise os elementos disponiveis e escolha o proximo campo vazio mais relevante.\n"
         
+        # Informar sobre elementos invisíveis
+        if elementos_invisiveis:
+            contexto += f"\n[ALERTA] ELEMENTOS INVISIVEIS/OCULTOS ({len(elementos_invisiveis)}):\n"
+            for elemento in sorted(elementos_invisiveis):
+                contexto += f"   - {elemento} - EXISTE mas está OCULTO na página\n"
+            
+            contexto += "\n[INSTRUCAO CRITICA] Os elementos acima estão OCULTOS/INVISIVEIS!\n"
+            contexto += "- NAO tente clicar nestes elementos novamente\n"
+            contexto += "- Procure seletores ALTERNATIVOS na lista disponível\n"
+            contexto += "- Elementos duplicados (ex: auto-area-do-candidato-4 vs auto-area-do-candidato-10) podem ter visibilidades diferentes\n"
+            contexto += "- Tente o próximo elemento similar ou use outro caminho para atingir o objetivo\n"
+
         if acoes_repetidas > 0:
-            contexto += f"\n⚠️ AVISO: {acoes_repetidas} das ultimas acoes foram repetidas. "
+            contexto += f"\n[AVISO] {acoes_repetidas} das ultimas acoes foram repetidas. "
             contexto += "Considere tentar seletores diferentes ou acoes alternativas para progredir.\n"
-    
+            contexto += "\n[IMPORTANTE] Sua ultima tentativa NAO funcionou. Voce DEVE tentar uma abordagem DIFERENTE.\n"
+            contexto += "Analise os elementos disponiveis e escolha um seletor ALTERNATIVO mais especifico.\n"
+
     return contexto
 
 
-def _construir_instrucoes_finais(instrucoes_custom: Optional[str], contexto: str) -> str:
+def _construir_instrucoes_finais(instrucoes_custom: Optional[str], contexto: str, historico: Optional[list] = None) -> str:
     """Constroi instrucoes finais baseadas no contexto"""
-    
+
     if instrucoes_custom:
-        base_instruction = f"TAREFA ESPECÍFICA: {instrucoes_custom}\n\n"
-        
-        # Adicionar dicas especificas se for cadastro
-        if "cadastro" in instrucoes_custom.lower() or "register" in instrucoes_custom.lower():
-            # Verificar se já temos elementos de cadastro disponíveis
-            # Se não temos campos customer.*, precisamos navegar primeiro
-            base_instruction += """DICAS PARA CADASTRO:
+        base_instruction = f"TAREFA ESPECIFICA: {instrucoes_custom}\n\n"
 
-[ALERTA] ANTES DE PREENCHER CAMPOS - VERIFIQUE:
-Se você NÃO vê campos #customer.firstName na lista de elementos, significa que ainda não está na página de cadastro.
+        # Adicionar dicas genericas
+        base_instruction += """DIRETRIZES GERAIS:
 
-NAVEGACAO NECESSARIA:
-1. PROCURE por link ou botão com texto: "Register", "Sign Up", "Cadastrar", "Registrar"
-2. CLIQUE no link/botão para navegar para a página de cadastro
-3. AGUARDE a página de cadastro carregar
-4. SÓ ENTÃO preencha os campos na sequência
-
-[ALERTA] SEQUENCIA LOGICA DE PREENCHIMENTO (apenas quando estiver na página de cadastro):
-1. PRIMEIRO: USE "type" em [name='customer.firstName'] com valor "Joao Silva"
-2. SEGUNDO: USE "type" em [name='customer.lastName'] com valor "Silva"  
-3. TERCEIRO: USE "type" em [name='customer.address.street'] com valor "Rua das Flores, 123"
-4. QUARTO: USE "type" em [name='customer.address.city'] com valor "Sao Paulo"
-5. QUINTO: USE "type" em [name='customer.address.state'] com valor "SP"
-6. SEXTO: USE "type" em [name='customer.address.zipCode'] com valor "01234-567"
-7. SETIMO: USE "type" em [name='customer.phoneNumber'] com valor "11999999999"
-8. OITAVO: USE "type" em [name='customer.ssn'] com valor "123456789"
-9. NONO: USE "type" em [name='customer.username'] com valor "joao123"
-10. DECIMO: USE "type" em [name='customer.password'] com valor "senha123"
-11. FINAL: USE "click" no botão input[type='submit'][value='Register']
-
-REGRAS CRITICAS:
-- NAO tente preencher #customer.firstName se ele NAO estiver na lista de elementos disponíveis
-- Se tentou preencher um campo e FALHOU, verifique se precisa navegar primeiro
-- SEMPRE use apenas seletores da lista "ELEMENTOS DISPONIVEIS" EXATAMENTE como aparecem
-- COPIE o seletor completo da lista (ex: input[type='submit'][value='Register'])
-- NAO invente ou modifique seletores - use apenas os da lista
-- Se viu ações repetidas falhando, mude de estratégia: procure navegação
-
-DADOS FAKE PARA USAR (com acao "type"):
-- [name='customer.firstName'] → "Joao Silva"
-- [name='customer.lastName'] → "Silva" 
-- [name='customer.address.street'] → "Rua das Flores, 123"
-- [name='customer.address.city'] → "Sao Paulo"
-- [name='customer.address.state'] → "SP"  
-- [name='customer.address.zipCode'] → "01234-567"
-- [name='customer.phoneNumber'] → "11999999999"
-- [name='customer.ssn'] → "123456789"
-- [name='customer.username'] → "joao123"
-- [name='customer.password'] → "senha123"
+- Consulte a secao de ELEMENTOS listados no prompt do sistema.
+- Avalie cada elemento disponivel e decida qual faz sentido para a tarefa atual.
+- Para preencher campos use acao "type" com um valor apropriado (o agente fara o foco automaticamente).
+- Para navegar ou confirmar use acao "click" no elemento apropriado.
+- NUNCA repita campos ja marcados como preenchidos.
+- Use os rotulos, placeholders e contexto da pagina para decidir valores apropriados.
+- Para formularios, preencha campos de texto com dados fake realistas e coerentes.
 
 """
         
-        return base_instruction + "Analise os elementos disponiveis, veja quais ja foram preenchidos, e escolha o PRÓXIMO campo da sequencia para completar."
-    
+        # Se houver falhas no histórico, reforçar o objetivo
+        if historico and len(historico) > 0:
+            tem_falhas = any(not acao.get('sucesso', False) for acao in historico)
+            acoes_recentes_falharam = len(historico) >= 2 and all(
+                not acao.get('sucesso', False) for acao in historico[-2:]
+            )
+            
+            if acoes_recentes_falharam:
+                base_instruction += f"\n[ATENCAO] Suas ultimas tentativas falharam!\n"
+                base_instruction += f"LEMBRE-SE DO SEU OBJETIVO PRINCIPAL: {instrucoes_custom}\n"
+                base_instruction += "Voce PRECISA encontrar uma forma DIFERENTE de atingir este objetivo.\n"
+                base_instruction += "Tente seletores mais especificos (com data-testid, #id ou classes unicas).\n\n"
+            elif tem_falhas:
+                base_instruction += f"\n[LEMBRETE] SEU OBJETIVO PRINCIPAL: {instrucoes_custom}\n\n"
+
+        return base_instruction + "Analise os elementos disponiveis e selecione a proxima acao mais logica para completar a tarefa."
+
     # Instrucoes baseadas no contexto
     if "login" in contexto.lower():
-        return "Identifique campos de login (email/usuario e senha) e botao de submit. Priorize preencher dados de acesso com dados fake."
+        return "Identifique campos de login (email/usuario e senha) e botao de submit. Use dados fake apropriados."
     elif "formulario" in contexto.lower() or "register" in contexto.lower():
-        return "Identifique campos obrigatorios do formulario e botao de envio. Complete os dados necessarios com informacoes fake apropriadas seguindo a ordem logica."
+        return "Analise os campos do formulario e preencha com dados fake apropriados, depois submeta quando todos os campos relevantes estiverem completos."
     else:
         return "Analise a pagina e identifique a proxima acao mais logica para navegar ou interagir com o conteudo."
+
+
+def _extrair_identificador_campo(seletor: Optional[str]) -> Optional[str]:
+    """Extrai um identificador normalizado a partir de diferentes formatos de seletor."""
+    if not seletor:
+        return None
+
+    texto = seletor.strip()
+    texto_lower = texto.lower()
+
+    def _limpar(valor: str) -> str:
+        return valor.strip("'\" ").lower()
+
+    for chave in ("[name=", "[id=", "[data-testid=", "[data-test=", "[aria-label="):
+        if chave in texto_lower:
+            inicio = texto_lower.index(chave) + len(chave)
+            fim = texto_lower.find("]", inicio)
+            if fim != -1:
+                return _limpar(texto_lower[inicio:fim])
+
+    if texto_lower.startswith("#"):
+        return texto_lower[1:].split()[0]
+
+    if texto_lower.startswith("."):
+        return texto_lower[1:].split()[0]
+
+    if "[type=" in texto_lower:
+        inicio = texto_lower.index("[type=") + len("[type=")
+        fim = texto_lower.find("]", inicio)
+        if fim != -1:
+            return _limpar(texto_lower[inicio:fim])
+
+    identificado = re.sub(r"[^a-z0-9._-]", "", texto_lower)
+    return identificado or texto_lower
 
 
 def _modelo_suporta_imagem(modelo: str) -> bool:
@@ -422,7 +458,7 @@ def _modelo_suporta_imagem(modelo: str) -> bool:
         
     modelo_lower = modelo.lower()
     
-    # Lista mais completa e precisa de modelos com visão
+    # Lista mais completa e precisa de modelos com visao
     modelos_com_visao = [
         "qwen2.5-vl", "qwen-vl", "qwen2-vl",  # Familia Qwen VL
         "llava", "llava-1.5", "llava-1.6",   # Familia LLaVA
@@ -484,17 +520,13 @@ def _gerar_prompt_basico(html: str, instrucoes: Optional[str], modelo: str, hist
             html_relevante = html[:6000]
             
     except Exception as e:
-        print(f"⚠️ Erro ao analisar HTML basico: {e}")
+        print(f"[ALERTA] Erro ao analisar HTML basico: {e}")
         html_relevante = html[:6000]
         elementos_encontrados = ["ERRO: Nao foi possivel analisar elementos"]
-    
-    # Detectar se ha campos de formulario nos seletores validos
-    tem_campos_form = any(('#customer.' in sel or 'firstName' in sel or 'lastName' in sel) for sel in seletores_validos)
     
     # Identificar campos ja preenchidos do historico
     campos_preenchidos = set()
     if historico_acoes:
-        # Identificar campos preenchidos do historico
         for acao in historico_acoes:
             # Compatibilidade com ambos os formatos (acao/action)
             acao_tipo = acao.get('acao') or acao.get('action')
@@ -503,9 +535,21 @@ def _gerar_prompt_basico(html: str, instrucoes: Optional[str], modelo: str, hist
                 (acao.get('seletor') or acao.get('selector'))):
                 seletor = acao.get('seletor') or acao.get('selector')
                 campos_preenchidos.add(seletor)
-    
-    if tem_campos_form:
-        campos_form = [sel for sel in seletores_validos if '#customer.' in sel or 'firstName' in sel or 'lastName' in sel]
+
+    campos_preenchidos_identidades = {
+        _extrair_identificador_campo(sel) for sel in campos_preenchidos if sel
+    }
+
+    # Detectar campos de formulario apenas genericamente (sem hardcode de nomes especificos)
+    campos_status = []
+    for seletor in seletores_validos:
+        ident = _extrair_identificador_campo(seletor)
+        # Incluir apenas inputs de formulario (excluir botoes e links)
+        if ident and any(indicador in seletor.lower() for indicador in ['[name=', 'input', 'textarea', 'select']):
+            if '[type=' in seletor.lower() and any(tipo in seletor.lower() for tipo in ['submit', 'button']):
+                continue  # Pular botoes
+            status_atual = "[OK] JA FEITO" if ident in campos_preenchidos_identidades else "[PENDENTE]"
+            campos_status.append((seletor, status_atual, ident))
     
     # Marcar elementos ja preenchidos na lista
     elementos_marcados = []
@@ -514,7 +558,7 @@ def _gerar_prompt_basico(html: str, instrucoes: Optional[str], modelo: str, hist
         # Verificar se algum seletor preenchido esta no elemento
         for campo in campos_preenchidos:
             if campo in elemento:
-                marcado += " [OK] JÁ PREENCHIDO"
+                marcado += " [OK] JA PREENCHIDO"
                 break
         elementos_marcados.append(marcado)
     
@@ -531,96 +575,98 @@ HTML da pagina ({len(html_relevante)} chars):
 
 Instrucoes: {instrucoes or 'Identifique elementos interativos e a proxima acao logica'}
 
-HISTÓRICO DE PROGRESSO:"""
+HISTORICO DE PROGRESSO:"""
     
     # Adicionar informacoes sobre campos preenchidos
     if campos_preenchidos:
         prompt += f"""
-[OK] CAMPOS JÁ PREENCHIDOS ({len(campos_preenchidos)}):"""
+[OK] CAMPOS JA PREENCHIDOS ({len(campos_preenchidos)}):"""
         for campo in sorted(campos_preenchidos):
             prompt += f"""
-   • {campo}"""
-        prompt += f"""
-
-[ALERTA] ATENÇÃO CRÍTICA: NÃO REPITA campos ja preenchidos!
-[FOCO] PRÓXIMA AÇÃO OBRIGATÓRIA: Escolha o PRÓXIMO campo vazio da sequencia!
-[PROIBIDO] PROIBIDO: Usar seletores ja preenchidos acima!
-
-[FOCO] SEQUÊNCIA OBRIGATÓRIA DE PREENCHIMENTO:"""
-    
-    # Adicionar sequencia de campos com status dinâmico
-    campos_sequencia = [
-        "#customer.firstName",
-        "#customer.lastName", 
-        "#customer.address.street",
-        "#customer.address.city",
-        "#customer.address.state"
-    ]
-    
-    for i, campo in enumerate(campos_sequencia, 1):
-        status = "[OK] JÁ FEITO" if campo in campos_preenchidos else "[ACAO] FAZER AGORA"
-        prompt += f"\n{i}. {campo} <- {status}"
-    
-    prompt += ""
-
-    # Adicionar aviso especifico se ha campos de formulario
-    if tem_campos_form:
+   - {campo}"""
         prompt += """
-ATENCAO: CAMPOS DE FORMULARIO DETECTADOS!
-- Vejo campos #customer.firstName, #customer.lastName, etc. na lista
-- Use acao type para PREENCHER estes campos com dados fake
-- NAO continue clicando em links, PREENCHA os campos visiveis!
-- Siga a SEQUENCIA LOGICA: firstName -> lastName -> street -> city -> state -> zipCode -> phoneNumber -> ssn -> username -> password
-- Exemplo: {"acao": "type", "seletor": "#customer.firstName", "valor": "Joao Silva"}
 
-SEQUENCIA DE PREENCHIMENTO:
-1. #customer.firstName - Nome
-2. #customer.lastName - Sobrenome  
-3. #customer.address.street - Endereco
-4. #customer.address.city - Cidade
-5. #customer.address.state - Estado
-6. #customer.address.zipCode - CEP
-7. #customer.phoneNumber - Telefone
-8. #customer.ssn - SSN/CPF
-9. #customer.username - Nome de usuario
-10. #customer.password - Senha
-"""
+[REGRA] NAO REPITA campos ja preenchidos!
+[FOCO] Escolha o proximo campo vazio mais relevante para a tarefa."""
+    
+    # Adicionar sequencia de campos com status dinamico somente para campos detectados
+    if campos_status:
+        prompt += "\n\nCAMPOS DETECTADOS NA PAGINA:"
+        for i, (seletor_display, status_atual, _) in enumerate(campos_status, 1):
+            prompt += f"\n{i}. {seletor_display} <- {status_atual}"
     
     prompt += """
+
 REGRAS DE ACOES:
-- "click": Para clicar em links, botoes, checkboxes
-- "type": Para PREENCHER campos de texto (input, textarea) - USE SEMPRE PARA CAMPOS DE INPUT!
-- "submit": APENAS para enviar formularios completos (botoes submit)
+- "click": Para clicar em links, botoes, checkboxes (quando o clique for a acao final)
+- "type": Para PREENCHER campos de texto (input, textarea) com valores apropriados
+- "submit": APENAS para enviar formularios completos
 - "scroll": Para rolar a pagina
 - "wait": Para aguardar carregamento
 
-DADOS FAKE PARA FORMULARIOS:
-- Nome: Use "Joao Silva" ou "Maria Santos"
-- Email: Use "joao@email.com" ou "teste@email.com"  
-- Senha: Use "123456" ou "senha123"
-- Telefone: Use "11999999999" ou "(11) 99999-9999"
-- CPF: Use "12345678901"
-- Endereco: Use "Rua das Flores, 123"
-- Cidade: Use "Sao Paulo"
-- CEP: Use "01234-567"
-
 IMPORTANTE: 
 - Use APENAS seletores dos ELEMENTOS ENCONTRADOS acima
-- COPIE o seletor EXATAMENTE como aparece na lista (incluindo colchetes, aspas e formato completo)
-- EXEMPLO CORRETO: input[type='submit'][value='Register'] (não [name='Register'])
-- Para PREENCHER campos INPUT use sempre acao "type" com valor
-- Para ENVIAR formulario use "submit" em botao de envio
-- Responda APENAS com JSON valido, sem markdown ou explicacoes extras
-- Para login: procure campos de CPF/email e senha"""
+- COPIE o seletor EXATAMENTE como aparece na lista
+- Para preencher campos use acao "type" com valor apropriado (o agente fara o foco automaticamente)
+- NAO repita campos ja preenchidos
+- Gere dados fake realistas e coerentes com o contexto do campo
+- Responda APENAS com JSON valido: {"acao": "...", "seletor": "...", "valor": "...", "confianca": N, "justificativa": "..."}"""
     
     payload = {
         "model": modelo,
         "messages": [{"role": "user", "content": prompt}],
-        "temperature": 0,
+        "temperature": 0.4,  # Aumentado para ser mais criativo e menos determinístico
         "max_tokens": 1024
     }
     
     return payload, seletores_validos[:20]  # Limitar seletores
+
+
+def otimizar_payload_para_modelo(payload: Dict, modelo: str) -> Dict:
+    """Otimiza payload especifico para cada modelo."""
+
+    if "qwen" in modelo.lower():
+        payload["temperature"] = 0.3  # Aumentado para mais variabilidade
+        payload["top_p"] = 0.9
+    elif "gemma" in modelo.lower():
+        payload["temperature"] = 0.3  # Aumentado para evitar repetições
+        payload["top_k"] = 40
+    elif "llama" in modelo.lower():
+        payload["temperature"] = 0.4  # Aumentado para mais criatividade
+        payload["repeat_penalty"] = 1.1
+
+    return payload
+
+
+def extrair_elementos_otimizados_llm(pagina):
+    """Extrai elementos otimizados da pagina para LLM."""
+    try:
+        from bs4 import BeautifulSoup
+        from .html_parser import extrair_elementos_interativos_completos
+
+        soup = BeautifulSoup(pagina.content(), 'html.parser')
+        elementos = extrair_elementos_interativos_completos(soup, pagina)
+
+        return {
+            'elementos': elementos[:20],
+            'html': str(soup)[:5000],
+            'title': soup.find('title').get_text() if soup.find('title') else 'Sem titulo',
+        }
+    except Exception as e:
+        logging.error(f"Erro ao extrair elementos: {e}")
+        return {'elementos': [], 'html': '', 'title': 'Erro na extracao'}
+
+
+def gerar_prompt_autonomo_completo(html_content, screenshot_path=None, instrucoes_customizadas=None,
+                                   modelo="qwen/qwen2.5-vl-7b", historico_acoes=None, pagina=None):
+    """Gera prompt autonomo completo - wrapper para compatibilidade."""
+    return gerar_prompt_em_chat_format(
+        html=html_content,
+        screenshot_path=screenshot_path,
+        instrucoes_customizadas=instrucoes_customizadas,
+        modelo=modelo,
+        historico_acoes=historico_acoes,
+    )
 
 
 def gerar_instrucoes_contextuais(elementos: List[Dict], contexto: str) -> str:
@@ -629,72 +675,23 @@ def gerar_instrucoes_contextuais(elementos: List[Dict], contexto: str) -> str:
     if not elementos:
         return "Nao foram encontrados elementos interativos na pagina."
     
-    # Analisar tipos de elementos
     tipos_elementos = {}
     for el in elementos:
         tag = el.get('tag', 'unknown')
         tipos_elementos[tag] = tipos_elementos.get(tag, 0) + 1
-    
+
     instrucoes = f"Encontrados {len(elementos)} elementos interativos:\n"
     for tag, count in tipos_elementos.items():
         instrucoes += f"- {count} {tag}(s)\n"
-    
-    # Sugestoes baseadas no contexto
+
     if contexto == "login":
         instrucoes += "\nSugestao: Procure por campos 'email', 'password' e botao 'submit'"
     elif contexto == "formulario":
         instrucoes += "\nSugestao: Complete campos obrigatorios (*) antes de submeter"
     elif contexto == "navegacao":
         instrucoes += "\nSugestao: Procure por links ou botoes de navegacao"
-    
+
     return instrucoes
-
-
-def otimizar_payload_para_modelo(payload: Dict, modelo: str) -> Dict:
-    """Otimiza payload especifico para cada modelo"""
-    
-    # Configuracoes especificas por modelo
-    if "qwen" in modelo.lower():
-        payload["temperature"] = 0.1
-        payload["top_p"] = 0.9
-    elif "gemma" in modelo.lower():
-        payload["temperature"] = 0
-        payload["top_k"] = 40
-    elif "llama" in modelo.lower():
-        payload["temperature"] = 0.2
-        payload["repeat_penalty"] = 1.1
-    
-    return payload
-
-
-def extrair_elementos_otimizados_llm(pagina):
-    """Extrai elementos otimizados da pagina para LLM"""
-    try:
-        from bs4 import BeautifulSoup
-        from .html_parser import extrair_elementos_interativos_completos
-        
-        soup = BeautifulSoup(pagina.content(), 'html.parser')
-        elementos = extrair_elementos_interativos_completos(soup, pagina)
-        
-        return {
-            'elementos': elementos[:20],  # Limitar para nao sobrecarregar
-            'html': str(soup)[:5000],     # HTML truncado
-            'title': soup.find('title').get_text() if soup.find('title') else 'Sem titulo'
-        }
-    except Exception as e:
-        logging.error(f"Erro ao extrair elementos: {e}")
-        return {'elementos': [], 'html': '', 'title': 'Erro na extracao'}
-
-
-def gerar_prompt_autonomo_completo(html_content, screenshot_path=None, instrucoes_customizadas=None, modelo="qwen/qwen2.5-vl-7b", historico_acoes=None, pagina=None):
-    """Gera prompt autonomo completo - wrapper para compatibilidade"""
-    return gerar_prompt_em_chat_format(
-        html=html_content,
-        screenshot_path=screenshot_path,
-        instrucoes_customizadas=instrucoes_customizadas,
-        modelo=modelo,
-        historico_acoes=historico_acoes
-    )
 
 
 def validar_seletor_e_retry(resposta_llm, seletores_validos, func_chamar_llm, payload_original):
@@ -713,16 +710,17 @@ def validar_seletor_e_retry(resposta_llm, seletores_validos, func_chamar_llm, pa
         print(f"[DEBUG] Validando resposta: {resposta_limpa[:100]}...")
         print(f"[DEBUG] Seletores validos disponiveis: {len(seletores_validos)} itens")
         
-        # Tentar validar resposta
-        if validar_resposta_llm(resposta_limpa):
-            acao_data = json.loads(resposta_limpa)
-            seletor = acao_data.get('seletor')
+        # Tentar validar resposta (retorna tupla: valido, dados, motivo)
+        valido, acao_data, motivo = validar_resposta_llm(resposta_limpa)
+        
+        if valido and acao_data:
+            seletor = acao_data.get('seletor') or acao_data.get('selector')
             
             # Usar validacao flexivel em vez de verificacao simples
-            valido, motivo = validar_seletor_existente(seletor, seletores_validos)
+            valido_seletor, motivo_seletor = validar_seletor_existente(seletor, seletores_validos)
             
-            if valido:
-                print(f"[OK] Seletor '{seletor}' valido! ({motivo})")
+            if valido_seletor:
+                print(f"[OK] Seletor '{seletor}' valido! ({motivo_seletor})")
                 return acao_data
             
             # Retry com correcao de seletor
@@ -735,15 +733,16 @@ def validar_seletor_e_retry(resposta_llm, seletores_validos, func_chamar_llm, pa
             
             resposta_retry = func_chamar_llm(payload_retry)
             resposta_retry_limpa = resposta_retry.replace('```json', '').replace('```', '').strip()
-            if validar_resposta_llm(resposta_retry_limpa):
-                acao_retry = json.loads(resposta_retry_limpa)
-                seletor_retry = acao_retry.get('seletor')
-                valido_retry, motivo_retry = validar_seletor_existente(seletor_retry, seletores_validos)
-                if valido_retry:
+            
+            valido_retry, acao_retry, motivo_retry = validar_resposta_llm(resposta_retry_limpa)
+            if valido_retry and acao_retry:
+                seletor_retry = acao_retry.get('seletor') or acao_retry.get('selector')
+                valido_seletor_retry, motivo_seletor_retry = validar_seletor_existente(seletor_retry, seletores_validos)
+                if valido_seletor_retry:
                     return acao_retry
                     
         else:
-            print(f"[ERRO] [VALIDAÇÃO] Resposta nao passou na validacao basica")
+            print(f"[ERRO] [VALIDACAO] Resposta nao passou na validacao basica: {motivo}")
                 
         return None
         

@@ -36,9 +36,10 @@ ehthumbs.db
 Desktop.ini
 
 # Logs e prints customizados
-agente_qa/logs/
-agente_qa/prints/
-*.log
+llm_agent_test/logs/
+llm_agent_test/prints/
+logs/
+prints/
 
 # Test/coverage
 coverage/
