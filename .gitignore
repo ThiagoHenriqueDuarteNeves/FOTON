@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+llm_agent_test/logs/
+llm_agent_test/prints/
+llm_agent_test/navegacao.log
+
+.DS_Store
+.vscode/

@@ -1,9 +1,10 @@
 import requests
+from config import LLM_SERVERS
 
 def testar_llm(modelo="mistral", prompt="Diga Olá"):
     try:
         resposta = requests.post(
-            "http://localhost:11434/api/generate",
+            LLM_SERVERS["ollama"],
             json={
                 "model": modelo,
                 "prompt": prompt,

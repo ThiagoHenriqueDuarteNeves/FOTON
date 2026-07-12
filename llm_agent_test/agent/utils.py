@@ -108,7 +108,7 @@ def fechar_aviso_de_cookies(pagina):
             pagina.locator(seletor).first.click(timeout=1000)
             print(f"[INFO] Fechou aviso de cookies com seletor: {seletor}")
             return
-        except:
+        except Exception:
             continue
     print("[INFO] Nenhum aviso de cookies foi encontrado ou já estava fechado.")
 
@@ -158,14 +158,15 @@ def clicar_elemento(pagina, seletor):
     try:
         el = pagina.locator(seletor).first
 
-        pagina.evaluate(f'''
-            () => {{
-                const el = document.querySelector("{seletor}");
-                if (el) {{
-                    el.scrollIntoView({{ behavior: "smooth", block: "center" }});
-                }}
-            }}
-        ''')
+        pagina.evaluate(
+            """(selector) => {
+                const el = document.querySelector(selector);
+                if (el) {
+                    el.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }""",
+            seletor,
+        )
         pagina.wait_for_timeout(300)
         print(f"[INFO] Rolou até o seletor: {seletor}")
 
@@ -178,16 +179,17 @@ def clicar_elemento(pagina, seletor):
         print(f"[⚠️ AVISO] Clique padrão falhou: {e}")
         print("[INFO] Tentando clique forçado no DOM com JavaScript...")
 
-        sucesso = pagina.evaluate(f'''
-            () => {{
-                const el = document.querySelector("{seletor}");
-                if (el) {{
+        sucesso = pagina.evaluate(
+            """(selector) => {
+                const el = document.querySelector(selector);
+                if (el) {
                     el.click();
                     return true;
-                }}
+                }
                 return false;
-            }}
-        ''')
+            }""",
+            seletor,
+        )
 
         if sucesso:
             print(f"[✔️] Clique forçado por JavaScript bem-sucedido.")
